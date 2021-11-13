@@ -17,6 +17,16 @@
 		4E1803C2274058F00096A87C /* BlockNote_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803C1274058F00096A87C /* BlockNote_appTests.swift */; };
 		4E1803CC274058F00096A87C /* BlockNote_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */; };
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
+		4E1803DD27405BD90096A87C /* C1MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803DC27405BD90096A87C /* C1MainPage.swift */; };
+		4E1803E627405CBE0096A87C /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803DF27405CBD0096A87C /* Note+CoreDataProperties.swift */; };
+		4E1803E727405CBE0096A87C /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E027405CBD0096A87C /* GroupType+CoreDataClass.swift */; };
+		4E1803E827405CBE0096A87C /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E127405CBE0096A87C /* NoteItem+CoreDataClass.swift */; };
+		4E1803E927405CBE0096A87C /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E227405CBE0096A87C /* GroupType+CoreDataProperties.swift */; };
+		4E1803EA27405CBE0096A87C /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E327405CBE0096A87C /* Note+CoreDataClass.swift */; };
+		4E1803EB27405CBE0096A87C /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E427405CBE0096A87C /* NoteItem.swift */; };
+		4E1803EE27405DCC0096A87C /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */; };
+		4EFA5FB7274077540096F021 /* Noteitem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* Noteitem+CoreDataClass.swift */; };
+		4EFA5FB8274077540096F021 /* Noteitem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +61,16 @@
 		4E1803C7274058F00096A87C /* BlockNote appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlockNote appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITests.swift; sourceTree = "<group>"; };
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4E1803DC27405BD90096A87C /* C1MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1MainPage.swift; sourceTree = "<group>"; };
+		4E1803DF27405CBD0096A87C /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "../../../BlockNote/BlockNote/CoreData/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E1803E027405CBD0096A87C /* GroupType+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GroupType+CoreDataClass.swift"; path = "../../../BlockNote/BlockNote/CoreData/GroupType+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E1803E127405CBE0096A87C /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NoteItem+CoreDataClass.swift"; path = "../../../BlockNote/BlockNote/CoreData/NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E1803E227405CBE0096A87C /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GroupType+CoreDataProperties.swift"; path = "../../../BlockNote/BlockNote/CoreData/GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E1803E327405CBE0096A87C /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "../../../BlockNote/BlockNote/CoreData/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E1803E427405CBE0096A87C /* NoteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteItem.swift; path = ../../../BlockNote/BlockNote/CoreData/NoteItem.swift; sourceTree = "<group>"; };
+		4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewModel.swift; sourceTree = "<group>"; };
+		4EFA5FB5274077540096F021 /* Noteitem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Noteitem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Noteitem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +101,8 @@
 		4E18039B274058EA0096A87C = {
 			isa = PBXGroup;
 			children = (
+				4EFA5FB5274077540096F021 /* Noteitem+CoreDataClass.swift */,
+				4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */,
 				4E1803A6274058EA0096A87C /* BlockNote app */,
 				4E1803C0274058F00096A87C /* BlockNote appTests */,
 				4E1803CA274058F00096A87C /* BlockNote appUITests */,
@@ -104,11 +126,12 @@
 				4E1803A7274058EA0096A87C /* AppDelegate.swift */,
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
 				4E1803AB274058EA0096A87C /* ViewController.swift */,
+				4E1803DB274059730096A87C /* UI Views */,
 				4E1803AD274058EA0096A87C /* Main.storyboard */,
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
 				4E1803B5274058F00096A87C /* LaunchScreen.storyboard */,
 				4E1803B8274058F00096A87C /* Info.plist */,
-				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
+				4E1803DE27405CA00096A87C /* CoreData */,
 			);
 			path = "BlockNote app";
 			sourceTree = "<group>";
@@ -128,6 +151,29 @@
 				4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */,
 			);
 			path = "BlockNote appUITests";
+			sourceTree = "<group>";
+		};
+		4E1803DB274059730096A87C /* UI Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E1803DC27405BD90096A87C /* C1MainPage.swift */,
+				4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */,
+			);
+			path = "UI Views";
+			sourceTree = "<group>";
+		};
+		4E1803DE27405CA00096A87C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4E1803E127405CBE0096A87C /* NoteItem+CoreDataClass.swift */,
+				4E1803E027405CBD0096A87C /* GroupType+CoreDataClass.swift */,
+				4E1803E327405CBE0096A87C /* Note+CoreDataClass.swift */,
+				4E1803E427405CBE0096A87C /* NoteItem.swift */,
+				4E1803E227405CBE0096A87C /* GroupType+CoreDataProperties.swift */,
+				4E1803DF27405CBD0096A87C /* Note+CoreDataProperties.swift */,
+				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +307,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E1803EB27405CBE0096A87C /* NoteItem.swift in Sources */,
+				4E1803E827405CBE0096A87C /* NoteItem+CoreDataClass.swift in Sources */,
+				4E1803EE27405DCC0096A87C /* C1NavViewModel.swift in Sources */,
 				4E1803AC274058EA0096A87C /* ViewController.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
+				4E1803DD27405BD90096A87C /* C1MainPage.swift in Sources */,
+				4EFA5FB7274077540096F021 /* Noteitem+CoreDataClass.swift in Sources */,
+				4EFA5FB8274077540096F021 /* Noteitem+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
+				4E1803E927405CBE0096A87C /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
+				4E1803EA27405CBE0096A87C /* Note+CoreDataClass.swift in Sources */,
+				4E1803E727405CBE0096A87C /* GroupType+CoreDataClass.swift in Sources */,
+				4E1803E627405CBE0096A87C /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
