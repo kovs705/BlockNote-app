@@ -30,6 +30,9 @@
 		4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBC27407A080096F021 /* Persistence.swift */; };
 		4EFA5FC027407A920096F021 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBF27407A920096F021 /* GroupCreateView.swift */; };
 		4EFA5FC227407AB50096F021 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FC127407AB50096F021 /* GroupDetailView.swift */; };
+		4EFA5FC527407AF70096F021 /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FC427407AF70096F021 /* GridObject.swift */; };
+		4EFA5FC727407B140096F021 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FC627407B140096F021 /* BarButton.swift */; };
+		4EFA5FC927407B640096F021 /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FC827407B640096F021 /* NoteListDebug.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		4EFA5FBC27407A080096F021 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4EFA5FBF27407A920096F021 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		4EFA5FC127407AB50096F021 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
+		4EFA5FC427407AF70096F021 /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
+		4EFA5FC627407B140096F021 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
+		4EFA5FC827407B640096F021 /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 			children = (
 				4E1803DC27405BD90096A87C /* C1MainPage.swift */,
 				4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */,
+				4EFA5FC827407B640096F021 /* NoteListDebug.swift */,
 				4EFA5FC127407AB50096F021 /* GroupDetailView.swift */,
 				4EFA5FBE27407A780096F021 /* Group create */,
 			);
@@ -187,6 +194,7 @@
 		4EFA5FB9274079AD0096F021 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
+				4EFA5FC327407ADE0096F021 /* Objects */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4EFA5FBC27407A080096F021 /* Persistence.swift */,
 			);
@@ -199,6 +207,15 @@
 				4EFA5FBF27407A920096F021 /* GroupCreateView.swift */,
 			);
 			path = "Group create";
+			sourceTree = "<group>";
+		};
+		4EFA5FC327407ADE0096F021 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4EFA5FC427407AF70096F021 /* GridObject.swift */,
+				4EFA5FC627407B140096F021 /* BarButton.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,8 +352,11 @@
 				4E1803E827405CBE0096A87C /* NoteItem+CoreDataClass.swift in Sources */,
 				4E1803EE27405DCC0096A87C /* C1NavViewModel.swift in Sources */,
 				4EFA5FC227407AB50096F021 /* GroupDetailView.swift in Sources */,
+				4EFA5FC727407B140096F021 /* BarButton.swift in Sources */,
 				4E1803AC274058EA0096A87C /* ViewController.swift in Sources */,
+				4EFA5FC527407AF70096F021 /* GridObject.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
+				4EFA5FC927407B640096F021 /* NoteListDebug.swift in Sources */,
 				4E1803DD27405BD90096A87C /* C1MainPage.swift in Sources */,
 				4EFA5FB7274077540096F021 /* Noteitem+CoreDataClass.swift in Sources */,
 				4EFA5FB8274077540096F021 /* Noteitem+CoreDataProperties.swift in Sources */,

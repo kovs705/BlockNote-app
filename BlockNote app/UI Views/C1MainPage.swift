@@ -120,7 +120,7 @@ struct C1NavigationView: View {
                             // Button(action: {
                                 // put the action here:
                                 // C1ViewModel.onDeleting.toggle()
-                            NavigationLink(destination: buttonTest()) {
+                            NavigationLink(destination: NoteListDebug()) {
                             //}) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
