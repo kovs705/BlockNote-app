@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+@objc(Noteitem)
 public class Noteitem: NSManagedObject {
     @NSManaged var noteItemOrder: Int
 }
