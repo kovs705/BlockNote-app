@@ -23,6 +23,7 @@
 		4E1803E927405CBE0096A87C /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E227405CBE0096A87C /* GroupType+CoreDataProperties.swift */; };
 		4E1803EA27405CBE0096A87C /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803E327405CBE0096A87C /* Note+CoreDataClass.swift */; };
 		4E1803EE27405DCC0096A87C /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */; };
+		4EB5DC59274AAFF5001455D4 /* BlockNoteStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5DC58274AAFF5001455D4 /* BlockNoteStack.swift */; };
 		4EC58A75274136F800B50DDE /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC58A74274136F800B50DDE /* NoteView.swift */; };
 		4EFA5FB7274077540096F021 /* Noteitem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* Noteitem+CoreDataClass.swift */; };
 		4EFA5FB8274077540096F021 /* Noteitem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */; };
@@ -73,6 +74,7 @@
 		4E1803E227405CBE0096A87C /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GroupType+CoreDataProperties.swift"; path = "../../../BlockNote/BlockNote/CoreData/GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E1803E327405CBE0096A87C /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "../../../BlockNote/BlockNote/CoreData/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E1803ED27405DCC0096A87C /* C1NavViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewModel.swift; sourceTree = "<group>"; };
+		4EB5DC58274AAFF5001455D4 /* BlockNoteStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNoteStack.swift; sourceTree = "<group>"; };
 		4EC58A74274136F800B50DDE /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* Noteitem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Noteitem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Noteitem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				4E1803DF27405CBD0096A87C /* Note+CoreDataProperties.swift */,
 				4EFA5FB6274077540096F021 /* Noteitem+CoreDataProperties.swift */,
 				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
+				4EB5DC58274AAFF5001455D4 /* BlockNoteStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				4EFA5FC727407B140096F021 /* BarButton.swift in Sources */,
 				4E1803AC274058EA0096A87C /* ViewController.swift in Sources */,
 				4EC58A75274136F800B50DDE /* NoteView.swift in Sources */,
+				4EB5DC59274AAFF5001455D4 /* BlockNoteStack.swift in Sources */,
 				4EFA5FC527407AF70096F021 /* GridObject.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4EFA5FC927407B640096F021 /* NoteListDebug.swift in Sources */,
@@ -567,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -595,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

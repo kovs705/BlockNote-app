@@ -205,23 +205,7 @@ struct C1NavigationView: View {
     }
     
     // MARK: - Functions
-    private func addItem() {
-        withAnimation {
-            let newGroup = GroupType(context: viewContext)
-            
-            newGroup.groupName = "Checking.."
-            newGroup.number = (types.last?.number ?? 0) + 1
-            newGroup.groupColor = "RedStrawBerry"
-            
-            do {
-                try self.viewContext.save()
-                print("Group is added!")
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
+
     
     func deleteGroup(at offsets: IndexSet) {
         for index in offsets {
