@@ -33,7 +33,7 @@ struct C1NavigationView: View {
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     // MARK: - Сделать сортировку в обратном порядке
     
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) var viewContext
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
@@ -226,6 +226,6 @@ struct C1NavigationView: View {
 struct C1NavigationView_Previews: PreviewProvider {
     static var previews: some View {
         C1NavigationView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }
