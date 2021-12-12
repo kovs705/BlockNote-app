@@ -12,19 +12,19 @@
         <attribute name="noteLevel" optional="YES" attributeType="String"/>
         <attribute name="noteName" optional="YES" attributeType="String"/>
         <attribute name="noteType" optional="YES" attributeType="String"/>
-        <relationship name="noteitems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Noteitem" inverseName="note" inverseEntity="Noteitem"/>
+        <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
-    <entity name="Noteitem" representedClassName=".Noteitem" syncable="YES">
+    <entity name="NoteItem" representedClassName=".Noteitem" syncable="YES">
         <attribute name="itemType" optional="YES" attributeType="String"/>
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
         <attribute name="noteItemOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteItemText" optional="YES" attributeType="String"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteitems" inverseEntity="Note"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>
         <element name="GroupType" positionX="-54" positionY="45" width="128" height="89"/>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="134"/>
-        <element name="Noteitem" positionX="-45" positionY="72" width="128" height="104"/>
+        <element name="NoteItem" positionX="-45" positionY="72" width="128" height="104"/>
     </elements>
 </model>
