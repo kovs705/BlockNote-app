@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5hM-q8-VCQ">
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,18 +15,102 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eB0-kU-zfH" userLabel="Main Page">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzp-rB-geh" userLabel="GreetingView">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a great day!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvj-gZ-HgS" userLabel="GreetingLabel">
+                                                <rect key="frame" x="102.33333333333333" y="61.333333333333336" width="185.66666666666669" height="27.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                <color key="textColor" name="TextForeground"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="BlueBerry"/>
+                                        <constraints>
+                                            <constraint firstItem="Zvj-gZ-HgS" firstAttribute="centerX" secondItem="nzp-rB-geh" secondAttribute="centerX" id="JnH-te-ccx"/>
+                                            <constraint firstItem="Zvj-gZ-HgS" firstAttribute="centerY" secondItem="nzp-rB-geh" secondAttribute="centerY" id="Pdb-IV-rmB"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibv-L0-OZv">
+                                        <rect key="frame" x="0.0" y="169.99999999999997" width="390" height="323.33333333333326"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCT-Qv-NvO">
+                                                <rect key="frame" x="161.66666666666666" y="20" width="67" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="GreenAvocado"/>
+                                        <constraints>
+                                            <constraint firstItem="cCT-Qv-NvO" firstAttribute="top" secondItem="ibv-L0-OZv" secondAttribute="top" constant="20" id="8el-oS-QRa"/>
+                                            <constraint firstItem="cCT-Qv-NvO" firstAttribute="centerX" secondItem="ibv-L0-OZv" secondAttribute="centerX" id="xEE-Yr-RPg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-37-5ez">
+                                        <rect key="frame" x="0.0" y="513.33333333333337" width="390" height="330.66666666666663"/>
+                                        <color key="backgroundColor" name="BrownSugar"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eB0-kU-zfH" secondAttribute="trailing" id="34y-Z5-ACI"/>
+                            <constraint firstItem="eB0-kU-zfH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4x9-zU-sUD"/>
+                            <constraint firstItem="eB0-kU-zfH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jkb-ER-nFi"/>
+                            <constraint firstItem="eB0-kU-zfH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MPS-La-CvJ"/>
+                            <constraint firstAttribute="bottom" secondItem="eB0-kU-zfH" secondAttribute="bottom" id="l9Q-L5-ffc"/>
+                            <constraint firstItem="eB0-kU-zfH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xai-BF-ubL"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fJu-Ib-TkF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="98"/>
+            <point key="canvasLocation" x="1056.9230769230769" y="97.393364928909946"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="M1R-eI-6iV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5hM-q8-VCQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3cX-VC-6Fr">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aAj-wO-RD7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akd-00-kBW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277" y="97"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <namedColor name="BlueBerry">
+            <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BrownSugar">
+            <color red="0.87400001287460327" green="0.79400002956390381" blue="0.70599997043609619" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="DarkBackground">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        </namedColor>
+        <namedColor name="GreenAvocado">
+            <color red="0.77600002288818359" green="0.83399999141693115" blue="0.67400002479553223" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="TextForeground">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
