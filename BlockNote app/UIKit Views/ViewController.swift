@@ -20,12 +20,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statView.layer.shadowColor = UIColor(Color.lightPart).cgColor
-        statView.layer.shadowOpacity = 0.2
-        statView.layer.shadowOffset = CGSize(width: 5, height: 15)
-        statView.layer.shadowRadius = 5.0
-        
-        statView.layer.masksToBounds = false
+//        statView.layer.shadowColor = UIColor(Color.lightPart).cgColor
+//        statView.layer.shadowOpacity = 0.2
+//        statView.layer.shadowOffset = CGSize(width: 5, height: 15)
+//        statView.layer.shadowRadius = 5.0
+//
+//        statView.layer.masksToBounds = false
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext = appDelegate.persistentContainerOffline.viewContext
