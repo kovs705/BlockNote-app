@@ -11,22 +11,22 @@ import SwiftUI
 
 class ViewController: UIViewController {
     
+    // MARK: - Outlets and variables
     // lazy var coreDataStack = CoreDataStack(modelName: "BlockNote_app")
     // let mainPageView = UIHostingController(rootView: C1NavigationView())
-    @IBOutlet weak var statView: UIView!
+    @IBOutlet weak var groupCollection: UICollectionView!
+    // @IBOutlet weak var statView: UIView!
     
     var groups: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        statView.layer.shadowColor = UIColor(Color.lightPart).cgColor
-//        statView.layer.shadowOpacity = 0.2
-//        statView.layer.shadowOffset = CGSize(width: 5, height: 15)
-//        statView.layer.shadowRadius = 5.0
-//
-//        statView.layer.masksToBounds = false
+        // MARK: - Xibs
+        groupCollection.register(UINib(nibName: "GroupCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GroupCollectionViewCell")
         
+        
+        // MARK: - CoreData
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext = appDelegate.persistentContainerOffline.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
@@ -37,6 +37,30 @@ class ViewController: UIViewController {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
         
-        
     }
+    
+    // MARK: - Logic
+    
+    
+    
+}
+
+
+// MARK: - Extensions
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.groups.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCollectionViewCell", for: indexPath) as! GroupCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 170, height: 170)
+    }
+    
+    
 }

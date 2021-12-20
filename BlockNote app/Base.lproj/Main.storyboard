@@ -101,6 +101,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fJu-Ib-TkF"/>
+                    <connections>
+                        <outlet property="groupCollection" destination="A9G-sU-m5O" id="ueb-P2-fAQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
