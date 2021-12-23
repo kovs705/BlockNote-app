@@ -16,11 +16,17 @@ class ViewController: UIViewController {
     // let mainPageView = UIHostingController(rootView: C1NavigationView())
     @IBOutlet weak var groupCollection: UICollectionView!
     // @IBOutlet weak var statView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var greetingLabel: UILabel!
     
     var groups: [NSManagedObject] = []
+    var hour = Calendar.current.component(.hour, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 300)
+        showGreeting()
         
         // MARK: - Xibs
         groupCollection.register(UINib(nibName: "GroupCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GroupCollectionViewCell")
@@ -44,6 +50,7 @@ class ViewController: UIViewController {
     @IBAction func addGroup(_ sender: UIButton) {
         let alert = UIAlertController(title: "New group", message: "Add a new group", preferredStyle: .alert)
         
+        // save action button
         let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
             
             guard
@@ -56,7 +63,14 @@ class ViewController: UIViewController {
             self.save(groupName: groupToSave, groupColor: "GreenAvocado")
             self.groupCollection.reloadData()
         }
-        // end saveAction
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
         
         
     }
@@ -85,6 +99,24 @@ class ViewController: UIViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
+    func showGreeting() {
+        if hour < 4 {
+            greetingLabel.text = "Have a good night ✨"
+        }
+        else if hour < 12 {
+            greetingLabel.text = "Good morning!☀️"
+        }
+        else if hour < 18 {
+            greetingLabel.text = "Have a great day! ⛅️"
+        }
+        else if hour < 23 {
+            greetingLabel.text = "Good evening 🌇"
+        }
+        else {
+            greetingLabel.text = "Have a good night ✨"
+        }
+    }
 
     
     
@@ -106,7 +138,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         // cell.containerView.backgroundColor = group.value(forKey: "groupColor") as?
         cell.containerView.backgroundColor = UIColor(returnColorFromString(nameOfColor: group.value(forKey: "groupColor") as! String))
         cell.groupNameLabel.text = group.value(forKey: "groupName") as? String
-        cell.numberOfNotesLabel.text = String("Number of notes: \(group.value(forKey: "typesOfNoteArray").debugDescription.count)")
+        cell.numberOfNotesLabel.text = String("Number of notes: \(group.value(forKey: "noteTypes").debugDescription.count)")
         return cell
     }
     

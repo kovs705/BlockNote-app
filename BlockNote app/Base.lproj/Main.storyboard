@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -18,16 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqK-q9-mQc">
-                                <rect key="frame" x="1" y="1" width="390" height="810"/>
+                                <rect key="frame" x="0.0" y="1" width="391" height="810"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jHM-HH-tbD" userLabel="MainPage">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-Ap-a3p" userLabel="Greeting">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="110"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a great day!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vru-yB-90O">
+                                                        <rect key="frame" x="94" y="72" width="202" height="30"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="YAy-tx-e3Z"/>
+                                                    <constraint firstItem="vru-yB-90O" firstAttribute="centerX" secondItem="xoZ-Ap-a3p" secondAttribute="centerX" id="rfp-hG-Bma"/>
+                                                    <constraint firstAttribute="bottom" secondItem="vru-yB-90O" secondAttribute="bottom" constant="8" id="rjB-pU-P9P"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtd-05-blc" userLabel="Statistics">
@@ -95,6 +105,7 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
+                                        <color key="backgroundColor" name="DarkBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Wbw-U4-EPX" secondAttribute="trailing" id="BTp-Tv-81g"/>
                                             <constraint firstItem="Wbw-U4-EPX" firstAttribute="leading" secondItem="jHM-HH-tbD" secondAttribute="leading" id="FD1-ri-uFq"/>
@@ -111,12 +122,13 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="jHM-HH-tbD" secondAttribute="bottom" constant="-40" id="4FC-a2-jHU"/>
-                                    <constraint firstAttribute="trailing" secondItem="jHM-HH-tbD" secondAttribute="trailing" id="JpA-0v-Tji"/>
+                                    <constraint firstAttribute="bottom" secondItem="jHM-HH-tbD" secondAttribute="bottom" id="4FC-a2-jHU"/>
+                                    <constraint firstAttribute="trailing" secondItem="jHM-HH-tbD" secondAttribute="trailing" constant="1" id="JpA-0v-Tji"/>
                                     <constraint firstItem="jHM-HH-tbD" firstAttribute="leading" secondItem="eqK-q9-mQc" secondAttribute="leading" id="Lsz-Lz-sLr"/>
-                                    <constraint firstItem="jHM-HH-tbD" firstAttribute="height" secondItem="eqK-q9-mQc" secondAttribute="height" id="R8A-Bq-AvE"/>
-                                    <constraint firstItem="jHM-HH-tbD" firstAttribute="width" secondItem="eqK-q9-mQc" secondAttribute="width" id="UmA-sb-HAA"/>
+                                    <constraint firstItem="jHM-HH-tbD" firstAttribute="height" secondItem="eqK-q9-mQc" secondAttribute="height" priority="250" id="R8A-Bq-AvE"/>
+                                    <constraint firstItem="jHM-HH-tbD" firstAttribute="width" secondItem="eqK-q9-mQc" secondAttribute="width" constant="-1" id="UmA-sb-HAA"/>
                                     <constraint firstItem="jHM-HH-tbD" firstAttribute="top" secondItem="eqK-q9-mQc" secondAttribute="top" id="WlH-0D-GCP"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="kvE-og-cZf"/>
@@ -126,15 +138,20 @@
                         <viewLayoutGuide key="safeArea" id="zhX-UA-fd5"/>
                         <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
-                            <constraint firstItem="eqK-q9-mQc" firstAttribute="top" secondItem="zhX-UA-fd5" secondAttribute="top" constant="-43" id="6mf-Dr-1Ch"/>
                             <constraint firstItem="eqK-q9-mQc" firstAttribute="trailing" secondItem="zhX-UA-fd5" secondAttribute="trailing" constant="1" id="9Bo-iW-7gg"/>
-                            <constraint firstItem="eqK-q9-mQc" firstAttribute="leading" secondItem="zhX-UA-fd5" secondAttribute="leading" constant="1" id="Vn1-uE-AGq"/>
+                            <constraint firstItem="jHM-HH-tbD" firstAttribute="bottom" secondItem="zhX-UA-fd5" secondAttribute="bottom" constant="1" id="JTW-qL-Qxe"/>
+                            <constraint firstItem="jHM-HH-tbD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.959716" id="Um5-W3-8tS"/>
+                            <constraint firstItem="eqK-q9-mQc" firstAttribute="leading" secondItem="zhX-UA-fd5" secondAttribute="leading" id="Vn1-uE-AGq"/>
+                            <constraint firstItem="jHM-HH-tbD" firstAttribute="leading" secondItem="zhX-UA-fd5" secondAttribute="leading" id="WAp-G5-Uxy"/>
                             <constraint firstItem="eqK-q9-mQc" firstAttribute="bottom" secondItem="zhX-UA-fd5" secondAttribute="bottom" constant="1" id="YDv-ag-ijR"/>
+                            <constraint firstItem="zhX-UA-fd5" firstAttribute="trailing" secondItem="jHM-HH-tbD" secondAttribute="trailing" id="ldI-iS-BVa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fJu-Ib-TkF"/>
                     <connections>
+                        <outlet property="greetingLabel" destination="vru-yB-90O" id="ui5-3P-ihf"/>
                         <outlet property="groupCollection" destination="A9G-sU-m5O" id="ueb-P2-fAQ"/>
+                        <outlet property="scrollView" destination="eqK-q9-mQc" id="xeI-CN-pKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
