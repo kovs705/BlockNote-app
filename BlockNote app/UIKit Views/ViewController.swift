@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         
     }
     
-    // MARK: - Logic
+    // MARK: - Group Add
     
     @IBAction func addGroup(_ sender: UIButton) {
         let alert = UIAlertController(title: "New group", message: "Add a new group", preferredStyle: .alert)
@@ -59,6 +59,32 @@ class ViewController: UIViewController {
         
         
     }
+    
+    // MARK: - Functions
+    func save(groupName: String, groupColor: String, number: Int) {
+        guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+        let managedContext =
+        appDelegate.persistentContainerOffline.viewContext
+        let entity =
+        NSEntityDescription.entity(forEntityName: "GroupType",
+                                   in: managedContext)!
+        let group = NSManagedObject(entity: entity,
+                                    insertInto: managedContext)
+        group.setValue(groupName, forKey: "groupName")
+        group.setValue(groupColor, forKey: "groupColor")
+        group.setValue(number, forKey: "number")
+        
+        do {
+            groups.append(group)
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
     
     
 }
