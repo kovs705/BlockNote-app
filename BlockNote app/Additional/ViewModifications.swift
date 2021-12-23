@@ -9,16 +9,25 @@ import UIKit
     
 @IBDesignable extension UIView {
     
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = cornerRadius
+    @IBInspectable var cornerRadius: CGFloat {
+        
+        set {
+            layer.cornerRadius = newValue
             layer.masksToBounds = cornerRadius > 0
+        }
+        
+        get {
+            return layer.cornerRadius
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 0 {
-        didSet {
-            layer.borderWidth = borderWidth
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        
+        get {
+            return layer.borderWidth
         }
     }
     

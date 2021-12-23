@@ -52,16 +52,17 @@ class ViewController: UIViewController {
             else {
                 return
             }
+            
+            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
+            self.groupCollection.reloadData()
         }
         // end saveAction
-        
-        
         
         
     }
     
     // MARK: - Functions
-    func save(groupName: String, groupColor: String, number: Int) {
+    func save(groupName: String, groupColor: String) {
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -75,7 +76,7 @@ class ViewController: UIViewController {
                                     insertInto: managedContext)
         group.setValue(groupName, forKey: "groupName")
         group.setValue(groupColor, forKey: "groupColor")
-        group.setValue(number, forKey: "number")
+        // group.setValue(number, forKey: "number")
         
         do {
             groups.append(group)
