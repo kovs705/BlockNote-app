@@ -41,6 +41,24 @@ class ViewController: UIViewController {
     
     // MARK: - Logic
     
+    @IBAction func addGroup(_ sender: UIButton) {
+        let alert = UIAlertController(title: "New group", message: "Add a new group", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let groupToSave = textField.text
+            else {
+                return
+            }
+        }
+        // end saveAction
+        
+        
+        
+        
+    }
     
     
 }
@@ -68,6 +86,5 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 175, height: 175)
     }
-    
     
 }

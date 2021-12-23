@@ -6,9 +6,8 @@
 //
 
 import UIKit
-
-@IBDesignable
-class ViewModifications: UIView {
+    
+@IBDesignable extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
@@ -22,9 +21,7 @@ class ViewModifications: UIView {
             layer.borderWidth = borderWidth
         }
     }
-}
     
-@IBDesignable extension UIView {
     @IBInspectable var shadowRadius: CGFloat {
         get { return layer.shadowRadius }
         set { layer.shadowRadius = newValue }
