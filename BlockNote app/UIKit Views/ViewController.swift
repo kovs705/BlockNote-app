@@ -54,13 +54,19 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let group = groups[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCollectionViewCell", for: indexPath) as! GroupCollectionViewCell
-        // cell.containerView
+        // cell.containerView.backgroundColor = group.value(forKey: "groupColor") as?
+        cell.containerView.backgroundColor = UIColor(returnColorFromString(nameOfColor: group.value(forKey: "groupColor") as! String))
+        cell.groupNameLabel.text = group.value(forKey: "groupName") as? String
+        cell.numberOfNotesLabel.text = String("Number of notes: \(group.value(forKey: "typesOfNoteArray").debugDescription.count)")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 170, height: 170)
+        CGSize(width: 175, height: 175)
     }
     
     
