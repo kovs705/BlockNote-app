@@ -87,10 +87,10 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A9G-sU-m5O" userLabel="Groups">
-                                                <rect key="frame" x="0.0" y="440" width="390" height="180"/>
+                                                <rect key="frame" x="0.0" y="440" width="390" height="243"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="QXf-RU-73X"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="180" id="QXf-RU-73X"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Syp-5h-POE">
                                                     <size key="itemSize" width="175" height="175"/>
@@ -124,6 +124,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
+                                    <constraint firstItem="A9G-sU-m5O" firstAttribute="height" secondItem="eqK-q9-mQc" secondAttribute="height" multiplier="0.3" id="1Rk-UV-QG5"/>
                                     <constraint firstAttribute="bottom" secondItem="jHM-HH-tbD" secondAttribute="bottom" id="4FC-a2-jHU"/>
                                     <constraint firstAttribute="trailing" secondItem="jHM-HH-tbD" secondAttribute="trailing" constant="1" id="JpA-0v-Tji"/>
                                     <constraint firstItem="jHM-HH-tbD" firstAttribute="leading" secondItem="eqK-q9-mQc" secondAttribute="leading" id="Lsz-Lz-sLr"/>
