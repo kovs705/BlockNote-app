@@ -138,7 +138,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         // cell.containerView.backgroundColor = group.value(forKey: "groupColor") as?
         cell.containerView.backgroundColor = UIColor(returnColorFromString(nameOfColor: group.value(forKey: "groupColor") as! String))
         cell.groupNameLabel.text = group.value(forKey: "groupName") as? String
-        cell.numberOfNotesLabel.text = "\(group.value(forKey: "typesOfNoteArray") ?? 0) notes"
+        cell.numberOfNotesLabel.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
         return cell
     }
     

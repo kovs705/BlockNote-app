@@ -26,14 +26,14 @@ struct GridObject: View {
                     Spacer()
                 }
                 // number of notes inside:
-                if groupType.noteTypes?.count == 1 {
+                if groupType.noteTypes?.count ?? 0 <= 1 {
                     HStack {
                         Text("1 note")
                         Spacer()
                     }
                 } else {
                     HStack {
-                        Text("\(groupType.typesOfNoteArray.count) notes")
+                        Text("\(groupType.noteTypes!.count) notes")
                         Spacer()
                     }
                 }

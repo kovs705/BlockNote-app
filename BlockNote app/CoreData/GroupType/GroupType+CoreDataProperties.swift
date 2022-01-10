@@ -28,12 +28,12 @@ extension GroupType {
         groupName ?? "Unknown name of the group"
     }
     
-    public var typesOfNoteArray: [Note] {
-        let set = noteTypes as? Set<Note> ?? []
-        return set.sorted {
-            $0.wrappedNoteName < $1.wrappedNoteName
-        }
-    }
+//    public var typesOfNoteArray: [Note] {
+//        let set = noteTypes as? Set<Note> ?? []
+//        return set.sorted {
+//            $0.wrappedNoteName < $1.wrappedNoteName
+//        }
+//    }
 }
 
 // MARK: Generated accessors for noteTypes
