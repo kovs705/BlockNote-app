@@ -14,10 +14,10 @@ class ViewController: UIViewController {
     // MARK: - Outlets and variables
     // lazy var coreDataStack = CoreDataStack(modelName: "BlockNote_app")
     // let mainPageView = UIHostingController(rootView: C1NavigationView())
-    @IBOutlet weak var groupCollection: UICollectionView!
+            // @IBOutlet weak var groupCollection: UICollectionView!
     // @IBOutlet weak var statView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var greetingLabel: UILabel!
+            // @IBOutlet weak var scrollView: UIScrollView!
+            // @IBOutlet weak var greetingLabel: UILabel!
     
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
@@ -25,11 +25,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 300)
-        showGreeting()
+        // scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 300)
+        // showGreeting()
         
         // MARK: - Xibs
-        groupCollection.register(UINib(nibName: "GroupCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GroupCollectionViewCell")
+        // groupCollection.register(UINib(nibName: "GroupCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GroupCollectionViewCell")
         
         
         // MARK: - CoreData
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             }
             
             self.save(groupName: groupToSave, groupColor: "GreenAvocado")
-            self.groupCollection.reloadData()
+            // self.groupCollection.reloadData()
         }
         // cancel action button
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -100,23 +100,23 @@ class ViewController: UIViewController {
         }
     }
     
-    func showGreeting() {
-        if hour < 4 {
-            greetingLabel.text = "Have a good night ✨"
-        }
-        else if hour < 12 {
-            greetingLabel.text = "Good morning!☀️"
-        }
-        else if hour < 18 {
-            greetingLabel.text = "Have a great day! ⛅️"
-        }
-        else if hour < 23 {
-            greetingLabel.text = "Good evening 🌇"
-        }
-        else {
-            greetingLabel.text = "Have a good night ✨"
-        }
-    }
+//    func showGreeting() {
+//        if hour < 4 {
+//            greetingLabel.text = "Have a good night ✨"
+//        }
+//        else if hour < 12 {
+//            greetingLabel.text = "Good morning!☀️"
+//        }
+//        else if hour < 18 {
+//            greetingLabel.text = "Have a great day! ⛅️"
+//        }
+//        else if hour < 23 {
+//            greetingLabel.text = "Good evening 🌇"
+//        }
+//        else {
+//            greetingLabel.text = "Have a good night ✨"
+//        }
+//    }
 
     
     
