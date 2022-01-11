@@ -8,8 +8,8 @@
         <!--BlockNote-->
         <scene sceneID="qfU-Ke-8aV">
             <objects>
-                <hostingController title="BlockNote" id="u2E-l2-qEa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDl-ws-l1L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <hostingController title="BlockNote" id="u2E-l2-qEa" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="2637" y="100"/>
         </scene>

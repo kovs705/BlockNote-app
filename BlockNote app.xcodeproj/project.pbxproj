@@ -37,6 +37,7 @@
 		4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */; };
 		4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */; };
 		4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */; };
+		4E858B5D278DB1FB00117B64 /* MainPageHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
 		4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */; };
 		4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBA274079D80096F021 /* Extensions.swift */; };
@@ -92,6 +93,7 @@
 		4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionObject.swift; sourceTree = "<group>"; };
+		4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageHostingController.swift; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EFA5FBA274079D80096F021 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1803AB274058EA0096A87C /* ViewController.swift */,
+				4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */,
 			);
 			path = UIkit;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
+				4E858B5D278DB1FB00117B64 /* MainPageHostingController.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,

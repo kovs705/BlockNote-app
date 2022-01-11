@@ -8,6 +8,9 @@
 import UIKit
 import CoreData
 import SwiftUI
+import CodeEditor
+import SwiftUIKitView
+import SwiftUIX
 
 class ViewController: UIViewController {
     
@@ -42,6 +45,10 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
+        
+        // MARK: - SwiftUI
+        
+        
         
     }
     
