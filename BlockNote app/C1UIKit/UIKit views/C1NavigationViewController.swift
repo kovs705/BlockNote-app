@@ -1,24 +1,22 @@
 //
-//  MainPageHostingController.swift
+//  C1NavigationViewController.swift
 //  BlockNote app
 //
-//  Created by Kovs on 11.01.2022.
+//  Created by Kovs on 12.01.2022.
 //
 
 import UIKit
-import CoreData
-import SwiftUI
-import Combine
-import SpriteKit
 
-class MainPageHostingController: UIHostingController<C1NavigationView> {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: C1NavigationView())
-    }
+class C1NavigationViewController: UIViewController {
     
-    
-    
-    
+    ///
+    /// создать ScrollView
+    /// добавить containerView с SwiftUI объектами, взяв их из файлов
+    /// разобраться где будет UIViewController, агде UIHostingController (проблема с dismiss view)
+    ///
+    ///
+    ///
+    ///
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -37,7 +37,7 @@
 		4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */; };
 		4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */; };
 		4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */; };
-		4E858B5D278DB1FB00117B64 /* MainPageHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */; };
+		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
 		4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */; };
 		4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBA274079D80096F021 /* Extensions.swift */; };
@@ -93,7 +93,7 @@
 		4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionObject.swift; sourceTree = "<group>"; };
-		4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageHostingController.swift; sourceTree = "<group>"; };
+		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EFA5FBA274079D80096F021 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -153,6 +153,7 @@
 			children = (
 				4E1803A7274058EA0096A87C /* AppDelegate.swift */,
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
+				4ED53DEF278F19EF00F79A3F /* C1UIKit */,
 				4EBBBE462740A71600041763 /* UIKit Views */,
 				4EFA5FB9274079AD0096F021 /* Additional */,
 				4E1803AD274058EA0096A87C /* Main.storyboard */,
@@ -205,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				4E1803AB274058EA0096A87C /* ViewController.swift */,
-				4E858B5C278DB1FB00117B64 /* MainPageHostingController.swift */,
 			);
 			path = UIkit;
 			sourceTree = "<group>";
@@ -293,6 +293,30 @@
 				4E44C7A2278CD44B0054E5E2 /* Note */,
 			);
 			path = "UIKit Views";
+			sourceTree = "<group>";
+		};
+		4ED53DEF278F19EF00F79A3F /* C1UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				4ED53DF1278F1A9800F79A3F /* UIKit views */,
+				4ED53DF0278F1A8E00F79A3F /* SwiftUI objects */,
+			);
+			path = C1UIKit;
+			sourceTree = "<group>";
+		};
+		4ED53DF0278F1A8E00F79A3F /* SwiftUI objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SwiftUI objects";
+			sourceTree = "<group>";
+		};
+		4ED53DF1278F1A9800F79A3F /* UIKit views */ = {
+			isa = PBXGroup;
+			children = (
+				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+			);
+			path = "UIKit views";
 			sourceTree = "<group>";
 		};
 		4EFA5FB9274079AD0096F021 /* Additional */ = {
@@ -460,7 +484,6 @@
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
-				4E858B5D278DB1FB00117B64 /* MainPageHostingController.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
@@ -468,6 +491,7 @@
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */,
 				4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */,
+				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
