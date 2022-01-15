@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation View Controller-->
+        <!--BlockNote-->
         <scene sceneID="1Tv-BO-uXV">
             <objects>
-                <viewController id="qrx-ni-D9i" customClass="C1NavigationViewController" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="BlockNote" id="qrx-ni-D9i" customClass="C1NavigationViewController" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6CE-Ri-ZuX">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,20 +22,73 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Main Page">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
-                                                <rect key="frame" x="83.000000000000014" y="50" width="224.33333333333337" height="27.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
+                                                <rect key="frame" x="87.666666666666686" y="50" width="215" height="26.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-dg-pTv" userLabel="ProgressBar">
+                                                <rect key="frame" x="40" y="96.333333333333314" width="310" height="180"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-uS-rOh">
+                                                        <rect key="frame" x="109.33333333333334" y="74.666666666666671" width="91.666666666666657" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Add group"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="LightPart"/>
+                                                <constraints>
+                                                    <constraint firstItem="BH9-uS-rOh" firstAttribute="centerY" secondItem="mEw-dg-pTv" secondAttribute="centerY" id="HZd-I5-fhx"/>
+                                                    <constraint firstAttribute="height" constant="180" id="hdY-e3-8qd"/>
+                                                    <constraint firstItem="BH9-uS-rOh" firstAttribute="centerX" secondItem="mEw-dg-pTv" secondAttribute="centerX" id="jQ4-aa-Zwj"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Tm-ZZI" userLabel="ListOfGroups">
+                                                <rect key="frame" x="20" y="296.33333333333331" width="350" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zH-RA-89a">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="40"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" name="TextForeground"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx">
+                                                        <rect key="frame" x="306.33333333333331" y="0.0" width="43.666666666666686" height="40"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="doc.text.image" catalog="system">
+                                                            <color key="baseForegroundColor" name="TextForeground"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="LightPart"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="YvH-Si-t7W"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="DarkBackground"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="R5h-I6-Auj"/>
+                                            <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="20" id="bfy-8W-FQe"/>
+                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="20" id="ex8-aN-iAM"/>
                                             <constraint firstItem="cp5-2b-dab" firstAttribute="centerX" secondItem="Va4-J8-r6j" secondAttribute="centerX" id="j9b-TC-1Ja"/>
                                             <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="50" id="rQt-nA-Y1Q"/>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="t5L-4K-LiI"/>
+                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="20" id="tGO-ro-7Pj"/>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="uNc-bQ-SfZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="centerX" secondItem="ioq-X8-C9f" secondAttribute="centerX" id="Fxp-P1-WV8"/>
                                     <constraint firstAttribute="bottom" secondItem="Va4-J8-r6j" secondAttribute="bottom" id="QPP-IY-OZL"/>
@@ -45,7 +98,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hvI-tt-BmH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
                             <constraint firstItem="Va4-J8-r6j" firstAttribute="width" secondItem="6CE-Ri-ZuX" secondAttribute="width" id="7Ae-JK-EZ8"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="leading" secondItem="6CE-Ri-ZuX" secondAttribute="leading" id="CcU-aq-hZf"/>
@@ -57,15 +110,41 @@
                             <constraint firstItem="Va4-J8-r6j" firstAttribute="height" secondItem="6CE-Ri-ZuX" secondAttribute="height" priority="250" id="ozG-Bo-n9h"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Uje-ni-jtr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bY-8N-3CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="43"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a74-Tz-uUl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jJZ-tZ-Bjm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yZs-rk-sFu">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qrx-ni-D9i" kind="relationship" relationship="rootViewController" id="Vmf-rm-CrS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zks-Mx-Y6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="180" y="43.364928909952603"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <image name="doc.text.image" catalog="system" width="115" height="128"/>
+        <namedColor name="DarkBackground">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        </namedColor>
+        <namedColor name="LightPart">
+            <color red="0.93400001525878906" green="0.99599999189376831" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="TextForeground">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
