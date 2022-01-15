@@ -21,6 +21,17 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
     
+    // MARK: - UICollectionViewDataSource protocol
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.groups.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
+        // cell.groupName.text = 
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
