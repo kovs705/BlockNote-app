@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
