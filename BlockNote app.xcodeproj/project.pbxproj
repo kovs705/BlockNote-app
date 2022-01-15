@@ -154,7 +154,7 @@
 				4E1803A7274058EA0096A87C /* AppDelegate.swift */,
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
 				4ED53DEF278F19EF00F79A3F /* C1UIKit */,
-				4EBBBE462740A71600041763 /* UIKit Views */,
+				4EBBBE462740A71600041763 /* SwiftUI Views */,
 				4EFA5FB9274079AD0096F021 /* Additional */,
 				4E1803AD274058EA0096A87C /* Main.storyboard */,
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
@@ -282,7 +282,7 @@
 			path = C1Views;
 			sourceTree = "<group>";
 		};
-		4EBBBE462740A71600041763 /* UIKit Views */ = {
+		4EBBBE462740A71600041763 /* SwiftUI Views */ = {
 			isa = PBXGroup;
 			children = (
 				4E44C798278CD24C0054E5E2 /* UIkit */,
@@ -292,7 +292,7 @@
 				4E82AA942770F91900ABAA44 /* GroupCell */,
 				4E44C7A2278CD44B0054E5E2 /* Note */,
 			);
-			path = "UIKit Views";
+			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
 		4ED53DEF278F19EF00F79A3F /* C1UIKit */ = {
