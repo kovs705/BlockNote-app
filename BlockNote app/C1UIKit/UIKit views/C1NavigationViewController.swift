@@ -15,15 +15,20 @@ class C1NavigationViewController: UIViewController {
     /// добавить containerView с SwiftUI объектами, взяв их из файлов
     /// разобраться где будет UIViewController, агде UIHostingController (проблема с dismiss view)
     ///
-
+    #warning("change greetingLabel with COntainerVIew for SwiftUI")
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
-    let identifierForCollectionCell = "groupCell"
+    
+    let identifierForCollectionCell = "group"
+    
     var groups: [NSManagedObject] = []
+    
     var hour = Calendar.current.component(.hour, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
         
         // MARK: - CoreData
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -50,40 +55,6 @@ class C1NavigationViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    // MARK: - UICollectionView
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.groups.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let group = self.groups[indexPath.row]
-        
-        
-    }
-    
-    
-    
-    
-
-    
-
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let group = self.groups[indexPath.row]
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
-//        cell.groupName.text = group.value(forKey: "groupName") as? String
-//        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
-//        cell.backgroundColor = group.value(forKey: "groupColor") as? UIColor
-//        return cell
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 175, height: 175)
-//    }
     
     
     
@@ -157,4 +128,35 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: - UICollectionView
+
+extension C1NavigationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.groups.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let group = self.groups[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! GroupCollectionCell
+        cell.groupName.text = group.value(forKey: "groupName") as? String
+        // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let inset: CGFloat = 10
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 175, height: 175)
+        }
 }
