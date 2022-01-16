@@ -27,8 +27,12 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let group = self.groups[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
-        // cell.groupName.text = 
+        cell.groupName.text = group.value(forKey: "groupName") as? String
+        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        return cell
 
     }
     
