@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class C1NavigationViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class C1NavigationViewController: UIViewController {
     
     ///
     /// создать ScrollView
@@ -17,6 +17,7 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     ///
 
     @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var groupCollectionView: UICollectionView!
     let identifierForCollectionCell = "groupCell"
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
@@ -37,6 +38,7 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
         showGreeting()
         
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +51,6 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
     // MARK: - UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,17 +60,30 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
-        cell.groupName.text = group.value(forKey: "groupName") as? String
-        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
-        cell.UIViewContainer.backgroundColor = group.value(forKey: "groupColor") as? UIColor
-        return cell
-
+        
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 175, height: 175)
-    }
+    
+    
+    
+
+    
+
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let group = self.groups[indexPath.row]
+//
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
+//        cell.groupName.text = group.value(forKey: "groupName") as? String
+//        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+//        cell.backgroundColor = group.value(forKey: "groupColor") as? UIColor
+//        return cell
+//
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 175, height: 175)
+//    }
     
     
     
