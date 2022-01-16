@@ -30,6 +30,7 @@
 		4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AA278CD52C0054E5E2 /* CodeEditor */; };
 		4E44C7AE278CD53F0054E5E2 /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AD278CD53F0054E5E2 /* SwiftUIKitView */; };
 		4E44C7B0278CD54B0054E5E2 /* NoteItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */; };
+		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
 		4E55324427666AF20013E097 /* ViewModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55324327666AF10013E097 /* ViewModifications.swift */; };
@@ -87,6 +88,7 @@
 		4E44C7A0278CD42D0054E5E2 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
 		4E44C7A4278CD4700054E5E2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemObject.swift; sourceTree = "<group>"; };
+		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
@@ -238,6 +240,15 @@
 			path = Note;
 			sourceTree = "<group>";
 		};
+		4E53EAFC279428E400D89CB7 /* ColView */ = {
+			isa = PBXGroup;
+			children = (
+				4E0EBE7C27934B8B007C7E90 /* C1NavViewCollectionViewCell.swift */,
+				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
+			);
+			path = ColView;
+			sourceTree = "<group>";
+		};
 		4E55323727663FCA0013E097 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,7 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
-				4E0EBE7C27934B8B007C7E90 /* C1NavViewCollectionViewCell.swift */,
+				4E53EAFC279428E400D89CB7 /* ColView */,
 			);
 			path = "UIKit views";
 			sourceTree = "<group>";
@@ -494,6 +505,7 @@
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */,
 				4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */,
+				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,

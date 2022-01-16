@@ -21,21 +21,6 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
     
-    // MARK: - UICollectionViewDataSource protocol
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.groups.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let group = self.groups[indexPath.row]
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
-        cell.groupName.text = group.value(forKey: "groupName") as? String
-        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
-        return cell
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +34,7 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
         } catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
-        
+        showGreeting()
         
         
     }
@@ -65,15 +50,27 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     
-    /*
-     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - UICollectionView
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.groups.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let group = self.groups[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
+        cell.groupName.text = group.value(forKey: "groupName") as? String
+        // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        return cell
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 175, height: 175)
+    }
+    
+    
     
     @IBAction func addGroup(_ sender: UIButton) {
         let alert = UIAlertController(title: "New group", message: "Add a new group", preferredStyle: .alert)
