@@ -10,4 +10,5 @@ import UIKit
 class C1NavViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var numberOfNotes: UILabel!
+    @IBOutlet weak var UIViewContainer: UIView!
 }

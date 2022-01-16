@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,6 +86,9 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
                                                             <color key="baseForegroundColor" name="TextForeground"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="9xf-KG-FsW" kind="show" identifier="debug" id="sSo-sD-yIm"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="DarkBackground"/>
@@ -142,6 +146,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <outlet property="UIViewContainer" destination="hMf-mg-aQE" id="7B9-gt-LDU"/>
+                                                            <outlet property="backgroundViewColor" destination="hMf-mg-aQE" id="5Kc-rn-jaA"/>
                                                             <outlet property="groupName" destination="wSb-DG-tiy" id="3Wd-sx-fBG"/>
                                                             <outlet property="numberOfNotes" destination="fOG-y3-AXw" id="bCn-tG-afg"/>
                                                         </connections>
@@ -201,6 +207,55 @@
             </objects>
             <point key="canvasLocation" x="913.84615384615381" y="42.654028436018955"/>
         </scene>
+        <!--Group Debug Table View Controller-->
+        <scene sceneID="t4R-2A-XDr">
+            <objects>
+                <tableViewController id="9xf-KG-FsW" customClass="GroupDebugTableViewController" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Kdm-bk-XdR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UqY-hy-CGv" customClass="GroupDebugTableViewCell" customModule="BlockNote_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UqY-hy-CGv" id="afN-28-r3H">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv3-9x-wkD">
+                                            <rect key="frame" x="20" y="11" width="79" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" name="TextForeground"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydl-lU-56f">
+                                            <rect key="frame" x="174" y="11.333333969116211" width="9" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" name="TextForeground"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupName" destination="Gv3-9x-wkD" id="el9-Ul-71x"/>
+                                    <outlet property="numberOfNotes" destination="Ydl-lU-56f" id="4gD-tG-1mE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9xf-KG-FsW" id="ghe-Tu-iw9"/>
+                            <outlet property="delegate" destination="9xf-KG-FsW" id="6K3-yf-A6G"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="F15-e1-ONo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19b-se-Zzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1675" y="43"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">
             <objects>
@@ -220,11 +275,6 @@
             <point key="canvasLocation" x="180" y="43.364928909952603"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="t4e-PG-cTV">
-            <size key="intrinsicContentSize" width="350" height="175"/>
-        </designable>
-    </designables>
     <resources>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
         <namedColor name="DarkBackground">
@@ -239,5 +289,8 @@
         <namedColor name="TextForeground">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

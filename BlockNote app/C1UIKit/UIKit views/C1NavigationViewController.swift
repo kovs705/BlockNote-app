@@ -61,7 +61,8 @@ class C1NavigationViewController: UIViewController, UICollectionViewDataSource, 
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! C1NavViewCollectionViewCell
         cell.groupName.text = group.value(forKey: "groupName") as? String
-        // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        cell.UIViewContainer.backgroundColor = group.value(forKey: "groupColor") as? UIColor
         return cell
 
     }
