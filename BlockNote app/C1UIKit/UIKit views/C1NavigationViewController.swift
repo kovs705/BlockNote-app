@@ -18,6 +18,7 @@ class C1NavigationViewController: UIViewController {
     #warning("change greetingLabel with COntainerVIew for SwiftUI")
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
+    @IBOutlet weak var progressBarView: UIView!
     
     let identifierForCollectionCell = "group"
     
@@ -40,7 +41,15 @@ class C1NavigationViewController: UIViewController {
         } catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
+        // MARK: - Design
         showGreeting()
+        progressBarView.layer.cornerRadius = 20
+        progressBarView.shadowOffset = CGSize(width: 0, height: 5)
+        progressBarView.layer.shadowRadius = 10
+        progressBarView.shadowOpacity = 0.3
+        progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
+        // progressBarView.shadowColor = UIColor.black
+        
         
         
         
@@ -105,6 +114,7 @@ class C1NavigationViewController: UIViewController {
         do {
             groups.append(group)
             try managedContext.save()
+            groupCollectionView.reloadData()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -134,10 +144,6 @@ class C1NavigationViewController: UIViewController {
 
 extension C1NavigationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.groups.count
     }
@@ -147,13 +153,9 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! GroupCollectionCell
         cell.groupName.text = group.value(forKey: "groupName") as? String
+        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let inset: CGFloat = 10
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
