@@ -79,7 +79,7 @@
                                                 </constraints>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="GroupView" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="368.66666666666674" width="360" height="500"/>
+                                                <rect key="frame" x="15" y="363.66666666666674" width="360" height="500"/>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="500" id="ZkF-Wq-fgb"/>
@@ -88,11 +88,11 @@
                                                     <size key="itemSize" width="175" height="175"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="groupCell" id="245-IZ-UgW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
+                                                        <rect key="frame" x="92.666666666666671" y="10" width="175" height="175"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nCP-C6-VB1">
                                                             <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
@@ -100,6 +100,9 @@
                                                             <color key="backgroundColor" name="BlueBerry"/>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="175" height="175"/>
+                                                        <connections>
+                                                            <segue destination="Dy9-FX-hc2" kind="show" id="kem-Qc-7eb"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>
@@ -120,7 +123,7 @@
                                             </constraint>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="25" id="ex8-aN-iAM"/>
                                             <constraint firstItem="cp5-2b-dab" firstAttribute="centerX" secondItem="Va4-J8-r6j" secondAttribute="centerX" id="j9b-TC-1Ja"/>
-                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="20" id="rMH-PV-HaV"/>
+                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="15" id="rMH-PV-HaV"/>
                                             <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="30" id="rQt-nA-Y1Q"/>
                                             <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="t5L-4K-LiI"/>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="25" id="tGO-ro-7Pj"/>
@@ -161,6 +164,49 @@
             </objects>
             <point key="canvasLocation" x="913.84615384615381" y="42.654028436018955"/>
         </scene>
+        <!--Group name-->
+        <scene sceneID="dj3-G4-Hxg">
+            <objects>
+                <viewController id="Dy9-FX-hc2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hlq-u6-wAF">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA6-24-Zdz">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tkp-ep-5mv" userLabel="Group DetailView">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <color key="backgroundColor" name="DarkBackground"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Tkp-ep-5mv" firstAttribute="centerX" secondItem="IA6-24-Zdz" secondAttribute="centerX" id="CBV-KS-QkW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tkp-ep-5mv" secondAttribute="bottom" id="PTp-9y-fxv"/>
+                                    <constraint firstItem="Tkp-ep-5mv" firstAttribute="centerY" secondItem="IA6-24-Zdz" secondAttribute="centerY" id="np4-UT-VfD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tkp-ep-5mv" secondAttribute="trailing" id="yQj-LO-XSP"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OTg-ol-yjH"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
+                        <constraints>
+                            <constraint firstItem="Tkp-ep-5mv" firstAttribute="height" secondItem="Hlq-u6-wAF" secondAttribute="height" id="0Ss-O4-zA8"/>
+                            <constraint firstAttribute="trailing" secondItem="IA6-24-Zdz" secondAttribute="trailing" id="Cfm-Nz-Xuu"/>
+                            <constraint firstItem="IA6-24-Zdz" firstAttribute="centerY" secondItem="Hlq-u6-wAF" secondAttribute="centerY" id="YWW-BW-vm9"/>
+                            <constraint firstItem="IA6-24-Zdz" firstAttribute="leading" secondItem="Hlq-u6-wAF" secondAttribute="leading" id="b3W-CQ-Krf"/>
+                            <constraint firstItem="IA6-24-Zdz" firstAttribute="top" secondItem="Hlq-u6-wAF" secondAttribute="top" id="bto-FU-C18"/>
+                            <constraint firstItem="Tkp-ep-5mv" firstAttribute="width" secondItem="Hlq-u6-wAF" secondAttribute="width" id="hxP-P6-2IH"/>
+                            <constraint firstItem="IA6-24-Zdz" firstAttribute="centerX" secondItem="Hlq-u6-wAF" secondAttribute="centerX" id="liI-of-o5C"/>
+                            <constraint firstAttribute="bottom" secondItem="IA6-24-Zdz" secondAttribute="bottom" id="phe-9K-E74"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Group name" largeTitleDisplayMode="always" id="IOh-h1-AVn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqn-3x-rH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744.6153846153845" y="42.654028436018955"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">
             <objects>
@@ -182,7 +228,7 @@
     </scenes>
     <designables>
         <designable name="Uw0-wd-HlC">
-            <size key="intrinsicContentSize" width="360" height="175"/>
+            <size key="intrinsicContentSize" width="360" height="195"/>
         </designable>
     </designables>
     <resources>

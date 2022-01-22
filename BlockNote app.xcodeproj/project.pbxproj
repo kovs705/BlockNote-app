@@ -40,6 +40,7 @@
 		4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */; };
 		4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */; };
 		4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */; };
+		4E9D6F51279C30C000DDC661 /* GroupBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9D6F50279C30C000DDC661 /* GroupBar.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
 		4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */; };
@@ -99,6 +100,7 @@
 		4E82AA902770F90E00ABAA44 /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionObject.swift; sourceTree = "<group>"; };
+		4E9D6F50279C30C000DDC661 /* GroupBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBar.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		4ED53DF0278F1A8E00F79A3F /* SwiftUI objects */ = {
 			isa = PBXGroup;
 			children = (
+				4E9D6F50279C30C000DDC661 /* GroupBar.swift */,
 			);
 			path = "SwiftUI objects";
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
+				4E9D6F51279C30C000DDC661 /* GroupBar.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,

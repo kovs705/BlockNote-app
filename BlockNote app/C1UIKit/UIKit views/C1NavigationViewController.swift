@@ -15,7 +15,7 @@ class C1NavigationViewController: UIViewController {
     /// добавить containerView с SwiftUI объектами, взяв их из файлов
     /// разобраться где будет UIViewController, агде UIHostingController (проблема с dismiss view)
     ///
-    #warning("change greetingLabel with COntainerVIew for SwiftUI")
+    #warning("change greetingLabel with ContainerVIew for SwiftUI")
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
@@ -44,7 +44,7 @@ class C1NavigationViewController: UIViewController {
         // MARK: - Design
         showGreeting()
         progressBarView.layer.cornerRadius = 20
-        progressBarView.shadowOffset = CGSize(width: 0, height: 5)
+        progressBarView.shadowOffset = CGSize(width: 5, height: 5)
         progressBarView.layer.shadowRadius = 10
         progressBarView.shadowOpacity = 0.3
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
