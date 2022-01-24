@@ -102,7 +102,7 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="175" height="175"/>
                                                         <connections>
-                                                            <segue destination="Dy9-FX-hc2" kind="show" id="kem-Qc-7eb"/>
+                                                            <segue destination="Dy9-FX-hc2" kind="show" identifier="groupDetail" id="Ham-sd-AOw"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -252,6 +252,7 @@
                     <view key="view" contentMode="scaleToFill" id="kkS-KV-29h">
                         <rect key="frame" x="0.0" y="0.0" width="310" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="LyV-qR-QsR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>

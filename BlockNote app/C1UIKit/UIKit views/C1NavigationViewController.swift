@@ -139,6 +139,7 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
+    
 }
 
 // MARK: - UICollectionView
@@ -162,4 +163,16 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             return CGSize(width: 175, height: 175)
         }
+    
+    // MARK: - Segue for the groupDetail
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "groupDetail" {
+                guard let detailVC = segue.destination as? C1GroupDetailView else { return }
+                detailVC.groupType = self.groups[indexPath.row] as! GroupType
+            }
+        }
+    }
 }
+

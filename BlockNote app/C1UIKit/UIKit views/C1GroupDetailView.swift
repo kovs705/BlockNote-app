@@ -12,7 +12,7 @@ import SwiftUI
 class C1GroupDetailView: UIViewController {
     
     @IBOutlet weak var containerBar: UIView!
-    let groupType = GroupType()
+    var groupType = GroupType()
     
     required init?(coder aDecoder: NSCoder) {
         // self.groupType = "groupType"
