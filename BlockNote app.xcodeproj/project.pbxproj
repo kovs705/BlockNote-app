@@ -19,6 +19,7 @@
 		4E1803C2274058F00096A87C /* BlockNote_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803C1274058F00096A87C /* BlockNote_appTests.swift */; };
 		4E1803CC274058F00096A87C /* BlockNote_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */; };
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
+		4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */; };
 		4E41160C279609760087A9CF /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160B279609760087A9CF /* SwiftUIX */; };
 		4E41160F279609890087A9CF /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160E279609890087A9CF /* SwiftUIKitView */; };
 		4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */; };
@@ -82,6 +83,7 @@
 		4E1803C7274058F00096A87C /* BlockNote appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlockNote appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITests.swift; sourceTree = "<group>"; };
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1GroupDetailView.swift; sourceTree = "<group>"; };
 		4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewModel.swift; sourceTree = "<group>"; };
 		4E44C793278CD0EA0054E5E2 /* SnowBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowBackground.sks; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
 				4E0C6F772794A716007547BF /* GroupCollectionCell.swift */,
 				4E0C6F782794A716007547BF /* GroupCollectionCell.xib */,
@@ -500,6 +503,7 @@
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
+				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
 				4E44C79C278CD2970054E5E2 /* GroupCreateView.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */,

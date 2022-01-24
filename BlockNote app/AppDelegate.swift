@@ -47,8 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = NSPersistentContainer(name: "BlockNote_app")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error)")
             }
         })
         return container
@@ -73,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("An error occurred while saving: \(error)")
             }
         }
     }
