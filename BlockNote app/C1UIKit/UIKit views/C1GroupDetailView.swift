@@ -31,6 +31,11 @@ class C1GroupDetailView: UIViewController {
         title = groupType.groupName ?? "Unknown"
         
         #warning("Set the tableView of groupType's notes")
+        
+        // MARK: - Test
+        print("Name: \(groupType.wrappedGroupName)")
+        print("Number of the group: \(groupType.wrappedNumber)")
+        print("Color of the group: \(groupType.groupColor)")
     }
     
 

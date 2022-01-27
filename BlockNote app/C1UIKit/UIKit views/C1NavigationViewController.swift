@@ -30,6 +30,7 @@ class C1NavigationViewController: UIViewController {
         super.viewDidLoad()
         
         groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
+        self.groupCollectionView.allowsSelection = true
         
         // MARK: - CoreData
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -139,7 +140,13 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UICollectionViewCell,
+           let indexPath = self.groupCollectionView.indexPath(for: cell) {
+            let groupDetailVC = segue.destination as! C1GroupDetailView
+            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
+        }
+    }
 }
 
 // MARK: - UICollectionView
@@ -167,12 +174,8 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     // MARK: - Segue for the groupDetail
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "groupDetail" {
-                guard let detailVC = segue.destination as? C1GroupDetailView else { return }
-                detailVC.groupType = self.groups[indexPath.row] as! GroupType
-            }
-        }
+        self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
+        print("clicked")
     }
 }
 

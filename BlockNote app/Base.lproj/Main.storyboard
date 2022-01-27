@@ -60,7 +60,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx">
-                                                        <rect key="frame" x="296.33333333333331" y="0.0" width="43.666666666666686" height="40"/>
+                                                        <rect key="frame" x="316" y="0.0" width="24" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal">
@@ -68,7 +68,6 @@
                                                             <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
                                                         </state>
                                                         <buttonConfiguration key="configuration" style="plain">
-                                                            <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
                                                             <color key="baseForegroundColor" name="TextForegroundColor"/>
                                                         </buttonConfiguration>
@@ -93,17 +92,54 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="groupCell" id="245-IZ-UgW">
-                                                        <rect key="frame" x="92.666666666666671" y="10" width="175" height="175"/>
+                                                        <rect key="frame" x="10" y="10" width="160" height="160"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nCP-C6-VB1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <color key="backgroundColor" name="BlueBerry"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-b5-kqt">
+                                                                    <rect key="frame" x="10" y="102" width="145" height="45"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-px-Gan">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="145" height="24.666666666666668"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-UX-X1L">
+                                                                            <rect key="frame" x="0.0" y="24.666666666666671" width="145" height="20.333333333333329"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20.333333333333329" id="8yo-72-Dia"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="45" id="1pe-fm-6nF"/>
+                                                                    </constraints>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="PurpleBlackBerry"/>
+                                                            <constraints>
+                                                                <constraint firstItem="ssE-b5-kqt" firstAttribute="leading" secondItem="nCP-C6-VB1" secondAttribute="leading" constant="10" id="3Dm-e5-Afs"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ssE-b5-kqt" secondAttribute="trailing" constant="5" id="MKX-cD-iaZ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ssE-b5-kqt" secondAttribute="bottom" constant="13" id="i5c-2c-So5"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="175" height="175"/>
-                                                        <connections>
-                                                            <segue destination="Dy9-FX-hc2" kind="show" identifier="groupDetail" id="Ham-sd-AOw"/>
-                                                        </connections>
+                                                        <size key="customSize" width="160" height="160"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>
@@ -115,11 +151,11 @@
                                         <color key="backgroundColor" name="DarkBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="25" id="8c0-j8-P1f"/>
-                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="20" id="I2o-p7-Um7">
+                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="18" id="I2o-p7-Um7">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                                             </constraint>
                                             <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="R5h-I6-Auj"/>
-                                            <constraint firstAttribute="trailing" secondItem="Uw0-wd-HlC" secondAttribute="trailing" constant="20" id="eXg-SB-1gU">
+                                            <constraint firstAttribute="trailing" secondItem="Uw0-wd-HlC" secondAttribute="trailing" constant="18" id="eXg-SB-1gU">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                                             </constraint>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="25" id="ex8-aN-iAM"/>
@@ -157,8 +193,10 @@
                     <navigationItem key="navigationItem" id="Uje-ni-jtr"/>
                     <connections>
                         <outlet property="greetingLabel" destination="cp5-2b-dab" id="Vvu-df-f61"/>
+                        <outlet property="groupCell" destination="245-IZ-UgW" id="8gX-rX-G4S"/>
                         <outlet property="groupCollectionView" destination="Uw0-wd-HlC" id="fj8-GV-Cw0"/>
                         <outlet property="progressBarView" destination="mEw-dg-pTv" id="Yk2-Ul-tzU"/>
+                        <segue destination="Dy9-FX-hc2" kind="showDetail" identifier="groupDetail" id="kHW-as-Eeq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bY-8N-3CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -170,14 +208,14 @@
             <objects>
                 <viewController id="Dy9-FX-hc2" customClass="C1GroupDetailView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hlq-u6-wAF">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA6-24-Zdz">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tkp-ep-5mv" userLabel="Group DetailView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8t-4h-yS7">
                                                 <rect key="frame" x="40" y="10" width="310" height="150"/>
@@ -263,19 +301,19 @@
     </scenes>
     <designables>
         <designable name="Uw0-wd-HlC">
-            <size key="intrinsicContentSize" width="360" height="195"/>
+            <size key="intrinsicContentSize" width="360" height="180"/>
         </designable>
     </designables>
     <resources>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
-        <namedColor name="BlueBerry">
-            <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="DarkBackground">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LightPart">
             <color red="0.93400001525878906" green="0.99599999189376831" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="PurpleBlackBerry">
+            <color red="0.83499997854232788" green="0.75099998712539673" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TextForeground">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
