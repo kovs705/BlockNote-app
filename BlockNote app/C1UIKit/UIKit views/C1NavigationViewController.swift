@@ -20,7 +20,7 @@ class C1NavigationViewController: UIViewController {
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
     
-    let identifierForCollectionCell = "group"
+    let identifierForCollectionCell = "groupDetail"
     
     var groups: [NSManagedObject] = []
     
@@ -29,8 +29,11 @@ class C1NavigationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
-        self.groupCollectionView.allowsSelection = true
+        // groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
+        
+        groupCollectionView.allowsSelection = true
+        groupCollectionView.dataSource = self
+        groupCollectionView.delegate = self
         
         // MARK: - CoreData
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -160,7 +163,7 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! GroupCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
         cell.groupName.text = group.value(forKey: "groupName") as? String
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
@@ -168,7 +171,7 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 175, height: 175)
+            return CGSize(width: 160, height: 160)
         }
     
     // MARK: - Segue for the groupDetail
