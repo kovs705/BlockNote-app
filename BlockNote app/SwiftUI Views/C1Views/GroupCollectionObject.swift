@@ -49,3 +49,6 @@ struct GridObject: View {
 func returnColorFromString(nameOfColor: String) -> Color {
     return Color.init(nameOfColor)
 }
+func returnUIColorFromString(string: String) -> UIColor {
+    return UIColor(named: string) ?? UIColor(named: "GreenAvocado")!
+}
