@@ -14,10 +14,10 @@ class C1GroupDetailView: UIViewController {
     @IBOutlet weak var containerBar: UIView!
     var groupType = GroupType()
     
-    required init?(coder aDecoder: NSCoder) {
-        // self.groupType = "groupType"
-        super.init(coder: aDecoder)
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        // self.groupType = "groupType"
+//        super.init(coder: aDecoder)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

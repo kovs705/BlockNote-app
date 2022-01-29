@@ -105,7 +105,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-UX-X1L">
-                                                                    <rect key="frame" x="13.000000000000004" y="131.66666666666666" width="57.333333333333343" height="20.333333333333343"/>
+                                                                    <rect key="frame" x="13" y="131.66666666666666" width="147" height="20.333333333333343"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20.333333333333329" id="8yo-72-Dia"/>
                                                                     </constraints>
@@ -116,6 +116,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" name="PurpleBlackBerry"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="jFc-UX-X1L" secondAttribute="trailing" constant="5" id="Gue-CA-FYh"/>
                                                                 <constraint firstAttribute="bottom" secondItem="jFc-UX-X1L" secondAttribute="bottom" constant="13" id="Sl8-hM-0nU"/>
                                                                 <constraint firstAttribute="trailing" secondItem="p0f-px-Gan" secondAttribute="trailing" constant="5" id="joq-61-xkx"/>
                                                                 <constraint firstItem="jFc-UX-X1L" firstAttribute="leading" secondItem="nCP-C6-VB1" secondAttribute="leading" constant="13" id="l9f-1h-DAL"/>
@@ -138,6 +139,7 @@
                                                             <outlet property="containerView" destination="nCP-C6-VB1" id="Dfn-eD-AIq"/>
                                                             <outlet property="groupName" destination="p0f-px-Gan" id="w58-DN-xGW"/>
                                                             <outlet property="numberOfNotes" destination="jFc-UX-X1L" id="CYA-oS-7VU"/>
+                                                            <segue destination="Dy9-FX-hc2" kind="show" id="VM3-KP-xPG"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

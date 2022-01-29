@@ -54,10 +54,13 @@ class C1NavigationViewController: UIViewController {
         progressBarView.shadowOpacity = 0.3
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
         // progressBarView.shadowColor = UIColor.black
-        
-        
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? C1GroupDetailView,
+           let groupIndex = groupCollectionView.indexPathsForSelectedItems?.first {
+            destination.groupType = self.groups[groupIndex.row] as! GroupType
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,13 +146,13 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UICollectionViewCell,
-           let indexPath = self.groupCollectionView.indexPath(for: cell) {
-            let groupDetailVC = segue.destination as! C1GroupDetailView
-            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let cell = sender as? UICollectionViewCell,
+//           let indexPath = self.groupCollectionView.indexPath(for: cell) {
+//            let groupDetailVC = segue.destination as! C1GroupDetailView
+//            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
+//        }
+//    }
 }
 
 // MARK: - UICollectionView
@@ -164,20 +167,23 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
         let group = self.groups[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
-        cell.groupName.text = group.value(forKey: "groupName") as? String
+        // cell.groupName.text = group.value(forKey: "groupName") as? String
+        cell.setGroupName(label: group.value(forKey: "groupName") as! String)
+        cell.setBackground(color: group.value(forKey: "groupColor") as! String)
+        // cell.setNumber(numLabel: "String", number: 1)
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 160, height: 160)
+            return CGSize(width: 165, height: 165)
         }
     
     // MARK: - Segue for the groupDetail
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
+        // self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
         print("clicked")
     }
 }
