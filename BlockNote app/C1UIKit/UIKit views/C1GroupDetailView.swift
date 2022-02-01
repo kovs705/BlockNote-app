@@ -11,9 +11,7 @@ import SwiftUI
 
 class C1GroupDetailView: UIViewController {
     
-    @IBOutlet weak var containerBar: UIView!
     var groupType = GroupType()
-    var listCollectionView: UICollectionView?
     
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -23,31 +21,31 @@ class C1GroupDetailView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let groupChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
+        // let groupChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
 //        addChild(groupChildView)
 //        groupChildView.view.frame = containerBar.bounds
 //        containerBar.addSubview(groupChildView.view)
 //        groupChildView.didMove(toParent: self)
+        
         setupScrollView()
+        setupSwiftUIBarViewToTheContainerView()
+        
         title = groupType.groupName ?? "Unknown"
-        
-        
-        
-        // #warning("Set the tableView of groupType's notes")
         
         // MARK: - Test
         print("Name: \(groupType.wrappedGroupName)")
         print("Number of the group: \(groupType.wrappedNumber)")
         // print("Color of the group: \(groupType.groupColor)")
         
-        
-    } // end viewDidLoad()
+    }
     
-    func setupScrollView(){
+    func setupScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.backgroundColor = .black
         
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
@@ -60,21 +58,21 @@ class C1GroupDetailView: UIViewController {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
     
-    let groupChildView: UIView = {
-        let hostingUIView = UIHostingController(rootView: GroupBar(groupType: groupType))
-        hostingUIView.translatesAutoresizingMaskIntoConstraints
-        return hostingUIView
+    let swiftUIBar: UIView = {
+        let containerView = UIView()
+        containerView.backgroundColor = .black
+        containerView.sizeThatFits(CGSize(width: UIScreen.main.bounds.width - 40, height: 150))
+        containerView.sizeToFit()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        return containerView
+    }()
+    
+    func setupSwiftUIBarViewToTheContainerView() {
+        contentView.addSubview(swiftUIBar)
+        swiftUIBar.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        swiftUIBar.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        swiftUIBar.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 3/4).isActive = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
