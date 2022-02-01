@@ -184,7 +184,7 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
-        print("clicked")
+        // print("clicked")
     }
 }
 

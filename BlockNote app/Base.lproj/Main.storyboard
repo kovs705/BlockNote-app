@@ -6,7 +6,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -209,56 +208,10 @@
                     <view key="view" contentMode="scaleToFill" id="Hlq-u6-wAF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA6-24-Zdz">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tkp-ep-5mv" userLabel="Group DetailView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                        <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8t-4h-yS7">
-                                                <rect key="frame" x="40" y="10" width="310" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="BLm-uX-YBb"/>
-                                                </constraints>
-                                                <connections>
-                                                    <segue destination="bf0-uD-Cx8" kind="embed" id="LKs-RG-nI4"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                        <color key="backgroundColor" name="DarkBackground"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="U8t-4h-yS7" secondAttribute="trailing" constant="40" id="GTi-Zu-gHB"/>
-                                            <constraint firstItem="U8t-4h-yS7" firstAttribute="leading" secondItem="Tkp-ep-5mv" secondAttribute="leading" constant="40" id="INq-fU-2z9"/>
-                                            <constraint firstItem="U8t-4h-yS7" firstAttribute="top" secondItem="Tkp-ep-5mv" secondAttribute="top" constant="10" id="vpZ-kD-jNI"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Tkp-ep-5mv" firstAttribute="centerX" secondItem="IA6-24-Zdz" secondAttribute="centerX" id="CBV-KS-QkW"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tkp-ep-5mv" secondAttribute="bottom" id="PTp-9y-fxv"/>
-                                    <constraint firstItem="Tkp-ep-5mv" firstAttribute="centerY" secondItem="IA6-24-Zdz" secondAttribute="centerY" id="np4-UT-VfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tkp-ep-5mv" secondAttribute="trailing" id="yQj-LO-XSP"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OTg-ol-yjH"/>
                         <color key="backgroundColor" name="DarkBackground"/>
-                        <constraints>
-                            <constraint firstItem="Tkp-ep-5mv" firstAttribute="height" secondItem="Hlq-u6-wAF" secondAttribute="height" id="0Ss-O4-zA8"/>
-                            <constraint firstAttribute="trailing" secondItem="IA6-24-Zdz" secondAttribute="trailing" id="Cfm-Nz-Xuu"/>
-                            <constraint firstItem="IA6-24-Zdz" firstAttribute="centerY" secondItem="Hlq-u6-wAF" secondAttribute="centerY" id="YWW-BW-vm9"/>
-                            <constraint firstItem="IA6-24-Zdz" firstAttribute="leading" secondItem="Hlq-u6-wAF" secondAttribute="leading" id="b3W-CQ-Krf"/>
-                            <constraint firstItem="IA6-24-Zdz" firstAttribute="top" secondItem="Hlq-u6-wAF" secondAttribute="top" id="bto-FU-C18"/>
-                            <constraint firstItem="Tkp-ep-5mv" firstAttribute="width" secondItem="Hlq-u6-wAF" secondAttribute="width" id="hxP-P6-2IH"/>
-                            <constraint firstItem="IA6-24-Zdz" firstAttribute="centerX" secondItem="Hlq-u6-wAF" secondAttribute="centerX" id="liI-of-o5C"/>
-                            <constraint firstAttribute="bottom" secondItem="IA6-24-Zdz" secondAttribute="bottom" id="phe-9K-E74"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Group name" largeTitleDisplayMode="always" id="IOh-h1-AVn"/>
-                    <connections>
-                        <outlet property="containerBar" destination="U8t-4h-yS7" id="G7i-GM-yL2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqn-3x-rH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,21 +234,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zks-Mx-Y6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="180" y="43.364928909952603"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="6OY-EJ-4Om">
-            <objects>
-                <viewController id="bf0-uD-Cx8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kkS-KV-29h">
-                        <rect key="frame" x="0.0" y="0.0" width="310" height="150"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="LyV-qR-QsR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3f2-Qe-dRT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1745" y="-345"/>
         </scene>
     </scenes>
     <designables>
@@ -320,8 +258,5 @@
         <namedColor name="TextForegroundColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
