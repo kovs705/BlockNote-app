@@ -92,7 +92,7 @@ class C2GroupDetailView: UIViewController {
     
     
     
-    func setupView(){
+    func setupView() {
         contentView.addSubview(titleLabel) // ---> place title
         titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
