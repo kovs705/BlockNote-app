@@ -19,6 +19,7 @@
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */; };
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
+		4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 4E32A9F827B0395B0072076C /* TinyConstraints */; };
 		4E41160C279609760087A9CF /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160B279609760087A9CF /* SwiftUIX */; };
 		4E41160F279609890087A9CF /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160E279609890087A9CF /* SwiftUIKitView */; };
 		4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */; };
@@ -118,6 +119,7 @@
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
 				4E41160F279609890087A9CF /* SwiftUIKitView in Frameworks */,
 				4E41160C279609760087A9CF /* SwiftUIX in Frameworks */,
+				4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +367,7 @@
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
 				4E41160B279609760087A9CF /* SwiftUIX */,
 				4E41160E279609890087A9CF /* SwiftUIKitView */,
+				4E32A9F827B0395B0072076C /* TinyConstraints */,
 			);
 			productName = "BlockNote app";
 			productReference = 4E1803A4274058EA0096A87C /* BlockNote app.app */;
@@ -442,6 +445,7 @@
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
 				4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				4E41160D279609890087A9CF /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
+				4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
 			projectDirPath = "";
@@ -884,6 +888,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
@@ -911,6 +923,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E32A9F827B0395B0072076C /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
 		4E41160B279609760087A9CF /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */;
