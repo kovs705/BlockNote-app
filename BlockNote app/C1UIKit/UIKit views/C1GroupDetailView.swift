@@ -12,7 +12,7 @@ import SwiftUI
 import TinyConstraints
 
 class C1GroupDetailView: UIViewController {
-    
+#warning("Add Stack view with spacing of 20 + addSubview of SwiftUI right in ContainerView")
     // MARK: - Properties
     var groupType = GroupType()
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -59,13 +59,13 @@ class C1GroupDetailView: UIViewController {
         viewForSwiftUIBar.center(in: containerView)
             viewForSwiftUIBar.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 30).isActive = true
             viewForSwiftUIBar.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
-        viewForSwiftUIBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            viewForSwiftUIBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
-        containerView.addSubview(loremIpsumLabel)
-        
-        loremIpsumLabel.center(in: containerView)
-            loremIpsumLabel.topAnchor.constraint(equalTo: viewForSwiftUIBar.bottomAnchor, constant: 20).isActive = true
-            loremIpsumLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
+//        containerView.addSubview(loremIpsumLabel)
+//
+//        // loremIpsumLabel.center(in: containerView)
+//            loremIpsumLabel.topAnchor.constraint(equalTo: viewForSwiftUIBar.bottomAnchor, constant: 20).isActive = true
+//            loremIpsumLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
     }
     
     func setupSwiftUIBar() {
@@ -111,7 +111,8 @@ class C1GroupDetailView: UIViewController {
         text.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         text.numberOfLines = 0
         text.sizeToFit()
-        text.textColor = UIColor.white
+        text.textAlignment = .center
+        text.textColor = UIColor.black
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
