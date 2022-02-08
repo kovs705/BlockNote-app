@@ -16,7 +16,7 @@ class C1GroupDetailView: UIViewController {
     // MARK: - Properties
     var groupType = GroupType()
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-    lazy var UIBarSize = CGSize(width: self.view.frame.width - 40, height: 150)
+    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
     
     
     // MARK: - View Controller
@@ -25,16 +25,8 @@ class C1GroupDetailView: UIViewController {
         
         title = groupType.groupName ?? "Unknown"
         setupViews()
-//        view.addSubview(scrollView)
-//        scrollView.addSubview(containerView)
-//
-//        containerView.addSubview(loremIpsumLabel)
-//
-////        loremIpsumLabel.center(in: containerView)
-//        containerView.edges(to: scrollView)
-//        loremIpsumLabel.top(to: containerView)
-//        loremIpsumLabel.edges(to: containerView, insets: .top(20) + .left(20) + .right(20))
-//        loremIpsumLabel.bottom(to: containerView)
+        setupViewsInContainer()
+        setupSwiftUIBar()
         
     }
     
@@ -48,25 +40,32 @@ class C1GroupDetailView: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
-        containerView.backgroundColor = .black // ---> Black background
+            containerView.backgroundColor = .black // ---> Black background
         
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         containerView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-        
+    }
+    
+    func setupViewsInContainer() {
+        containerView.addSubview(viewForSwiftUIBar)
+        viewForSwiftUIBar.center(in: containerView)
+            viewForSwiftUIBar.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 30).isActive = true
+            viewForSwiftUIBar.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
+        viewForSwiftUIBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         containerView.addSubview(loremIpsumLabel)
         
         loremIpsumLabel.center(in: containerView)
-        loremIpsumLabel.topAnchor.constraint(equalTo: viewForSwiftUIBar.bottomAnchor, constant: 20).isActive = true
-        loremIpsumLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
+            loremIpsumLabel.topAnchor.constraint(equalTo: viewForSwiftUIBar.bottomAnchor, constant: 20).isActive = true
+            loremIpsumLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
     }
     
     func setupSwiftUIBar() {
