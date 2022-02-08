@@ -60,15 +60,22 @@ class C1GroupDetailView: UIViewController {
         containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
+        
+        
         containerView.addSubview(loremIpsumLabel)
         
         loremIpsumLabel.center(in: containerView)
-        loremIpsumLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        // loremIpsumLabel.width(to: containerView, multiplier: 3.5/4)
+        loremIpsumLabel.topAnchor.constraint(equalTo: viewForSwiftUIBar.bottomAnchor, constant: 20).isActive = true
         loremIpsumLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3.5/4).isActive = true
     }
     
-    
+    func setupSwiftUIBar() {
+        let barChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
+        addChild(barChildView)
+        barChildView.view.frame = viewForSwiftUIBar.bounds
+        viewForSwiftUIBar.addSubview(barChildView.view)
+        barChildView.didMove(toParent: self)
+    }
     
     // MARK: - Views
     lazy var scrollView: UIScrollView = {
