@@ -57,13 +57,26 @@ class C1GroupDetailView: UIViewController {
             make.left.equalToSuperview().offset(20)
         }
         
+        setupSwiftUIBar()
+        
+        
+        
+        func setupSwiftUIBar() {
+            let barChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
+            addChild(barChildView)
+            barChildView.view.frame = containerSwiftUIView.bounds
+            containerSwiftUIView.addSubview(barChildView.view)
+            barChildView.view.snp.makeConstraints { (make) -> Void in
+                make.centerX.equalTo(containerSwiftUIView)
+                make.centerY.equalTo(containerSwiftUIView)
+            }
+            barChildView.didMove(toParent: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
 //    lazy var containerView: UIView = {
 //        let view = UIView()
@@ -128,10 +141,4 @@ class C1GroupDetailView: UIViewController {
 //
 //    }
 //
-////    func setupSwiftUIBar() {
-////        let barChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
-////        addChild(barChildView)
-////        barChildView.view.frame = viewForSwiftUIBar.bounds
-////        viewForSwiftUIBar.addSubview(barChildView.view)
-////        barChildView.didMove(toParent: self)
-////    }
+
