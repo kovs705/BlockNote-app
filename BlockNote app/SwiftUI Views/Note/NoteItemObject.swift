@@ -8,8 +8,6 @@
 import SwiftUI
 import CoreData
 import CodeEditor
-import SwiftUIX
-import SwiftUIKitView
 
 //  case Test
 //  case Code
@@ -23,8 +21,6 @@ import SwiftUIKitView
 
 struct NoteItemObject: View {
     
-    #warning("Work in Figma")
-    
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var noteItem: NoteItem
     @State var textString: String = ""
@@ -37,15 +33,15 @@ struct NoteItemObject: View {
         // MARK: - TextBlock
         if noteItem.noteItemType == "Text" {
 
-            TextView(text: $noteItem.noteItemText)
-                .border(.ultraThickMaterial, cornerRadius: 10)
-                .padding(5)
-                .frame(width: UIScreen.main.bounds.width - 40)
-                .background(Color.darkBack)
-                .font(.system(size: 17))
-                .isScrollEnabled(false)
-                .minHeight(20)
-                // .onSwipeLeft(perform: saveSwipeAction)
+//            TextView(text: $noteItem.noteItemText)
+//                .border(.ultraThickMaterial, cornerRadius: 10)
+//                .padding(5)
+//                .frame(width: UIScreen.main.bounds.width - 40)
+//                .background(Color.darkBack)
+//                .font(.system(size: 17))
+//                .isScrollEnabled(false)
+//                .minHeight(20)
+//                // .onSwipeLeft(perform: saveSwipeAction)
             
         // MARK: - CodeBlock
         } else if noteItem.noteItemType == "Code" {
@@ -62,7 +58,7 @@ struct NoteItemObject: View {
     }
     
     func saveSwipeAction() {
-        hideKeyboard()
+        // hideKeyboard()
         print("Saved!")
         try? viewContext.save()
     }

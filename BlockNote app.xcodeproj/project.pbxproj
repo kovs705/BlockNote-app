@@ -19,9 +19,8 @@
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */; };
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
+		4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E273ADC27B7C84500A98409 /* SnapKit */; };
 		4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 4E32A9F827B0395B0072076C /* TinyConstraints */; };
-		4E41160C279609760087A9CF /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160B279609760087A9CF /* SwiftUIX */; };
-		4E41160F279609890087A9CF /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4E41160E279609890087A9CF /* SwiftUIKitView */; };
 		4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */; };
 		4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */; };
 		4E44C795278CD0EA0054E5E2 /* SnowBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E44C793278CD0EA0054E5E2 /* SnowBackground.sks */; };
@@ -29,7 +28,6 @@
 		4E44C79C278CD2970054E5E2 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C79B278CD2970054E5E2 /* GroupCreateView.swift */; };
 		4E44C79E278CD2C80054E5E2 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C79D278CD2C80054E5E2 /* GroupDetailView.swift */; };
 		4E44C7A1278CD42D0054E5E2 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7A0278CD42D0054E5E2 /* BarButton.swift */; };
-		4E44C7A5278CD4700054E5E2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7A4278CD4700054E5E2 /* NoteView.swift */; };
 		4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AA278CD52C0054E5E2 /* CodeEditor */; };
 		4E44C7B0278CD54B0054E5E2 /* NoteItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
@@ -91,7 +89,6 @@
 		4E44C79B278CD2970054E5E2 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		4E44C79D278CD2C80054E5E2 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		4E44C7A0278CD42D0054E5E2 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
-		4E44C7A4278CD4700054E5E2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemObject.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -117,9 +114,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
-				4E41160F279609890087A9CF /* SwiftUIKitView in Frameworks */,
-				4E41160C279609760087A9CF /* SwiftUIX in Frameworks */,
 				4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */,
+				4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +238,6 @@
 		4E44C7A2278CD44B0054E5E2 /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				4E44C7A4278CD4700054E5E2 /* NoteView.swift */,
 				4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */,
 			);
 			path = Note;
@@ -365,9 +360,8 @@
 			name = "BlockNote app";
 			packageProductDependencies = (
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
-				4E41160B279609760087A9CF /* SwiftUIX */,
-				4E41160E279609890087A9CF /* SwiftUIKitView */,
 				4E32A9F827B0395B0072076C /* TinyConstraints */,
+				4E273ADC27B7C84500A98409 /* SnapKit */,
 			);
 			productName = "BlockNote app";
 			productReference = 4E1803A4274058EA0096A87C /* BlockNote app.app */;
@@ -443,9 +437,8 @@
 			mainGroup = 4E18039B274058EA0096A87C;
 			packageReferences = (
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
-				4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				4E41160D279609890087A9CF /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 				4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
 			projectDirPath = "";
@@ -499,7 +492,6 @@
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4E1803AC274058EA0096A87C /* ViewController.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
-				4E44C7A5278CD4700054E5E2 /* NoteView.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
@@ -888,27 +880,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/roberthein/TinyConstraints";
 			requirement = {
 				branch = master;
-				kind = branch;
-			};
-		};
-		4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		4E41160D279609890087A9CF /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
-			requirement = {
-				branch = main;
 				kind = branch;
 			};
 		};
@@ -923,20 +907,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E273ADC27B7C84500A98409 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		4E32A9F827B0395B0072076C /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
-		};
-		4E41160B279609760087A9CF /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E41160A279609760087A9CF /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		4E41160E279609890087A9CF /* SwiftUIKitView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E41160D279609890087A9CF /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
-			productName = SwiftUIKitView;
 		};
 		4E44C7AA278CD52C0054E5E2 /* CodeEditor */ = {
 			isa = XCSwiftPackageProductDependency;

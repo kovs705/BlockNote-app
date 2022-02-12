@@ -9,8 +9,6 @@ import UIKit
 import CoreData
 import SwiftUI
 import CodeEditor
-import SwiftUIKitView
-import SwiftUIX
 
 class ViewController: UIViewController {
     

@@ -185,7 +185,7 @@ struct groupCreateView: View {
         for type in types { // for each group in CoreData:
             if nameOfGroup == type.groupName { // if the name is equal as an existing name
                 newGroup.groupName = "THE SAME GROUP"
-                #warning("Alert notification in the future")
+                // #warning("Alert notification in the future")
             } else {
                 newGroup.groupName = nameOfGroup
             }

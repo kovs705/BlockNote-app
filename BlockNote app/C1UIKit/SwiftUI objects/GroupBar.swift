@@ -78,7 +78,7 @@ struct GroupBar: View {
                         //
                     }) {
                         #warning("Think about making buttons standing out of the panel")
-            #warning(".brightness(0.8)")
+           // #warning(".brightness(0.8)")
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))

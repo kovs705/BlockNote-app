@@ -211,7 +211,7 @@
                         <viewLayoutGuide key="safeArea" id="OTg-ol-yjH"/>
                         <color key="backgroundColor" name="DarkBackground"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Group name" largeTitleDisplayMode="always" id="IOh-h1-AVn"/>
+                    <navigationItem key="navigationItem" title="Group name" id="IOh-h1-AVn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqn-3x-rH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,7 +223,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jJZ-tZ-Bjm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yZs-rk-sFu">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

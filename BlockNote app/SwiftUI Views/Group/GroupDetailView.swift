@@ -124,15 +124,15 @@ struct GroupDetailView: View {
                 // MARK: - List of notes
                 VStack {
 //                    Text("Test")
-//                        .padding()
+                    //                        .padding()
                     ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
-                        NavigationLink(destination: NoteView(note: note)) {
+                        //                        NavigationLink(destination: NoteView(note: note)) {
                         // NavigationLink(destination: C1NoteView(note: note)) {
-                            HStack {
-                                Text(note.wrappedNoteName)
-                                    .foregroundColor(Color.textForeground)
-                            }
+                        HStack {
+                            Text(note.wrappedNoteName)
+                                .foregroundColor(Color.textForeground)
                         }
+                        //}
                     }
                     .padding()
                     // ForEach
