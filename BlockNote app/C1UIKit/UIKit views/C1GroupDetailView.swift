@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import SwiftUI
-import TinyConstraints
 import SnapKit
 
 class C1GroupDetailView: UIViewController {
@@ -19,16 +18,44 @@ class C1GroupDetailView: UIViewController {
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
     
+    // MARK: - Views
     
     
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = groupType.groupName ?? "Unknown"
-        setupViews()
+        self.view.backgroundColor = .white
         
+        // MARK: - Objects
+        let scrollView = UIScrollView()
+        let containerSwiftUIView = UIView()
         
+        // MARK: - ScrollView
+        scrollView.bounces = true
+        // scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(width: Int(self.view.frame.size.width), height: 100)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentSize = self.view.frame.size
+        
+        scrollView.backgroundColor = .gray
+        
+        self.view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.snp.top)
+            make.bottom.left.right.equalTo(view)
+        }
+        
+        // MARK: - ContainerSwiftUIView
+        containerSwiftUIView.backgroundColor = .black
+        scrollView.addSubview(containerSwiftUIView)
+        
+        containerSwiftUIView.snp.makeConstraints { (make) -> Void in
+            make.width.equalToSuperview().offset(-40)
+            make.top.equalTo(scrollView.snp.top).offset(10)
+            make.height.equalTo(150)
+            make.left.equalToSuperview().offset(20)
+        }
         
     }
     
@@ -36,66 +63,7 @@ class C1GroupDetailView: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func setupViews() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(scrollView)
-        scrollView.addSubview(containerView)
-        
-        // scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        scrollView.snp.makeConstraints { (make) -> Void in
-            make.centerX.equalTo(view)
-            make.width.equalTo(view)
-            make.top.equalTo(view)
-            make.bottom.equalTo(view)
-            make.height.equalTo(600)
-        }
-        scrollView.backgroundColor = .green
-            // scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-            // scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            // scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        
-        containerView.snp.makeConstraints { (make) -> Void in
-            make.centerX.equalTo(scrollView)
-            make.width.equalTo(scrollView)
-            make.top.equalTo(scrollView)
-            make.bottom.equalTo(scrollView)
-        }
-        
-        // containerView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-            // containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-            // containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-            // containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
-    }
     
-//    func setupSwiftUIBar() {
-//        let barChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
-//        addChild(barChildView)
-//        barChildView.view.frame = viewForSwiftUIBar.bounds
-//        viewForSwiftUIBar.addSubview(barChildView.view)
-//        barChildView.didMove(toParent: self)
-//    }
-    
-    // MARK: - Views
-    
-    let scrollView = UIScrollView()
-    let containerView = UIView()
-    
-//    lazy var scrollView: UIScrollView = {
-//        let view = UIScrollView(frame: .zero)
-//        view.backgroundColor = .black
-//        view.frame = self.view.bounds
-//        // view.contentSize = contentViewSize
-//        //view.edgesToSuperview()
-//        view.autoresizingMask = .flexibleHeight
-//        view.showsVerticalScrollIndicator = true
-//        view.alwaysBounceVertical = true
-//        view.bounces = true
-//        return view
-//    }()
     
 //    lazy var containerView: UIView = {
 //        let view = UIView()
@@ -124,3 +92,46 @@ class C1GroupDetailView: UIViewController {
 //    }()
     
 }
+    // MARK: - Garbage
+// func setupViews() {
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        view.addSubview(scrollView)
+//        scrollView.addSubview(containerView)
+//
+//        // scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        scrollView.snp.makeConstraints { (make) -> Void in
+//            make.centerX.equalTo(view)
+//            make.width.equalTo(view)
+//            make.top.equalTo(view)
+//            make.bottom.equalTo(view)
+//            make.height.equalTo(600)
+//        }
+//        scrollView.backgroundColor = .green
+//            // scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//            // scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//            // scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//
+//
+//        containerView.snp.makeConstraints { (make) -> Void in
+//            make.centerX.equalTo(scrollView)
+//            make.width.equalTo(scrollView)
+//            make.top.equalTo(scrollView)
+//            make.bottom.equalTo(scrollView)
+//        }
+//
+//        // containerView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//            // containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+//            // containerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+//            // containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+//
+//    }
+//
+////    func setupSwiftUIBar() {
+////        let barChildView = UIHostingController(rootView: GroupBar(groupType: groupType))
+////        addChild(barChildView)
+////        barChildView.view.frame = viewForSwiftUIBar.bounds
+////        viewForSwiftUIBar.addSubview(barChildView.view)
+////        barChildView.didMove(toParent: self)
+////    }
