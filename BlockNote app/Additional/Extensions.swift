@@ -141,45 +141,56 @@ extension Color {
     }
 }
 
-enum AssetsColor {
-    case blueBerry
-    case brownSugar
-    case darkBackground
-    case greenAvocado
-    case greyCloud
-    case lightPart
-    case purpleBlackBerry
-    case redStrawBerry
-    case rosePink
-    case textForegroundColor
-    case yellowLemon
+func returnColorFromString(nameOfColor: String) -> Color {
+    return Color.init(nameOfColor)
+}
+#warning("work on it")
+func returnUIColorFromString(string: String) -> UIColor {
+    return UIColor.init(Color.init(string))
+}
+
+enum AssetsColor: String {
+    case BlueBerry
+    case BrownSugar
+    case DarkBackground
+    case GreenAvocado
+    case GreyCloud
+    case LightPart
+    case PurpleBlackBerry
+    case RedStrawBerry
+    case RosePink
+    case TextForegroundColor
+    case YellowLemon
 }
 
 extension UIColor {
     static func appColor(_ name: AssetsColor) -> UIColor? {
-        switch name {
-        case .blueBerry:
-            return UIColor(named: "BlueBerry")
-        case .brownSugar:
-            return UIColor(named: "BrownSugar")
-        case .darkBackground:
-            return UIColor(named: "DarkBackground")
-        case .greenAvocado:
-            return UIColor(named: "GreenAvocado")
-        case .greyCloud:
-            return UIColor(named: "GreyCloud")
-        case .lightPart:
-            return UIColor(named: "LightPart")
-        case .purpleBlackBerry:
-            return UIColor(named: "PurpleBlackBerry")
-        case .redStrawBerry:
-            return UIColor(named: "RedStrawBerry")
-        case .rosePink:
-            return UIColor(named: "RosePink")
-        case .textForegroundColor:
-            return UIColor(named: "TextForegroundColor")
-        case .yellowLemon:
-            return UIColor(named: "YellowLemon")
-        }
+        
+        return UIColor(named: name.rawValue)
+        
+//        switch name {
+//        case .blueBerry:
+//            return UIColor(named: "BlueBerry")
+//        case .brownSugar:
+//            return UIColor(named: "BrownSugar")
+//        case .darkBackground:
+//            return UIColor(named: "DarkBackground")
+//        case .greenAvocado:
+//            return UIColor(named: "GreenAvocado")
+//        case .greyCloud:
+//            return UIColor(named: "GreyCloud")
+//        case .lightPart:
+//            return UIColor(named: "LightPart")
+//        case .purpleBlackBerry:
+//            return UIColor(named: "PurpleBlackBerry")
+//        case .redStrawBerry:
+//            return UIColor(named: "RedStrawBerry")
+//        case .rosePink:
+//            return UIColor(named: "RosePink")
+//        case .textForegroundColor:
+//            return UIColor(named: "TextForegroundColor")
+//        case .yellowLemon:
+//            return UIColor(named: "YellowLemon")
+//        }
     }
 }

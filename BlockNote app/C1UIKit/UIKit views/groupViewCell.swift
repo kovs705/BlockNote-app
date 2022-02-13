@@ -1,7 +1,7 @@
 //
 //  groupViewCell.swift
 //  BlockNote app
-//
+//ц
 //  Created by Kovs on 28.01.2022.
 //
 
@@ -13,7 +13,8 @@ class groupViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfNotes: UILabel!
     
     func setBackground(color: String) {
-        containerView.backgroundColor = returnUIColorFromString(string: color)
+        // containerView.backgroundColor = returnUIColorFromString(string: color)
+        containerView.backgroundColor = UIColor.appColor(AssetsColor(rawValue: color)!)
     }
     func setGroupName(label: String) {
         groupName.text = label
