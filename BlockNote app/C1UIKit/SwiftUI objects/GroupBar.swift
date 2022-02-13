@@ -75,7 +75,6 @@ struct GroupBar: View {
                         // createNote()
                         #warning("Place a function of adding note here..")
                         // MARK: Put a navigationLink here:
-                        //
                     }) {
                         #warning("Think about making buttons standing out of the panel")
            // #warning(".brightness(0.8)")
