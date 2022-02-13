@@ -19,6 +19,7 @@ struct GroupBar: View {
                 .cornerRadius(20)
                 .frame(width: UIScreen.main.bounds.width - 40, height: 150, alignment: .center)
                 .shadow(color: returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"), radius: 10, y: 5)
+                .brightness(-0.05)
             
             // MARK: - Words and Numbers
             HStack {
@@ -76,12 +77,12 @@ struct GroupBar: View {
                         #warning("Place a function of adding note here..")
                         // MARK: Put a navigationLink here:
                     }) {
-                        #warning("Think about making buttons standing out of the panel")
+                        // #warning("Think about making buttons standing out of the panel")
            // #warning(".brightness(0.8)")
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
-                                // .saturation(0.8)
+                                // .brightness(-0.1)
                                 .frame(width: 75, height: 75)
                                 .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                             Image(systemName: "plus")

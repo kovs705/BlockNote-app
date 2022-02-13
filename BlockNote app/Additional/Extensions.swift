@@ -140,3 +140,46 @@ extension Color {
         return Color(red: 133 / 255, green: 94 / 255, blue: 60 / 255)
     }
 }
+
+enum AssetsColor {
+    case blueBerry
+    case brownSugar
+    case darkBackground
+    case greenAvocado
+    case greyCloud
+    case lightPart
+    case purpleBlackBerry
+    case redStrawBerry
+    case rosePink
+    case textForegroundColor
+    case yellowLemon
+}
+
+extension UIColor {
+    static func appColor(_ name: AssetsColor) -> UIColor? {
+        switch name {
+        case .blueBerry:
+            return UIColor(named: "BlueBerry")
+        case .brownSugar:
+            return UIColor(named: "BrownSugar")
+        case .darkBackground:
+            return UIColor(named: "DarkBackground")
+        case .greenAvocado:
+            return UIColor(named: "GreenAvocado")
+        case .greyCloud:
+            return UIColor(named: "GreyCloud")
+        case .lightPart:
+            return UIColor(named: "LightPart")
+        case .purpleBlackBerry:
+            return UIColor(named: "PurpleBlackBerry")
+        case .redStrawBerry:
+            return UIColor(named: "RedStrawBerry")
+        case .rosePink:
+            return UIColor(named: "RosePink")
+        case .textForegroundColor:
+            return UIColor(named: "TextForegroundColor")
+        case .yellowLemon:
+            return UIColor(named: "YellowLemon")
+        }
+    }
+}
