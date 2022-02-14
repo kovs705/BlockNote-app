@@ -92,7 +92,7 @@ struct GroupDetailView: View {
                                     // MARK: Put a navigationLink here:
                                     //
                                 }) {
-                                    #warning("Think about making buttons standing out of the panel")
+                                    // #warning("Think about making buttons standing out of the panel") --> completedwarning
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))

@@ -47,7 +47,7 @@ class C1NavigationViewController: UIViewController {
         }
         // MARK: - Design
         showGreeting()
-        #warning("work on shadow bug")
+        // #warning("work on shadow bug") --> completed
         progressBarView.layer.cornerRadius = 20
         progressBarView.shadowOffset = CGSize(width: 5, height: 5)
         progressBarView.layer.shadowRadius = 10

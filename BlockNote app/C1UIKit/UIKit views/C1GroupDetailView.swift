@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import SwiftUI
 import SnapKit
+import simd
 
 class C1GroupDetailView: UIViewController {
     
@@ -19,8 +20,9 @@ class C1GroupDetailView: UIViewController {
     lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
     
     // MARK: - Views
-    lazy var scrollView = UIScrollView()
+    lazy var scrollView           = UIScrollView()
     lazy var containerSwiftUIView = UIView()
+    lazy var listOfNotes          = UIStackView()
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -33,11 +35,11 @@ class C1GroupDetailView: UIViewController {
         // MARK: - ScrollView
         scrollView.bounces = true
         // scrollView.isPagingEnabled = true
-        scrollView.contentSize = CGSize(width: Int(self.view.frame.size.width), height: 100)
+        scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.contentSize = self.view.frame.size
+        scrollView.contentSize                  = self.view.frame.size
         
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = UIColor(named: "DarkBackground")
         
         self.view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) -> Void in
@@ -46,7 +48,7 @@ class C1GroupDetailView: UIViewController {
         }
         
         // MARK: - ContainerSwiftUIView
-        containerSwiftUIView.backgroundColor = .black
+        containerSwiftUIView.backgroundColor = UIColor(named: "DarkBackground")
         scrollView.addSubview(containerSwiftUIView)
         
         containerSwiftUIView.snp.makeConstraints { (make) -> Void in
@@ -57,6 +59,21 @@ class C1GroupDetailView: UIViewController {
         }
         
         setupSwiftUIBar()
+        
+        // MARK: - StackView
+        scrollView.addSubview(listOfNotes)
+        listOfNotes.backgroundColor = .black
+        
+        listOfNotes.axis         = .vertical
+        listOfNotes.distribution = .equalSpacing
+        
+        listOfNotes.snp.makeConstraints { (make) -> Void in
+            make.width.equalToSuperview().offset(-40)
+            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
+            #warning("Work on dynamic height")
+            make.height.equalTo(300)
+            make.left.equalToSuperview().offset(20)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,5 +106,3 @@ class C1GroupDetailView: UIViewController {
 //        text.translatesAutoresizingMaskIntoConstraints = false
 //        return text
 //    }()
-    
-// }

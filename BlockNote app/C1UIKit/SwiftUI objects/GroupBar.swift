@@ -14,6 +14,7 @@ struct GroupBar: View {
     
     var body: some View {
         ZStack(alignment: .center) {
+            Color.darkBack
             RoundedRectangle(cornerRadius: 20)
                 .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
                 .cornerRadius(20)
@@ -77,7 +78,7 @@ struct GroupBar: View {
                         #warning("Place a function of adding note here..")
                         // MARK: Put a navigationLink here:
                     }) {
-                        // #warning("Think about making buttons standing out of the panel")
+                        // #warning("Think about making buttons standing out of the panel") --> completed
            // #warning(".brightness(0.8)")
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)

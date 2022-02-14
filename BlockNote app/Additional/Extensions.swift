@@ -144,9 +144,10 @@ extension Color {
 func returnColorFromString(nameOfColor: String) -> Color {
     return Color.init(nameOfColor)
 }
-#warning("work on it")
-func returnUIColorFromString(string: String) -> UIColor {
-    return UIColor.init(Color.init(string))
+// #warning("work on it") --> completed
+func returnUIColorFromString(string: String) -> UIColor? {
+    // return UIColor.init(Color.init(string))
+    return UIColor(named: string)
 }
 
 enum AssetsColor: String {
@@ -165,9 +166,40 @@ enum AssetsColor: String {
 
 extension UIColor {
     static func appColor(_ name: AssetsColor) -> UIColor? {
-        
         return UIColor(named: name.rawValue)
-        
+    }
+    static func getUIColor(_ name: String) -> UIColor? {
+        return UIColor(named: name)
+    }
+    
+//    static func getColor(_ name: AssetsColor) -> UIColor? {
+//        switch name {
+//        case .BlueBerry:
+//            <#code#>
+//        case .BrownSugar:
+//            <#code#>
+//        case .DarkBackground:
+//            <#code#>
+//        case .GreenAvocado:
+//            <#code#>
+//        case .GreyCloud:
+//            <#code#>
+//        case .LightPart:
+//            <#code#>
+//        case .PurpleBlackBerry:
+//            <#code#>
+//        case .RedStrawBerry:
+//            <#code#>
+//        case .RosePink:
+//            <#code#>
+//        case .TextForegroundColor:
+//            <#code#>
+//        case .YellowLemon:
+//            <#code#>
+//        }
+//    }
+    
+}
 //        switch name {
 //        case .blueBerry:
 //            return UIColor(named: "BlueBerry")
@@ -192,5 +224,3 @@ extension UIColor {
 //        case .yellowLemon:
 //            return UIColor(named: "YellowLemon")
 //        }
-    }
-}
