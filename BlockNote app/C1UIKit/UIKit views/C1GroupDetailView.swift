@@ -66,6 +66,9 @@ class C1GroupDetailView: UIViewController {
         
         listOfNotes.axis         = .vertical
         listOfNotes.distribution = .equalSpacing
+        listOfNotes.spacing      = 10
+        // https://www.youtube.com/watch?v=_DADWRicrGU
+        // 05:06 -----> work on it
         
         listOfNotes.snp.makeConstraints { (make) -> Void in
             make.width.equalToSuperview().offset(-40)
