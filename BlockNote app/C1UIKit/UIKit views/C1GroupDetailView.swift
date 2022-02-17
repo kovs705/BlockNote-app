@@ -30,7 +30,7 @@ class C1GroupDetailView: UIViewController {
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
         
-        // MARK: - Objects
+        
         
         // MARK: - ScrollView
         scrollView.bounces = true
@@ -38,14 +38,15 @@ class C1GroupDetailView: UIViewController {
         scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentSize                  = self.view.frame.size
-        
-        scrollView.backgroundColor = UIColor(named: "DarkBackground")
+        scrollView.backgroundColor              = UIColor(named: "DarkBackground")
         
         self.view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.snp.top)
             make.bottom.left.right.equalTo(view)
         }
+        
+        
         
         // MARK: - ContainerSwiftUIView
         containerSwiftUIView.backgroundColor = UIColor(named: "DarkBackground")
@@ -57,8 +58,9 @@ class C1GroupDetailView: UIViewController {
             make.height.equalTo(150)
             make.left.equalToSuperview().offset(20)
         }
-        
         setupSwiftUIBar()
+        
+        
         
         // MARK: - StackView
         scrollView.addSubview(listOfNotes)
@@ -77,7 +79,10 @@ class C1GroupDetailView: UIViewController {
             make.height.equalTo(300)
             make.left.equalToSuperview().offset(20)
         }
+        addNotesToTheNoteList()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,8 +100,15 @@ class C1GroupDetailView: UIViewController {
         barChildView.didMove(toParent: self)
     }
     
-    func addNotesToNoteList() {
+    func addNotesToTheNoteList() {
         var notesArray = groupType.typesOfNoteArray
+        #warning("make a function to add note")
+        
+        for note in notesArray {
+            let noteItem = noteListObject()
+            noteItem.setTitle("\(note.wrappedNoteName)", for: .normal)
+            listOfNotes.addArrangedSubview(noteItem)
+        }
     }
     
 }

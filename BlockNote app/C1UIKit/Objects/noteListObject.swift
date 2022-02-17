@@ -13,9 +13,11 @@ import SnapKit
 
 class noteListObject: UIButton {
     
+    let groupType = GroupType()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // setup UI function here..
+        #warning("Work on UI of the button, maybe place the name on the left side and something on the right")
         setupObject()
     }
     
@@ -26,8 +28,7 @@ class noteListObject: UIButton {
     }
     
     func setupObject() {
-        // https://www.youtube.com/watch?v=_DADWRicrGU
-        //  0:28 ------> do it next
+
         setTitleColor(UIColor(named: "TextForegroundColor"), for: .normal)
         backgroundColor     = UIColor(named: "GreyCloud")
         titleLabel?.font    = UIFont(name: "AvenirNext-DemiBoldItalic", size: 14)
