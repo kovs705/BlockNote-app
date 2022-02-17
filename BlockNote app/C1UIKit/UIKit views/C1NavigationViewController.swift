@@ -76,7 +76,7 @@ class C1NavigationViewController: UIViewController {
     
     
     @IBAction func addGroup(_ sender: UIButton) {
-        let alert = UIAlertController(title: "New group", message: "Add a new group", preferredStyle: .alert)
+        let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
         
         // save action button
         let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in

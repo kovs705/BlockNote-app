@@ -102,13 +102,67 @@ class C1GroupDetailView: UIViewController {
     
     func addNotesToTheNoteList() {
         var notesArray = groupType.typesOfNoteArray
-        #warning("make a function to add note")
+        // #warning("make a function to add note")
         
         for note in notesArray {
             let noteItem = noteListObject()
             noteItem.setTitle("\(note.wrappedNoteName)", for: .normal)
             listOfNotes.addArrangedSubview(noteItem)
         }
+    }
+    
+    func addNote() {
+        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save button
+        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let noteToSave = textField.text
+            else {
+                print("Note has not been saved")
+                return
+            }
+            // save action:
+            
+        }
+        // cancel button
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveNoteButton)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+    }
+    
+    func saveNote(noteName: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // use viewContext to save changes:
+        let viewContext = appDelegate.persistentContainerOffline.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Note", in: viewContext)!
+        
+        let note = NSManagedObject(entity: entity, insertInto: viewContext)
+        
+        if groupType.groupName == "" {
+            note.setValue("Unknown group", forKey: "noteType")
+        } else {
+            note.setValue(self.groupType.wrappedGroupName, forKey: "noteType")
+        }
+        
+        note.setValue("Test level", forKey: "noteLevel")
+        if noteName == "" {
+            
+        } else {
+            note.setValue(noteName, forKey: "noteName")
+        }
+        
+//        noteName  noteLevel   noteType    noteItems   noteIsMarked
+//        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
     }
     
 }
