@@ -75,7 +75,7 @@ struct GroupBar: View {
                     Button(action: {
                         // action to create an empty note:
                         // createNote()
-                        #warning("Place a function of adding note here..")
+                        #warning("addNote()") // ---> make a bridge from UIVC to SwiftUI
                         // MARK: Put a navigationLink here:
                     }) {
                         // #warning("Think about making buttons standing out of the panel") --> completed

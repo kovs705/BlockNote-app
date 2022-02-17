@@ -125,6 +125,7 @@ class C1GroupDetailView: UIViewController {
                 return
             }
             // save action:
+            self.saveNote(noteName: noteToSave) // -----------> Check this
             
         }
         // cancel button
@@ -155,14 +156,30 @@ class C1GroupDetailView: UIViewController {
         }
         
         note.setValue("Test level", forKey: "noteLevel")
+        
         if noteName == "" {
-            
+            acceptAttention()
+            return
         } else {
             note.setValue(noteName, forKey: "noteName")
         }
+        // Append the note to the group:
+        self.groupType.addObject(value: note, forKey: "noteTypes")
+        
         
 //        noteName  noteLevel   noteType    noteItems   noteIsMarked
 //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
+    }
+    
+    func acceptAttention() {
+        let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
+        
+        let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.addNote()
+        }
+        
+        attentionAlert.addAction(acceptButton)
+        present(attentionAlert, animated: true)
     }
     
 }
