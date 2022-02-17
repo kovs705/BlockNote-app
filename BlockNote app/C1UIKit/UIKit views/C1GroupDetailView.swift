@@ -95,6 +95,10 @@ class C1GroupDetailView: UIViewController {
         barChildView.didMove(toParent: self)
     }
     
+    func addNotesToNoteList() {
+        var notesArray = groupType.typesOfNoteArray
+    }
+    
 }
 
 
