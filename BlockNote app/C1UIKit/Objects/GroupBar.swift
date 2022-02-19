@@ -7,10 +7,12 @@
 
 import SwiftUI
 import CoreData
+import UIKit
 
 struct GroupBar: View {
     
     let groupType: GroupType
+//    @ObservedObject var viewModel = VM()
     
     var body: some View {
         ZStack(alignment: .center) {
@@ -73,13 +75,9 @@ struct GroupBar: View {
                     }
                     .buttonStyle(AnimatedButton())
                     Button(action: {
-                        // action to create an empty note:
-                        // createNote()
-                        #warning("addNote()") // ---> make a bridge from UIVC to SwiftUI
-                        // MARK: Put a navigationLink here:
+                        #warning("Add note function here")
                     }) {
                         // #warning("Think about making buttons standing out of the panel") --> completed
-           // #warning(".brightness(0.8)")
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
@@ -107,6 +105,12 @@ struct GroupBar: View {
     func returnColorFromString(nameOfColor: String) -> Color {
         return Color.init(nameOfColor)
     }
+    
+    func createNoteFunc() {
+        // SwiftUI function to create the note in group
+        // should reloadData in VC
+    }
+    
 }
 
 struct GroupBar_Previews: PreviewProvider {

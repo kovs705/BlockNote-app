@@ -12,14 +12,18 @@ import SwiftUI
 import SnapKit
 import simd
 
+//public class VM: ObservableObject {
+//    @Published public var alertBool: Bool = false
+//}
+
 class C1GroupDetailView: UIViewController {
     
     // MARK: - Properties
     var groupType = GroupType()
-    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
+//    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+//    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
     
-    // MARK: - Views
+    // MARK: - Views and buttons
     lazy var scrollView           = UIScrollView()
     lazy var containerSwiftUIView = UIView()
     lazy var listOfNotes          = UIStackView()
@@ -30,7 +34,9 @@ class C1GroupDetailView: UIViewController {
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
         
+        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addNote))
         
+        self.navigationItem.rightBarButtonItem = rightAddButton
         
         // MARK: - ScrollView
         scrollView.bounces = true
@@ -101,17 +107,15 @@ class C1GroupDetailView: UIViewController {
     }
     
     func addNotesToTheNoteList() {
-        var notesArray = groupType.typesOfNoteArray
-        // #warning("make a function to add note")
-        
-        for note in notesArray {
+        for note in groupType.typesOfNoteArray {
             let noteItem = noteListObject()
             noteItem.setTitle("\(note.wrappedNoteName)", for: .normal)
             listOfNotes.addArrangedSubview(noteItem)
         }
     }
     
-    func addNote() {
+    // MARK: - Alert with textField to add the note
+    @objc func addNote() {
         let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
         
         // save button
@@ -138,6 +142,7 @@ class C1GroupDetailView: UIViewController {
         present(alert, animated: true)
     }
     
+    // MARK: - Save the note to the group from the Adding alert
     func saveNote(noteName: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -149,7 +154,7 @@ class C1GroupDetailView: UIViewController {
         
         let note = NSManagedObject(entity: entity, insertInto: viewContext)
         
-        if groupType.groupName == "" {
+        if groupType.wrappedGroupName == "" {
             note.setValue("Unknown group", forKey: "noteType")
         } else {
             note.setValue(self.groupType.wrappedGroupName, forKey: "noteType")
@@ -164,13 +169,19 @@ class C1GroupDetailView: UIViewController {
             note.setValue(noteName, forKey: "noteName")
         }
         // Append the note to the group:
-        self.groupType.addObject(value: note, forKey: "noteTypes")
-        
+        do {
+            self.groupType.addObject(value: note, forKey: "noteTypes")
+            try viewContext.save()
+            listOfNotes.reloadInputViews()
+        } catch let error as NSError {
+            print("Could not save and add note. \(error), \(error.userInfo)")
+        }
         
 //        noteName  noteLevel   noteType    noteItems   noteIsMarked
 //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
     }
     
+    // MARK: - Accept the warning and open the alert again
     func acceptAttention() {
         let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
         
@@ -181,6 +192,13 @@ class C1GroupDetailView: UIViewController {
         attentionAlert.addAction(acceptButton)
         present(attentionAlert, animated: true)
     }
+    
+//    public func VMdo() {
+//        if viewModel.alertBool == true {
+//            addNote()
+//            viewModel.alertBool = false
+//        }
+//    }
     
 }
 
