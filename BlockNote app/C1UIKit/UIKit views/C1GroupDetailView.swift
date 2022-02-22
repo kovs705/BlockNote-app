@@ -111,6 +111,7 @@ class C1GroupDetailView: UIViewController {
             let noteItem = noteListObject()
             noteItem.setTitle("\(note.wrappedNoteName)", for: .normal)
             listOfNotes.addArrangedSubview(noteItem)
+            // listOfNotes.insertArrangedSubview(noteItem, at: 0)
         }
     }
     
@@ -172,7 +173,15 @@ class C1GroupDetailView: UIViewController {
         do {
             self.groupType.addObject(value: note, forKey: "noteTypes")
             try viewContext.save()
-            listOfNotes.reloadInputViews()
+            
+            for noteObject in groupType.typesOfNoteArray {
+                if noteObject.wrappedNoteName == noteName {
+                let noteItem = noteListObject()
+                    noteItem.setTitle("\(noteName)", for: .normal)
+                    listOfNotes.addArrangedSubview(noteItem)
+                }
+            }
+            
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")
         }
