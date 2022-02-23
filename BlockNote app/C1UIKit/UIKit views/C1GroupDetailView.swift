@@ -16,7 +16,7 @@ import simd
 //    @Published public var alertBool: Bool = false
 //}
 
-class C1GroupDetailView: UIViewController {
+class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
     // MARK: - Properties
     var groupType = GroupType()
@@ -27,6 +27,7 @@ class C1GroupDetailView: UIViewController {
     lazy var scrollView           = UIScrollView()
     lazy var containerSwiftUIView = UIView()
     lazy var listOfNotes          = UIStackView()
+    lazy var notesTableView       = UITableView()
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -36,6 +37,9 @@ class C1GroupDetailView: UIViewController {
         
         let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addNote))
         
+        // let rightAddButtonForTableView = UIBarButtonItem    <----- work on it after TableView setup
+        
+        // MARK: - Right bar button
         self.navigationItem.rightBarButtonItem = rightAddButton
         
         // MARK: - ScrollView
@@ -67,9 +71,22 @@ class C1GroupDetailView: UIViewController {
         setupSwiftUIBar()
         
         
+        // MARK: - UITableView
+        scrollView.addSubview(notesTableView)
+        notesTableView.backgroundColor = .black
+        
+        notesTableView.dataSource = self
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return groupType.typesOfNoteArray.count
+        }
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            
+        }
+        
         
         // MARK: - StackView
-        scrollView.addSubview(listOfNotes)
+                                                                // scrollView.addSubview(listOfNotes)
         listOfNotes.backgroundColor = .black
         
         listOfNotes.axis         = .vertical
@@ -85,7 +102,7 @@ class C1GroupDetailView: UIViewController {
             make.height.equalTo(300)
             make.left.equalToSuperview().offset(20)
         }
-        addNotesToTheNoteList()
+        //                                                      addNotesToTheNoteList()
     }
     
     
