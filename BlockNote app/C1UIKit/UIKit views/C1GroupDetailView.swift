@@ -75,13 +75,27 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         scrollView.addSubview(notesTableView)
         notesTableView.backgroundColor = .black
         
+        notesTableView.snp.makeConstraints { (make) -> Void in
+            make.width.equalToSuperview().offset(-40)
+            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
+            // make.height.equalTo(300)
+            if groupType.typesOfNoteArray != [] {
+                make.height.equalTo(groupType.typesOfNoteArray.count * 50)
+            } else {
+                #warning("Place some text underneath the UITableView")
+            }
+            make.left.equalToSuperview().offset(20)
+        }
+        
         notesTableView.dataSource = self
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return groupType.typesOfNoteArray.count
         }
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NoteObject", for: indexPath)
+            cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row]
+            return cell
         }
         
         
