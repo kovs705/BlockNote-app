@@ -18,6 +18,19 @@ import simd
 
 class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
+    // MARK: - UITableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groupType.typesOfNoteArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteObject", for: indexPath)
+        cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row].wrappedNoteName
+        return cell
+    }
+    
+    
     // MARK: - Properties
     var groupType = GroupType()
 //    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -32,6 +45,9 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notesTableView.dataSource = self
+        
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
         
@@ -85,17 +101,6 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
                 #warning("Place some text underneath the UITableView")
             }
             make.left.equalToSuperview().offset(20)
-        }
-        
-        notesTableView.dataSource = self
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return groupType.typesOfNoteArray.count
-        }
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NoteObject", for: indexPath)
-            cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row]
-            return cell
         }
         
         
