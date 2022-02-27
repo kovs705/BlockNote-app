@@ -46,20 +46,24 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: - TableView CELL
         notesTableView.dataSource = self
+        notesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "NoteObject")
         
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
         
-        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addNote))
         
         // let rightAddButtonForTableView = UIBarButtonItem    <----- work on it after TableView setup
         
         // MARK: - Right bar button
-        self.navigationItem.rightBarButtonItem = rightAddButton
+        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addNote))
+        
+        self.navigationItem.rightBarButtonItem  = rightAddButton
+        
         
         // MARK: - ScrollView
-        scrollView.bounces = true
+        scrollView.bounces                      = true
         // scrollView.isPagingEnabled = true
         scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
         scrollView.showsVerticalScrollIndicator = false
@@ -71,7 +75,6 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             make.top.equalTo(view.snp.top)
             make.bottom.left.right.equalTo(view)
         }
-        
         
         
         // MARK: - ContainerSwiftUIView
@@ -92,7 +95,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         notesTableView.backgroundColor = .black
         
         notesTableView.snp.makeConstraints { (make) -> Void in
-            make.width.equalToSuperview().offset(-40)
+            make.width.equalTo(scrollView.snp.width).offset(-40)
             make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
             // make.height.equalTo(300)
             if groupType.typesOfNoteArray != [] {
@@ -105,22 +108,20 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         
         
         // MARK: - StackView
-                                                                // scrollView.addSubview(listOfNotes)
-        listOfNotes.backgroundColor = .black
-        
-        listOfNotes.axis         = .vertical
-        listOfNotes.distribution = .equalSpacing
-        listOfNotes.spacing      = 10
-        // https://www.youtube.com/watch?v=_DADWRicrGU
-        // 05:06 -----> work on it
-        
-        listOfNotes.snp.makeConstraints { (make) -> Void in
-            make.width.equalToSuperview().offset(-40)
-            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
-            #warning("Work on dynamic height")
-            make.height.equalTo(300)
-            make.left.equalToSuperview().offset(20)
-        }
+        // scrollView.addSubview(listOfNotes)
+//        listOfNotes.backgroundColor = .black
+//
+//        listOfNotes.axis            = .vertical
+//        listOfNotes.distribution    = .equalSpacing
+//        listOfNotes.spacing         = 10
+//
+//        listOfNotes.snp.makeConstraints { (make) -> Void in
+//            make.width.equalToSuperview().offset(-40)
+//            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
+//            #warning("Work on dynamic height")
+//            make.height.equalTo(300)
+//            make.left.equalToSuperview().offset(20)
+//        }
         //                                                      addNotesToTheNoteList()
     }
     
