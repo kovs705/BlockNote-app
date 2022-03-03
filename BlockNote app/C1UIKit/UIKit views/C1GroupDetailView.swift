@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SwiftUI
 import SnapKit
-import simd
+// import simd
 
 //public class VM: ObservableObject {
 //    @Published public var alertBool: Bool = false
@@ -29,6 +29,10 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row].wrappedNoteName
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) -> UITableViewCell {
+//
+//    }
     
     
     // MARK: - Properties
@@ -101,6 +105,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             if groupType.typesOfNoteArray != [] {
                 make.height.equalTo(groupType.typesOfNoteArray.count * 50)
             } else {
+                print("Nothing in UITableView")
                 #warning("Place some text underneath the UITableView")
             }
             make.left.equalToSuperview().offset(20)
@@ -208,16 +213,40 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         }
         // Append the note to the group:
         do {
+            // adding object
             self.groupType.addObject(value: note, forKey: "noteTypes")
-            try viewContext.save()
-            
-            for noteObject in groupType.typesOfNoteArray {
-                if noteObject.wrappedNoteName == noteName {
-                let noteItem = noteListObject()
-                    noteItem.setTitle("\(noteName)", for: .normal)
-                    listOfNotes.addArrangedSubview(noteItem)
-                }
+            // saving changes
+            if self.groupType.hasChanges {
+                try viewContext.save()
+            } else {
+                fatalError("Just testing if something will go wrong, delete it after some time")
             }
+            
+            // updating layout of UITableView with notes:
+            
+            
+            notesTableView.snp.makeConstraints { (make) -> Void in
+                make.width.equalTo(scrollView.snp.width).offset(-40)
+                make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
+                // make.height.equalTo(300)
+                if groupType.typesOfNoteArray != [] {
+                    make.height.equalTo(groupType.typesOfNoteArray.count * 50)
+                } else {
+                    print("Nothing in UITableView")
+                }
+                make.left.equalToSuperview().offset(20)
+            }
+            self.notesTableView.layoutIfNeeded()
+            self.notesTableView.reloadData()
+            
+            // for UIStackView:
+//            for noteObject in groupType.typesOfNoteArray {
+//                if noteObject.wrappedNoteName == noteName {
+//                let noteItem = noteListObject()
+//                    noteItem.setTitle("\(noteName)", for: .normal)
+//                    listOfNotes.addArrangedSubview(noteItem)
+//                }
+//            }
             
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")
