@@ -23,6 +23,7 @@ class C1NavigationViewController: UIViewController {
     let identifierForCollectionCell = "groupDetail"
     
     var groups: [NSManagedObject] = []
+    var groupsGroupType: [GroupType] = []
     
     var hour = Calendar.current.component(.hour, from: Date())
     
@@ -32,19 +33,28 @@ class C1NavigationViewController: UIViewController {
         // groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
         
         groupCollectionView.allowsSelection = true
-        groupCollectionView.dataSource = self
-        groupCollectionView.delegate = self
+        groupCollectionView.dataSource      = self
+        groupCollectionView.delegate        = self
+        
+        // MARK: - Sorting func
+        func sortGroupsByNumber(_ groups: [GroupType]) -> [GroupType] {
+            groups.sorted { groupA, groupB in
+                groupA.number < groupB.number
+            }
+        }
         
         // MARK: - CoreData
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let viewContext = appDelegate.persistentContainerOffline.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
         
         do {
             groups = try viewContext.fetch(fetchRequest)
+            // sortGroupsByNumber(groups)
         } catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
+        
         // MARK: - Design
         showGreeting()
         // #warning("work on shadow bug") --> completed
