@@ -32,7 +32,7 @@ extension GroupType {
         let set = noteTypes as? Set<Note> ?? []
         return set.sorted {
             // $0.wrappedNoteName < $1.wrappedNoteName
-            $0.noteID < $1.noteID
+            $0.noteID > $1.noteID
         }
     }
 }

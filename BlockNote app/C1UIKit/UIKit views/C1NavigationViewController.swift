@@ -47,6 +47,8 @@ class C1NavigationViewController: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext       = appDelegate.persistentContainerOffline.viewContext
         let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+        let sort              = NSSortDescriptor(key: "number", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
         
         do {
             groups = try viewContext.fetch(fetchRequest)
@@ -120,17 +122,23 @@ class C1NavigationViewController: UIViewController {
                 }
         let managedContext =
         appDelegate.persistentContainerOffline.viewContext
+        
         let entity =
         NSEntityDescription.entity(forEntityName: "GroupType",
                                    in: managedContext)!
+        
         let group = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
+        
         group.setValue(groupName, forKey: "groupName")
         group.setValue(groupColor, forKey: "groupColor")
+        group.setValue((groups.count) + 1, forKey: "number")
+        #warning("work on this number count")
         // group.setValue(number, forKey: "number")
         
         do {
             groups.append(group)
+            print("Successfully added")
             try managedContext.save()
             groupCollectionView.reloadData()
         } catch let error as NSError {

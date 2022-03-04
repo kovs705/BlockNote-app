@@ -46,11 +46,13 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     lazy var listOfNotes          = UIStackView()
     lazy var notesTableView       = UITableView()
     
+    // groupType.noteTypes?.sorted(by: { $0.noteID > $1.noteID })
+    
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - TableView CELL
+        // MARK: - TableView
         notesTableView.dataSource = self
         notesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "NoteObject")
         
@@ -102,7 +104,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             make.width.equalTo(scrollView.snp.width).offset(-40)
             make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
             // make.height.equalTo(300)
-            if groupType.typesOfNoteArray != [] {
+            if !groupType.typesOfNoteArray.isEmpty {
                 make.height.equalTo(groupType.typesOfNoteArray.count * 50)
             } else {
                 print("Nothing in UITableView")

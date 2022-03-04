@@ -78,10 +78,10 @@
                                                 </constraints>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="GroupView" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="363.66666666666674" width="360" height="500"/>
+                                                <rect key="frame" x="15" y="363.66666666666674" width="360" height="1000"/>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="500" id="ZkF-Wq-fgb"/>
+                                                    <constraint firstAttribute="height" constant="1000" id="ZkF-Wq-fgb"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8n-MR-BJJ">
                                                     <size key="itemSize" width="175" height="175"/>
@@ -223,6 +223,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jJZ-tZ-Bjm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yZs-rk-sFu">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
