@@ -10,11 +10,6 @@ import UIKit
 import CoreData
 import SwiftUI
 import SnapKit
-// import simd
-
-//public class VM: ObservableObject {
-//    @Published public var alertBool: Bool = false
-//}
 
 class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
@@ -27,16 +22,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteObject", for: indexPath)
         cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row].wrappedNoteName
+        cell.textLabel?.textAlignment = .center
+        cell.backgroundColor = UIColor(named: "DarkBackground")
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) -> UITableViewCell {
-//
-//    }
-    
-    
     // MARK: - Properties
     var groupType = GroupType()
+    
 //    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 //    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
     
@@ -58,9 +51,6 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
-        
-        
-        // let rightAddButtonForTableView = UIBarButtonItem    <----- work on it after TableView setup
         
         // MARK: - Right bar button
         let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addNote))
@@ -98,11 +88,11 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         
         // MARK: - UITableView
         scrollView.addSubview(notesTableView)
-        notesTableView.backgroundColor = .black
+        notesTableView.backgroundColor = UIColor(named: "DarkBackground")
         
         notesTableView.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(scrollView.snp.width).offset(-40)
-            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
+            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(25)
             // make.height.equalTo(300)
             if !groupType.typesOfNoteArray.isEmpty {
                 make.height.equalTo(groupType.typesOfNoteArray.count * 50)
@@ -203,6 +193,13 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             note.setValue("Unknown group", forKey: "noteType")
         } else {
             note.setValue(self.groupType.wrappedGroupName, forKey: "noteType")
+        }
+        
+        if groupType.typesOfNoteArray.isEmpty {
+            note.setValue(1, forKey: "noteID")
+        } else {
+            note.setValue((groupType.typesOfNoteArray.count) + 1, forKey: "noteID")
+            print("\((groupType.typesOfNoteArray.count) + 1) note added already")
         }
         
         note.setValue("Test level", forKey: "noteLevel")
