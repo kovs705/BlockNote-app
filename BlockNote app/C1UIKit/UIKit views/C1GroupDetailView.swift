@@ -15,14 +15,18 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
     // MARK: - UITableView
     
+    // https://www.youtube.com/watch?v=2Li7OIQb3hQ
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupType.typesOfNoteArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteObject", for: indexPath)
-        cell.textLabel?.text = groupType.typesOfNoteArray[indexPath.row].wrappedNoteName
+        
+        cell.textLabel?.text = "\(groupType.typesOfNoteArray[indexPath.row].wrappedNoteName)    \(groupType.typesOfNoteArray[indexPath.row].noteID)"
         cell.textLabel?.textAlignment = .center
+        
         cell.backgroundColor = UIColor(named: "DarkBackground")
         return cell
     }
@@ -37,7 +41,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     lazy var scrollView           = UIScrollView()
     lazy var containerSwiftUIView = UIView()
     lazy var listOfNotes          = UIStackView()
-    lazy var notesTableView       = UITableView()
+    lazy var notesTableView       = UITableView()       //  <----- TableView
     
     // groupType.noteTypes?.sorted(by: { $0.noteID > $1.noteID })
     
@@ -198,13 +202,15 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         if groupType.typesOfNoteArray.isEmpty {
             note.setValue(1, forKey: "noteID")
         } else {
-            note.setValue((groupType.typesOfNoteArray.count) + 1, forKey: "noteID")
+            note.setValue((groupType.typesOfNoteArray.last?.noteID ?? 0) + 1, forKey: "noteID")
             print("\((groupType.typesOfNoteArray.count) + 1) note added already")
         }
         
+        // TODO: When i delete or resort, I should update every note to make sure every note has its own noteID
+        
         note.setValue("Test level", forKey: "noteLevel")
         
-        if noteName == "" {
+        if noteName == "" || noteName.isEmpty {
             acceptAttention()
             return
         } else {
@@ -229,13 +235,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
                 make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
                 // make.height.equalTo(300)
                 if groupType.typesOfNoteArray != [] {
-                    make.height.equalTo(groupType.typesOfNoteArray.count * 50)
+                    make.height.greaterThanOrEqualTo(groupType.typesOfNoteArray.count * 60)
                 } else {
                     print("Nothing in UITableView")
                 }
                 make.left.equalToSuperview().offset(20)
             }
             self.notesTableView.layoutIfNeeded()
+            self.notesTableView.updateConstraints()
             self.notesTableView.reloadData()
             
             // for UIStackView:
