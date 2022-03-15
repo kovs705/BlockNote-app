@@ -11,10 +11,14 @@ import CoreData
 import SwiftUI
 import SnapKit
 
-class C1GroupDetailView: UIViewController, UITableViewDataSource {
+class C1GroupDetailView: UIViewController, UITableViewDataSource, UIContextMenuInteractionDelegate {
+    
+    // MARK: - Context Menu
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        <#code#>
+    }
     
     // MARK: - UITableView
-    
     // https://www.youtube.com/watch?v=2Li7OIQb3hQ
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,6 +35,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     // MARK: - Properties
     var groupType = GroupType()
     
@@ -42,6 +54,10 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     lazy var containerSwiftUIView = UIView()
     lazy var listOfNotes          = UIStackView()
     lazy var notesTableView       = UITableView()       //  <----- TableView
+    
+    var menuAction: UIAction {
+        UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil, handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>)
+    }
     
     // groupType.noteTypes?.sorted(by: { $0.noteID > $1.noteID })
     
@@ -93,6 +109,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         // MARK: - UITableView
         scrollView.addSubview(notesTableView)
         notesTableView.backgroundColor = UIColor(named: "DarkBackground")
+        
         
         notesTableView.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(scrollView.snp.width).offset(-40)
