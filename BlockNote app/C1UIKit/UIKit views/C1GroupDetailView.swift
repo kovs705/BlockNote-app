@@ -11,12 +11,13 @@ import CoreData
 import SwiftUI
 import SnapKit
 
-class C1GroupDetailView: UIViewController, UITableViewDataSource, UIContextMenuInteractionDelegate {
+class C1GroupDetailView: UIViewController, UITableViewDataSource {
+    // UIContextMenuInteractionDelegate
     
     // MARK: - Context Menu
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        <#code#>
-    }
+//    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+//
+//    }
     
     // MARK: - UITableView
     // https://www.youtube.com/watch?v=2Li7OIQb3hQ
@@ -34,6 +35,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource, UIContextMenuI
         cell.backgroundColor = UIColor(named: "DarkBackground")
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let movedNote = groupType.typesOfNoteArray[sourceIndexPath.row]
+//
+//        if sourceIndexPath < destinationIndexPath {
+//            var startIndex = sourceIndexPath + 1
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
@@ -55,9 +64,9 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource, UIContextMenuI
     lazy var listOfNotes          = UIStackView()
     lazy var notesTableView       = UITableView()       //  <----- TableView
     
-    var menuAction: UIAction {
-        UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil, handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>)
-    }
+//    var menuAction: UIAction {
+//        UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil, handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>)
+//    }
     
     // groupType.noteTypes?.sorted(by: { $0.noteID > $1.noteID })
     
