@@ -212,10 +212,55 @@
                         <color key="backgroundColor" name="DarkBackground"/>
                     </view>
                     <navigationItem key="navigationItem" title="Group name" id="IOh-h1-AVn"/>
+                    <connections>
+                        <segue destination="11V-Pk-E9N" kind="show" id="peJ-Go-akj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqn-3x-rH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1744.6153846153845" y="42.654028436018955"/>
+        </scene>
+        <!--NoteView-->
+        <scene sceneID="jZ1-TD-Z1e">
+            <objects>
+                <viewController id="11V-Pk-E9N" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <color key="backgroundColor" name="DarkBackground"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="centerY" secondItem="9CH-2d-j8b" secondAttribute="centerY" id="ANn-xY-Ke0"/>
+                                    <constraint firstAttribute="bottom" secondItem="VHM-o2-VPA" secondAttribute="bottom" id="CeY-DS-1Q5"/>
+                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="centerX" secondItem="9CH-2d-j8b" secondAttribute="centerX" id="VRD-EL-gs3"/>
+                                    <constraint firstAttribute="trailing" secondItem="VHM-o2-VPA" secondAttribute="trailing" id="uik-hS-LA5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1s5-hW-Ls3"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
+                        <constraints>
+                            <constraint firstItem="VHM-o2-VPA" firstAttribute="height" secondItem="oWz-j6-8Vf" secondAttribute="height" id="06n-Ol-dw2"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="centerX" secondItem="oWz-j6-8Vf" secondAttribute="centerX" id="EZc-oD-KOc"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="centerY" secondItem="oWz-j6-8Vf" secondAttribute="centerY" id="ONJ-Qi-mwf"/>
+                            <constraint firstItem="VHM-o2-VPA" firstAttribute="width" secondItem="oWz-j6-8Vf" secondAttribute="width" id="RdI-Xr-m9B"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="trailing" secondItem="1s5-hW-Ls3" secondAttribute="trailing" id="axW-Vu-tew"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="leading" secondItem="1s5-hW-Ls3" secondAttribute="leading" id="crh-9D-Gcx"/>
+                            <constraint firstAttribute="bottom" secondItem="9CH-2d-j8b" secondAttribute="bottom" id="kPc-ef-GFk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589.2307692307691" y="42.654028436018955"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">

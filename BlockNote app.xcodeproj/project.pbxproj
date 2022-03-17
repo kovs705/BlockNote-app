@@ -35,6 +35,7 @@
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
 		4E55324427666AF20013E097 /* ViewModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55324327666AF10013E097 /* ViewModifications.swift */; };
+		4E581A8027E3D55C007731A8 /* C1NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E581A7F27E3D55C007731A8 /* C1NoteView.swift */; };
 		4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A381927AAADB800E1F217 /* Code to test.swift */; };
 		4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */; };
 		4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */; };
@@ -96,6 +97,7 @@
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
+		4E581A7F27E3D55C007731A8 /* C1NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteView.swift; sourceTree = "<group>"; };
 		4E5A381927AAADB800E1F217 /* Code to test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Code to test.swift"; sourceTree = "<group>"; };
 		4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -164,7 +166,6 @@
 				4E1803A7274058EA0096A87C /* AppDelegate.swift */,
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
 				4ED53DEF278F19EF00F79A3F /* C1UIKit */,
-				4EBBBE462740A71600041763 /* SwiftUI Views */,
 				4EFA5FB9274079AD0096F021 /* Additional */,
 				4E1803AD274058EA0096A87C /* Main.storyboard */,
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
@@ -327,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
 			);
@@ -336,6 +338,7 @@
 		4EFA5FB9274079AD0096F021 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
+				4EBBBE462740A71600041763 /* SwiftUI Views */,
 				4E44C79F278CD41E0054E5E2 /* Additional views */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4E5A381927AAADB800E1F217 /* Code to test.swift */,
@@ -499,6 +502,7 @@
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
+				4E581A8027E3D55C007731A8 /* C1NoteView.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
@@ -708,7 +712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -737,7 +741,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
