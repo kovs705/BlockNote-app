@@ -25,13 +25,26 @@ class C1NoteView: UIViewController, ConstraintRelatableTarget {
         
     }
     
-    scrollView.bounces = true
+    scrollView.bounces         = true
     scrollView.backgroundColor = UIColor(named: "DarkBackground")
     self.view.addSubview(scrollView)
     
     scrollView.snp.makeConstraints { (make) -> Void in
         make.edges.equalTo(self)
     }
+    
+    scrollView.addSubview(contentView)
+    
+    contentView.snp.makeConstraints { (make) -> Void in
+        make.edges.equalTo(scrollView)
+        make.width.equalTo(self)
+    }
+    
+    // Make sure each view contained by the content view
+    // has an height (intrisic or specified)
+    
+    
+    
     
     
     
@@ -41,24 +54,7 @@ class C1NoteView: UIViewController, ConstraintRelatableTarget {
     }
     
     private func setupHierarchy() {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor(named: "DarkBackground")
-        self.view.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        
-        let contentView = UIView()
-        scrollView.addSubview(contentView)
-        
-        contentView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView)
-            make.width.equalTo(self)
-        }
-        
-        // Make sure each view contained by the content view
-        // has an height (intrisic or specified)
-        
+
         let blackView = UIView()
         blackView.backgroundColor = UIColor.black
         contentView.addSubview(blackView)
