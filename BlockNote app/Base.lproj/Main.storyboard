@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -231,7 +231,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <color key="backgroundColor" name="DarkBackground"/>
                                     </view>
@@ -247,7 +247,7 @@
                         <viewLayoutGuide key="safeArea" id="1s5-hW-Ls3"/>
                         <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
-                            <constraint firstItem="VHM-o2-VPA" firstAttribute="height" secondItem="oWz-j6-8Vf" secondAttribute="height" id="06n-Ol-dw2"/>
+                            <constraint firstItem="VHM-o2-VPA" firstAttribute="height" secondItem="oWz-j6-8Vf" secondAttribute="height" priority="250" id="06n-Ol-dw2"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="centerX" secondItem="oWz-j6-8Vf" secondAttribute="centerX" id="EZc-oD-KOc"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="centerY" secondItem="oWz-j6-8Vf" secondAttribute="centerY" id="ONJ-Qi-mwf"/>
                             <constraint firstItem="VHM-o2-VPA" firstAttribute="width" secondItem="oWz-j6-8Vf" secondAttribute="width" id="RdI-Xr-m9B"/>

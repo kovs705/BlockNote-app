@@ -36,6 +36,22 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        noteObject = groupType.typesOfNoteArray[indexPath.row]
+        
+        let row = indexPath.row
+        
+        performSegue(withIdentifier: "showNoteView", sender: row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showNoteView" {
+            let noteViewC = segue.destination as! C1NoteView
+            noteViewC.noteType = noteObject
+        }
+    }
+    
 //    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 //        let movedNote = groupType.typesOfNoteArray[sourceIndexPath.row]
 //
@@ -54,6 +70,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
     // MARK: - Properties
     var groupType = GroupType()
+    var noteObject = Note()
     
 //    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 //    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)
@@ -65,7 +82,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     lazy var notesTableView       = UITableView()       //  <----- TableView
     
 //    var menuAction: UIAction {
-//        UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil, handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>)
+//        UIAction(title: "Edit", image: UIImage(systemName: "pencil"), identifier: nil, handler: )
 //    }
     
     // groupType.noteTypes?.sorted(by: { $0.noteID > $1.noteID })
@@ -132,24 +149,6 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             }
             make.left.equalToSuperview().offset(20)
         }
-        
-        
-        // MARK: - StackView
-        // scrollView.addSubview(listOfNotes)
-//        listOfNotes.backgroundColor = .black
-//
-//        listOfNotes.axis            = .vertical
-//        listOfNotes.distribution    = .equalSpacing
-//        listOfNotes.spacing         = 10
-//
-//        listOfNotes.snp.makeConstraints { (make) -> Void in
-//            make.width.equalToSuperview().offset(-40)
-//            make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
-//            #warning("Work on dynamic height")
-//            make.height.equalTo(300)
-//            make.left.equalToSuperview().offset(20)
-//        }
-        //                                                      addNotesToTheNoteList()
     }
     
     
@@ -271,15 +270,6 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             self.notesTableView.updateConstraints()
             self.notesTableView.reloadData()
             
-            // for UIStackView:
-//            for noteObject in groupType.typesOfNoteArray {
-//                if noteObject.wrappedNoteName == noteName {
-//                let noteItem = noteListObject()
-//                    noteItem.setTitle("\(noteName)", for: .normal)
-//                    listOfNotes.addArrangedSubview(noteItem)
-//                }
-//            }
-            
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")
         }
@@ -299,25 +289,4 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         attentionAlert.addAction(acceptButton)
         present(attentionAlert, animated: true)
     }
-    
-//    public func VMdo() {
-//        if viewModel.alertBool == true {
-//            addNote()
-//            viewModel.alertBool = false
-//        }
-//    }
-    
 }
-
-
-    
-//    lazy var loremIpsumLabel: UILabel = {
-//       let text = UILabel()
-//        text.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-//        text.numberOfLines = 0
-//        text.sizeToFit()
-//        text.textAlignment = .center
-//        text.textColor = UIColor.black
-//        text.translatesAutoresizingMaskIntoConstraints = false
-//        return text
-//    }()
