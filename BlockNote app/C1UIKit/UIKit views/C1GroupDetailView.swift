@@ -94,6 +94,8 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         // MARK: - TableView
         notesTableView.dataSource = self
         notesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "NoteObject")
+        notesTableView.bounces = false
+        notesTableView.isScrollEnabled = false
         
         title = groupType.groupName ?? "Unknown"
         self.view.backgroundColor = .white
@@ -125,7 +127,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         
         containerSwiftUIView.snp.makeConstraints { (make) -> Void in
             make.width.equalToSuperview().offset(-40)
-            make.top.equalTo(scrollView.snp.top).offset(10)
+            make.top.equalTo(scrollView.snp.top).offset(20)
             make.height.equalTo(150)
             make.left.equalToSuperview().offset(20)
         }
@@ -143,11 +145,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             // make.height.equalTo(300)
             if !groupType.typesOfNoteArray.isEmpty {
                 make.height.equalTo(groupType.typesOfNoteArray.count * 50)
+            } else if groupType.typesOfNoteArray.count <= 13 {
+                make.height.greaterThanOrEqualTo(650)
             } else {
                 print("Nothing in UITableView")
                 #warning("Place some text underneath the UITableView")
             }
-            make.left.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalTo(scrollView.snp.bottom).offset(20)
         }
     }
     
@@ -255,17 +260,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             // updating layout of UITableView with notes:
             
             
-            notesTableView.snp.makeConstraints { (make) -> Void in
-                make.width.equalTo(scrollView.snp.width).offset(-40)
-                make.top.equalTo(containerSwiftUIView.snp.bottom).offset(20)
-                // make.height.equalTo(300)
-                if groupType.typesOfNoteArray != [] {
-                    make.height.greaterThanOrEqualTo(groupType.typesOfNoteArray.count * 60)
-                } else {
-                    print("Nothing in UITableView")
-                }
-                make.left.equalToSuperview().offset(20)
-            }
+            
             self.notesTableView.layoutIfNeeded()
             self.notesTableView.updateConstraints()
             self.notesTableView.reloadData()
