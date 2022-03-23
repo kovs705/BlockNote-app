@@ -38,9 +38,9 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         noteObject = groupType.typesOfNoteArray[indexPath.row]
-        
+
         let row = indexPath.row
-        
+
         performSegue(withIdentifier: "showNoteView", sender: row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -51,6 +51,14 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             noteViewC.noteType = noteObject
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? C1NoteView,
+//           let noteIndex = notesTableView.indexPathForSelectedRow?.item {
+//            // destination. = self.groups[groupIndex.row] as! GroupType
+//            destination.noteType = groupType.typesOfNoteArray[noteIndex]
+//        }
+//    }
     
 //    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 //        let movedNote = groupType.typesOfNoteArray[sourceIndexPath.row]
@@ -71,6 +79,8 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     // MARK: - Properties
     var groupType = GroupType()
     var noteObject = Note()
+    
+    let C1NoteViewController = C1NoteView()
     
 //    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 //    lazy var UIBarSize = CGSize(width: self.view.frame.width, height: 150)

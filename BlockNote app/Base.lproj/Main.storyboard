@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -14,24 +14,24 @@
         <scene sceneID="1Tv-BO-uXV">
             <objects>
                 <viewController title="BlockNote" id="qrx-ni-D9i" customClass="C1NavigationViewController" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6CE-Ri-ZuX">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6CE-Ri-ZuX" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-X8-C9f">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="390" placeholderIntrinsicHeight="1500" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-X8-C9f" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Main Page">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="390" placeholderIntrinsicHeight="1500" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Page">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
-                                                <rect key="frame" x="58.666666666666657" y="29.999999999999996" width="272.66666666666674" height="33.666666666666657"/>
+                                                <rect key="frame" x="40" y="19.999999999999996" width="310" height="33.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                 <color key="textColor" name="TextForegroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-dg-pTv" userLabel="ProgressBar">
-                                                <rect key="frame" x="40" y="83.666666666666686" width="310" height="200"/>
+                                                <rect key="frame" x="40" y="73.666666666666686" width="310" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-uS-rOh">
                                                         <rect key="frame" x="109.33333333333334" y="84.666666666666671" width="91.666666666666657" height="31"/>
@@ -48,9 +48,14 @@
                                                     <constraint firstAttribute="height" constant="200" id="hdY-e3-8qd"/>
                                                     <constraint firstItem="BH9-uS-rOh" firstAttribute="centerX" secondItem="mEw-dg-pTv" secondAttribute="centerX" id="jQ4-aa-Zwj"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Tm-ZZI" userLabel="ListOfGroups">
-                                                <rect key="frame" x="25" y="308.66666666666669" width="340" height="40"/>
+                                                <rect key="frame" x="40" y="293.66666666666669" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zH-RA-89a">
                                                         <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="40"/>
@@ -59,7 +64,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx">
-                                                        <rect key="frame" x="316" y="0.0" width="24" height="40"/>
+                                                        <rect key="frame" x="286" y="0.0" width="24" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal">
@@ -77,11 +82,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="YvH-Si-t7W"/>
                                                 </constraints>
                                             </stackView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="GroupView" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="363.66666666666674" width="360" height="1000"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="G" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="348.66666666666674" width="360" height="475.33333333333326"/>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1000" id="ZkF-Wq-fgb"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="300" id="ZkF-Wq-fgb"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8n-MR-BJJ">
                                                     <size key="itemSize" width="175" height="175"/>
@@ -150,21 +155,23 @@
                                         </subviews>
                                         <color key="backgroundColor" name="DarkBackground"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="25" id="8c0-j8-P1f"/>
+                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="15" id="5R8-vd-ckE"/>
+                                            <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="40" id="9za-nx-CKc"/>
+                                            <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="20" id="BJF-je-hMG"/>
+                                            <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="BUu-gz-b9U"/>
+                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="20" id="E8o-rv-uqu"/>
                                             <constraint firstItem="Uw0-wd-HlC" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="18" id="I2o-p7-Um7">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                                             </constraint>
-                                            <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="R5h-I6-Auj"/>
+                                            <constraint firstItem="cp5-2b-dab" firstAttribute="centerX" secondItem="Va4-J8-r6j" secondAttribute="centerX" id="IPa-sv-9oZ"/>
+                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="IZq-Hj-sWI"/>
                                             <constraint firstAttribute="trailing" secondItem="Uw0-wd-HlC" secondAttribute="trailing" constant="18" id="eXg-SB-1gU">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                                             </constraint>
-                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="25" id="ex8-aN-iAM"/>
-                                            <constraint firstItem="cp5-2b-dab" firstAttribute="centerX" secondItem="Va4-J8-r6j" secondAttribute="centerX" id="j9b-TC-1Ja"/>
-                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="15" id="rMH-PV-HaV"/>
-                                            <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="30" id="rQt-nA-Y1Q"/>
-                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="t5L-4K-LiI"/>
-                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="25" id="tGO-ro-7Pj"/>
-                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="uNc-bQ-SfZ"/>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="mPu-dq-ZPn"/>
+                                            <constraint firstAttribute="bottom" secondItem="Uw0-wd-HlC" secondAttribute="bottom" constant="20" id="n5b-3N-ft7"/>
+                                            <constraint firstAttribute="trailing" secondItem="cp5-2b-dab" secondAttribute="trailing" constant="40" id="qD3-Bn-G8x"/>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="s1O-bU-lIL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -172,6 +179,7 @@
                                 <constraints>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="centerX" secondItem="ioq-X8-C9f" secondAttribute="centerX" id="Fxp-P1-WV8"/>
                                     <constraint firstAttribute="bottom" secondItem="Va4-J8-r6j" secondAttribute="bottom" id="QPP-IY-OZL"/>
+                                    <constraint firstItem="Va4-J8-r6j" firstAttribute="top" secondItem="ioq-X8-C9f" secondAttribute="top" id="a4q-dD-4Ys"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="centerY" secondItem="ioq-X8-C9f" secondAttribute="centerY" id="acT-EE-i5r"/>
                                     <constraint firstAttribute="trailing" secondItem="Va4-J8-r6j" secondAttribute="trailing" id="zG4-D3-RDZ"/>
                                 </constraints>
@@ -187,7 +195,6 @@
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="top" secondItem="6CE-Ri-ZuX" secondAttribute="top" id="T3d-tl-GgQ"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="centerX" secondItem="6CE-Ri-ZuX" secondAttribute="centerX" id="VfE-EN-uUW"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="centerY" secondItem="6CE-Ri-ZuX" secondAttribute="centerY" id="mDq-ge-LDk"/>
-                            <constraint firstItem="Va4-J8-r6j" firstAttribute="height" secondItem="6CE-Ri-ZuX" secondAttribute="height" priority="250" id="ozG-Bo-n9h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uje-ni-jtr"/>
@@ -213,7 +220,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Group name" id="IOh-h1-AVn"/>
                     <connections>
-                        <segue destination="11V-Pk-E9N" kind="show" id="peJ-Go-akj"/>
+                        <segue destination="11V-Pk-E9N" kind="show" identifier="showNoteView" id="peJ-Go-akj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqn-3x-rH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,14 +231,14 @@
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
                 <viewController id="11V-Pk-E9N" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf">
+                    <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA" userLabel="NoteView">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <color key="backgroundColor" name="DarkBackground"/>
                                     </view>
@@ -253,7 +260,7 @@
                             <constraint firstItem="VHM-o2-VPA" firstAttribute="width" secondItem="oWz-j6-8Vf" secondAttribute="width" id="RdI-Xr-m9B"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="trailing" secondItem="1s5-hW-Ls3" secondAttribute="trailing" id="axW-Vu-tew"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="leading" secondItem="1s5-hW-Ls3" secondAttribute="leading" id="crh-9D-Gcx"/>
-                            <constraint firstAttribute="bottom" secondItem="9CH-2d-j8b" secondAttribute="bottom" id="kPc-ef-GFk"/>
+                            <constraint firstItem="1s5-hW-Ls3" firstAttribute="bottom" secondItem="9CH-2d-j8b" secondAttribute="bottom" constant="-34" id="kPc-ef-GFk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
@@ -283,7 +290,7 @@
     </scenes>
     <designables>
         <designable name="Uw0-wd-HlC">
-            <size key="intrinsicContentSize" width="360" height="185"/>
+            <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
     </designables>
     <resources>

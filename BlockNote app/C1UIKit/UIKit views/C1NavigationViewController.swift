@@ -23,7 +23,7 @@ class C1NavigationViewController: UIViewController {
     let identifierForCollectionCell = "groupDetail"
     
     var groups: [NSManagedObject] = []
-    var groupsGroupType: [GroupType] = []
+    // var groupsGroupType: [GroupType] = []
     
     var hour = Calendar.current.component(.hour, from: Date())
     
