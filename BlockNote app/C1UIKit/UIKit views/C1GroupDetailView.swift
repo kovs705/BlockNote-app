@@ -164,6 +164,8 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
             make.left.equalToSuperview().offset(10)
             make.bottom.equalTo(scrollView.snp.bottom).offset(20)
         }
+        
+        self.view.layoutIfNeeded()
     }
     
     
