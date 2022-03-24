@@ -19,6 +19,7 @@ class C1NavigationViewController: UIViewController {
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let identifierForCollectionCell = "groupDetail"
     
@@ -66,6 +67,9 @@ class C1NavigationViewController: UIViewController {
         progressBarView.shadowOpacity = 0.3
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
         // progressBarView.shadowColor = UIColor.black
+        
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

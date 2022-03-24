@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -18,20 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-X8-C9f" userLabel="Scroll">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-X8-C9f" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Page">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="675"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="690"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
-                                                <rect key="frame" x="40" y="45" width="310" height="33.666666666666657"/>
+                                                <rect key="frame" x="40" y="60" width="310" height="33.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                 <color key="textColor" name="TextForegroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-dg-pTv" userLabel="ProgressBar">
-                                                <rect key="frame" x="40" y="98.666666666666686" width="310" height="200"/>
+                                                <rect key="frame" x="40" y="113.66666666666669" width="310" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-uS-rOh">
                                                         <rect key="frame" x="109.33333333333334" y="84.666666666666671" width="91.666666666666657" height="31"/>
@@ -46,16 +46,30 @@
                                                 <constraints>
                                                     <constraint firstItem="BH9-uS-rOh" firstAttribute="centerX" secondItem="mEw-dg-pTv" secondAttribute="centerX" id="6oa-Pg-5dS"/>
                                                     <constraint firstItem="BH9-uS-rOh" firstAttribute="centerY" secondItem="mEw-dg-pTv" secondAttribute="centerY" id="GiX-fh-Cfu"/>
-                                                    <constraint firstAttribute="height" constant="200" id="xq2-tP-IuJ"/>
+                                                    <constraint firstAttribute="height" constant="200" id="xq2-tP-IuJ">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="10" height="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" name="PurpleBlackBerry"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Tm-ZZI" userLabel="ListOfGroups">
-                                                <rect key="frame" x="40" y="318.66666666666669" width="310" height="26.333333333333314"/>
+                                                <rect key="frame" x="40" y="333.66666666666669" width="310" height="26.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zH-RA-89a">
                                                         <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="26.333333333333332"/>
@@ -79,8 +93,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                             </stackView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="G" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="360" width="360" height="300"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="Groups" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="375" width="360" height="300"/>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8n-MR-BJJ">
                                                     <size key="itemSize" width="175" height="175"/>
@@ -142,17 +156,30 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Uw0-wd-HlC" secondAttribute="bottom" constant="15" id="5AE-d1-vji"/>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="20" id="6FY-Dc-zBH"/>
-                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="15" id="7OU-S4-Kzc"/>
-                                            <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="FKQ-r2-gyh"/>
-                                            <constraint firstAttribute="trailing" secondItem="Uw0-wd-HlC" secondAttribute="trailing" constant="15" id="H5w-0Z-feV"/>
+                                            <constraint firstItem="Uw0-wd-HlC" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="15" id="7OU-S4-Kzc">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                            </constraint>
+                                            <constraint firstAttribute="trailing" secondItem="mEw-dg-pTv" secondAttribute="trailing" constant="40" id="FKQ-r2-gyh">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="85"/>
+                                            </constraint>
+                                            <constraint firstAttribute="trailing" secondItem="Uw0-wd-HlC" secondAttribute="trailing" constant="15" id="H5w-0Z-feV">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                            </constraint>
                                             <constraint firstAttribute="trailing" secondItem="cp5-2b-dab" secondAttribute="trailing" constant="40" id="O7S-Hu-kFO"/>
-                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="OOX-LA-1qr"/>
-                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="Ofh-1z-0ma"/>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="OOX-LA-1qr">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                            </constraint>
+                                            <constraint firstItem="mEw-dg-pTv" firstAttribute="top" secondItem="cp5-2b-dab" secondAttribute="bottom" constant="20" id="Ofh-1z-0ma">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                            </constraint>
                                             <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="15" id="Qcc-Ja-QUB"/>
-                                            <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="45" id="ZxV-yv-UUX"/>
-                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="eNT-Lz-brv"/>
+                                            <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="eNT-Lz-brv">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                            </constraint>
                                             <constraint firstItem="cp5-2b-dab" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="nu9-YX-2Yf"/>
-                                            <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="40" id="w8r-Xd-jKG"/>
+                                            <constraint firstAttribute="trailing" secondItem="PsN-Tm-ZZI" secondAttribute="trailing" constant="40" id="w8r-Xd-jKG">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                            </constraint>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -162,6 +189,7 @@
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="leading" secondItem="ioq-X8-C9f" secondAttribute="leading" id="6tq-hE-Cax"/>
                                     <constraint firstAttribute="trailing" secondItem="Va4-J8-r6j" secondAttribute="trailing" id="8cF-Gx-ZqT"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="width" secondItem="ioq-X8-C9f" secondAttribute="width" id="Uec-5f-V54"/>
+                                    <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="ioq-X8-C9f" secondAttribute="top" constant="60" id="Xkz-hI-9x7"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="top" secondItem="ioq-X8-C9f" secondAttribute="top" id="lsO-9q-fFY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="2Nt-ou-soE"/>
@@ -183,11 +211,12 @@
                         <outlet property="greetingLabel" destination="cp5-2b-dab" id="Vvu-df-f61"/>
                         <outlet property="groupCollectionView" destination="Uw0-wd-HlC" id="fj8-GV-Cw0"/>
                         <outlet property="progressBarView" destination="mEw-dg-pTv" id="Yk2-Ul-tzU"/>
+                        <outlet property="scrollView" destination="ioq-X8-C9f" id="AIg-s6-gzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bY-8N-3CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913.84615384615381" y="42.654028436018955"/>
+            <point key="canvasLocation" x="957" y="43"/>
         </scene>
         <!--Group name-->
         <scene sceneID="dj3-G4-Hxg">
@@ -248,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.2307692307691" y="42.654028436018955"/>
+            <point key="canvasLocation" x="2540" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">
@@ -266,7 +295,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zks-Mx-Y6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="43.364928909952603"/>
+            <point key="canvasLocation" x="186" y="43"/>
         </scene>
     </scenes>
     <designables>
