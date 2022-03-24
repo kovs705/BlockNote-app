@@ -199,7 +199,18 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 165, height: 165)
+        let numberOfGroupsPerRow = 2
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let totalSpace = flowLayout.sectionInset.left
+                + flowLayout.sectionInset.right
+                + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfGroupsPerRow - 1))
+        
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfGroupsPerRow))
+        
+        return CGSize(width: size, height: size)
+        
+            // return CGSize(width: 165, height: 165)
         }
     
     // MARK: - Segue for the groupDetail

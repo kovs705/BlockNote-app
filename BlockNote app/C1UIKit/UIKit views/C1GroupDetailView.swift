@@ -124,11 +124,16 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
         scrollView.contentSize                  = self.view.frame.size
         scrollView.backgroundColor              = UIColor(named: "DarkBackground")
         
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
+        
         self.view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.snp.top)
             make.bottom.left.right.equalTo(view)
         }
+        
+        
         
         
         // MARK: - ContainerSwiftUIView
