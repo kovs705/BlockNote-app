@@ -19,6 +19,8 @@
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */; };
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
+		4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429727EE5ABE0020E380 /* NoteCell.swift */; };
+		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
 		4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E273ADC27B7C84500A98409 /* SnapKit */; };
 		4E323E0627BD160B0062008A /* noteListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E323E0527BD160B0062008A /* noteListObject.swift */; };
 		4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 4E32A9F827B0395B0072076C /* TinyConstraints */; };
@@ -84,6 +86,8 @@
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1GroupDetailView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
+		4E26429727EE5ABE0020E380 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		4E323E0527BD160B0062008A /* noteListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noteListObject.swift; sourceTree = "<group>"; };
 		4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewModel.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				4E239C9627A46FE1000A51A6 /* groupViewCell.swift */,
 				4E323E0527BD160B0062008A /* noteListObject.swift */,
 				4E9D6F50279C30C000DDC661 /* GroupBar.swift */,
+				4E26429727EE5ABE0020E380 /* NoteCell.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
@@ -506,6 +512,7 @@
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
+				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
 				4E44C79C278CD2970054E5E2 /* GroupCreateView.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */,
@@ -519,6 +526,7 @@
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
 				4E323E0627BD160B0062008A /* noteListObject.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
+				4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E44C7A1278CD42D0054E5E2 /* BarButton.swift in Sources */,
 			);

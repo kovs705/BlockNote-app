@@ -23,6 +23,8 @@ class C1NavigationViewController: UIViewController {
     
     let identifierForCollectionCell = "groupDetail"
     
+    #warning("Place a rounded button under the collection view")
+    
     var groups: [NSManagedObject] = []
     // var groupsGroupType: [GroupType] = []
     
@@ -73,7 +75,7 @@ class C1NavigationViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? C1GroupDetailView,
+        if let destination = segue.destination as? DetailVC,
            let groupIndex = groupCollectionView.indexPathsForSelectedItems?.first {
             destination.groupType = self.groups[groupIndex.row] as! GroupType
         }
@@ -216,8 +218,8 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     // MARK: - Segue for the groupDetail
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
-        // print("clicked")
+//         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
+//         print("clicked")
     }
 }
 
