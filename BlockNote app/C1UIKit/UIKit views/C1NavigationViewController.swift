@@ -35,6 +35,12 @@ class C1NavigationViewController: UIViewController {
         
         // groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
         
+        progressBarView.layer.shadowColor = UIColor(named: "PurpleBlackBerry")?.cgColor
+        progressBarView.layer.shadowOpacity = 1
+        progressBarView.layer.shadowOffset = .zero
+        progressBarView.layer.shadowRadius = 10
+        
+        
         groupCollectionView.allowsSelection = true
         groupCollectionView.dataSource      = self
         groupCollectionView.delegate        = self

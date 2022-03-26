@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -321,10 +321,57 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkx-g3-cFO" userLabel="3.1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="75"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLl-Vl-maW">
+                                                                                <rect key="frame" x="20.999999999999972" y="15" width="45" height="45"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="45" id="H6F-BH-HqS"/>
+                                                                                    <constraint firstAttribute="height" constant="45" id="Z2G-ei-yZm"/>
+                                                                                </constraints>
+                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                <size key="titleShadowOffset" width="10" height="0.0"/>
+                                                                                <state key="normal" image="plus" catalog="system">
+                                                                                    <color key="titleColor" name="TextForegroundColor"/>
+                                                                                </state>
+                                                                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" cornerStyle="medium">
+                                                                                    <backgroundConfiguration key="background">
+                                                                                        <color key="backgroundColor" name="DarkBackground"/>
+                                                                                    </backgroundConfiguration>
+                                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                                                                                    <color key="baseForegroundColor" name="TextForegroundColor"/>
+                                                                                </buttonConfiguration>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                                        <real key="value" value="10"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                                        <real key="value" value="1"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                                        <size key="value" width="1" height="1"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                        <real key="value" value="10"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </button>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="dLl-Vl-maW" firstAttribute="centerX" secondItem="Hkx-g3-cFO" secondAttribute="centerX" id="JES-pQ-kg1"/>
+                                                                            <constraint firstItem="dLl-Vl-maW" firstAttribute="centerY" secondItem="Hkx-g3-cFO" secondAttribute="centerY" id="qaZ-sm-LR2"/>
+                                                                        </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-xe-MXe" userLabel="3.2">
                                                                         <rect key="frame" x="0.0" y="75" width="86.666666666666671" height="75"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
+                                                                                <rect key="frame" x="9.6666666666666572" y="22" width="67" height="31"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                            </button>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     </view>
                                                                 </subviews>
@@ -426,6 +473,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Group name" id="IOh-h1-AVn"/>
                     <connections>
+                        <outlet property="scrollView" destination="2Pe-x5-4fN" id="3tD-aJ-FRC"/>
                         <segue destination="11V-Pk-E9N" kind="show" identifier="showNoteView" id="peJ-Go-akj"/>
                     </connections>
                 </viewController>
@@ -501,6 +549,7 @@
     </designables>
     <resources>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="BlueBerry">
             <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

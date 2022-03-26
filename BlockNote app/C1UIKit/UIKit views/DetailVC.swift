@@ -11,6 +11,8 @@ import SwiftUI
 
 class DetailVC: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var groupType = GroupType()
     var noteObject = Note()
 
@@ -18,6 +20,9 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         title = groupType.groupName
+        
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
         
     }
     
