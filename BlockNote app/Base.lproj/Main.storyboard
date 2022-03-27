@@ -228,7 +228,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-x5-4fN" userLabel="Scroll">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-x5-4fN" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTR-Zr-LzO" userLabel="Page">
@@ -365,14 +365,17 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-xe-MXe" userLabel="3.2">
                                                                         <rect key="frame" x="0.0" y="75" width="86.666666666666671" height="75"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
-                                                                                <rect key="frame" x="9.6666666666666572" y="22" width="67" height="31"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
+                                                                                <rect key="frame" x="10" y="22" width="67" height="31"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="BqS-1i-x3q" firstAttribute="centerX" secondItem="cKg-xe-MXe" secondAttribute="centerX" id="Ovy-Fi-yY0"/>
+                                                                            <constraint firstItem="BqS-1i-x3q" firstAttribute="centerY" secondItem="cKg-xe-MXe" secondAttribute="centerY" id="qGc-D7-iW3"/>
+                                                                        </constraints>
                                                                     </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -413,28 +416,18 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="G4U-SH-NHc">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="310" height="52.666667938232422"/>
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="310" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G4U-SH-NHc" id="0MF-i0-Abt" customClass="NoteCell" customModule="BlockNote_app" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="52.666667938232422"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-sm-43Z">
-                                                                    <rect key="frame" x="16" y="16" width="278" height="20.666666666666671"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="TMY-sm-43Z" secondAttribute="trailing" constant="16" id="SlF-kb-KLf"/>
-                                                                <constraint firstAttribute="bottom" secondItem="TMY-sm-43Z" secondAttribute="bottom" constant="16" id="Spo-AU-1py"/>
-                                                                <constraint firstItem="TMY-sm-43Z" firstAttribute="leading" secondItem="0MF-i0-Abt" secondAttribute="leading" constant="16" id="YFg-Vh-puw"/>
-                                                                <constraint firstItem="TMY-sm-43Z" firstAttribute="top" secondItem="0MF-i0-Abt" secondAttribute="top" constant="16" id="kCf-HL-Phe"/>
-                                                            </constraints>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Dy9-FX-hc2" id="y28-Xg-gd5"/>
+                                                    <outlet property="delegate" destination="Dy9-FX-hc2" id="ZRM-2t-dKf"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" name="DarkBackground"/>
@@ -456,6 +449,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ZTR-Zr-LzO" secondAttribute="bottom" id="MEz-py-O5C"/>
                                     <constraint firstItem="ZTR-Zr-LzO" firstAttribute="top" secondItem="2Pe-x5-4fN" secondAttribute="top" id="RbI-pu-2F1"/>
                                     <constraint firstItem="ZTR-Zr-LzO" firstAttribute="bottom" secondItem="JyB-AR-4tr" secondAttribute="bottom" id="VwT-vI-wb5"/>
+                                    <constraint firstItem="ZTR-Zr-LzO" firstAttribute="width" secondItem="JyB-AR-4tr" secondAttribute="width" id="eRe-OX-ZBn"/>
                                     <constraint firstItem="ZTR-Zr-LzO" firstAttribute="leading" secondItem="2Pe-x5-4fN" secondAttribute="leading" id="k08-hB-DVs"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="00i-6O-HLq"/>
@@ -466,9 +460,9 @@
                         <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
                             <constraint firstItem="2Pe-x5-4fN" firstAttribute="leading" secondItem="OTg-ol-yjH" secondAttribute="leading" id="62H-dX-8Yx"/>
+                            <constraint firstItem="2Pe-x5-4fN" firstAttribute="bottom" secondItem="OTg-ol-yjH" secondAttribute="bottom" constant="34" id="K4L-wt-ZcV"/>
                             <constraint firstItem="OTg-ol-yjH" firstAttribute="trailing" secondItem="2Pe-x5-4fN" secondAttribute="trailing" id="TbT-og-3Hs"/>
-                            <constraint firstAttribute="bottom" secondItem="2Pe-x5-4fN" secondAttribute="bottom" id="cVo-kX-9c5"/>
-                            <constraint firstItem="2Pe-x5-4fN" firstAttribute="top" secondItem="OTg-ol-yjH" secondAttribute="top" id="ceS-Qd-6Y4"/>
+                            <constraint firstItem="OTg-ol-yjH" firstAttribute="top" secondItem="2Pe-x5-4fN" secondAttribute="top" id="ceS-Qd-6Y4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Group name" id="IOh-h1-AVn"/>
@@ -484,7 +478,7 @@
         <!--NoteView-->
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
-                <viewController id="11V-Pk-E9N" sceneMemberID="viewController">
+                <viewController id="11V-Pk-E9N" customClass="C1NoteView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
