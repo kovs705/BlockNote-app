@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z81-rj-aGQ" userLabel="Page">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="399"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lh-qO-zgZ" userLabel="TopBar">
                                                 <rect key="frame" x="40" y="25" width="310" height="150"/>
@@ -400,9 +400,6 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                         <color key="value" name="BlueBerry"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                                         <size key="value" width="1" height="1"/>
                                                     </userDefinedRuntimeAttribute>
@@ -411,7 +408,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1" userLabel="NoteList">
                                                 <rect key="frame" x="40" y="195" width="310" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -424,10 +421,10 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Xre-WO-AZU">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noteCell" id="Xre-WO-AZU" userLabel="Cell">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Mp-6v-jnt">
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Mp-6v-jnt" userLabel="NoteCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </collectionViewCellContentView>
@@ -438,9 +435,17 @@
                                                     <outlet property="delegate" destination="Tgf-rB-iEw" id="Z6F-x1-z6n"/>
                                                 </connections>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciS-7W-zzg" userLabel="B">
+                                                <rect key="frame" x="161.66666666666666" y="343" width="67" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="ciS-7W-zzg" firstAttribute="centerX" secondItem="Z81-rj-aGQ" secondAttribute="centerX" id="7fN-Nk-E7o"/>
+                                            <constraint firstItem="ciS-7W-zzg" firstAttribute="top" secondItem="Tyg-fh-zK1" secondAttribute="bottom" constant="20" id="D3I-2D-XUu"/>
+                                            <constraint firstAttribute="bottom" secondItem="ciS-7W-zzg" secondAttribute="bottom" constant="25" id="WP1-NJ-xtu"/>
                                             <constraint firstItem="Tyg-fh-zK1" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="40" id="cu8-DS-MKI"/>
                                             <constraint firstItem="5Lh-qO-zgZ" firstAttribute="top" secondItem="Z81-rj-aGQ" secondAttribute="top" constant="25" id="fRq-hh-6Qv"/>
                                             <constraint firstAttribute="trailing" secondItem="Tyg-fh-zK1" secondAttribute="trailing" constant="40" id="fvh-T4-iV2"/>
@@ -456,7 +461,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Z81-rj-aGQ" secondAttribute="trailing" id="63t-X4-V6s"/>
                                     <constraint firstItem="Z81-rj-aGQ" firstAttribute="width" secondItem="QUS-gi-21s" secondAttribute="width" id="8P7-dg-fk1"/>
                                     <constraint firstItem="Z81-rj-aGQ" firstAttribute="top" secondItem="QUS-gi-21s" secondAttribute="top" id="RVD-eg-45Z"/>
-                                    <constraint firstItem="Z81-rj-aGQ" firstAttribute="height" secondItem="QUS-gi-21s" secondAttribute="height" id="b9i-Ai-4cM"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="ii4-fN-g65"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="d0H-Vx-1IC"/>
@@ -472,6 +476,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mCn-PQ-wS4"/>
+                    <connections>
+                        <outlet property="noteListCollection" destination="Tyg-fh-zK1" id="bRN-Hp-6yZ"/>
+                        <outlet property="scrollView" destination="QUS-gi-21s" id="qNX-Cp-sN0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpS-aG-k5P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

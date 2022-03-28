@@ -12,9 +12,10 @@ import SwiftUI
 class DetailVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var noteListCollection: UICollectionView!
     
-    var groupType = GroupType()
-    var noteObject = Note()
+    lazy var groupType = GroupType()
+    lazy var noteObject = Note()
     
     let segueToNoteView = "showNoteView"
 
@@ -31,40 +32,19 @@ class DetailVC: UIViewController {
 
 }
 
-// MARK: - UITableView
-extension DetailVC: UITableViewDelegate, UITableViewDataSource {
+extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupType.typesOfNoteArray.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        groupType.typesOfNoteArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath)
         
-        cell.textLabel?.text = "\(groupType.typesOfNoteArray[indexPath.row].wrappedNoteName)    \(groupType.typesOfNoteArray[indexPath.row].noteID)"
-        cell.textLabel?.textAlignment = .center
-        
-        cell.backgroundColor = UIColor(named: "DarkBackground")
-        return cell
     }
     
-    // make a segue to the NoteView:
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        noteObject = groupType.typesOfNoteArray[indexPath.row]
-        
-        performSegue(withIdentifier: segueToNoteView, sender: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (collectionView.frame.width-4)/1, height: 50)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueToNoteView {
-            let noteDetailVC = segue.destination as? C1NoteView
-            noteDetailVC?.noteType = noteObject
-        }
-    }
-    
-    
-    
     
 }
