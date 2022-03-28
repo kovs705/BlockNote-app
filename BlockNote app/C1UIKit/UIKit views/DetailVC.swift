@@ -28,6 +28,7 @@ class DetailVC: UIViewController {
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         
+        noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
     }
 
 }
@@ -39,7 +40,10 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
+        cell.groupType = groupType
+        cell.noteType = noteObject
+        return cell
         
     }
     
