@@ -19,7 +19,7 @@ class NoteViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        chevronRight.tintColor = UIColor(named: groupType.groupColor ?? "TextForegroundColor")
+        // chevronRight.tintColor = UIColor(named: groupType.groupColor ?? "TextForegroundColor")
         
         
     }

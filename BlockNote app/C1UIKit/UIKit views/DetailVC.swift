@@ -13,6 +13,11 @@ class DetailVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var noteListCollection: UICollectionView!
+    @IBOutlet weak var topBar: UIView!
+    
+    @IBOutlet weak var numberOfNotesLabel: UILabel!
+    @IBOutlet weak var importantNotesLabel: UILabel!
+    
     
     lazy var groupType = GroupType()
     lazy var noteObject = Note()
@@ -29,6 +34,9 @@ class DetailVC: UIViewController {
         scrollView.bounces = true
         
         noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
+        
+        numberOfNotesLabel.text = "\(groupType.typesOfNoteArray.count)"
+        topBar.backgroundColor = UIColor(named: "\(groupType.groupColor ?? "")")
     }
 
 }

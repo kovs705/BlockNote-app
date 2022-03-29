@@ -408,7 +408,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1" userLabel="NoteList">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="310" placeholderIntrinsicHeight="128" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1" userLabel="NoteList">
                                                 <rect key="frame" x="40" y="195" width="310" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -478,8 +478,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="mCn-PQ-wS4"/>
                     <connections>
+                        <outlet property="importantNotesLabel" destination="0Zd-A3-m1z" id="9La-sH-f4a"/>
                         <outlet property="noteListCollection" destination="Tyg-fh-zK1" id="bRN-Hp-6yZ"/>
+                        <outlet property="numberOfNotesLabel" destination="y6g-aA-oYe" id="6ZR-ZW-fdl"/>
                         <outlet property="scrollView" destination="QUS-gi-21s" id="qNX-Cp-sN0"/>
+                        <outlet property="topBar" destination="5Lh-qO-zgZ" id="jji-pB-uPS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpS-aG-k5P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
