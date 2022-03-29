@@ -32,27 +32,47 @@ import UIKit
     }
     
     @IBInspectable var shadowRadius: CGFloat {
-        get { return layer.shadowRadius }
-        set { layer.shadowRadius = newValue }
+        set {
+            layer.shadowRadius = newValue
+        }
+        
+        get {
+            return layer.shadowRadius
+        }
     }
 
     @IBInspectable var shadowOpacity: CGFloat {
-        get { return CGFloat(layer.shadowOpacity) }
-        set { layer.shadowOpacity = Float(newValue) }
+        set {
+            layer.shadowOpacity = Float(newValue)
+        }
+        
+        get {
+            return CGFloat(layer.shadowOpacity)
+        }
     }
 
     @IBInspectable var shadowOffset: CGSize {
-        get { return layer.shadowOffset }
-        set { layer.shadowOffset = newValue }
+        set {
+            layer.shadowOffset = newValue
+        }
+        
+        get {
+            return layer.shadowOffset
+        }
     }
 
     @IBInspectable var shadowColor: UIColor? {
+        set {
+            layer.shadowColor = newValue?.cgColor
+            
+        }
+        
         get {
             guard let cgColor = layer.shadowColor else {
                 return nil
             }
             return UIColor(cgColor: cgColor)
         }
-        set { layer.shadowColor = newValue?.cgColor }
+        
     }
 }
