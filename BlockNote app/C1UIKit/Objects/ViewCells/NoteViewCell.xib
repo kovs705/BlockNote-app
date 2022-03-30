@@ -80,8 +80,12 @@
             </constraints>
             <size key="customSize" width="288" height="50"/>
             <connections>
+                <outlet property="blueView" destination="mJL-An-APC" id="o0Z-I3-d6e"/>
                 <outlet property="chevronRight" destination="VW1-vP-6Nx" id="Kw1-Eb-Tar"/>
+                <outlet property="greenView" destination="jO6-np-mMO" id="IDq-KX-TPW"/>
+                <outlet property="noteLabel" destination="5UV-IA-UES" id="5BK-Px-E1x"/>
                 <outlet property="noteName" destination="5UV-IA-UES" id="CRK-s1-YBn"/>
+                <outlet property="redView" destination="syR-z5-zbT" id="tIO-Xd-Vea"/>
             </connections>
             <point key="canvasLocation" x="310.14492753623193" y="99.776785714285708"/>
         </collectionViewCell>

@@ -269,7 +269,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="acj-F7-mh6" firstAttribute="centerX" secondItem="cFX-7Q-Lh2" secondAttribute="centerX" id="cU3-el-a9Z"/>
                                                                             <constraint firstItem="acj-F7-mh6" firstAttribute="centerY" secondItem="cFX-7Q-Lh2" secondAttribute="centerY" id="otX-uI-5cT"/>
@@ -291,7 +291,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="y6g-aA-oYe" firstAttribute="centerY" secondItem="7Oj-dB-PRZ" secondAttribute="centerY" id="eTN-0a-C0V"/>
                                                                             <constraint firstItem="y6g-aA-oYe" firstAttribute="centerX" secondItem="7Oj-dB-PRZ" secondAttribute="centerX" id="qbV-g0-14n"/>
@@ -307,7 +307,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="0Zd-A3-m1z" firstAttribute="centerY" secondItem="Wg3-a2-1Dh" secondAttribute="centerY" id="ExS-DY-t7p"/>
                                                                             <constraint firstItem="0Zd-A3-m1z" firstAttribute="centerX" secondItem="Wg3-a2-1Dh" secondAttribute="centerX" id="Vh4-dm-QoZ"/>
@@ -356,7 +356,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="dLl-Vl-maW" firstAttribute="centerX" secondItem="Hkx-g3-cFO" secondAttribute="centerX" id="JES-pQ-kg1"/>
                                                                             <constraint firstItem="dLl-Vl-maW" firstAttribute="centerY" secondItem="Hkx-g3-cFO" secondAttribute="centerY" id="qaZ-sm-LR2"/>
@@ -371,7 +371,7 @@
                                                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="BqS-1i-x3q" firstAttribute="centerX" secondItem="cKg-xe-MXe" secondAttribute="centerX" id="Ovy-Fi-yY0"/>
                                                                             <constraint firstItem="BqS-1i-x3q" firstAttribute="centerY" secondItem="cKg-xe-MXe" secondAttribute="centerY" id="qGc-D7-iW3"/>
@@ -436,6 +436,7 @@
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ic2-Kd-5S1">
                                                                     <rect key="frame" x="276" y="18" width="18" height="14.333333333333329"/>
+                                                                    <color key="tintColor" name="BlueBerry"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="FSl-LC-97m"/>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="G5w-Wk-j1c"/>
@@ -568,6 +569,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="Tyg-fh-zK1">
+            <size key="intrinsicContentSize" width="310" height="128"/>
+        </designable>
         <designable name="Uw0-wd-HlC">
             <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
