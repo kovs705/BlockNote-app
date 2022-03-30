@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -184,7 +183,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Va4-J8-r6j" secondAttribute="bottom" id="4CS-v9-F4p"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="leading" secondItem="ioq-X8-C9f" secondAttribute="leading" id="6tq-hE-Cax"/>
@@ -258,6 +257,11 @@
                                                                             <constraint firstItem="pG7-Dr-VzR" firstAttribute="centerY" secondItem="qeG-hI-qoh" secondAttribute="centerY" id="jI5-SO-9ON"/>
                                                                             <constraint firstItem="pG7-Dr-VzR" firstAttribute="centerX" secondItem="qeG-hI-qoh" secondAttribute="centerX" id="woi-Zb-ppW"/>
                                                                         </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFX-7Q-Lh2" userLabel="1.2">
                                                                         <rect key="frame" x="0.0" y="75" width="93.333333333333329" height="75"/>
@@ -269,14 +273,12 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="acj-F7-mh6" firstAttribute="centerX" secondItem="cFX-7Q-Lh2" secondAttribute="centerX" id="cU3-el-a9Z"/>
                                                                             <constraint firstItem="acj-F7-mh6" firstAttribute="centerY" secondItem="cFX-7Q-Lh2" secondAttribute="centerY" id="otX-uI-5cT"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="YellowLemon"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-uI-YBl" userLabel="2">
                                                                 <rect key="frame" x="98.333333333333343" y="0.0" width="93.333333333333343" height="150"/>
@@ -291,7 +293,6 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="y6g-aA-oYe" firstAttribute="centerY" secondItem="7Oj-dB-PRZ" secondAttribute="centerY" id="eTN-0a-C0V"/>
                                                                             <constraint firstItem="y6g-aA-oYe" firstAttribute="centerX" secondItem="7Oj-dB-PRZ" secondAttribute="centerX" id="qbV-g0-14n"/>
@@ -307,14 +308,12 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="0Zd-A3-m1z" firstAttribute="centerY" secondItem="Wg3-a2-1Dh" secondAttribute="centerY" id="ExS-DY-t7p"/>
                                                                             <constraint firstItem="0Zd-A3-m1z" firstAttribute="centerX" secondItem="Wg3-a2-1Dh" secondAttribute="centerX" id="Vh4-dm-QoZ"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-Hd-L3Z" userLabel="3">
                                                                 <rect key="frame" x="196.66666666666666" y="0.0" width="93.333333333333343" height="150"/>
@@ -356,7 +355,6 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="dLl-Vl-maW" firstAttribute="centerX" secondItem="Hkx-g3-cFO" secondAttribute="centerX" id="JES-pQ-kg1"/>
                                                                             <constraint firstItem="dLl-Vl-maW" firstAttribute="centerY" secondItem="Hkx-g3-cFO" secondAttribute="centerY" id="qaZ-sm-LR2"/>
@@ -371,14 +369,12 @@
                                                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="BlueBerry"/>
                                                                         <constraints>
                                                                             <constraint firstItem="BqS-1i-x3q" firstAttribute="centerX" secondItem="cKg-xe-MXe" secondAttribute="centerX" id="Ovy-Fi-yY0"/>
                                                                             <constraint firstItem="BqS-1i-x3q" firstAttribute="centerY" secondItem="cKg-xe-MXe" secondAttribute="centerY" id="qGc-D7-iW3"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -395,7 +391,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
+                                                        <real key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                         <color key="value" name="BlueBerry"/>
@@ -412,8 +408,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="310" placeholderIntrinsicHeight="128" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1" userLabel="NoteList" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="195" width="310" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <rect key="frame" x="20" y="195" width="350" height="128"/>
+                                                <color key="backgroundColor" name="DarkBackground"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2yz-7J-QVV">
                                                     <size key="itemSize" width="310" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -422,7 +418,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noteCell" id="Xre-WO-AZU" userLabel="Cell">
-                                                        <rect key="frame" x="0.0" y="5" width="310" height="50"/>
+                                                        <rect key="frame" x="20" y="5" width="310" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Mp-6v-jnt" userLabel="NoteCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -462,18 +458,19 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="DarkBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Tyg-fh-zK1" secondAttribute="bottom" constant="20" id="Sgc-Af-nZA"/>
-                                            <constraint firstItem="Tyg-fh-zK1" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="40" id="cu8-DS-MKI"/>
+                                            <constraint firstItem="Tyg-fh-zK1" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="20" id="cu8-DS-MKI"/>
                                             <constraint firstItem="5Lh-qO-zgZ" firstAttribute="top" secondItem="Z81-rj-aGQ" secondAttribute="top" constant="25" id="fRq-hh-6Qv"/>
-                                            <constraint firstAttribute="trailing" secondItem="Tyg-fh-zK1" secondAttribute="trailing" constant="40" id="fvh-T4-iV2"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tyg-fh-zK1" secondAttribute="trailing" constant="20" id="fvh-T4-iV2"/>
                                             <constraint firstItem="5Lh-qO-zgZ" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="30" id="hQN-w3-uYf"/>
                                             <constraint firstItem="Tyg-fh-zK1" firstAttribute="top" secondItem="5Lh-qO-zgZ" secondAttribute="bottom" constant="20" id="oSS-7m-L3C"/>
                                             <constraint firstAttribute="trailing" secondItem="5Lh-qO-zgZ" secondAttribute="trailing" constant="30" id="zqY-Qg-nJr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" name="DarkBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Z81-rj-aGQ" secondAttribute="bottom" id="2ba-nE-pXu"/>
                                     <constraint firstItem="Z81-rj-aGQ" firstAttribute="leading" secondItem="QUS-gi-21s" secondAttribute="leading" id="5Er-Ob-AE6"/>
@@ -486,7 +483,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T00-35-2eL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QUS-gi-21s" secondAttribute="trailing" id="2H4-Cy-vSv"/>
                             <constraint firstItem="QUS-gi-21s" firstAttribute="top" secondItem="T00-35-2eL" secondAttribute="top" id="AHw-MZ-1lZ"/>
@@ -496,10 +493,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="mCn-PQ-wS4"/>
                     <connections>
+                        <outlet property="first_column" destination="B4a-AX-Qko" id="Fkx-rT-0zJ"/>
                         <outlet property="importantNotesLabel" destination="0Zd-A3-m1z" id="9La-sH-f4a"/>
                         <outlet property="noteListCollection" destination="Tyg-fh-zK1" id="bRN-Hp-6yZ"/>
                         <outlet property="numberOfNotesLabel" destination="y6g-aA-oYe" id="6ZR-ZW-fdl"/>
                         <outlet property="scrollView" destination="QUS-gi-21s" id="qNX-Cp-sN0"/>
+                        <outlet property="second_column" destination="gTC-uI-YBl" id="v5F-2t-A4K"/>
+                        <outlet property="third_column" destination="GOl-Hd-L3Z" id="Lwd-4Q-Akp"/>
                         <outlet property="topBar" destination="5Lh-qO-zgZ" id="jji-pB-uPS"/>
                     </connections>
                 </viewController>
@@ -601,8 +601,5 @@
         <namedColor name="YellowLemon">
             <color red="0.97500002384185791" green="0.92500001192092896" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

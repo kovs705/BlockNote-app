@@ -18,16 +18,12 @@ class NoteViewCell: UICollectionViewCell {
     @IBOutlet weak var greenView: UIView!
     
     @IBOutlet weak var noteLabel: UILabel!
-    
-    // var groupType = GroupType()
-    var noteType = Note()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        // chevronRight.tintColor = UIColor(named: groupType.groupColor ?? "TextForegroundColor")
-        noteLabel.text = noteType.noteName
-        
+    func setNoteName(name: String) {
+        noteLabel.text = name
     }
+    
+//TODO: set color visibility by importance level:
+    //
 
 }
