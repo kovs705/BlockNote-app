@@ -27,7 +27,7 @@ class DetailVC: UIViewController {
     lazy var groupType = GroupType()
     lazy var noteObject = Note()
     
-    var groupTypeSorted: [GroupType] = [GroupType]()
+    var groupTypeSorted: [Note] = [Note]() // sorted note array
     
 // segue
     let segueToNoteView = "showNoteView"
@@ -44,7 +44,14 @@ class DetailVC: UIViewController {
 
         title = groupType.groupName ?? "Unknown"
         
+        groupTypeSorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
+        
         setupDetailVC()
+    }
+    
+    
+    @IBAction func addNoteButton(sender: UIButton!) {
+        addNote()
     }
 
 }
@@ -53,14 +60,16 @@ class DetailVC: UIViewController {
 extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        groupType.typesOfNoteArray.count
+        // groupType.typesOfNoteArray.count
+        groupTypeSorted.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
         
     // configuring cell
-        noteCell.setNoteName(name: groupType.typesOfNoteArray[indexPath.row].value(forKey: "noteName") as! String)
+        // noteCell.setNoteName(name: groupType.typesOfNoteArray[indexPath.row].value(forKey: "noteName") as! String)
+        noteCell.setNoteName(name: groupTypeSorted[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
         return noteCell
@@ -166,14 +175,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
             } else {
                 fatalError("Just testing if something will go wrong, delete it after some time")
             }
-            
-            // updating layout of UITableView with notes:
-            
-            
-            
-//            self.noteListCollection.layoutIfNeeded()
-//            self.notesTableView.updateConstraints()
-//            self.noteListCollection.reloadData()
+            noteListCollection.reloadData()
             
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")

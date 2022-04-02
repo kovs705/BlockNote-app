@@ -353,6 +353,9 @@
                                                                                         <real key="value" value="10"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <action selector="addNoteButtonWithSender:" destination="Tgf-rB-iEw" eventType="touchUpInside" id="w4A-sn-M2T"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
