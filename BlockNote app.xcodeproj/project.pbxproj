@@ -89,7 +89,7 @@
 		4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1GroupDetailView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
 		4E26429727EE5ABE0020E380 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
-		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E323E0527BD160B0062008A /* noteListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noteListObject.swift; sourceTree = "<group>"; };
 		4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewModel.swift; sourceTree = "<group>"; };

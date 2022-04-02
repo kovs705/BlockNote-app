@@ -53,6 +53,38 @@ class DetailVC: UIViewController {
     @IBAction func addNoteButton(sender: UIButton!) {
         addNote()
     }
+    
+    @IBAction func deleteGroup(sender: UIButton!) {
+        deleteGroup(groupName: self.groupType.wrappedGroupName)
+    }
+    
+    func deleteGroup(groupName: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        
+        if groupType.wrappedGroupName == groupName {
+            
+            if !self.groupType.typesOfNoteArray.isEmpty {
+                
+                for note in self.groupType.typesOfNoteArray {
+                    viewContext.delete(note)
+                }
+            } else {
+                print("No notes in array")
+            }
+            
+            viewContext.delete(self.groupType)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print("Something went wrong while deleting the group and note!!")
+            }
+        } else {
+            print("Something wrong on checking the name of the group!")
+        }
+    }
 
 }
 
