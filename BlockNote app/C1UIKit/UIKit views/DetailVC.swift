@@ -67,8 +67,6 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
         
-    // configuring cell
-        // noteCell.setNoteName(name: groupType.typesOfNoteArray[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.setNoteName(name: groupTypeSorted[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -86,7 +84,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         scrollView.bounces = true
         
         noteListCollection.backgroundColor = UIColor(named: "DarkBackground")
-        noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
+        // noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
         
         numberOfNotesLabel.text = "\(groupType.typesOfNoteArray.count)"
         
@@ -104,30 +102,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     // MARK: - Alert with textField to add the note
     @objc func addNote() {
-        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
-        
-        // save button
-        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-            
-            guard
-                let textField = alert.textFields?.first,
-                let noteToSave = textField.text
-            else {
-                print("Note has not been saved")
-                return
-            }
-            // save action:
-            self.saveNote(noteName: noteToSave) // -----------> Check this
-            
-        }
-        // cancel button
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addTextField()
-        alert.addAction(saveNoteButton)
-        alert.addAction(cancelButton)
-        
-        present(alert, animated: true)
+        addN()
     }
     
     // MARK: - Save the note to the group from the Adding alert
@@ -185,12 +160,40 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
     }
     
+    func addN() {
+        
+        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save button
+        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let noteToSave = textField.text
+            else {
+                print("Note has not been saved")
+                return
+            }
+            // save action:
+            self.saveNote(noteName: noteToSave) // -----------> Check this
+            
+        }
+        // cancel button
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveNoteButton)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+    }
+    
     // MARK: - Accept the warning and open the alert again
     func acceptAttention() {
         let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
         
         let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.addNote()
+            self.addN()
         }
         
         attentionAlert.addAction(acceptButton)

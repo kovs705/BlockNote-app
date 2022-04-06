@@ -100,31 +100,7 @@ class C1NavigationViewController: UIViewController {
     
     
     @IBAction func addGroup(_ sender: UIButton) {
-        let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
-        
-        // save action button
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-            
-            guard
-                let textField = alert.textFields?.first,
-                let groupToSave = textField.text
-            else {
-                return
-            }
-            
-            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
-            // self.groupCollection.reloadData()
-        }
-        // cancel action button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-        
-        
+        addG()
     }
     
     func save(groupName: String, groupColor: String) {
@@ -183,6 +159,45 @@ class C1NavigationViewController: UIViewController {
 //            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
 //        }
 //    }
+    
+    func acceptAttention() {
+        let attentionAlert = UIAlertController(title: "Enter group name", message: "Type something in field", preferredStyle: .alert)
+        
+        let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.addG()
+        }
+        
+        attentionAlert.addAction(acceptButton)
+        present(attentionAlert, animated: true)
+    }
+    
+    func addG() {
+        
+        let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
+        
+        // save action button
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let groupToSave = textField.text, textField.hasText
+            else {
+                acceptAttention()
+                return
+            }
+            
+            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
+            // self.groupCollection.reloadData()
+        }
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - UICollectionView
