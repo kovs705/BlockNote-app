@@ -322,10 +322,10 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLl-Vl-maW">
-                                                                                <rect key="frame" x="21.666666666666657" y="12.666666666666671" width="50" height="50"/>
+                                                                                <rect key="frame" x="24.333333333333343" y="15" width="45" height="45"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="50" id="H6F-BH-HqS"/>
-                                                                                    <constraint firstAttribute="height" constant="50" id="Z2G-ei-yZm"/>
+                                                                                    <constraint firstAttribute="width" constant="45" id="H6F-BH-HqS"/>
+                                                                                    <constraint firstAttribute="height" constant="45" id="Z2G-ei-yZm"/>
                                                                                 </constraints>
                                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                                 <size key="titleShadowOffset" width="10" height="0.0"/>
@@ -366,33 +366,12 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-xe-MXe" userLabel="3.2">
                                                                         <rect key="frame" x="0.0" y="75" width="93.333333333333329" height="75"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
-                                                                                <rect key="frame" x="21.666666666666657" y="12.666666666666657" width="50" height="50"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="50" id="bd8-Ne-q3o"/>
-                                                                                    <constraint firstAttribute="width" constant="50" id="m03-kK-gcf"/>
-                                                                                </constraints>
-                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                                <state key="normal" title="Button" image="trash.fill" catalog="system"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" image="trash.fill" catalog="system">
-                                                                                    <backgroundConfiguration key="background">
-                                                                                        <color key="backgroundColor" name="DarkBackground"/>
-                                                                                    </backgroundConfiguration>
-                                                                                    <color key="baseForegroundColor" name="TextForegroundColor"/>
-                                                                                </buttonConfiguration>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                        <real key="value" value="10"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                                        <real key="value" value="10"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                                        <size key="value" width="1" height="1"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
+                                                                                <rect key="frame" x="13.333333333333343" y="22" width="67" height="31"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                                 <connections>
-                                                                                    <action selector="deleteGroupWithSender:" destination="Tgf-rB-iEw" eventType="touchUpInside" id="MQW-Zt-A6u"/>
+                                                                                    <action selector="DeleteGroup:" destination="Tgf-rB-iEw" eventType="touchUpInside" id="DY0-Nq-id3"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -607,7 +586,6 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <namedColor name="BlueBerry">
             <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

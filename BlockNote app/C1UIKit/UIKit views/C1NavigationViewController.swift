@@ -100,31 +100,7 @@ class C1NavigationViewController: UIViewController {
     
     
     @IBAction func addGroup(_ sender: UIButton) {
-        let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
-        
-        // save action button
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-            
-            guard
-                let textField = alert.textFields?.first,
-                let groupToSave = textField.text
-            else {
-                return
-            }
-            
-            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
-            // self.groupCollection.reloadData()
-        }
-        // cancel action button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-        
-        
+        addG()
     }
     
     func save(groupName: String, groupColor: String) {
@@ -159,6 +135,7 @@ class C1NavigationViewController: UIViewController {
     }
     
     func showGreeting() {
+        
         if hour < 4 {
             greetingLabel.text = "Have a good night ✨"
         }
@@ -183,6 +160,45 @@ class C1NavigationViewController: UIViewController {
 //            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
 //        }
 //    }
+    
+    func acceptAttention() {
+        let attentionAlert = UIAlertController(title: "Enter group name", message: "Type something in field", preferredStyle: .alert)
+        
+        let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.addG()
+        }
+        
+        attentionAlert.addAction(acceptButton)
+        present(attentionAlert, animated: true)
+    }
+    
+    func addG() {
+        
+        let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
+        
+        // save action button
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let groupToSave = textField.text, textField.hasText
+            else {
+                acceptAttention()
+                return
+            }
+            
+            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
+            // self.groupCollection.reloadData()
+        }
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - UICollectionView
@@ -226,6 +242,16 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
 //         print("clicked")
+    }
+}
+
+extension C1NavigationViewController: detail_vc_Delegate {
+    // place a func to update UICollectionView in rootVC just after deleting a group in detailVC:
+    func deleteAndUpdate() {
+        self.dismiss(animated: true) {
+            self.groupCollectionView.reloadData()
+        }
+        
     }
 }
 

@@ -9,6 +9,10 @@ import UIKit
 import CoreData
 import SwiftUI
 
+protocol detail_vc_Delegate {
+    func deleteAndUpdate()
+}
+
 class DetailVC: UIViewController {
 // main:
     @IBOutlet weak var scrollView: UIScrollView!
@@ -36,6 +40,8 @@ class DetailVC: UIViewController {
     let noteID = "noteID"
     let noteLevel = "noteLevel"
     let noteIsMarked = "noteIsMarked"
+    
+    var delegate: detail_vc_Delegate?
     
 
     // MARK: - viewDidLoad()
@@ -86,6 +92,38 @@ class DetailVC: UIViewController {
         }
     }
 
+    @IBAction func DeleteGroup(_ sender: UIButton) {
+        deleteGroup(groupName: self.groupType.wrappedGroupName)
+    }
+    
+    func deleteGroup(groupName: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        
+        if groupType.wrappedGroupName == groupName {
+            
+            if !self.groupType.typesOfNoteArray.isEmpty {
+                
+                for note in self.groupType.typesOfNoteArray {
+                    viewContext.delete(note)
+                }
+            } else {
+                print("No notes in array")
+            }
+            
+            viewContext.delete(self.groupType)
+            
+            do {
+                try viewContext.save()
+                delegate?.deleteAndUpdate()
+            } catch {
+                print("Something went wrong while deleting the group and note!!")
+            }
+        } else {
+            print("Something wrong on checking the name of the group!")
+        }
+    }
 }
 
 // MARK: - UICollectinView
@@ -99,8 +137,6 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
         
-    // configuring cell
-        // noteCell.setNoteName(name: groupType.typesOfNoteArray[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.setNoteName(name: groupTypeSorted[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -118,7 +154,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         scrollView.bounces = true
         
         noteListCollection.backgroundColor = UIColor(named: "DarkBackground")
-        noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
+        // noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
         
         numberOfNotesLabel.text = "\(groupType.typesOfNoteArray.count)"
         
@@ -136,30 +172,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     // MARK: - Alert with textField to add the note
     @objc func addNote() {
-        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
-        
-        // save button
-        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-            
-            guard
-                let textField = alert.textFields?.first,
-                let noteToSave = textField.text
-            else {
-                print("Note has not been saved")
-                return
-            }
-            // save action:
-            self.saveNote(noteName: noteToSave) // -----------> Check this
-            
-        }
-        // cancel button
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addTextField()
-        alert.addAction(saveNoteButton)
-        alert.addAction(cancelButton)
-        
-        present(alert, animated: true)
+        addN()
     }
     
     // MARK: - Save the note to the group from the Adding alert
@@ -207,7 +220,6 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
             } else {
                 fatalError("Just testing if something will go wrong, delete it after some time")
             }
-            noteListCollection.reloadData()
             
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")
@@ -217,12 +229,40 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
     }
     
+    func addN() {
+        
+        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save button
+        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let noteToSave = textField.text
+            else {
+                print("Note has not been saved")
+                return
+            }
+            // save action:
+            self.saveNote(noteName: noteToSave) // -----------> Check this
+            
+        }
+        // cancel button
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveNoteButton)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+    }
+    
     // MARK: - Accept the warning and open the alert again
     func acceptAttention() {
         let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
         
         let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.addNote()
+            self.addN()
         }
         
         attentionAlert.addAction(acceptButton)
