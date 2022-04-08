@@ -9,6 +9,10 @@ import UIKit
 import CoreData
 import SwiftUI
 
+protocol detail_vc_Delegate {
+    func deleteAndUpdate()
+}
+
 class DetailVC: UIViewController {
 // main:
     @IBOutlet weak var scrollView: UIScrollView!
@@ -37,6 +41,8 @@ class DetailVC: UIViewController {
     let noteLevel = "noteLevel"
     let noteIsMarked = "noteIsMarked"
     
+    var delegate: detail_vc_Delegate?
+    
 
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -54,6 +60,38 @@ class DetailVC: UIViewController {
         addNote()
     }
 
+    @IBAction func DeleteGroup(_ sender: UIButton) {
+        deleteGroup(groupName: self.groupType.wrappedGroupName)
+    }
+    
+    func deleteGroup(groupName: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        
+        if groupType.wrappedGroupName == groupName {
+            
+            if !self.groupType.typesOfNoteArray.isEmpty {
+                
+                for note in self.groupType.typesOfNoteArray {
+                    viewContext.delete(note)
+                }
+            } else {
+                print("No notes in array")
+            }
+            
+            viewContext.delete(self.groupType)
+            
+            do {
+                try viewContext.save()
+                delegate?.deleteAndUpdate()
+            } catch {
+                print("Something went wrong while deleting the group and note!!")
+            }
+        } else {
+            print("Something wrong on checking the name of the group!")
+        }
+    }
 }
 
 // MARK: - UICollectinView
@@ -150,7 +188,6 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
             } else {
                 fatalError("Just testing if something will go wrong, delete it after some time")
             }
-            noteListCollection.reloadData()
             
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")

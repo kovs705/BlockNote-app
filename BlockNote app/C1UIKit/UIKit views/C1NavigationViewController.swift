@@ -135,6 +135,7 @@ class C1NavigationViewController: UIViewController {
     }
     
     func showGreeting() {
+        
         if hour < 4 {
             greetingLabel.text = "Have a good night ✨"
         }
@@ -241,6 +242,16 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
 //         print("clicked")
+    }
+}
+
+extension C1NavigationViewController: detail_vc_Delegate {
+    // place a func to update UICollectionView in rootVC just after deleting a group in detailVC:
+    func deleteAndUpdate() {
+        self.dismiss(animated: true) {
+            self.groupCollectionView.reloadData()
+        }
+        
     }
 }
 
