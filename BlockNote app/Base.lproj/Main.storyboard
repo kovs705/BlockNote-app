@@ -367,11 +367,13 @@
                                                                         <rect key="frame" x="0.0" y="75" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqS-1i-x3q">
-                                                                                <rect key="frame" x="13.333333333333343" y="22" width="67" height="31"/>
+                                                                                <rect key="frame" x="13.666666666666657" y="22" width="66" height="31"/>
+                                                                                <color key="tintColor" name="TextForegroundColor"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
                                                                                 <connections>
                                                                                     <action selector="DeleteGroup:" destination="Tgf-rB-iEw" eventType="touchUpInside" id="DY0-Nq-id3"/>
+                                                                                    <action selector="deleteGroup:" destination="Tgf-rB-iEw" eventType="touchUpInside" id="XyI-f4-eA4"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
