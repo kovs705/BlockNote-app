@@ -23,7 +23,6 @@
 		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
 		4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E273ADC27B7C84500A98409 /* SnapKit */; };
 		4E323E0627BD160B0062008A /* noteListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E323E0527BD160B0062008A /* noteListObject.swift */; };
-		4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 4E32A9F827B0395B0072076C /* TinyConstraints */; };
 		4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */; };
 		4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */; };
 		4E44C795278CD0EA0054E5E2 /* SnowBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E44C793278CD0EA0054E5E2 /* SnowBackground.sks */; };
@@ -126,7 +125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
-				4E32A9F927B0395B0072076C /* TinyConstraints in Frameworks */,
 				4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +384,6 @@
 			name = "BlockNote app";
 			packageProductDependencies = (
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
-				4E32A9F827B0395B0072076C /* TinyConstraints */,
 				4E273ADC27B7C84500A98409 /* SnapKit */,
 			);
 			productName = "BlockNote app";
@@ -463,7 +460,6 @@
 			mainGroup = 4E18039B274058EA0096A87C;
 			packageReferences = (
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
-				4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 				4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
@@ -920,14 +916,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/roberthein/TinyConstraints";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
@@ -943,11 +931,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		4E32A9F827B0395B0072076C /* TinyConstraints */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E32A9F727B0395B0072076C /* XCRemoteSwiftPackageReference "TinyConstraints" */;
-			productName = TinyConstraints;
 		};
 		4E44C7AA278CD52C0054E5E2 /* CodeEditor */ = {
 			isa = XCSwiftPackageProductDependency;

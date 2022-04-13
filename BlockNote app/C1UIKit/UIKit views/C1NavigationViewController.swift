@@ -30,6 +30,11 @@ class C1NavigationViewController: UIViewController {
     
     var hour = Calendar.current.component(.hour, from: Date())
     
+    // animations:
+    // let animationDuration: Double = 5.0
+    // let delayBase: Double = 1.0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +95,8 @@ class C1NavigationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        groupCollectionView.reloadData()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,7 +133,7 @@ class C1NavigationViewController: UIViewController {
         
         
     }
-    
+    // MARK: - Save group
     func save(groupName: String, groupColor: String) {
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -149,9 +156,11 @@ class C1NavigationViewController: UIViewController {
         // group.setValue(number, forKey: "number")
         
         do {
-            groups.append(group)
+            groups.insert(group, at: 0)
+
             print("Successfully added")
             try managedContext.save()
+            
             groupCollectionView.reloadData()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -203,8 +212,22 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
         // cell.setNumber(numLabel: "String", number: 1)
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+        
+        // MARK: - Animation
+        // cell.alpha = 0
+        // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//
+//        UIView.animate(withDuration: animationDuration) {
+//            cell.alpha = 1
+//            cell.transform = .identity
+//          }
+//
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfGroupsPerRow = 2
@@ -234,5 +257,8 @@ extension C1NavigationViewController: detail_vc_Delegate {
     func deleteAndUpdate() {
         _ = navigationController?.popViewController(animated: true)
         self.groupCollectionView.reloadData()
+    }
+    func closeAndDelete() {
+        groupCollectionView.reloadData()
     }
 }

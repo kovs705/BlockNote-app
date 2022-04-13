@@ -11,6 +11,7 @@ import SwiftUI
 
 protocol detail_vc_Delegate {
     func deleteAndUpdate()
+    func closeAndDelete()
 }
 
 class DetailVC: UIViewController {
@@ -83,7 +84,8 @@ class DetailVC: UIViewController {
             
             do {
                 try viewContext.save()
-                delegate?.deleteAndUpdate()
+                _ = navigationController?.popViewController(animated: true)
+                delegate?.closeAndDelete()
             } catch {
                 print("Something went wrong while deleting the group and note!!")
             }
