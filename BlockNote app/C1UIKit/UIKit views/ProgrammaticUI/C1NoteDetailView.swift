@@ -8,6 +8,17 @@
 import CoreData
 import UIKit
 
+/*
+ To continue I need to know whhat type of cells user will have
+ taskBlock - list of tasks
+ vocabularyBlock - show the translation by clicking on word
+ mapBlock - attach some coordinates on map (share - open in Google Maps)
+ TextBlock
+ ImageBlock
+ ======================
+ make a grey colored loading on the upper right corner
+ */
+
 
 class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
