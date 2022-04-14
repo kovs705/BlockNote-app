@@ -10,7 +10,8 @@ import UIKit
 
 class C1NoteView: UIViewController {
     
-    var noteType = Note()
+    lazy var noteType = Note()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class C1NoteView: UIViewController {
         title = noteType.wrappedNoteName
         
     }
+    
+    
     
 }
 

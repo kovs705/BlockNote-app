@@ -44,6 +44,7 @@
 		4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */; };
 		4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */; };
 		4E9D6F51279C30C000DDC661 /* GroupBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9D6F50279C30C000DDC661 /* GroupBar.swift */; };
+		4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC178E828075C96004FF965 /* C1NoteDetailView.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
 		4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */; };
@@ -110,6 +111,7 @@
 		4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionObject.swift; sourceTree = "<group>"; };
 		4E9D6F50279C30C000DDC661 /* GroupBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBar.swift; sourceTree = "<group>"; };
+		4EC178E828075C96004FF965 /* C1NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailView.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
 		4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
@@ -311,6 +313,15 @@
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
+		4EC178EA28075C9B004FF965 /* ProgrammaticUI */ = {
+			isa = PBXGroup;
+			children = (
+				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
+				4EC178E828075C96004FF965 /* C1NoteDetailView.swift */,
+			);
+			path = ProgrammaticUI;
+			sourceTree = "<group>";
+		};
 		4ED53DEF278F19EF00F79A3F /* C1UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,7 +349,7 @@
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
-				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
+				4EC178EA28075C9B004FF965 /* ProgrammaticUI */,
 			);
 			path = "UIKit views";
 			sourceTree = "<group>";
@@ -524,6 +535,7 @@
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
+				4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */,
 				4E44C79C278CD2970054E5E2 /* GroupCreateView.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */,
