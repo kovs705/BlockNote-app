@@ -45,6 +45,26 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // noteCollectionView.dataSource = self
+        
+        // MARK: - ScrollView
+        scrollView.bounces                      = true
+        // scrollView.isPagingEnabled = true
+        scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentSize                  = self.view.frame.size
+        scrollView.backgroundColor              = UIColor(named: "DarkBackground")
+        
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
+        
+        self.view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.snp.top)
+            make.bottom.left.right.equalTo(view)
+        }
+        
+        // MARK: - UICollectionView
         
         
     }
