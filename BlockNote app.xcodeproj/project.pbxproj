@@ -44,6 +44,8 @@
 		4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */; };
 		4E82AA962770FDA800ABAA44 /* GroupCollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */; };
 		4E9D6F51279C30C000DDC661 /* GroupBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9D6F50279C30C000DDC661 /* GroupBar.swift */; };
+		4EAC48C52808A0390094181B /* TextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC48C32808A0390094181B /* TextBlock.swift */; };
+		4EAC48C62808A0390094181B /* TextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC48C42808A0390094181B /* TextBlock.xib */; };
 		4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC178E828075C96004FF965 /* C1NoteDetailView.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
@@ -111,6 +113,8 @@
 		4E82AA912770F90F00ABAA44 /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E82AA952770FDA800ABAA44 /* GroupCollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionObject.swift; sourceTree = "<group>"; };
 		4E9D6F50279C30C000DDC661 /* GroupBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBar.swift; sourceTree = "<group>"; };
+		4EAC48C32808A0390094181B /* TextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlock.swift; sourceTree = "<group>"; };
+		4EAC48C42808A0390094181B /* TextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBlock.xib; sourceTree = "<group>"; };
 		4EC178E828075C96004FF965 /* C1NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailView.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +304,23 @@
 			path = C1Views;
 			sourceTree = "<group>";
 		};
+		4EAC48C228089E310094181B /* NoteViewBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				4EAC48C82808A0570094181B /* Text */,
+			);
+			path = NoteViewBlocks;
+			sourceTree = "<group>";
+		};
+		4EAC48C82808A0570094181B /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				4EAC48C32808A0390094181B /* TextBlock.swift */,
+				4EAC48C42808A0390094181B /* TextBlock.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		4EBBBE462740A71600041763 /* SwiftUI Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +339,7 @@
 			children = (
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4EC178E828075C96004FF965 /* C1NoteDetailView.swift */,
+				4EAC48C228089E310094181B /* NoteViewBlocks */,
 			);
 			path = ProgrammaticUI;
 			sourceTree = "<group>";
@@ -495,6 +517,7 @@
 				4E1803B4274058F00096A87C /* Assets.xcassets in Resources */,
 				4E44C796278CD0EA0054E5E2 /* Assets.xcassets in Resources */,
 				4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */,
+				4EAC48C62808A0390094181B /* TextBlock.xib in Resources */,
 				4E1803AF274058EA0096A87C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +555,7 @@
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4E581A8027E3D55C007731A8 /* C1NoteView.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
+				4EAC48C52808A0390094181B /* TextBlock.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,

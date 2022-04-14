@@ -13,7 +13,7 @@ import UIKit
  taskBlock - list of tasks
  vocabularyBlock - show the translation by clicking on word
  mapBlock - attach some coordinates on map (share - open in Google Maps)
- TextBlock
+ TextBlock  <------ in progress
  ImageBlock
  ======================
  make a grey colored loading on the upper right corner
