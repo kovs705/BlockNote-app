@@ -35,6 +35,8 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     var note = Note()
     var noteItem = NoteItem()
     
+    var blockType = ""
+    
     // MARK: - note cells
     var textBlock = "TextBlock"
     
@@ -46,6 +48,11 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         super.viewDidLoad()
         
         // noteCollectionView.dataSource = self
+        
+        title = note.wrappedNoteName
+        self.view.backgroundColor = .white
+        
+        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addBlockNote))
         
         // MARK: - ScrollView
         scrollView.bounces                      = true
@@ -66,6 +73,63 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         
         // MARK: - UICollectionView
         
+        
+    }
+    
+    @objc func addBlockNote() {
+        let chooseBlockMenu = UIAlertController(title: nil, message: "Choose your block", preferredStyle: .actionSheet)
+        
+        let textBlock = UIAlertAction(title: "Text Block", style: .default) { action in
+            
+        }
+        
+        let close = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        chooseBlockMenu.addAction(textBlock)
+        chooseBlockMenu.addAction(close)
+        
+        self.present(chooseBlockMenu, animated: true)
+    }
+    
+    func addBlock(blockType: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let viewContext = appDelegate.persistentContainerOffline.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "NoteItem", in: viewContext)!
+        let noteItem = NSManagedObject(entity: entity, insertInto: viewContext)
+        
+        if blockType == "TextBlock" {
+            noteItem.setValue(blockType, forKey: "noteItemType")
+        } else {
+            return
+        }
+        // MARK: - make other types of blocks
+        
+        if note.noteItemArray.isEmpty {
+            noteItem.setValue(1, forKey: "noteItemOrder")
+        } else {
+            noteItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+        }
+        
+        noteItem.setValue("Lorem ipsum dolor sit amet or how is it written correctly?))", forKey: "noteItemText")
+        
+        do {
+            self.note.addObject(value: noteItem, forKey: "noteItems")
+            
+            if self.note.hasChanges {
+                try viewContext.save()
+            } else {
+                fatalError("Just testing if something will go wrong, delete it after some time")
+            }
+            
+            self.noteCollectionView.layoutIfNeeded()
+            self.noteCollectionView.updateConstraints()
+            self.noteCollectionView.reloadData()
+        } catch let error as NSError {
+            print("Could not save and add note. \(error), \(error.userInfo)")
+        }
         
     }
     
