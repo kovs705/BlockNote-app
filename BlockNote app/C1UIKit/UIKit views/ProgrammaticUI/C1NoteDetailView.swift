@@ -7,6 +7,7 @@
 
 import CoreData
 import UIKit
+import SnapKit
 
 /*
  To continue I need to know whhat type of cells user will have
@@ -25,6 +26,7 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return note.noteItemArray.count
     }
+    
     // MARK: register every type of cells with each xib:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         <#code#>
@@ -32,6 +34,26 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     var note = Note()
     var noteItem = NoteItem()
+    
+    // MARK: - note cells
+    var textBlock = "TextBlock"
+    
+    // MARK: - Views
+    lazy var scrollView         = UIScrollView()
+    lazy var noteCollectionView = UICollectionView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+    }
+    
+    fileprivate func registerNoteCells() {
+        noteCollectionView.register(TextBlock.self, forCellWithReuseIdentifier: textBlock)
+        
+        // noteCollectionView.register(<#T##nib: UINib?##UINib?#>, forCellWithReuseIdentifier: <#T##String#>)
+    }
     
 // note: noteName, noteLevel, noteType, noteIsMarked, noteID
 // noteItem = noteItemType, noteItemName, noteItemText, noteItemOrder

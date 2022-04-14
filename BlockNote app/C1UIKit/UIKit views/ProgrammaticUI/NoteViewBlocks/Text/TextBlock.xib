@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,21 +19,24 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gco-h3-7Fk">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="228"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="216"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYu-Tp-Dvq">
-                                <rect key="frame" x="8" y="8" width="344" height="212"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBT-Ia-HhV">
+                                <rect key="frame" x="8" y="8" width="344" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EYu-Tp-Dvq" secondAttribute="trailing" constant="8" id="5Ne-rN-qwZ"/>
-                            <constraint firstAttribute="bottom" secondItem="EYu-Tp-Dvq" secondAttribute="bottom" constant="8" id="85f-Ne-Tdx"/>
-                            <constraint firstItem="EYu-Tp-Dvq" firstAttribute="leading" secondItem="Gco-h3-7Fk" secondAttribute="leading" constant="8" id="AbC-ro-rZL"/>
-                            <constraint firstItem="EYu-Tp-Dvq" firstAttribute="top" secondItem="Gco-h3-7Fk" secondAttribute="top" constant="8" id="kd6-Y3-m0O"/>
+                            <constraint firstItem="bBT-Ia-HhV" firstAttribute="width" secondItem="Gco-h3-7Fk" secondAttribute="width" multiplier="0.955556" id="Knn-Ug-A0B"/>
+                            <constraint firstAttribute="bottom" secondItem="bBT-Ia-HhV" secondAttribute="bottom" constant="8" id="PBN-8V-Q86"/>
+                            <constraint firstItem="bBT-Ia-HhV" firstAttribute="top" secondItem="Gco-h3-7Fk" secondAttribute="top" constant="8" id="Zkb-EQ-7HL"/>
+                            <constraint firstAttribute="trailing" secondItem="bBT-Ia-HhV" secondAttribute="trailing" constant="8" id="wdm-mz-LVj"/>
+                            <constraint firstItem="bBT-Ia-HhV" firstAttribute="leading" secondItem="Gco-h3-7Fk" secondAttribute="leading" constant="8" id="zpi-fK-EJF"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -44,16 +48,25 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Gco-h3-7Fk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1o7-HR-bmI"/>
-                <constraint firstAttribute="bottom" secondItem="Gco-h3-7Fk" secondAttribute="bottom" id="5a5-9j-5SK"/>
-                <constraint firstItem="Gco-h3-7Fk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="neg-m1-pGR"/>
-                <constraint firstAttribute="trailing" secondItem="Gco-h3-7Fk" secondAttribute="trailing" id="pLH-Rs-YhA"/>
+                <constraint firstItem="Gco-h3-7Fk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9CH-tu-tYU"/>
+                <constraint firstItem="Gco-h3-7Fk" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ABb-94-apM"/>
+                <constraint firstItem="Gco-h3-7Fk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qG0-aM-NJx"/>
             </constraints>
             <size key="customSize" width="360" height="228"/>
+            <connections>
+                <outlet property="cellView" destination="Gco-h3-7Fk" id="lE1-9p-VOx"/>
+                <outlet property="textView" destination="bBT-Ia-HhV" id="SFr-wu-UvT"/>
+            </connections>
             <point key="canvasLocation" x="362.31884057971018" y="159.375"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <namedColor name="DarkBackground">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

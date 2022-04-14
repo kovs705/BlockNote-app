@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TextBlock: UICollectionViewCell {
 
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var textView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
