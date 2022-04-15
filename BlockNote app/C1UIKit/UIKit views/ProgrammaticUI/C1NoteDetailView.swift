@@ -24,16 +24,21 @@ import SnapKit
 class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return note.noteItemArray.count
+        // return note.noteItemArray.count
+        return noteItemArraySorted.count
     }
     
     // MARK: register every type of cells with each xib:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let note = noteItemArraySorted[indexPath.row]
+        
+        let cell = 
     }
     
     var note = Note()
     var noteItem = NoteItem()
+    
+    var noteItemArraySorted: [NoteItem] = [NoteItem]()
     
     var blockType = ""
     
@@ -47,12 +52,16 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // noteCollectionView.dataSource = self
+        noteCollectionView.dataSource = self
+        
+        noteItemArraySorted = note.noteItemArray.sorted(by: { $0.noteItemOrder < $1.noteItemOrder })
         
         title = note.wrappedNoteName
         self.view.backgroundColor = .white
         
         let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addBlockNote))
+        
+        self.navigationItem.rightBarButtonItem = rightAddButton
         
         // MARK: - ScrollView
         scrollView.bounces                      = true
@@ -72,7 +81,26 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         }
         
         // MARK: - UICollectionView
+        registerNoteCells()
         
+        noteCollectionView.dataSource = self
+        noteCollectionView.bounces = false
+        noteCollectionView.isScrollEnabled = false
+        
+        scrollView.addSubview(noteCollectionView)
+        noteCollectionView.backgroundColor = UIColor(named: "DarkBackground")
+        
+        noteCollectionView.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(scrollView.snp.width).offset(-40)
+            make.top.equalTo(scrollView.snp.top).offset(25)
+            // height:
+            // make.height.greaterThanOrEqualToSuperview()
+            make.height.greaterThanOrEqualTo(scrollView.snp.height)
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalTo(scrollView.snp.bottom).offset(20)
+        }
+        
+        self.view.layoutIfNeeded()
         
     }
     
@@ -80,7 +108,8 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         let chooseBlockMenu = UIAlertController(title: nil, message: "Choose your block", preferredStyle: .actionSheet)
         
         let textBlock = UIAlertAction(title: "Text Block", style: .default) { action in
-            
+            //
+            print("add Text Block")
         }
         
         let close = UIAlertAction(title: "Cancel", style: .cancel)
