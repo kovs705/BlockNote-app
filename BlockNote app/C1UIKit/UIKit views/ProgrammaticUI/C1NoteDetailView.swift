@@ -32,7 +32,14 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let note = noteItemArraySorted[indexPath.row]
         
-        let cell = 
+        if note.noteItemType == textBlock {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
+            return cell
+        }
+        
     }
     
     var note = Note()
@@ -51,8 +58,6 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        noteCollectionView.dataSource = self
         
         noteItemArraySorted = note.noteItemArray.sorted(by: { $0.noteItemOrder < $1.noteItemOrder })
         
@@ -129,7 +134,7 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         let entity = NSEntityDescription.entity(forEntityName: "NoteItem", in: viewContext)!
         let noteItem = NSManagedObject(entity: entity, insertInto: viewContext)
         
-        if blockType == "TextBlock" {
+        if blockType == textBlock {
             noteItem.setValue(blockType, forKey: "noteItemType")
         } else {
             return

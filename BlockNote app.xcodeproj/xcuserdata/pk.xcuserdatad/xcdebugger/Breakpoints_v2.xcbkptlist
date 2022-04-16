@@ -46,8 +46,8 @@
             filePath = "BlockNote app/C1UIKit/UIKit views/ProgrammaticUI/C1NoteDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "addBlock(blockType:)"
             landmarkType = "7">
          </BreakpointContent>

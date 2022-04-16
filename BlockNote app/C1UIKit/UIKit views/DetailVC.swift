@@ -104,6 +104,8 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         groupTypeSorted.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
         
