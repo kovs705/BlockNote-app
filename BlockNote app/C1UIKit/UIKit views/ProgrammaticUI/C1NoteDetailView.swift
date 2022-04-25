@@ -28,6 +28,22 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
         return noteItemArraySorted.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (collectionView.frame.width-4)/1, height: 100)
+    }
+    
+    func giveHeightDependingOnNoteType(noteType: String) -> Int {
+        var height = 0
+        
+        if noteType == textBlock {
+            let block = UICollectionViewCell() as! TextBlock
+            height = block.textView.numberOfLines() * 10
+        } else {
+            height = 200
+        }
+        return height
+    }
+    
     // MARK: register every type of cells with each xib:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let note = noteItemArraySorted[indexPath.row]
@@ -100,7 +116,15 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
             make.top.equalTo(scrollView.snp.top).offset(25)
             // height:
             // make.height.greaterThanOrEqualToSuperview()
-            make.height.greaterThanOrEqualTo(scrollView.snp.height)
+            
+            if !note.noteItemArray.isEmpty {
+                make.height.greaterThanOrEqualTo(note.noteItemArray.count * 100)
+            } else if note.noteItemArray.count <= 7 {
+                make.height.greaterThanOrEqualTo(650)
+            } else {
+                print("Nothing in UICollectionView")
+            }
+            
             make.left.equalToSuperview().offset(10)
             make.bottom.equalTo(scrollView.snp.bottom).offset(20)
         }
@@ -175,4 +199,16 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
 // noteItem = noteItemType, noteItemName, noteItemText, noteItemOrder
     
     
+}
+
+//MARK: - UITextView
+extension UITextView{
+
+    func numberOfLines() -> Int{
+        if let fontUnwrapped = self.font{
+            return Int(self.contentSize.height / fontUnwrapped.lineHeight)
+        }
+        return 100
+    }
+
 }

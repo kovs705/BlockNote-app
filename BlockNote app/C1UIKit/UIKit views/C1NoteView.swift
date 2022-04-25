@@ -10,13 +10,15 @@ import UIKit
 
 class C1NoteView: UIViewController {
     
-    lazy var noteType = Note()
-    
+    lazy var note = Note()
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = noteType.wrappedNoteName
+        title = note.wrappedNoteName
+        scrollView.alwaysBounceVertical = true
+        
         
     }
     

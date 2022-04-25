@@ -48,7 +48,7 @@ class C1GroupDetailView: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNoteView" {
             let noteViewC = segue.destination as! C1NoteView
-            noteViewC.noteType = noteObject
+            noteViewC.note = noteObject
         }
     }
     

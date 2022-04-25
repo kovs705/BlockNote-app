@@ -110,22 +110,29 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-px-Gan">
-                                                                    <rect key="frame" x="13" y="111.33333333333333" width="147" height="20.333333333333329"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-px-Gan">
+                                                                    <rect key="frame" x="13" y="111" width="147" height="20.333333333333343"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-UX-X1L">
-                                                                    <rect key="frame" x="13" y="131.66666666666666" width="147" height="20.333333333333343"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-UX-X1L">
+                                                                    <rect key="frame" x="13" y="131.33333333333334" width="147" height="20.333333333333343"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" name="PurpleBlackBerry"/>
+                                                            <constraints>
+                                                                <constraint firstItem="jFc-UX-X1L" firstAttribute="leading" secondItem="nCP-C6-VB1" secondAttribute="leading" constant="13" id="2vK-lv-OzN"/>
+                                                                <constraint firstItem="p0f-px-Gan" firstAttribute="top" secondItem="nCP-C6-VB1" secondAttribute="top" constant="111" id="4Em-bT-euJ"/>
+                                                                <constraint firstItem="jFc-UX-X1L" firstAttribute="top" secondItem="p0f-px-Gan" secondAttribute="bottom" id="8Dt-uC-fsV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jFc-UX-X1L" secondAttribute="trailing" constant="5" id="LXn-sM-ZEl"/>
+                                                                <constraint firstItem="p0f-px-Gan" firstAttribute="leading" secondItem="nCP-C6-VB1" secondAttribute="leading" constant="13" id="Skm-h9-RYC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="p0f-px-Gan" secondAttribute="trailing" constant="5" id="c7l-60-MUY"/>
+                                                                <constraint firstItem="jFc-UX-X1L" firstAttribute="top" secondItem="p0f-px-Gan" secondAttribute="bottom" id="zmK-dN-Jfx"/>
+                                                            </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="20"/>
@@ -520,40 +527,42 @@
         <!--showNoteView-->
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
-                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteDetailView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b" userLabel="Scroll">
-                                <rect key="frame" x="0.0" y="68" width="390" height="708"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b" userLabel="Scroll">
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA" userLabel="NoteView">
-                                        <rect key="frame" x="0.0" y="-68" width="390" height="844"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                         <color key="backgroundColor" name="DarkBackground"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="centerY" secondItem="9CH-2d-j8b" secondAttribute="centerY" id="ANn-xY-Ke0"/>
-                                    <constraint firstAttribute="bottom" secondItem="VHM-o2-VPA" secondAttribute="bottom" id="CeY-DS-1Q5"/>
-                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="centerX" secondItem="9CH-2d-j8b" secondAttribute="centerX" id="VRD-EL-gs3"/>
+                                    <constraint firstAttribute="bottom" secondItem="VHM-o2-VPA" secondAttribute="bottom" id="6Sk-72-J4A"/>
+                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="top" secondItem="9CH-2d-j8b" secondAttribute="top" id="6TJ-BG-bHY"/>
+                                    <constraint firstAttribute="bottom" secondItem="VHM-o2-VPA" secondAttribute="bottom" id="MzG-r5-Yho"/>
+                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="leading" secondItem="9CH-2d-j8b" secondAttribute="leading" id="oE9-ye-xc6"/>
                                     <constraint firstAttribute="trailing" secondItem="VHM-o2-VPA" secondAttribute="trailing" id="uik-hS-LA5"/>
+                                    <constraint firstItem="VHM-o2-VPA" firstAttribute="width" secondItem="9CH-2d-j8b" secondAttribute="width" id="xKL-KL-fWY"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1s5-hW-Ls3"/>
                         <color key="backgroundColor" name="DarkBackground"/>
                         <constraints>
-                            <constraint firstItem="VHM-o2-VPA" firstAttribute="height" secondItem="oWz-j6-8Vf" secondAttribute="height" priority="250" id="06n-Ol-dw2"/>
-                            <constraint firstItem="9CH-2d-j8b" firstAttribute="centerX" secondItem="oWz-j6-8Vf" secondAttribute="centerX" id="EZc-oD-KOc"/>
-                            <constraint firstItem="9CH-2d-j8b" firstAttribute="centerY" secondItem="oWz-j6-8Vf" secondAttribute="centerY" id="ONJ-Qi-mwf"/>
-                            <constraint firstItem="VHM-o2-VPA" firstAttribute="width" secondItem="oWz-j6-8Vf" secondAttribute="width" id="RdI-Xr-m9B"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="top" secondItem="1s5-hW-Ls3" secondAttribute="top" id="LoZ-yM-RrC"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="trailing" secondItem="1s5-hW-Ls3" secondAttribute="trailing" id="axW-Vu-tew"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="leading" secondItem="1s5-hW-Ls3" secondAttribute="leading" id="crh-9D-Gcx"/>
-                            <constraint firstItem="1s5-hW-Ls3" firstAttribute="bottom" secondItem="9CH-2d-j8b" secondAttribute="bottom" constant="34" id="kPc-ef-GFk"/>
+                            <constraint firstItem="9CH-2d-j8b" firstAttribute="bottom" secondItem="1s5-hW-Ls3" secondAttribute="bottom" constant="34" id="kPc-ef-GFk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
+                    <connections>
+                        <outlet property="scrollView" destination="9CH-2d-j8b" id="jiJ-6a-c7E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
