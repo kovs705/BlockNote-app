@@ -172,33 +172,6 @@ extension UIColor {
         return UIColor(named: name)
     }
     
-//    static func getColor(_ name: AssetsColor) -> UIColor? {
-//        switch name {
-//        case .BlueBerry:
-//            <#code#>
-//        case .BrownSugar:
-//            <#code#>
-//        case .DarkBackground:
-//            <#code#>
-//        case .GreenAvocado:
-//            <#code#>
-//        case .GreyCloud:
-//            <#code#>
-//        case .LightPart:
-//            <#code#>
-//        case .PurpleBlackBerry:
-//            <#code#>
-//        case .RedStrawBerry:
-//            <#code#>
-//        case .RosePink:
-//            <#code#>
-//        case .TextForegroundColor:
-//            <#code#>
-//        case .YellowLemon:
-//            <#code#>
-//        }
-//    }
-    
 }
 //        switch name {
 //        case .blueBerry:

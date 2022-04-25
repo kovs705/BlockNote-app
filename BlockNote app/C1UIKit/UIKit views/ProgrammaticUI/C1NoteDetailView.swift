@@ -11,11 +11,11 @@ import SnapKit
 
 /*
  To continue I need to know whhat type of cells user will have
- taskBlock - list of tasks
- vocabularyBlock - show the translation by clicking on word
- mapBlock - attach some coordinates on map (share - open in Google Maps)
+    taskBlock - list of tasks
+    vocabularyBlock - show the translation by clicking on word
+    mapBlock - attach some coordinates on map (share - open in Google Maps)
  TextBlock  <------ in progress
- ImageBlock
+    ImageBlock
  ======================
  make a grey colored loading on the upper right corner
  */
@@ -43,7 +43,7 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     }
     
     var note = Note()
-    var noteItem = NoteItem()
+    // var noteItem = NoteItem()
     
     var noteItemArraySorted: [NoteItem] = [NoteItem]()
     
@@ -169,8 +169,6 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
     
     fileprivate func registerNoteCells() {
         noteCollectionView.register(TextBlock.self, forCellWithReuseIdentifier: textBlock)
-        
-        // noteCollectionView.register(<#T##nib: UINib?##UINib?#>, forCellWithReuseIdentifier: <#T##String#>)
     }
     
 // note: noteName, noteLevel, noteType, noteIsMarked, noteID

@@ -457,6 +457,9 @@
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="310" height="50"/>
+                                                        <connections>
+                                                            <segue destination="11V-Pk-E9N" kind="show" identifier="noteDetail" id="mCa-9z-THR"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>
@@ -517,7 +520,7 @@
         <!--showNoteView-->
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
-                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteDetailView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

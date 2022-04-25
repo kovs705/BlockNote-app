@@ -32,10 +32,10 @@ class DetailVC: UIViewController {
     lazy var groupType = GroupType()
     lazy var noteObject = Note()
     
-    var groupTypeSorted: [Note] = [Note]() // sorted note array
+    var noteArraySorted: [Note] = [Note]() // sorted note array
     
 // segue
-    let segueToNoteView = "showNoteView"
+    let segueToNoteView = "noteDetail"
 // CoreData properties
     let noteName = "noteName"
     let noteID = "noteID"
@@ -50,7 +50,7 @@ class DetailVC: UIViewController {
 
         title = groupType.groupName ?? "Unknown"
         
-        groupTypeSorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
+        noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
         
         setupDetailVC()
     }
@@ -101,17 +101,17 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // groupType.typesOfNoteArray.count
-        groupTypeSorted.count
+        noteArraySorted.count
     }
     
-    
+    /// 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoteViewCell", for: indexPath) as! NoteViewCell
         
     // configuring cell
         // noteCell.setNoteName(name: groupType.typesOfNoteArray[indexPath.row].value(forKey: "noteName") as! String)
-        noteCell.setNoteName(name: groupTypeSorted[indexPath.row].value(forKey: "noteName") as! String)
+        noteCell.setNoteName(name: noteArraySorted[indexPath.row].value(forKey: "noteName") as! String)
         noteCell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
         return noteCell
@@ -122,6 +122,18 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         CGSize(width: (collectionView.frame.width-4)/1, height: 50)
     }
     
+    // MARK: - Segue to the
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "noteDetail", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? C1NoteDetailView,
+           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
+            destination.note = self.noteArraySorted[noteIndex.row] 
+        }
+    }
+    
     // MARK: - Setup UI
     func setupDetailVC() {
         scrollView.alwaysBounceVertical = true
@@ -129,6 +141,8 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         
         noteListCollection.backgroundColor = UIColor(named: "DarkBackground")
         noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
+        noteListCollection.allowsSelection = true
+        noteListCollection.allowsMultipleSelection = true
         
         numberOfNotesLabel.text = "\(groupType.typesOfNoteArray.count)"
         
