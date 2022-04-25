@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Page">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="694.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
                                                 <rect key="frame" x="40" y="60" width="310" height="33.666666666666657"/>
@@ -37,9 +38,6 @@
                                                         <rect key="frame" x="109.33333333333334" y="84.666666666666671" width="91.666666666666657" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Add group"/>
-                                                        <connections>
-                                                            <action selector="addGroup:" destination="qrx-ni-D9i" eventType="touchUpInside" id="M1Y-Oz-hSO"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="LightPart"/>
@@ -69,32 +67,42 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Tm-ZZI" userLabel="ListOfGroups">
-                                                <rect key="frame" x="40" y="333.66666666666669" width="310" height="26.333333333333314"/>
+                                                <rect key="frame" x="40" y="333.66666666666669" width="310" height="30.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zH-RA-89a">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="26.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="30.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <color key="textColor" name="TextForegroundColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx">
-                                                        <rect key="frame" x="286" y="0.0" width="24" height="26.333333333333332"/>
+                                                        <rect key="frame" x="262.66666666666669" y="0.0" width="47.333333333333314" height="30.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal">
                                                             <color key="titleColor" name="TextForeground"/>
                                                             <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
                                                         </state>
-                                                        <buttonConfiguration key="configuration" style="plain">
+                                                        <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
+                                                            <imageReference key="image" image="rectangle.stack.badge.plus" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                                <hierarchicalColors>
+                                                                    <color systemColor="labelColor"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                    <color systemColor="tertiaryLabelColor"/>
+                                                                </hierarchicalColors>
+                                                            </imageReference>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
-                                                            <color key="baseForegroundColor" name="TextForegroundColor"/>
+                                                            <color key="baseForegroundColor" systemColor="labelColor"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="addGroup:" destination="qrx-ni-D9i" eventType="touchUpInside" id="dVy-Pf-5yJ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="Groups" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="375" width="360" height="300"/>
+                                                <rect key="frame" x="15" y="379.33333333333326" width="360" height="300"/>
                                                 <color key="backgroundColor" name="DarkBackground"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8n-MR-BJJ">
                                                     <size key="itemSize" width="175" height="175"/>
@@ -535,9 +543,51 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA" userLabel="NoteView">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA" userLabel="Page">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Debug Note Name" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmQ-Qr-4cB">
+                                                <rect key="frame" x="8" y="16" width="374" height="50"/>
+                                                <color key="backgroundColor" name="DarkBackground"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="z08-h6-vEI"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iBI-xw-bme">
+                                                <rect key="frame" x="15" y="81" width="360" height="748"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xj2-eT-sDO">
+                                                    <size key="itemSize" width="360" height="255"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="blockCell" id="ToH-g1-YRr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="255"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2jv-lr-b15">
+                                                            <rect key="frame" x="0.0" y="0.0" width="360" height="255"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="360" height="255"/>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
                                         <color key="backgroundColor" name="DarkBackground"/>
+                                        <constraints>
+                                            <constraint firstItem="iBI-xw-bme" firstAttribute="leading" secondItem="VHM-o2-VPA" secondAttribute="leading" constant="15" id="3Vg-7I-L9D"/>
+                                            <constraint firstAttribute="trailing" secondItem="cmQ-Qr-4cB" secondAttribute="trailing" constant="8" id="9NL-nD-fnv"/>
+                                            <constraint firstAttribute="bottom" secondItem="iBI-xw-bme" secondAttribute="bottom" constant="15" id="A5K-2C-d0F"/>
+                                            <constraint firstItem="iBI-xw-bme" firstAttribute="top" secondItem="cmQ-Qr-4cB" secondAttribute="bottom" constant="15" id="UoY-M0-38c"/>
+                                            <constraint firstItem="cmQ-Qr-4cB" firstAttribute="top" secondItem="VHM-o2-VPA" secondAttribute="top" constant="16" id="n4o-NB-Qce"/>
+                                            <constraint firstAttribute="trailing" secondItem="iBI-xw-bme" secondAttribute="trailing" constant="15" id="nVu-5q-3cx"/>
+                                            <constraint firstItem="cmQ-Qr-4cB" firstAttribute="leading" secondItem="VHM-o2-VPA" secondAttribute="leading" constant="8" id="tsO-uX-Yki"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -561,7 +611,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
                     <connections>
+                        <outlet property="blockCollectionView" destination="iBI-xw-bme" id="rvI-6f-XRy"/>
                         <outlet property="scrollView" destination="9CH-2d-j8b" id="jiJ-6a-c7E"/>
+                        <outlet property="topNoteName" destination="cmQ-Qr-4cB" id="8fX-j8-AEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -599,6 +651,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rectangle.stack.badge.plus" catalog="system" width="128" height="122"/>
         <namedColor name="BlueBerry">
             <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -620,5 +673,17 @@
         <namedColor name="YellowLemon">
             <color red="0.97500002384185791" green="0.92500001192092896" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
