@@ -8,8 +8,8 @@
 import CoreData
 import UIKit
 
-class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    // UICollectionViewDelegateFlowLayout
     lazy var note = Note()
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topNoteName: UITextView!
@@ -42,20 +42,26 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     
     // MARK: - UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        note.noteItemArray.count
+        noteItemArray_Sorted.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let noteItem = noteItemArray_Sorted[indexPath.row]
         
         if noteItem.noteItemType == textBlock {
-            let textBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            return cell
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        <#code#>
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        <#code#>
+//    }
     
     
     
