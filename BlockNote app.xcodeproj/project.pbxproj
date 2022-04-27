@@ -258,6 +258,16 @@
 			path = Note;
 			sourceTree = "<group>";
 		};
+		4E4C715A28193C9300107E18 /* Other objects */ = {
+			isa = PBXGroup;
+			children = (
+				4E323E0527BD160B0062008A /* noteListObject.swift */,
+				4E9D6F50279C30C000DDC661 /* GroupBar.swift */,
+				4E26429727EE5ABE0020E380 /* NoteCell.swift */,
+			);
+			path = "Other objects";
+			sourceTree = "<group>";
+		};
 		4E55323727663FCA0013E097 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +349,6 @@
 			children = (
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4EC178E828075C96004FF965 /* C1NoteDetailView.swift */,
-				4EAC48C228089E310094181B /* NoteViewBlocks */,
 			);
 			path = ProgrammaticUI;
 			sourceTree = "<group>";
@@ -357,10 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
+				4EAC48C228089E310094181B /* NoteViewBlocks */,
 				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
-				4E323E0527BD160B0062008A /* noteListObject.swift */,
-				4E9D6F50279C30C000DDC661 /* GroupBar.swift */,
-				4E26429727EE5ABE0020E380 /* NoteCell.swift */,
+				4E4C715A28193C9300107E18 /* Other objects */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
