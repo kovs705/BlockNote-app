@@ -23,6 +23,10 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let addBlockUIB = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
+        
+        self.navigationItem.rightBarButtonItem = addBlockUIB
+        
         // Navigation and ScrollView
         title = note.wrappedNoteName
         scrollView.alwaysBounceVertical = true
@@ -31,11 +35,14 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         noteItemArray_Sorted = note.noteItemArray.sorted { $0.noteItemOrder < $1.noteItemOrder }
         
         // UICollectionView
+        blockCollectionView.register(UINib(nibName: "TextBlock", bundle: nil), forCellWithReuseIdentifier: textBlock)
+        
         blockCollectionView.allowsSelection = true
         blockCollectionView.dataSource      = self
         blockCollectionView.delegate        = self
         
-        
+        // debug
+        print("\(noteItemArray_Sorted.count)")
         
         
     }
@@ -59,11 +66,69 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        <#code#>
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        <#code#>
+    //    }
     
     
+    @objc func addBlock() {
+        let alert = UIAlertController(title: "New block", message: "Enter some text for block", preferredStyle: .alert)
+        
+        // save action button
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let blockToSave = textField.text
+            else {
+                return
+            }
+            
+            self.save(blockType: textBlock, blockText: blockToSave)
+            // self.groupCollection.reloadData()
+        }
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+        
+        
+    }
+    // MARK: - Save group
+    func save(blockType: String, blockText: String) {
+        guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+        let managedContext =
+        appDelegate.persistentContainerOffline.viewContext
+        
+        let entity =
+        NSEntityDescription.entity(forEntityName: "NoteItem",
+                                   in: managedContext)!
+        
+        let blockItem = NSManagedObject(entity: entity,
+                                    insertInto: managedContext)
+        
+        blockItem.setValue(blockType, forKey: "noteItemType")
+        blockItem.setValue(blockText, forKey: "noteItemText")
+        
+        do {
+            // note.noteItemArray.insert(blockItem, at: 0)
+            note.addObject(value: blockItem, forKey: "noteItems")
+
+            print("Successfully added")
+            try managedContext.save()
+            
+            blockCollectionView.reloadData()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     
 }

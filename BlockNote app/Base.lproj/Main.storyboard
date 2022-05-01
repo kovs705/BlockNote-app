@@ -669,6 +669,9 @@
         <designable name="Uw0-wd-HlC">
             <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
+        <designable name="iBI-xw-bme">
+            <size key="intrinsicContentSize" width="360" height="255"/>
+        </designable>
     </designables>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>

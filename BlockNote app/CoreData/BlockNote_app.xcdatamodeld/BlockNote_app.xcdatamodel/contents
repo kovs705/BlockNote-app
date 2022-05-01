@@ -15,7 +15,7 @@
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
-    <entity name="NoteItem" representedClassName=".Noteitem" syncable="YES">
+    <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
         <attribute name="noteItemOrder" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteItemText" attributeType="String" defaultValueString="&quot;&quot;"/>
