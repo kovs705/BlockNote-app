@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */; };
 		4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803A7274058EA0096A87C /* AppDelegate.swift */; };
 		4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803A9274058EA0096A87C /* SceneDelegate.swift */; };
 		4E1803AC274058EA0096A87C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803AB274058EA0096A87C /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightLayout.swift; sourceTree = "<group>"; };
 		4E1803A4274058EA0096A87C /* BlockNote app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlockNote app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1803A7274058EA0096A87C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E1803A9274058EA0096A87C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
+				4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */,
 				4EAC48C228089E310094181B /* NoteViewBlocks */,
 				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
 				4E4C715A28193C9300107E18 /* Other objects */,
@@ -552,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */,
+				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E44C7B0278CD54B0054E5E2 /* NoteItemObject.swift in Sources */,
 				4E44C79E278CD2C80054E5E2 /* GroupDetailView.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,

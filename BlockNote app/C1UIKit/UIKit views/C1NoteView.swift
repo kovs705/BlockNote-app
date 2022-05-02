@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     // UICollectionViewDelegateFlowLayout
     lazy var note = Note()
     @IBOutlet weak var scrollView: UIScrollView!
@@ -66,9 +66,9 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         }
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        <#code#>
-    //    }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            <#code#>
+        }
     
     
     @objc func addBlock() {

@@ -30,9 +30,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" name="DarkBackground"/>
+                        <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="bBT-Ia-HhV" firstAttribute="width" secondItem="Gco-h3-7Fk" secondAttribute="width" multiplier="0.955556" id="Knn-Ug-A0B"/>
+                            <constraint firstItem="bBT-Ia-HhV" firstAttribute="leading" secondItem="Gco-h3-7Fk" secondAttribute="leading" constant="8" id="4xo-th-182"/>
                             <constraint firstAttribute="bottom" secondItem="bBT-Ia-HhV" secondAttribute="bottom" constant="8" id="PBN-8V-Q86"/>
                             <constraint firstItem="bBT-Ia-HhV" firstAttribute="top" secondItem="Gco-h3-7Fk" secondAttribute="top" constant="8" id="Zkb-EQ-7HL"/>
                             <constraint firstAttribute="trailing" secondItem="bBT-Ia-HhV" secondAttribute="trailing" constant="8" id="wdm-mz-LVj"/>
@@ -60,8 +60,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="DarkBackground">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
