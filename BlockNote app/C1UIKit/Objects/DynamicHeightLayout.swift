@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol DynamicHeightLayoutDelegate: class {
+protocol DynamicHeightLayoutDelegate: AnyObject {
     /**
      Provide height for each cell throug this method
      

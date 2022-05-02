@@ -20,6 +20,7 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     // blockTypes:
     let textBlock = "TextBlock"
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,11 +67,15 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         }
     }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            <#code#>
-        }
+    // MARK: - sizing for blocks
+//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//            <#code#>
+//        }
     
     
+    
+    
+    // MARK: - Add block
     @objc func addBlock() {
         let alert = UIAlertController(title: "New block", message: "Enter some text for block", preferredStyle: .alert)
         
@@ -98,7 +103,7 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         
         
     }
-    // MARK: - Save group
+    // MARK: - Save block
     func save(blockType: String, blockText: String) {
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -129,6 +134,8 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
+    // MARK: - Delete block
     
     
 }
