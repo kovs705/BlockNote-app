@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SnapKit
 
 class TextBlock: UICollectionViewCell {
 
@@ -18,5 +19,10 @@ class TextBlock: UICollectionViewCell {
         
         // the width of iPhone 11 is 360
     }
+    
+//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//        return layoutAttributes
+//    }
 
 }

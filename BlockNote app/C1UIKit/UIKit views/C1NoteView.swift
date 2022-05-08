@@ -20,6 +20,14 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     // blockTypes:
     let textBlock = "TextBlock"
     
+    // dynamic height of blockCells:
+//    var layout: UICollectionViewFlowLayout = {
+//        let layout = UICollectionViewFlowLayout()
+//        let width = UIScreen.main.bounds.size.width
+//        layout.estimatedItemSize = CGSize(width: width, height: 10)
+//        return layout
+//    }()
+    
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +45,7 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         
         // UICollectionView
         blockCollectionView.register(UINib(nibName: "TextBlock", bundle: nil), forCellWithReuseIdentifier: textBlock)
+        // blockCollectionView?.collectionViewLayout = layout
         
         blockCollectionView.allowsSelection = true
         blockCollectionView.dataSource      = self
@@ -69,7 +78,16 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     
     // MARK: - sizing for blocks
 //        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            <#code#>
+//            let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+//            let basicHeight: CGFloat = 100
+//            let width = blockCollectionView.safeAreaLayoutGuide.layoutFrame.width
+//            - sectionInset.left
+//            - sectionInset.right
+//            - blockCollectionView.contentInset.left
+//            - blockCollectionView.contentInset.right
+//
+//            return CGSize(width: width, height: basicHeight)
+//
 //        }
     
     
