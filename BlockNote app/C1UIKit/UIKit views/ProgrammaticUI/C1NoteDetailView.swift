@@ -21,68 +21,28 @@ import SnapKit
  */
 
 
-class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // return note.noteItemArray.count
-        return noteItemArraySorted.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (collectionView.frame.width-4)/1, height: 100)
-    }
-    
-    func giveHeightDependingOnNoteType(noteType: String) -> Int {
-        var height = 0
-        
-        if noteType == textBlock {
-            let block = UICollectionViewCell() as! TextBlock
-            height = block.textView.numberOfLines() * 10
-        } else {
-            height = 200
-        }
-        return height
-    }
-    
-    // MARK: register every type of cells with each xib:
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let note = noteItemArraySorted[indexPath.row]
-        
-        if note.noteItemType == textBlock {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textBlock, for: indexPath) as! TextBlock
-            return cell
-        }
-        
-    }
-    
-    var note = Note()
-    // var noteItem = NoteItem()
-    
-    var noteItemArraySorted: [NoteItem] = [NoteItem]()
-    
-    var blockType = ""
-    
-    // MARK: - note cells
     var textBlock = "TextBlock"
     
     // MARK: - Views
     lazy var scrollView         = UIScrollView()
-    lazy var noteCollectionView = UICollectionView()
+    lazy var blockTableView     = UITableView()
+    
+    lazy var note = Note()
+    var noteItemArray_Sorted: [NoteItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        noteItemArraySorted = note.noteItemArray.sorted(by: { $0.noteItemOrder < $1.noteItemOrder })
+        noteItemArray_Sorted = note.noteItemArray.sorted { $0.noteItemOrder < $1.noteItemOrder }
         
         title = note.wrappedNoteName
         self.view.backgroundColor = .white
         
-        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addBlockNote))
+        // let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addBlockNote))
         
-        self.navigationItem.rightBarButtonItem = rightAddButton
+        // self.navigationItem.rightBarButtonItem = rightAddButton
         
         // MARK: - ScrollView
         scrollView.bounces                      = true
@@ -100,115 +60,9 @@ class C1NoteDetailView: UIViewController, UICollectionViewDataSource, UICollecti
             make.top.equalTo(view.snp.top)
             make.bottom.left.right.equalTo(view)
         }
-        
-        // MARK: - UICollectionView
-        registerNoteCells()
-        
-        noteCollectionView.dataSource = self
-        noteCollectionView.bounces = false
-        noteCollectionView.isScrollEnabled = false
-        
-        scrollView.addSubview(noteCollectionView)
-        noteCollectionView.backgroundColor = UIColor(named: "DarkBackground")
-        
-        noteCollectionView.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(scrollView.snp.width).offset(-40)
-            make.top.equalTo(scrollView.snp.top).offset(25)
-            // height:
-            // make.height.greaterThanOrEqualToSuperview()
-            
-            if !note.noteItemArray.isEmpty {
-                make.height.greaterThanOrEqualTo(note.noteItemArray.count * 100)
-            } else if note.noteItemArray.count <= 7 {
-                make.height.greaterThanOrEqualTo(650)
-            } else {
-                print("Nothing in UICollectionView")
-            }
-            
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalTo(scrollView.snp.bottom).offset(20)
-        }
-        
-        self.view.layoutIfNeeded()
-        
     }
     
-    @objc func addBlockNote() {
-        let chooseBlockMenu = UIAlertController(title: nil, message: "Choose your block", preferredStyle: .actionSheet)
-        
-        let textBlock = UIAlertAction(title: "Text Block", style: .default) { action in
-            //
-            print("add Text Block")
-        }
-        
-        let close = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        chooseBlockMenu.addAction(textBlock)
-        chooseBlockMenu.addAction(close)
-        
-        self.present(chooseBlockMenu, animated: true)
-    }
-    
-    func addBlock(blockType: String) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let viewContext = appDelegate.persistentContainerOffline.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "NoteItem", in: viewContext)!
-        let noteItem = NSManagedObject(entity: entity, insertInto: viewContext)
-        
-        if blockType == textBlock {
-            noteItem.setValue(blockType, forKey: "noteItemType")
-        } else {
-            return
-        }
-        // MARK: - make other types of blocks
-        
-        if note.noteItemArray.isEmpty {
-            noteItem.setValue(1, forKey: "noteItemOrder")
-        } else {
-            noteItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
-        }
-        
-        noteItem.setValue("Lorem ipsum dolor sit amet or how is it written correctly?))", forKey: "noteItemText")
-        
-        do {
-            self.note.addObject(value: noteItem, forKey: "noteItems")
-            
-            if self.note.hasChanges {
-                try viewContext.save()
-            } else {
-                fatalError("Just testing if something will go wrong, delete it after some time")
-            }
-            
-            self.noteCollectionView.layoutIfNeeded()
-            self.noteCollectionView.updateConstraints()
-            self.noteCollectionView.reloadData()
-        } catch let error as NSError {
-            print("Could not save and add note. \(error), \(error.userInfo)")
-        }
-        
-    }
-    
-    fileprivate func registerNoteCells() {
-        noteCollectionView.register(TextBlock.self, forCellWithReuseIdentifier: textBlock)
-    }
-    
-// note: noteName, noteLevel, noteType, noteIsMarked, noteID
-// noteItem = noteItemType, noteItemName, noteItemText, noteItemOrder
     
     
 }
-
-//MARK: - UITextView
-extension UITextView{
-
-    func numberOfLines() -> Int{
-        if let fontUnwrapped = self.font{
-            return Int(self.contentSize.height / fontUnwrapped.lineHeight)
-        }
-        return 100
-    }
-
-}
+        
