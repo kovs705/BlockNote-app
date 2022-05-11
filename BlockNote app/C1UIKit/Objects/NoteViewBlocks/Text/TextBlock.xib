@@ -33,7 +33,6 @@
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="bBT-Ia-HhV" firstAttribute="leading" secondItem="Gco-h3-7Fk" secondAttribute="leading" constant="8" id="4xo-th-182"/>
-                            <constraint firstAttribute="width" constant="360" id="6WK-57-Oht"/>
                             <constraint firstAttribute="bottom" secondItem="bBT-Ia-HhV" secondAttribute="bottom" constant="8" id="PBN-8V-Q86"/>
                             <constraint firstItem="bBT-Ia-HhV" firstAttribute="top" secondItem="Gco-h3-7Fk" secondAttribute="top" constant="8" id="Zkb-EQ-7HL"/>
                             <constraint firstAttribute="trailing" secondItem="bBT-Ia-HhV" secondAttribute="trailing" constant="8" id="wdm-mz-LVj"/>
@@ -54,10 +53,6 @@
                 <constraint firstItem="Gco-h3-7Fk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qG0-aM-NJx"/>
             </constraints>
             <size key="customSize" width="360" height="612"/>
-            <connections>
-                <outlet property="cellView" destination="Gco-h3-7Fk" id="lE1-9p-VOx"/>
-                <outlet property="textView" destination="bBT-Ia-HhV" id="SFr-wu-UvT"/>
-            </connections>
             <point key="canvasLocation" x="363.768115942029" y="282.58928571428572"/>
         </collectionViewCell>
     </objects>

@@ -8,12 +8,14 @@
 import CoreData
 import UIKit
 
-class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+// class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class C1NoteView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // UICollectionViewDelegateFlowLayout
     lazy var note = Note()
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topNoteName: UITextView!
-    @IBOutlet weak var blockCollectionView: UICollectionView!
+    // @IBOutlet weak var blockCollectionView: UICollectionView!
+    @IBOutlet weak var blockUITableView: UITableView!
     
     var noteItemArray_Sorted: [NoteItem] = []
     
@@ -43,13 +45,18 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         // Sorting and other stuff
         noteItemArray_Sorted = note.noteItemArray.sorted { $0.noteItemOrder < $1.noteItemOrder }
         
-        // UICollectionView
-        blockCollectionView.register(UINib(nibName: "TextBlock", bundle: nil), forCellWithReuseIdentifier: textBlock)
-        // blockCollectionView?.collectionViewLayout = layout
+        // UITableView
+        blockUITableView.delegate = self
+        blockUITableView.dataSource = self
         
-        blockCollectionView.allowsSelection = true
-        blockCollectionView.dataSource      = self
-        blockCollectionView.delegate        = self
+        
+        // UICollectionView
+        // blockCollectionView.register(UINib(nibName: "TextBlock", bundle: nil), forCellWithReuseIdentifier: textBlock)
+//        blockCollectionView?.collectionViewLayout = layout
+//
+//        blockCollectionView.allowsSelection = true
+//        blockCollectionView.dataSource      = self
+//        blockCollectionView.delegate        = self
         
         // debug
         print("\(noteItemArray_Sorted.count)")
@@ -57,9 +64,31 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         
     }
     
+    // MARK: UITableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return noteItemArray_Sorted.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let noteItem = noteItemArray_Sorted[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
+        
+        cell.textChanged { [weak tableView] (newText: String) in
+            noteItem.noteItemText = newText
+            
+            DispatchQueue.main.async {
+                tableView?.beginUpdates()
+                tableView?.endUpdates()
+            }
+        }
+        return cell
+    }
+    
     // MARK: - UICollectionView
+    /*
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        noteItemArray_Sorted.count
+        return noteItemArray_Sorted.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,19 +106,19 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     // MARK: - sizing for blocks
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-//            let basicHeight: CGFloat = 100
-//            let width = blockCollectionView.safeAreaLayoutGuide.layoutFrame.width
-//            - sectionInset.left
-//            - sectionInset.right
-//            - blockCollectionView.contentInset.left
-//            - blockCollectionView.contentInset.right
-//
-//            return CGSize(width: width, height: basicHeight)
-//
-//        }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+        let basicHeight: CGFloat = 100
+        let width = blockCollectionView.safeAreaLayoutGuide.layoutFrame.width
+        - sectionInset.left
+        - sectionInset.right
+        - blockCollectionView.contentInset.left
+        - blockCollectionView.contentInset.right
+        
+        return CGSize(width: width, height: basicHeight)
+        
+    }
+    */
     
     
     
@@ -100,12 +129,13 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         // save action button
         let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
             
-            guard
-                let textField = alert.textFields?.first,
-                let blockToSave = textField.text
-            else {
-                return
-            }
+//            guard
+//                // let textField = alert.textFields?.first,
+//                // let blockToSave = textField.text
+//            else {
+//                return
+//            }
+            let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
             
             self.save(blockType: textBlock, blockText: blockToSave)
             // self.groupCollection.reloadData()
@@ -113,7 +143,7 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
         // cancel action button
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        alert.addTextField()
+        // alert.addTextField()
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         
@@ -147,7 +177,8 @@ class C1NoteView: UIViewController, UICollectionViewDataSource, UICollectionView
             print("Successfully added")
             try managedContext.save()
             
-            blockCollectionView.reloadData()
+            //blockCollectionView.reloadData()
+            blockUITableView.reloadData()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
