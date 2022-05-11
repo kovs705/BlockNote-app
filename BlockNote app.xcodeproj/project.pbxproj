@@ -50,6 +50,7 @@
 		4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC178E828075C96004FF965 /* C1NoteDetailView.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
+		4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE639CC282C534100CD08B2 /* TVTextBlock.xib */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
 		4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
@@ -121,6 +122,7 @@
 		4EC178E828075C96004FF965 /* C1NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailView.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
+		4EE639CC282C534100CD08B2 /* TVTextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVTextBlock.xib; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
 		4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				4EAC48C32808A0390094181B /* CVTextBlock.swift */,
 				4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */,
+				4EE639CC282C534100CD08B2 /* TVTextBlock.xib */,
 				4EAC48C42808A0390094181B /* TextBlock.xib */,
 			);
 			path = Text;
@@ -528,6 +531,7 @@
 				4E82AA932770F90F00ABAA44 /* GroupCollectionViewCell.xib in Resources */,
 				4E44C795278CD0EA0054E5E2 /* SnowBackground.sks in Resources */,
 				4E1803B7274058F00096A87C /* LaunchScreen.storyboard in Resources */,
+				4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */,
 				4E1803B4274058F00096A87C /* Assets.xcassets in Resources */,
 				4E44C796278CD0EA0054E5E2 /* Assets.xcassets in Resources */,
 				4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */,
