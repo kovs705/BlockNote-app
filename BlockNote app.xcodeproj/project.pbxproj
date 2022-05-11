@@ -331,10 +331,8 @@
 		4EAC48C82808A0570094181B /* Text */ = {
 			isa = PBXGroup;
 			children = (
-				4EAC48C32808A0390094181B /* CVTextBlock.swift */,
-				4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */,
-				4EE639CC282C534100CD08B2 /* TVTextBlock.xib */,
-				4EAC48C42808A0390094181B /* TextBlock.xib */,
+				4EE639D0282C6DB900CD08B2 /* CollectionView */,
+				4EE639CF282C6DA600CD08B2 /* tableView */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -391,6 +389,24 @@
 				4EC178EA28075C9B004FF965 /* ProgrammaticUI */,
 			);
 			path = "UIKit views";
+			sourceTree = "<group>";
+		};
+		4EE639CF282C6DA600CD08B2 /* tableView */ = {
+			isa = PBXGroup;
+			children = (
+				4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */,
+				4EE639CC282C534100CD08B2 /* TVTextBlock.xib */,
+			);
+			path = tableView;
+			sourceTree = "<group>";
+		};
+		4EE639D0282C6DB900CD08B2 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4EAC48C32808A0390094181B /* CVTextBlock.swift */,
+				4EAC48C42808A0390094181B /* TextBlock.xib */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		4EF4CBCA27F1E76F0034D66B /* ViewCells */ = {

@@ -535,7 +535,7 @@
         <!--showNoteView-->
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
-                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="showNoteView" id="11V-Pk-E9N" customClass="C1NoteDetailView" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWz-j6-8Vf" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -585,9 +585,6 @@
                                                                 <constraint firstAttribute="bottom" secondItem="tCI-Ca-jdJ" secondAttribute="bottom" constant="8" id="qXI-bN-0oy"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="textView" destination="tCI-Ca-jdJ" id="I2B-YX-LVG"/>
-                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -622,13 +619,13 @@
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="leading" secondItem="1s5-hW-Ls3" secondAttribute="leading" id="crh-9D-Gcx"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="bottom" secondItem="1s5-hW-Ls3" secondAttribute="bottom" constant="34" id="kPc-ef-GFk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="9CH-2d-j8b"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
-                    <connections>
-                        <outlet property="blockUITableView" destination="Y9g-3H-osJ" id="o9B-wy-WZt"/>
-                        <outlet property="scrollView" destination="9CH-2d-j8b" id="jiJ-6a-c7E"/>
-                        <outlet property="topNoteName" destination="cmQ-Qr-4cB" id="8fX-j8-AEp"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,7 +15,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textView.delegate = self
+        // textView.delegate = self
     }
     
     func textChanged(action: @escaping (String) -> Void) {
