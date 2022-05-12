@@ -21,7 +21,7 @@ import SnapKit
  */
 
 
-class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
     
     var textBlock = "TextBlock"
@@ -57,8 +57,8 @@ class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSo
         // scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentSize                  = self.view.frame.size
-        // scrollView.backgroundColor              = UIColor(named: "DarkBackground")
-        scrollView.backgroundColor = UIColor.red
+        scrollView.backgroundColor              = UIColor(named: "DarkBackground")
+        // scrollView.backgroundColor = UIColor.red
         
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
@@ -76,7 +76,18 @@ class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSo
         titleTextView.isEditable = true
         titleTextView.isScrollEnabled = false
         titleTextView.bounces = false
-        // titleTextView.font = UIFont(name: "Roboto", size: 35)
+        titleTextView.font = UIFont.preferredFont(forTextStyle: .title1)
+        
+        titleTextView.delegate = self
+        
+        //titleTextView.layer.cornerRadius = 20
+        //titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        //
+        //titleTextView.layer.shadowColor = UIColor.gray.cgColor;
+        //titleTextView.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
+        //titleTextView.layer.shadowOpacity = 0.4
+        //titleTextView.layer.shadowRadius = 20
+        //titleTextView.layer.masksToBounds = false
         
         titleTextView.snp.makeConstraints { (make) -> Void in
             
