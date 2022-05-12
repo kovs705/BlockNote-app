@@ -53,10 +53,6 @@ class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSo
         blockTableView.bounces = false
         blockTableView.isScrollEnabled = false
         
-        // let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addBlockNote))
-        
-        // self.navigationItem.rightBarButtonItem = rightAddButton
-        
         // MARK: - ScrollView
         // scrollView.contentSize                  = CGSize(width: Int(self.view.frame.size.width), height: 100)
         scrollView.showsVerticalScrollIndicator = false
@@ -80,54 +76,62 @@ class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSo
         titleTextView.isEditable = true
         titleTextView.isScrollEnabled = false
         titleTextView.bounces = false
-        titleTextView.font = UIFont(name: "Roboto", size: 35)
+        // titleTextView.font = UIFont(name: "Roboto", size: 35)
         
         titleTextView.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(50)
             
             make.top.equalTo(scrollView.snp.top).offset(8)
             make.left.equalTo(scrollView.snp.left).offset(8)
-            make.right.equalTo(scrollView.snp.right).offset(8)
+            // make.right.equalTo(scrollView.snp.right).offset(8)
+            
+            make.width.equalTo(scrollView.snp.width).offset(-20)
+            make.height.equalTo(50)
             
         }
         
-        // MARK: - UITableView
-        scrollView.addSubview(blockTableView)
-        blockTableView.backgroundColor = UIColor(named: "DarkBackground")
-        
-        blockTableView.snp.makeConstraints { (make) -> Void in
-            // make.width.equalTo(scrollView.snp.width).offset(-40)
-            make.top.equalTo(titleTextView.snp.bottom).offset(8)
-            // TODO: Place a TextView changable title on top of UITableView
-            
-            if noteItemArray_Sorted.isEmpty {
-                print("Nothing to show")
-            }
-            
-            make.height.equalTo(360)
-            
-            make.left.equalTo(scrollView.snp.left).offset(10)
-            make.right.equalTo(scrollView.snp.right).offset(10)
-            make.bottom.equalTo(scrollView.snp.bottom).offset(10)
-        }
-        
-        self.view.layoutIfNeeded()
     }
-    
-    
+//
+
+//
+
+//
+//        // MARK: - UITableView
+//        scrollView.addSubview(blockTableView)
+//        blockTableView.backgroundColor = UIColor(named: "DarkBackground")
+//
+//        blockTableView.snp.makeConstraints { (make) -> Void in
+//            // make.width.equalTo(scrollView.snp.width).offset(-40)
+//            make.top.equalTo(titleTextView.snp.bottom).offset(8)
+//            // TODO: Place a TextView changable title on top of UITableView
+//
+//            if noteItemArray_Sorted.isEmpty {
+//                print("Nothing to show")
+//            }
+//
+//            make.height.equalTo(360)
+//
+//            make.left.equalTo(scrollView.snp.left).offset(10)
+//            make.right.equalTo(scrollView.snp.right).offset(10)
+//            make.bottom.equalTo(scrollView.snp.bottom).offset(10)
+//        }
+//
+//        self.view.layoutIfNeeded()
+//    }
+//
+//
     // MARK: UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noteItemArray_Sorted.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_Sorted[indexPath.row]
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
-        
+
         cell.textChanged { [weak tableView] (newText: String) in
             noteItem.noteItemText = newText
-            
+
             DispatchQueue.main.async {
                 tableView?.beginUpdates()
                 tableView?.endUpdates()

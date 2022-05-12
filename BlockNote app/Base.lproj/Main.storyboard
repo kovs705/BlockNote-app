@@ -619,11 +619,6 @@
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="leading" secondItem="1s5-hW-Ls3" secondAttribute="leading" id="crh-9D-Gcx"/>
                             <constraint firstItem="9CH-2d-j8b" firstAttribute="bottom" secondItem="1s5-hW-Ls3" secondAttribute="bottom" constant="34" id="kPc-ef-GFk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="9CH-2d-j8b"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="NoteView" id="f0V-dG-uY9"/>
                 </viewController>
