@@ -82,6 +82,7 @@ class C1NoteDetailView: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         //titleTextView.layer.cornerRadius = 20
         //titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
         //
         //titleTextView.layer.shadowColor = UIColor.gray.cgColor;
         //titleTextView.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
