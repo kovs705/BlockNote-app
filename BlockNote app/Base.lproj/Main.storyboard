@@ -532,6 +532,50 @@
             </objects>
             <point key="canvasLocation" x="2676.9230769230767" y="42.654028436018955"/>
         </scene>
+        <!--DetailTBC-->
+        <scene sceneID="AUK-ss-KKk">
+            <objects>
+                <tableViewController id="4hk-C5-ZVN" customClass="C1DetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ir7-wQ-dUF">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="ceZ-g4-xTW">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="190"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ceZ-g4-xTW" id="P0Q-9D-BaY">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="190"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="190"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" id="1Wf-Hg-pcz"/>
+                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" id="4Ct-Po-lyr"/>
+                                        <constraint firstAttribute="bottom" secondItem="t98-5w-jP2" secondAttribute="bottom" id="Nh2-en-EVp"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" id="ena-cZ-yqp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4hk-C5-ZVN" id="o5Y-U2-Vhc"/>
+                            <outlet property="delegate" destination="4hk-C5-ZVN" id="mLd-yD-RM0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0JD-9J-LqU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3504.6153846153843" y="101.65876777251184"/>
+        </scene>
         <!--showNoteView-->
         <scene sceneID="jZ1-TD-Z1e">
             <objects>
@@ -624,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEa-OF-AUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3469.2307692307691" y="42.654028436018955"/>
+            <point key="canvasLocation" x="3506" y="-574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">

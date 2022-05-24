@@ -49,6 +49,7 @@
 		4EAC48C62808A0390094181B /* TextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC48C42808A0390094181B /* TextBlock.xib */; };
 		4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC178E828075C96004FF965 /* C1NoteDetailView.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
+		4ED97C91283D206000A257D5 /* C1DetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED97C90283D206000A257D5 /* C1DetailTBC.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
 		4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE639CC282C534100CD08B2 /* TVTextBlock.xib */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
@@ -121,6 +122,7 @@
 		4EAC48C42808A0390094181B /* TextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBlock.xib; sourceTree = "<group>"; };
 		4EC178E828075C96004FF965 /* C1NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailView.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
+		4ED97C90283D206000A257D5 /* C1DetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1DetailTBC.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
 		4EE639CC282C534100CD08B2 /* TVTextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVTextBlock.xib; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
+				4ED97C90283D206000A257D5 /* C1DetailTBC.swift */,
 				4EC178EA28075C9B004FF965 /* ProgrammaticUI */,
 			);
 			path = "UIKit views";
@@ -595,6 +598,7 @@
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
+				4ED97C91283D206000A257D5 /* C1DetailTBC.swift in Sources */,
 				4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */,
 				4E44C79C278CD2970054E5E2 /* GroupCreateView.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
