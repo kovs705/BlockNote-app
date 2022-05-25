@@ -7,39 +7,65 @@
 
 import UIKit
 
-class C1DetailTBC: UITableViewController {
+class C1NoteDetailTBC: UITableViewController {
+    
+    @IBOutlet var noteListTB: UITableView!
+    
+    lazy var note = Note()
+    var noteItemArray_sorted: [NoteItem] = []
+    
+    // block types:
+    let textBlock = "TextBlock"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
+        
+        // TODO: Put this in viewWillAppear?
+        noteItemArray_sorted = note.noteItemArray.sorted {
+            $0.noteItemOrder < $1.noteItemOrder
+        }
+        noteListTB.delegate = self
+        noteListTB.dataSource = self
+        
+        // Navigation
+        title = note.wrappedNoteName
+        
+        // Debug
+        print("\(noteItemArray_sorted.count)")
+        
+        /// Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        /// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return noteItemArray_sorted.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let noteItem = noteItemArray_sorted[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
+        
+        cell.textChanged { [weak tableView] (newText: String) in
+            noteItem.noteItemText = newText
+            
+            DispatchQueue.main.async {
+                tableView?.beginUpdates()
+                tableView?.endUpdates()
+            }
+        }
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

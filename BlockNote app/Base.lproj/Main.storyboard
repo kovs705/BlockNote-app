@@ -473,7 +473,7 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="310" height="50"/>
                                                         <connections>
-                                                            <segue destination="11V-Pk-E9N" kind="show" identifier="noteDetail" id="mCa-9z-THR"/>
+                                                            <segue destination="4hk-C5-ZVN" kind="show" identifier="noteDetail" id="wMY-iL-7SE"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -532,10 +532,10 @@
             </objects>
             <point key="canvasLocation" x="2676.9230769230767" y="42.654028436018955"/>
         </scene>
-        <!--DetailTBC-->
+        <!--Note DetailTBC-->
         <scene sceneID="AUK-ss-KKk">
             <objects>
-                <tableViewController id="4hk-C5-ZVN" customClass="C1DetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4hk-C5-ZVN" customClass="C1NoteDetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ir7-wQ-dUF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -571,6 +571,10 @@
                             <outlet property="delegate" destination="4hk-C5-ZVN" id="mLd-yD-RM0"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Lh1-jN-L7i"/>
+                    <connections>
+                        <outlet property="noteListTB" destination="Ir7-wQ-dUF" id="VTd-VT-jdm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0JD-9J-LqU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -585,7 +589,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CH-2d-j8b" userLabel="Scroll">
-                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="844" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-o2-VPA" userLabel="Page">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
