@@ -10,12 +10,11 @@ import UIKit
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
-    
     var textChanged: ((String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // textView.delegate = self
+        textView.delegate = self
     }
     
     func textChanged(action: @escaping (String) -> Void) {
@@ -26,10 +25,15 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         textChanged?(textView.text)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textChanged = nil
     }
+    
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
     
 }

@@ -132,7 +132,12 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
 //           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
 //            destination.note = self.noteArraySorted[noteIndex.row]
 //        }
-        if let destination = segue.destination as? C1NoteDetailView,
+        
+//        if let destination = segue.destination as? C1NoteDetailView,
+//           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
+//            destination.note = self.noteArraySorted[noteIndex.row]
+//        }
+        if let destination = segue.destination as? C1NoteDetailTBC,
            let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
             destination.note = self.noteArraySorted[noteIndex.row]
         }

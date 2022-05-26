@@ -50,6 +50,8 @@
 		4EC178E928075C96004FF965 /* C1NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC178E828075C96004FF965 /* C1NoteDetailView.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */; };
+		4ED982F2283EB8400063C1F1 /* zeroPaddingTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F1283EB8400063C1F1 /* zeroPaddingTV.swift */; };
+		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
 		4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE639CC282C534100CD08B2 /* TVTextBlock.xib */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
@@ -123,6 +125,8 @@
 		4EC178E828075C96004FF965 /* C1NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailView.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailTBC.swift; sourceTree = "<group>"; };
+		4ED982F1283EB8400063C1F1 /* zeroPaddingTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zeroPaddingTV.swift; sourceTree = "<group>"; };
+		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
 		4EE639CC282C534100CD08B2 /* TVTextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVTextBlock.xib; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */,
+				4ED982F1283EB8400063C1F1 /* zeroPaddingTV.swift */,
+				4ED982F3283EB9110063C1F1 /* StringHeight.swift */,
 				4EE639CC282C534100CD08B2 /* TVTextBlock.xib */,
 			);
 			path = tableView;
@@ -581,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */,
+				4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */,
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E44C7B0278CD54B0054E5E2 /* NoteItemObject.swift in Sources */,
 				4E44C79E278CD2C80054E5E2 /* GroupDetailView.swift in Sources */,
@@ -591,6 +598,7 @@
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
+				4ED982F2283EB8400063C1F1 /* zeroPaddingTV.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4E581A8027E3D55C007731A8 /* C1NoteView.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,

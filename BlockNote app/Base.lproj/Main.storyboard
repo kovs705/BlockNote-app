@@ -541,15 +541,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="ceZ-g4-xTW">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="190"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="169" id="ceZ-g4-xTW" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="169"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ceZ-g4-xTW" id="P0Q-9D-BaY">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="190"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="190"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="150.66666666666666"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -557,13 +557,16 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
+                                    <color key="backgroundColor" name="AccentColor"/>
                                     <constraints>
-                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" id="1Wf-Hg-pcz"/>
-                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" id="4Ct-Po-lyr"/>
-                                        <constraint firstAttribute="bottom" secondItem="t98-5w-jP2" secondAttribute="bottom" id="Nh2-en-EVp"/>
-                                        <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" id="ena-cZ-yqp"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" id="cAX-5g-eYw"/>
+                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" id="mBS-WW-kcT"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" id="pCW-Y3-XYN"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="t98-5w-jP2" id="1aQ-0U-dzb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -699,6 +702,9 @@
         </designable>
         <designable name="Uw0-wd-HlC">
             <size key="intrinsicContentSize" width="360" height="300"/>
+        </designable>
+        <designable name="t98-5w-jP2">
+            <size key="intrinsicContentSize" width="3362" height="17"/>
         </designable>
     </designables>
     <resources>

@@ -42,6 +42,10 @@ class C1NoteDetailTBC: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return noteItemArray_sorted[indexPath.row].noteItemText
+            .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 14))
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,6 +60,8 @@ class C1NoteDetailTBC: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
         
+        cell.textView.text = noteItem.noteItemText
+        
         cell.textChanged { [weak tableView] (newText: String) in
             noteItem.noteItemText = newText
             
@@ -65,6 +71,10 @@ class C1NoteDetailTBC: UITableViewController {
             }
         }
         return cell
+    }
+    
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     /*
