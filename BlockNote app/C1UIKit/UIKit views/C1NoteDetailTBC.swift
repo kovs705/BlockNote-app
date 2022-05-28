@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class C1NoteDetailTBC: UITableViewController {
     
@@ -13,6 +14,7 @@ class C1NoteDetailTBC: UITableViewController {
     
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
+    
     
     // block types:
     let textBlock = "TextBlock"
@@ -39,6 +41,8 @@ class C1NoteDetailTBC: UITableViewController {
 
         /// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
+        self.navigationItem.rightBarButtonItem = addBlockButton
     }
 
     // MARK: - Table view data source
@@ -121,5 +125,67 @@ class C1NoteDetailTBC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Add block
+    @objc func addBlock() {
+        let alert = UIAlertController(title: "New block", message: "Enter some text for block", preferredStyle: .alert)
+        
+        // save action button
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+//            guard
+//                // let textField = alert.textFields?.first,
+//                // let blockToSave = textField.text
+//            else {
+//                return
+//            }
+            let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
+            
+            self.save(blockType: textBlock, blockText: blockToSave)
+            // self.groupCollection.reloadData()
+        }
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        // alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+        
+        
+    }
+    // MARK: - Save block
+    func save(blockType: String, blockText: String) {
+        guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+        let managedContext =
+        appDelegate.persistentContainerOffline.viewContext
+        
+        let entity =
+        NSEntityDescription.entity(forEntityName: "NoteItem",
+                                   in: managedContext)!
+        
+        let blockItem = NSManagedObject(entity: entity,
+                                    insertInto: managedContext)
+        
+        blockItem.setValue(blockType, forKey: "noteItemType")
+        blockItem.setValue(blockText, forKey: "noteItemText")
+        
+        do {
+            // note.noteItemArray.insert(blockItem, at: 0)
+            note.addObject(value: blockItem, forKey: "noteItems")
+
+            print("Successfully added")
+            try managedContext.save()
+            
+            //blockCollectionView.reloadData()
+            noteListTB.reloadData()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
 
 }
