@@ -15,6 +15,7 @@ class C1NoteDetailTBC: UITableViewController {
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
     
+    // var noteItemNSManagedObjects: [NSManagedObject] = []
     
     // block types:
     let textBlock = "TextBlock"
@@ -80,6 +81,8 @@ class C1NoteDetailTBC: UITableViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -177,12 +180,19 @@ class C1NoteDetailTBC: UITableViewController {
         do {
             // note.noteItemArray.insert(blockItem, at: 0)
             note.addObject(value: blockItem, forKey: "noteItems")
-
+            
             print("Successfully added")
             try managedContext.save()
             
-            //blockCollectionView.reloadData()
-            noteListTB.reloadData()
+            // update the last cell to add new one into tableView:
+            
+            DispatchQueue.main.async { () -> Void in
+                self.noteListTB.reloadData()
+            }
+//            self.noteListTB.beginUpdates()
+//            // self.noteListTB.insertRows(at: [IndexPath.init(row: self.noteItemArray_sorted.count + 1, section: 0)], with: .automatic)
+//            self.noteListTB.reloadData()
+//            self.noteListTB.endUpdates()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
