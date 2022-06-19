@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BEF933CE572A9F9E47F2285 /* Pods_BlockNote_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */; };
 		4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */; };
 		4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803A7274058EA0096A87C /* AppDelegate.swift */; };
 		4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803A9274058EA0096A87C /* SceneDelegate.swift */; };
@@ -22,7 +23,6 @@
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
 		4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429727EE5ABE0020E380 /* NoteCell.swift */; };
 		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
-		4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E273ADC27B7C84500A98409 /* SnapKit */; };
 		4E323E0627BD160B0062008A /* noteListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E323E0527BD160B0062008A /* noteListObject.swift */; };
 		4E44C790278CD0730054E5E2 /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C78F278CD0730054E5E2 /* C1NavigationView.swift */; };
 		4E44C792278CD0980054E5E2 /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C791278CD0980054E5E2 /* C1NavViewModel.swift */; };
@@ -60,6 +60,8 @@
 		4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */; };
 		4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBA274079D80096F021 /* Extensions.swift */; };
 		4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBC27407A080096F021 /* Persistence.swift */; };
+		6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */; };
+		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17F35A151EF1024AE814C0CC /* Pods-BlockNote appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote appTests.release.xcconfig"; path = "Target Support Files/Pods-BlockNote appTests/Pods-BlockNote appTests.release.xcconfig"; sourceTree = "<group>"; };
+		1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		294F13A704046044F78BDA64 /* Pods-BlockNote app-BlockNote appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app-BlockNote appUITests.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		301435EC7D9809E0EA4FCE68 /* Pods-BlockNote appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote appTests.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote appTests/Pods-BlockNote appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightLayout.swift; sourceTree = "<group>"; };
 		4E1803A4274058EA0096A87C /* BlockNote app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlockNote app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1803A7274058EA0096A87C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +141,11 @@
 		4EFA5FB6274077540096F021 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EFA5FBA274079D80096F021 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4EFA5FBC27407A080096F021 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_app_BlockNote_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6BAEC32ACC57C1051FDF84E /* Pods-BlockNote app-BlockNote appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
+		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
-				4E273ADD27B7C84500A98409 /* SnapKit in Frameworks */,
+				6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BEF933CE572A9F9E47F2285 /* Pods_BlockNote_appTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +184,8 @@
 				4E1803C0274058F00096A87C /* BlockNote appTests */,
 				4E1803CA274058F00096A87C /* BlockNote appUITests */,
 				4E1803A5274058EA0096A87C /* Products */,
+				5C266FDAFCECF236669BA562 /* Pods */,
+				6DE98D49EE79D0923447DE5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -441,6 +456,29 @@
 			path = C1SwiftUI;
 			sourceTree = "<group>";
 		};
+		5C266FDAFCECF236669BA562 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */,
+				F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */,
+				294F13A704046044F78BDA64 /* Pods-BlockNote app-BlockNote appUITests.debug.xcconfig */,
+				B6BAEC32ACC57C1051FDF84E /* Pods-BlockNote app-BlockNote appUITests.release.xcconfig */,
+				301435EC7D9809E0EA4FCE68 /* Pods-BlockNote appTests.debug.xcconfig */,
+				17F35A151EF1024AE814C0CC /* Pods-BlockNote appTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6DE98D49EE79D0923447DE5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */,
+				A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */,
+				C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -448,9 +486,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E1803D1274058F00096A87C /* Build configuration list for PBXNativeTarget "BlockNote app" */;
 			buildPhases = (
+				14650B34698CA4A6938EF95C /* [CP] Check Pods Manifest.lock */,
 				4E1803A0274058EA0096A87C /* Sources */,
 				4E1803A1274058EA0096A87C /* Frameworks */,
 				4E1803A2274058EA0096A87C /* Resources */,
+				08EB21DF2050F7BAC60073E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -459,7 +499,6 @@
 			name = "BlockNote app";
 			packageProductDependencies = (
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
-				4E273ADC27B7C84500A98409 /* SnapKit */,
 			);
 			productName = "BlockNote app";
 			productReference = 4E1803A4274058EA0096A87C /* BlockNote app.app */;
@@ -469,6 +508,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E1803D4274058F00096A87C /* Build configuration list for PBXNativeTarget "BlockNote appTests" */;
 			buildPhases = (
+				2B2FBA76FF5B15A9EE55C873 /* [CP] Check Pods Manifest.lock */,
 				4E1803B9274058F00096A87C /* Sources */,
 				4E1803BA274058F00096A87C /* Frameworks */,
 				4E1803BB274058F00096A87C /* Resources */,
@@ -487,9 +527,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E1803D7274058F00096A87C /* Build configuration list for PBXNativeTarget "BlockNote appUITests" */;
 			buildPhases = (
+				6C6AE566901D322D22B6F69C /* [CP] Check Pods Manifest.lock */,
 				4E1803C3274058F00096A87C /* Sources */,
 				4E1803C4274058F00096A87C /* Frameworks */,
 				4E1803C5274058F00096A87C /* Resources */,
+				CF4682E83CA3327E1D7FAC0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -535,7 +577,6 @@
 			mainGroup = 4E18039B274058EA0096A87C;
 			packageReferences = (
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
-				4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
 			projectDirPath = "";
@@ -580,6 +621,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08EB21DF2050F7BAC60073E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlockNote app/Pods-BlockNote app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlockNote app/Pods-BlockNote app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlockNote app/Pods-BlockNote app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14650B34698CA4A6938EF95C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlockNote app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B2FBA76FF5B15A9EE55C873 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlockNote appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C6AE566901D322D22B6F69C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlockNote app-BlockNote appUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF4682E83CA3327E1D7FAC0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E1803A0274058EA0096A87C /* Sources */ = {
@@ -798,6 +942,7 @@
 		};
 		4E1803D2274058F00096A87C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -827,6 +972,7 @@
 		};
 		4E1803D3274058F00096A87C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -856,6 +1002,7 @@
 		};
 		4E1803D5274058F00096A87C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301435EC7D9809E0EA4FCE68 /* Pods-BlockNote appTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -881,6 +1028,7 @@
 		};
 		4E1803D6274058F00096A87C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17F35A151EF1024AE814C0CC /* Pods-BlockNote appTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -906,6 +1054,7 @@
 		};
 		4E1803D8274058F00096A87C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 294F13A704046044F78BDA64 /* Pods-BlockNote app-BlockNote appUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -929,6 +1078,7 @@
 		};
 		4E1803D9274058F00096A87C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6BAEC32ACC57C1051FDF84E /* Pods-BlockNote app-BlockNote appUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -992,14 +1142,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
@@ -1011,11 +1153,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4E273ADC27B7C84500A98409 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E273ADB27B7C84400A98409 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
 		4E44C7AA278CD52C0054E5E2 /* CodeEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */;

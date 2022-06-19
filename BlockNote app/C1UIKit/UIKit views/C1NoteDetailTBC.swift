@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import RxSwift
 
 class C1NoteDetailTBC: UITableViewController {
     
@@ -15,7 +16,7 @@ class C1NoteDetailTBC: UITableViewController {
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
     
-    // var noteItemNSManagedObjects: [NSManagedObject] = []
+    var noteItemNSManagedObjects: [NSManagedObject] = []
     
     // block types:
     let textBlock = "TextBlock"
@@ -23,6 +24,8 @@ class C1NoteDetailTBC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // _ = Observable.of("I installed RxSwift and SwintLint with CocoaPods!")
         
         // TODO: Put this in viewWillAppear?
         noteItemArray_sorted = note.noteItemArray.sorted {
@@ -44,6 +47,8 @@ class C1NoteDetailTBC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
+        
+        
     }
 
     // MARK: - Table view data source
@@ -185,10 +190,11 @@ class C1NoteDetailTBC: UITableViewController {
             try managedContext.save()
             
             // update the last cell to add new one into tableView:
-            
+            noteListTB.beginUpdates()
             DispatchQueue.main.async { () -> Void in
                 self.noteListTB.reloadData()
             }
+            noteListTB.endUpdates()
 //            self.noteListTB.beginUpdates()
 //            // self.noteListTB.insertRows(at: [IndexPath.init(row: self.noteItemArray_sorted.count + 1, section: 0)], with: .automatic)
 //            self.noteListTB.reloadData()
