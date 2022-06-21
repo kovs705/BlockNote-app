@@ -7,7 +7,8 @@
 
 import UIKit
 import CoreData
-import RxSwift
+// import RxSwift
+// import RxCocoa
 
 class C1NoteDetailTBC: UITableViewController {
     
@@ -15,22 +16,28 @@ class C1NoteDetailTBC: UITableViewController {
     
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
+    var debugNumberOfNotesInSortedArray = 0
     
-    var noteItemNSManagedObjects: [NSManagedObject] = []
+    // RxSwift: future thing, I guess
+    // var db = DisposeBag()
     
     // block types:
     let textBlock = "TextBlock"
     
-
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // _ = Observable.of("I installed RxSwift and SwintLint with CocoaPods!")
+        // register textBlock cell
+        // tableView.register(UINib(nibName: "TVTextBlock", bundle: nil), forCellReuseIdentifier: textBlock)
+        
         
         // TODO: Put this in viewWillAppear?
-        noteItemArray_sorted = note.noteItemArray.sorted {
-            $0.noteItemOrder < $1.noteItemOrder
-        }
+        sortAndUpdate()
+        
+        debugNumberOfNotesInSortedArray = noteItemArray_sorted.count
+        print("Debug number: \(debugNumberOfNotesInSortedArray)")
+        
         noteListTB.delegate = self
         noteListTB.dataSource = self
         
@@ -39,6 +46,8 @@ class C1NoteDetailTBC: UITableViewController {
         
         // Debug
         print("\(noteItemArray_sorted.count)")
+        noteListTB.dataSource = self
+        noteListTB.delegate = self
         
         /// Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -65,16 +74,17 @@ class C1NoteDetailTBC: UITableViewController {
         return noteItemArray_sorted.count
     }
 
+    /// commented it to use RxSwift in ViewDidLoad..
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
-        
+
         cell.textView.text = noteItem.noteItemText
-        
+
         cell.textChanged { [weak tableView] (newText: String) in
             noteItem.noteItemText = newText
-            
+
             DispatchQueue.main.async {
                 tableView?.beginUpdates()
                 tableView?.endUpdates()
@@ -86,6 +96,8 @@ class C1NoteDetailTBC: UITableViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    
     
     
 
@@ -134,6 +146,14 @@ class C1NoteDetailTBC: UITableViewController {
     }
     */
     
+    func sortAndUpdate() {
+        /// made for reuse multiple times to update sorted array of
+        //TODO: make a switch for other objects in CoreData, (make a reusable public func)
+        noteItemArray_sorted = note.noteItemArray.sorted {
+            $0.noteItemOrder < $1.noteItemOrder
+        }
+    }
+    
     // MARK: - Add block
     @objc func addBlock() {
         let alert = UIAlertController(title: "New block", message: "Enter some text for block", preferredStyle: .alert)
@@ -165,6 +185,8 @@ class C1NoteDetailTBC: UITableViewController {
     }
     // MARK: - Save block
     func save(blockType: String, blockText: String) {
+        // var newNumberOfNotes = 0
+        
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -186,15 +208,53 @@ class C1NoteDetailTBC: UITableViewController {
             // note.noteItemArray.insert(blockItem, at: 0)
             note.addObject(value: blockItem, forKey: "noteItems")
             
-            print("Successfully added")
-            try managedContext.save()
+            // get the number of sorted notes and compare with existing number - if they are the same - update the tableView
             
-            // update the last cell to add new one into tableView:
-            noteListTB.beginUpdates()
-            DispatchQueue.main.async { () -> Void in
-                self.noteListTB.reloadData()
+            
+            if managedContext.hasChanges {
+                print("Successfully added")
+                sortAndUpdate()
+                try managedContext.save()
+            } else {
+                print("Something wrong on saving note. No changes? No bitches?")
             }
-            noteListTB.endUpdates()
+            
+            // check for changes in sorted array:
+            if note.noteItems?.count == noteItemArray_sorted.count {
+                
+                print("Same numbers of note")
+                
+                self.noteListTB.performBatchUpdates({
+                    self.noteListTB.insertRows(at: [IndexPath(row: noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+                }, completion: nil)
+                
+                print("Updated rows")
+//                DispatchQueue.main.async {
+//                    self.noteListTB.beginUpdates()
+//                    self.noteListTB.endUpdates()
+//                }
+            } else {
+                sortAndUpdate()
+                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+                // print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
+                
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+                    self.noteListTB.endUpdates()
+                }
+            }
+            
+            
+//            noteListTB.beginUpdates()
+//            DispatchQueue.main.async { () -> Void in
+//                self.noteListTB.reloadData()
+//                print("updated, number of sorted rows: \(self.noteItemArray_sorted.count)")
+//            }
+//            noteListTB.endUpdates()
+            
+            
+            
 //            self.noteListTB.beginUpdates()
 //            // self.noteListTB.insertRows(at: [IndexPath.init(row: self.noteItemArray_sorted.count + 1, section: 0)], with: .automatic)
 //            self.noteListTB.reloadData()
