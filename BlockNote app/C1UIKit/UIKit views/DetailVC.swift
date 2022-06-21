@@ -50,12 +50,15 @@ class DetailVC: UIViewController {
 
         title = groupType.groupName ?? "Unknown"
         
-        noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
+        sortArray()
+        // noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
+        
+        
         
         setupDetailVC()
     }
     
-    
+    // MARK: - IBActions
     @IBAction func addNoteButton(sender: UIButton!) {
         addNote()
     }
@@ -64,6 +67,8 @@ class DetailVC: UIViewController {
         deleteGroup(groupName: self.groupType.wrappedGroupName)
     }
     
+    
+    // MARK: - Delete func
     func deleteGroup(groupName: String) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -91,6 +96,13 @@ class DetailVC: UIViewController {
             }
         } else {
             print("Something wrong on checking the name of the group!")
+        }
+    }
+    
+    // MARK: - Sort func
+    func sortArray() {
+        noteArraySorted = groupType.typesOfNoteArray.sorted {
+            $0.noteID < $1.noteID
         }
     }
     
@@ -122,7 +134,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         CGSize(width: (collectionView.frame.width-4)/1, height: 50)
     }
     
-    // MARK: - Segue to the
+    // MARK: - Segue to the blocks
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "noteDetail", sender: indexPath)
     }
@@ -235,12 +247,18 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
             // adding object
             self.groupType.addObject(value: note, forKey: "noteTypes")
             // saving changes
+            
             if self.groupType.hasChanges {
+                sortArray()
+                self.noteListCollection.performBatchUpdates({
+                    self.noteListCollection.insertItems(at: [IndexPath(item: noteArraySorted.count - 1, section: 0)])
+                }, completion: nil)
                 try viewContext.save()
             } else {
-                fatalError("Just testing if something will go wrong, delete it after some time")
+                print("Something wrong on saving note. No changes? No bitches?")
             }
-                //noteListCollection.reloadData()
+            
+            
             
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")

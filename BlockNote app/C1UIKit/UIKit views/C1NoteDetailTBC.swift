@@ -216,7 +216,7 @@ class C1NoteDetailTBC: UITableViewController {
                 sortAndUpdate()
                 try managedContext.save()
             } else {
-                print("Something wrong on saving note. No changes? No bitches?")
+                print("Something wrong on saving block. No changes? No bitches?")
             }
             
             // check for changes in sorted array:
