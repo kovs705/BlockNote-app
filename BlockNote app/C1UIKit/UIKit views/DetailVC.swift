@@ -136,23 +136,27 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     // MARK: - Segue to the blocks
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        defer {
+            collectionView.isUserInteractionEnabled = true
+        }
         performSegue(withIdentifier: "noteDetail", sender: indexPath)
+        collectionView.isUserInteractionEnabled = false
     }
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        collectionView.reloadItems(at: [indexPath])
+//        collectionView.deselectItem(at: indexPath, animated: true)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = segue.destination as? C1NoteView,
-//           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-//            destination.note = self.noteArraySorted[noteIndex.row]
-//        }
-        
-//        if let destination = segue.destination as? C1NoteDetailView,
-//           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-//            destination.note = self.noteArraySorted[noteIndex.row]
-//        }
         if let destination = segue.destination as? C1NoteDetailTBC,
            let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
             destination.note = self.noteArraySorted[noteIndex.row]
         }
+    }
+    
+    // MARK: - viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        noteListCollection.reloadData()
     }
     
     // MARK: - Setup UI

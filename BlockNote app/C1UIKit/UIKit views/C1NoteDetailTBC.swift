@@ -100,6 +100,7 @@ class C1NoteDetailTBC: UITableViewController {
     
     
     
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -244,21 +245,6 @@ class C1NoteDetailTBC: UITableViewController {
                     self.noteListTB.endUpdates()
                 }
             }
-            
-            
-//            noteListTB.beginUpdates()
-//            DispatchQueue.main.async { () -> Void in
-//                self.noteListTB.reloadData()
-//                print("updated, number of sorted rows: \(self.noteItemArray_sorted.count)")
-//            }
-//            noteListTB.endUpdates()
-            
-            
-            
-//            self.noteListTB.beginUpdates()
-//            // self.noteListTB.insertRows(at: [IndexPath.init(row: self.noteItemArray_sorted.count + 1, section: 0)], with: .automatic)
-//            self.noteListTB.reloadData()
-//            self.noteListTB.endUpdates()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
