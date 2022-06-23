@@ -612,15 +612,15 @@
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <color key="sectionIndexBackgroundColor" name="AccentColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="265" id="RXl-ea-JVc" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="374" height="265"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="215" id="RXl-ea-JVc" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="374" height="215"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RXl-ea-JVc" id="Kyp-9a-hbc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="265"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="215"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tCI-Ca-jdJ">
-                                                                    <rect key="frame" x="8" y="8" width="358" height="249"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="183.33333333333334"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <color key="textColor" systemColor="labelColor"/>
@@ -630,10 +630,9 @@
                                                             </subviews>
                                                             <color key="backgroundColor" name="AccentColor"/>
                                                             <constraints>
-                                                                <constraint firstItem="tCI-Ca-jdJ" firstAttribute="top" secondItem="Kyp-9a-hbc" secondAttribute="top" constant="8" id="3qi-wk-QZa"/>
-                                                                <constraint firstItem="tCI-Ca-jdJ" firstAttribute="leading" secondItem="Kyp-9a-hbc" secondAttribute="leading" constant="8" id="mJc-mm-ihL"/>
-                                                                <constraint firstAttribute="trailing" secondItem="tCI-Ca-jdJ" secondAttribute="trailing" constant="8" id="peP-wu-XP9"/>
-                                                                <constraint firstAttribute="bottom" secondItem="tCI-Ca-jdJ" secondAttribute="bottom" constant="8" id="qXI-bN-0oy"/>
+                                                                <constraint firstItem="tCI-Ca-jdJ" firstAttribute="top" secondItem="Kyp-9a-hbc" secondAttribute="top" id="3qi-wk-QZa"/>
+                                                                <constraint firstItem="tCI-Ca-jdJ" firstAttribute="leading" secondItem="Kyp-9a-hbc" secondAttribute="leading" id="mJc-mm-ihL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tCI-Ca-jdJ" secondAttribute="trailing" id="peP-wu-XP9"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
