@@ -18,6 +18,7 @@ extension NoteItem {
 
     @NSManaged public var noteItemType: String?
     @NSManaged public var noteItemName: String?
+    @NSManaged public var lastChangedNI: Date?
     
     @NSManaged public var noteItemText: String
     @NSManaged public var note: Note?

@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import CoreData
+
+protocol textSaveDelegate: AnyObject {
+    func update(blockText: String, block: NoteItem?)
+    func getText(text: String?)
+}
 
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
     var textChanged: ((String) -> Void)?
+    
+    weak var delegate: textSaveDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +31,12 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        // textChanged?(textView.text)
+        delegate?.getText(text: textView.text)
+        print("textView did end editing")
     }
 
     override func prepareForReuse() {

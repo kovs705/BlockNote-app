@@ -10,19 +10,22 @@ import CoreData
 // import RxSwift
 // import RxCocoa
 
-class C1NoteDetailTBC: UITableViewController {
+class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     @IBOutlet var noteListTB: UITableView!
     
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
-    var debugNumberOfNotesInSortedArray = 0
+    
+    @Published var getNote = "value"
     
     // RxSwift: future thing, I guess
     // var db = DisposeBag()
     
     // block types:
     let textBlock = "TextBlock"
+    var textForTextlock: String = ""
+    var updateBool: Bool = false
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -35,8 +38,7 @@ class C1NoteDetailTBC: UITableViewController {
         // TODO: Put this in viewWillAppear?
         sortAndUpdate()
         
-        debugNumberOfNotesInSortedArray = noteItemArray_sorted.count
-        print("Debug number: \(debugNumberOfNotesInSortedArray)")
+        print("Debug number: \(noteItemArray_sorted.count)")
         
         noteListTB.delegate = self
         noteListTB.dataSource = self
@@ -59,6 +61,11 @@ class C1NoteDetailTBC: UITableViewController {
         
         
     }
+    
+    // MARK: - viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        noteListTB.reloadData()
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -79,7 +86,8 @@ class C1NoteDetailTBC: UITableViewController {
         let noteItem = noteItemArray_sorted[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
-
+        
+        cell.delegate = self
         cell.textView.text = noteItem.noteItemText
 
         cell.textChanged { [weak tableView] (newText: String) in
@@ -89,7 +97,9 @@ class C1NoteDetailTBC: UITableViewController {
                 tableView?.beginUpdates()
                 tableView?.endUpdates()
             }
+            
         }
+        
         return cell
     }
     
@@ -147,6 +157,7 @@ class C1NoteDetailTBC: UITableViewController {
     }
     */
     
+    // MARK: - Sort and update
     func sortAndUpdate() {
         /// made for reuse multiple times to update sorted array of
         //TODO: make a switch for other objects in CoreData, (make a reusable public func)
@@ -184,6 +195,41 @@ class C1NoteDetailTBC: UITableViewController {
         
         
     }
+    
+    // MARK: - Update block
+    // TODO: Add an ability to change the type in the future..
+    func getText(text: String?) {
+        guard let selectedBlockIndex = noteListTB.indexPathsForSelectedRows?.first else {
+            return
+        }
+        
+        textForTextlock = text ?? "Nothing in the text, or it's just the bug."
+        update(blockText: textForTextlock, block: self.noteItemArray_sorted[selectedBlockIndex.row])
+    }
+    
+    func update(blockText: String, block: NoteItem?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+/// update the date of the last changing
+        block?.setValue(Date(), forKey: "lastChangedNI")
+/// update the text of the block
+        block?.setValue(blockText, forKey: "noteItemText")
+        
+        do {
+            if managedContext.hasChanges {
+                // sortAndUpdate() - don't need to resort objects
+                try managedContext.save()
+            } else {
+                print("Wrong on updating the note item")
+            }
+        } catch let error as NSError {
+            print("Could not update. \(error), \(error.userInfo)")
+        }
+    }
+    
     // MARK: - Save block
     func save(blockType: String, blockText: String) {
         // var newNumberOfNotes = 0

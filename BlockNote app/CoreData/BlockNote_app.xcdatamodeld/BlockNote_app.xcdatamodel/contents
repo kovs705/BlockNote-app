@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
         <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" optional="YES" attributeType="String"/>
+        <attribute name="lastChangedGroup" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
+        <attribute name="lastChangedNote" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteIsMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noteLevel" optional="YES" attributeType="String"/>
@@ -16,6 +18,7 @@
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
+        <attribute name="lastChangedNI" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
         <attribute name="noteItemOrder" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteItemText" attributeType="String" defaultValueString="&quot;&quot;"/>
@@ -23,8 +26,8 @@
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="GroupType" positionX="-54" positionY="45" width="128" height="89"/>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="134"/>
-        <element name="NoteItem" positionX="-45" positionY="72" width="128" height="104"/>
+        <element name="GroupType" positionX="-54" positionY="45" width="128" height="104"/>
+        <element name="Note" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="NoteItem" positionX="-45" positionY="72" width="128" height="119"/>
     </elements>
 </model>
