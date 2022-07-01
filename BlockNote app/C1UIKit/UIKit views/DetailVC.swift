@@ -236,8 +236,6 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
             print("\((groupType.typesOfNoteArray.count) + 1) note added already")
         }
         
-        // TODO: When i delete or resort, I should update every note to make sure every note has its own noteID
-        
         note.setValue("Test level", forKey: "noteLevel")
         
         if noteName == "" || noteName.isEmpty {

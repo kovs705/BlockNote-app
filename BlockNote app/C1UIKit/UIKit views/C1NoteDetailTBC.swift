@@ -13,6 +13,7 @@ import CoreData
 class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     @IBOutlet var noteListTB: UITableView!
+    // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
     
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
@@ -27,18 +28,17 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     var textForTextlock: String = ""
     var updateBool: Bool = false
     
+    var indexOfBlock: IndexPath = IndexPath(row: 0, section: 1)
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // register textBlock cell
-        // tableView.register(UINib(nibName: "TVTextBlock", bundle: nil), forCellReuseIdentifier: textBlock)
-        
+        // MARK: - Global
+        // navigationItem.leftBarButtonItem = backButton
         
         // TODO: Put this in viewWillAppear?
         sortAndUpdate()
-        
-        print("Debug number: \(noteItemArray_sorted.count)")
         
         noteListTB.delegate = self
         noteListTB.dataSource = self
@@ -47,9 +47,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         title = note.wrappedNoteName
         
         // Debug
-        print("\(noteItemArray_sorted.count)")
-        noteListTB.dataSource = self
-        noteListTB.delegate = self
+        // print("\(noteItemArray_sorted.count)")
         
         /// Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -197,14 +195,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     }
     
     // MARK: - Update block
-    // TODO: Add an ability to change the type in the future..
     func getText(text: String?) {
-        guard let selectedBlockIndex = noteListTB.indexPathsForSelectedRows?.first else {
-            return
-        }
+        // print("TESTE FESEGSESA")
+//        guard let selectedBlockIndex = noteListTB.indexPathsForSelectedRows?.first else {
+//            return
+//        }
         
         textForTextlock = text ?? "Nothing in the text, or it's just the bug."
-        update(blockText: textForTextlock, block: self.noteItemArray_sorted[selectedBlockIndex.row])
+        update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock.row])
+        print("you changed the block with the index of \(indexOfBlock)")
     }
     
     func update(blockText: String, block: NoteItem?) {
@@ -220,7 +219,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         do {
             if managedContext.hasChanges {
-                // sortAndUpdate() - don't need to resort objects
+                // backSaveChanging()
                 try managedContext.save()
             } else {
                 print("Wrong on updating the note item")
@@ -251,12 +250,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         blockItem.setValue(blockType, forKey: "noteItemType")
         blockItem.setValue(blockText, forKey: "noteItemText")
         
+        if noteItemArray_sorted.isEmpty {
+            blockItem.setValue(1, forKey: "noteItemOrder")
+        } else {
+            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+        }
+        
         do {
-            // note.noteItemArray.insert(blockItem, at: 0)
+            
             note.addObject(value: blockItem, forKey: "noteItems")
-            
-            // get the number of sorted notes and compare with existing number - if they are the same - update the tableView
-            
             
             if managedContext.hasChanges {
                 print("Successfully added")
