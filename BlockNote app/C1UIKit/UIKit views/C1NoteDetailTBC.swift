@@ -28,7 +28,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     var textForTextlock: String = ""
     var updateBool: Bool = false
     
-    var indexOfBlock: IndexPath = IndexPath(row: 0, section: 1)
+    var indexOfBlock = 0
+    // var editingBool = false
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -79,9 +80,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         return noteItemArray_sorted.count
     }
 
-    /// commented it to use RxSwift in ViewDidLoad..
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteItem = noteItemArray_sorted[indexPath.row]
+        let noteItem = noteItemArray_sorted[indexPath.row] // hserererrere
 
         let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
         
@@ -90,7 +90,10 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 
         cell.textChanged { [weak tableView] (newText: String) in
             noteItem.noteItemText = newText
-
+            
+            self.indexOfBlock = indexPath.row
+            self.getText(text: newText)
+            
             DispatchQueue.main.async {
                 tableView?.beginUpdates()
                 tableView?.endUpdates()
@@ -194,7 +197,19 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
     }
     
-    // MARK: - Update block
+//    // MARK: - Get the order
+//    func startEndEditing(switchType: Bool) {
+//        if switchType == true {
+//            editingBool = switchType
+//            // self.indexOfBlock = IndexPath(row: indexPath.row, section: 0)
+//            print("You started changing the text in \(self.noteItemArray_sorted[indexOfBlock.row].noteItemOrder) block")
+//        } else {
+//            editingBool = switchType
+//            indexOfBlock = IndexPath(row: 0, section: 0)
+//        }
+//    }
+    
+    // MARK: - Get text
     func getText(text: String?) {
         // print("TESTE FESEGSESA")
 //        guard let selectedBlockIndex = noteListTB.indexPathsForSelectedRows?.first else {
@@ -202,10 +217,11 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 //        }
         
         textForTextlock = text ?? "Nothing in the text, or it's just the bug."
-        update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock.row])
+        update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock])
         print("you changed the block with the index of \(indexOfBlock)")
     }
     
+    // MARK: - update block
     func update(blockText: String, block: NoteItem?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return

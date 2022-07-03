@@ -33,11 +33,10 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         textChanged?(textView.text)
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        // textChanged?(textView.text)
-        delegate?.getText(text: textView.text)
-        // print("textView did end editing")
-    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        // textChanged?(textView.text)
+//        delegate?.getText(text: textView.text)
+//    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
