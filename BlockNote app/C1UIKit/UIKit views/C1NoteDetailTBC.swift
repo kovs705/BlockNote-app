@@ -44,6 +44,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         noteListTB.delegate = self
         noteListTB.dataSource = self
         
+        
         // Navigation
         title = note.wrappedNoteName
         
@@ -69,7 +70,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return noteItemArray_sorted[indexPath.row].noteItemText
-            .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 14))
+            .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

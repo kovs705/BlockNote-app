@@ -12,6 +12,7 @@ extension String {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: font], context: nil)
         
-        return boundingBox.height
+        return boundingBox.height + 15
+        //гав use
     }
 }
