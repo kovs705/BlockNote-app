@@ -20,6 +20,8 @@ extension NoteItem {
     @NSManaged public var noteItemName: String?
     @NSManaged public var lastChangedNI: Date?
     
+    @NSManaged public var noteItemPhoto: Data?
+    
     @NSManaged public var noteItemText: String
     @NSManaged public var note: Note?
     

@@ -18,6 +18,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
     
+    var imagePicker: UIImagePickerController!
+    
     @Published var getNote = "value"
     
     // RxSwift: future thing, I guess
@@ -25,6 +27,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     // block types:
     let textBlock = "TextBlock"
+    let photoBlock = "PhotoBlock"
+    
     var textForTextlock: String = ""
     var updateBool: Bool = false
     
@@ -43,6 +47,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         noteListTB.delegate = self
         noteListTB.dataSource = self
+        
+        print("Number of blocks: \(noteItemArray_sorted.count)")
         
         
         // Navigation
@@ -82,27 +88,36 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteItem = noteItemArray_sorted[indexPath.row] // hserererrere
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
+        let noteItem = noteItemArray_sorted[indexPath.row]
         
-        cell.delegate = self
-        cell.textView.text = noteItem.noteItemText
-
-        cell.textChanged { [weak tableView] (newText: String) in
-            noteItem.noteItemText = newText
+        if noteItem.value(forKey: "noteItemType") as! String == textBlock {
             
-            self.indexOfBlock = indexPath.row
-            self.getText(text: newText)
+            let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
             
-            DispatchQueue.main.async {
-                tableView?.beginUpdates()
-                tableView?.endUpdates()
+            cell.delegate = self
+            cell.textView.text = noteItem.noteItemText
+            
+            cell.textChanged { [weak tableView] (newText: String) in
+                noteItem.noteItemText = newText
+                
+                self.indexOfBlock = indexPath.row
+                self.getText(text: newText)
+                
+                DispatchQueue.main.async {
+                    tableView?.beginUpdates()
+                    tableView?.endUpdates()
+                }
+                
             }
+            return cell
             
+        } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
+            print("Hello")
+            let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVPhotoBlock
+            cell.imageBlock.image = UIImage(data: noteItem.noteItemPhoto!)
+            return cell
         }
-        
-        return cell
+        return UITableViewCell()
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,12 +183,22 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         }
     }
     
-    // MARK: - Add block
-    @objc func addBlock() {
-        let alert = UIAlertController(title: "New block", message: "Enter some text for block", preferredStyle: .alert)
+    // MARK: - Add photo block
+    @objc func showPhotoPicker() {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
         
-        // save action button
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+        present(imagePicker, animated: true)
+    }
+    
+    // MARK: - Add text block
+    @objc func addBlock() {
+        let alert = UIAlertController(title: "New block", message: "Choose your block", preferredStyle: .actionSheet)
+        
+        // textBlock save
+        let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [unowned self] action in
             
 //            guard
 //                // let textField = alert.textFields?.first,
@@ -186,11 +211,18 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             self.save(blockType: textBlock, blockText: blockToSave)
             // self.groupCollection.reloadData()
         }
+        
+        // photoBlock save
+        let savePhotoBlock = UIAlertAction(title: "Photo", style: .default) { [unowned self] action in
+            self.showPhotoPicker()
+        }
+        
         // cancel action button
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         // alert.addTextField()
-        alert.addAction(saveAction)
+        alert.addAction(saveTextBlock)
+        alert.addAction(savePhotoBlock)
         alert.addAction(cancelAction)
         
         present(alert, animated: true)
@@ -210,12 +242,13 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 //        }
 //    }
     
+    // TODO: append Photo гав
+//    func appendPhoto(block: NoteItem?) {
+//
+//    }
+    
     // MARK: - Get text
     func getText(text: String?) {
-        // print("TESTE FESEGSESA")
-//        guard let selectedBlockIndex = noteListTB.indexPathsForSelectedRows?.first else {
-//            return
-//        }
         
         textForTextlock = text ?? "Nothing in the text, or it's just the bug."
         update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock])
@@ -315,4 +348,59 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         }
     }
 
+}
+
+extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("closed")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("works")
+        var block: NoteItem?
+        
+        // Context
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+
+        // Image Data
+//        guard let pickedImage = info[.originalImage] as? UIImage else {
+//            return
+//        }
+        let pickedImage = info[.originalImage] as? UIImage
+
+        guard let jpegImage = pickedImage?.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+//        guard let pngImage = pickedImage.pngData() else {
+//            return
+//        }
+
+        block?.setValue(photoBlock, forKey: "noteItemType")
+
+        block?.setValue(jpegImage, forKey: "noteItemPhoto")
+        block?.setValue(Date(), forKey: "lastChangedNI")
+
+        if noteItemArray_sorted.isEmpty {
+            block?.setValue(1, forKey: "noteItemOrder")
+        } else {
+            block?.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+        }
+
+        do {
+            if managedContext.hasChanges {
+                print("added a photo")
+                try managedContext.save()
+            } else {
+                print("Okay, the image has not been saved")
+            }
+        } catch {
+            print("Okay, it crashed, lul")
+        }
+    }
+    
 }

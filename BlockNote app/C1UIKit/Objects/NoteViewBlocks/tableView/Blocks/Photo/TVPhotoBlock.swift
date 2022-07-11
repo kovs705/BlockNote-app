@@ -7,17 +7,30 @@
 
 import UIKit
 
+//protocol photoSaveDelegate: AnyObject {
+//    func appendPhoto(block: NoteItem?)
+//}
+
 class TVPhotoBlock: UITableViewCell {
 
+    @IBOutlet weak var imageBlock: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageBlock = nil
     }
+
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
     
 }
