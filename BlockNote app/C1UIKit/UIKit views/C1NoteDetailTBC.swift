@@ -359,13 +359,21 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("works")
-        var block: NoteItem?
+        
+        var image: Data?
         
         // Context
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        let entity =
+        NSEntityDescription.entity(forEntityName: "NoteItem",
+                                   in: managedContext)!
+        
+        let blockItem = NSManagedObject(entity: entity,
+                                    insertInto: managedContext)
 
         // Image Data
 //        guard let pickedImage = info[.originalImage] as? UIImage else {
@@ -379,22 +387,30 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
 //        guard let pngImage = pickedImage.pngData() else {
 //            return
 //        }
+        image = jpegImage
+        
+        do {
+            image = try NSKeyedArchiver.archivedData(withRootObject: image as Any, requiringSecureCoding: true)
+        } catch {
+            print("error")
+        }
+        
+        blockItem.setValue(photoBlock, forKey: "noteItemType")
 
-        block?.setValue(photoBlock, forKey: "noteItemType")
-
-        block?.setValue(jpegImage, forKey: "noteItemPhoto")
-        block?.setValue(Date(), forKey: "lastChangedNI")
+        blockItem.setValue(image, forKey: "noteItemPhoto")
+        blockItem.setValue(Date(), forKey: "lastChangedNI")
 
         if noteItemArray_sorted.isEmpty {
-            block?.setValue(1, forKey: "noteItemOrder")
+            blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-            block?.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
         }
 
         do {
             if managedContext.hasChanges {
                 print("added a photo")
                 try managedContext.save()
+                picker.dismiss(animated: true)
             } else {
                 print("Okay, the image has not been saved")
             }
