@@ -21,7 +21,7 @@
         <attribute name="lastChangedNI" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
         <attribute name="noteItemOrder" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="noteItemPhoto" optional="YES" attributeType="Binary"/>
+        <attribute name="noteItemPhoto" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="noteItemText" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="noteItemType" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>

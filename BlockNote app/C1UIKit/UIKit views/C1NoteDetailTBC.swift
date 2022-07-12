@@ -113,8 +113,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             print("Hello")
-            let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVPhotoBlock
+            let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
             cell.imageBlock.image = UIImage(data: noteItem.noteItemPhoto!)
+            cell.isSelected = false
             return cell
         }
         return UITableViewCell()
@@ -350,6 +351,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 
 }
 
+// MARK: - Photo block and ImagePicker extension
 extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -360,7 +362,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("works")
         
-        var image: Data?
+        var image: NSData?
         
         // Context
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -376,24 +378,25 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                                     insertInto: managedContext)
 
         // Image Data
-//        guard let pickedImage = info[.originalImage] as? UIImage else {
-//            return
-//        }
-        let pickedImage = info[.originalImage] as? UIImage
-
-        guard let jpegImage = pickedImage?.jpegData(compressionQuality: 1.0) else {
+        guard let pickedImage = info[.originalImage] as? UIImage else {
             return
         }
-//        guard let pngImage = pickedImage.pngData() else {
+        
+        // let pickedImage = info[.originalImage] as? UIImage
+
+//        guard let jpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
 //            return
 //        }
-        image = jpegImage
+        // image = jpegImage
         
-        do {
-            image = try NSKeyedArchiver.archivedData(withRootObject: image as Any, requiringSecureCoding: true)
-        } catch {
-            print("error")
-        }
+        image = pickedImage.toData as NSData?
+
+//        do {
+//            image = try NSKeyedArchiver.archivedData(withRootObject: image! as Data, requiringSecureCoding: true)
+//        } catch {
+//            print("error")
+//        }
+        
         
         blockItem.setValue(photoBlock, forKey: "noteItemType")
 
@@ -405,11 +408,14 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         } else {
             blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
         }
+        
+        note.addObject(value: blockItem, forKey: "noteItems")
 
         do {
             if managedContext.hasChanges {
                 print("added a photo")
                 try managedContext.save()
+                sortAndUpdate()
                 picker.dismiss(animated: true)
             } else {
                 print("Okay, the image has not been saved")
@@ -419,4 +425,10 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         }
     }
     
+}
+
+extension UIImage {
+    var toData: Data? {
+        return pngData()
+    }
 }
