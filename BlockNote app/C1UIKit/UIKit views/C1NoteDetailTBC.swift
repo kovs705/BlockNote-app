@@ -75,8 +75,19 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return noteItemArray_sorted[indexPath.row].noteItemText
-            .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
+        let noteItem = noteItemArray_sorted[indexPath.row]
+        
+        if noteItem.value(forKey: "noteItemType") as! String == textBlock {
+            return noteItemArray_sorted[indexPath.row].noteItemText
+                .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
+            
+        } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
+            let image = UIImage(data: noteItem.noteItemPhoto!)
+            let imageCrop = image!.getCropRatio()
+            return tableView.frame.width / imageCrop
+        } else {
+            return 250
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,7 +126,20 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             print("Hello")
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
             cell.imageBlock.image = UIImage(data: noteItem.noteItemPhoto!)
-            cell.isSelected = false
+            
+            // width 330, height 270
+            cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
+            cell.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
+            
+//            func tableView(noteListTB.self, heightForRowAt: indexPath) {
+//                
+//            }
+            
+            // cell.isSelected = false
+            DispatchQueue.main.async {
+                self.noteListTB.beginUpdates()
+                self.noteListTB.endUpdates()
+            }
             return cell
         }
         return UITableViewCell()
@@ -417,6 +441,12 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                 try managedContext.save()
                 sortAndUpdate()
                 picker.dismiss(animated: true)
+                
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+                    self.noteListTB.endUpdates()
+                }
             } else {
                 print("Okay, the image has not been saved")
             }
@@ -430,5 +460,10 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
 extension UIImage {
     var toData: Data? {
         return pngData()
+    }
+    
+    func getCropRatio() -> CGFloat {
+        let widthRatio = self.size.width / self.size.height
+        return widthRatio
     }
 }

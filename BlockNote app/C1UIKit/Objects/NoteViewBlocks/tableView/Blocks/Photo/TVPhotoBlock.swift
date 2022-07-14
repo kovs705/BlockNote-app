@@ -24,13 +24,13 @@ class TVPhotoBlock: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageBlock = nil
+        // imageBlock = nil
     }
 
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
 }
