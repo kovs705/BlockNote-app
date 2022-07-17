@@ -34,6 +34,21 @@ class C1NavigationViewController: UIViewController {
     // let animationDuration: Double = 5.0
     // let delayBase: Double = 1.0
     
+    // MARK: - CoreData
+    func fetchData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+        let sort              = NSSortDescriptor(key: "number", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            groups = try viewContext.fetch(fetchRequest)
+            // sortGroupsByNumber(groups)
+        } catch let error as NSError {
+            print("Couldn't fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,19 +72,8 @@ class C1NavigationViewController: UIViewController {
             }
         }
         
-        // MARK: - CoreData
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let viewContext       = appDelegate.persistentContainerOffline.viewContext
-        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
-        let sort              = NSSortDescriptor(key: "number", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            groups = try viewContext.fetch(fetchRequest)
-            // sortGroupsByNumber(groups)
-        } catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
-        }
+        // MARK: - fetch data
+        fetchData()
         
         // MARK: - Design
         showGreeting()
@@ -95,6 +99,8 @@ class C1NavigationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        fetchData()
         groupCollectionView.reloadData()
         
     }
@@ -205,19 +211,19 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
-        // cell.groupName.text = group.value(forKey: "groupName") as? String
-        cell.setGroupName(label: group.value(forKey: "groupName") as! String)
-        cell.setBackground(color: group.value(forKey: "groupColor") as! String)
-        // cell.setNumber(numLabel: "String", number: 1)
-        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
-        // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
-        
-        // MARK: - Animation
-        // cell.alpha = 0
-        // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        
-        return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
+            // cell.groupName.text = group.value(forKey: "groupName") as? String
+            cell.setGroupName(label: group.value(forKey: "groupName") as? String ?? "default name")
+            cell.setBackground(color: group.value(forKey: "groupColor") as? String ?? "GreenAvocado")
+            // cell.setNumber(numLabel: "String", number: 1)
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
+            
+            // MARK: - Animation
+            // cell.alpha = 0
+            // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            
+            return cell
     }
     
 //    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -123,13 +123,14 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             return cell
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
-            print("Hello")
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
             cell.imageBlock.image = UIImage(data: noteItem.noteItemPhoto!)
             
             // width 330, height 270
             cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
             cell.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
+            
+            print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
             
 //            func tableView(noteListTB.self, heightForRowAt: indexPath) {
 //                
@@ -190,7 +191,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     */
 
     /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -277,7 +277,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         textForTextlock = text ?? "Nothing in the text, or it's just the bug."
         update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock])
-        print("you changed the block with the index of \(indexOfBlock)")
+        // print("you changed the block with the index of \(indexOfBlock)")
     }
     
     // MARK: - update block
@@ -353,14 +353,14 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
                 }, completion: nil)
                 
                 print("Updated rows")
-//                DispatchQueue.main.async {
-//                    self.noteListTB.beginUpdates()
-//                    self.noteListTB.endUpdates()
-//                }
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    self.noteListTB.endUpdates()
+                }
             } else {
                 sortAndUpdate()
                 print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                // print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
+                print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
                 
                 DispatchQueue.main.async {
                     self.noteListTB.beginUpdates()
@@ -370,6 +370,47 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             }
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    // MARK: - Delete block
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // ---------save the number of deleting block
+        // ---------delete block
+        // compare this number with the blocks that are higher than him
+        // for every block than is higher - make them lower by 1
+        var deletingBlocksOrder: Int = 0
+        
+        if editingStyle == .delete {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainerOffline.viewContext
+            
+            // remember row
+            deletingBlocksOrder = indexPath.row + 1
+            // delete block
+            note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: "noteItems")
+            // we deleted, but nothing happens on tableView, so before the animations begin, I need to change order numbers to reorder them again:
+            for block in noteItemArray_sorted {
+                if block.value(forKey: "noteItemOrder") as! Int >= deletingBlocksOrder {
+                    let value = block.value(forKey: "noteItemOrder") as! Int - 1
+                    block.setValue(value, forKey: "noteItemOrder")
+                }
+            }
+            //update sorted array of block:
+            sortAndUpdate()
+            // now I need to update the tableView:
+            noteListTB.reloadData()
+            
+            do {
+                if managedContext.hasChanges {
+                    try managedContext.save()
+                }
+            } catch {
+                print("Something wrong on deleting the block")
+            }
         }
     }
 
@@ -430,7 +471,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+                blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
         }
         
         note.addObject(value: blockItem, forKey: "noteItems")
@@ -442,11 +483,36 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                 sortAndUpdate()
                 picker.dismiss(animated: true)
                 
-                DispatchQueue.main.async {
-                    self.noteListTB.beginUpdates()
-                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-                    self.noteListTB.endUpdates()
+                if note.noteItems?.count == noteItemArray_sorted.count {
+                    
+                    print("Same numbers of note")
+                    
+                    self.noteListTB.performBatchUpdates({
+                        self.noteListTB.insertRows(at: [IndexPath(row: noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+                    }, completion: nil)
+                    
+                    print("Updated rows")
+                    DispatchQueue.main.async {
+                        self.noteListTB.beginUpdates()
+                        self.noteListTB.endUpdates()
+                    }
+                } else {
+                    sortAndUpdate()
+                    print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+                    print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
+                    
+                    DispatchQueue.main.async {
+                        self.noteListTB.beginUpdates()
+                        // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+                        self.noteListTB.endUpdates()
+                    }
                 }
+                
+//                DispatchQueue.main.async {
+//                    self.noteListTB.beginUpdates()
+//                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+//                    self.noteListTB.endUpdates()
+//                }
             } else {
                 print("Okay, the image has not been saved")
             }
