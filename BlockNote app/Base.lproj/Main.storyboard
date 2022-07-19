@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -214,7 +214,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hvI-tt-BmH"/>
-                        <color key="backgroundColor" name="DarkBackground"/>
+                        <color key="backgroundColor" name="BackWhite"/>
                         <constraints>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="bottom" secondItem="hvI-tt-BmH" secondAttribute="bottom" constant="34" id="FTX-y2-wwU"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="leading" secondItem="hvI-tt-BmH" secondAttribute="leading" id="Git-Gg-MWn"/>
@@ -431,7 +431,7 @@
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="310" placeholderIntrinsicHeight="128" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-fh-zK1" userLabel="NoteList" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="195" width="350" height="128"/>
-                                                <color key="backgroundColor" name="DarkBackground"/>
+                                                <color key="backgroundColor" name="BackBlock"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2yz-7J-QVV">
                                                     <size key="itemSize" width="310" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -477,13 +477,18 @@
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="Tgf-rB-iEw" id="cpY-eR-Nt7"/>
                                                     <outlet property="delegate" destination="Tgf-rB-iEw" id="Z6F-x1-z6n"/>
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" name="DarkBackground"/>
+                                        <color key="backgroundColor" name="BackWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Tyg-fh-zK1" secondAttribute="bottom" constant="20" id="Sgc-Af-nZA"/>
                                             <constraint firstItem="Tyg-fh-zK1" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="20" id="cu8-DS-MKI"/>
@@ -495,7 +500,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="DarkBackground"/>
+                                <color key="backgroundColor" name="BackWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Z81-rj-aGQ" secondAttribute="bottom" id="2ba-nE-pXu"/>
                                     <constraint firstItem="Z81-rj-aGQ" firstAttribute="leading" secondItem="QUS-gi-21s" secondAttribute="leading" id="5Er-Ob-AE6"/>
@@ -508,7 +513,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T00-35-2eL"/>
-                        <color key="backgroundColor" name="DarkBackground"/>
+                        <color key="backgroundColor" name="BackWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QUS-gi-21s" secondAttribute="trailing" id="2H4-Cy-vSv"/>
                             <constraint firstItem="QUS-gi-21s" firstAttribute="top" secondItem="T00-35-2eL" secondAttribute="top" id="AHw-MZ-1lZ"/>
@@ -539,7 +544,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ir7-wQ-dUF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="DarkBackground"/>
+                        <color key="backgroundColor" name="BackWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="178" id="ceZ-g4-xTW" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="178"/>
@@ -549,7 +554,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="15" width="350" height="122"/>
+                                            <rect key="frame" x="30" y="0.0" width="330" height="142.33333333333334"/>
                                             <color key="backgroundColor" name="BackBlock"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -562,14 +567,15 @@
                                             </userDefinedRuntimeAttributes>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" name="DarkBackground"/>
+                                    <color key="backgroundColor" name="BackBlock"/>
                                     <constraints>
-                                        <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" constant="15" id="cAX-5g-eYw"/>
-                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" constant="20" id="mBS-WW-kcT"/>
-                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" constant="20" id="pCW-Y3-XYN"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" id="cAX-5g-eYw"/>
+                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" constant="30" id="mBS-WW-kcT"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" constant="30" id="pCW-Y3-XYN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentView" destination="P0Q-9D-BaY" id="bZ6-8C-849"/>
                                     <outlet property="textView" destination="t98-5w-jP2" id="1aQ-0U-dzb"/>
                                 </connections>
                             </tableViewCell>
@@ -649,6 +655,9 @@
         <image name="rectangle.stack.badge.plus" catalog="system" width="128" height="122"/>
         <namedColor name="BackBlock">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackWhite">
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="BlueBerry">
             <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

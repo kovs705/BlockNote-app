@@ -31,6 +31,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     var textForTextlock: String = ""
     var updateBool: Bool = false
+    let cellSpacingHeight: CGFloat = 5
     
     var indexOfBlock = 0
     // var editingBool = false
@@ -97,6 +98,11 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noteItemArray_sorted.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
@@ -107,6 +113,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             
             cell.delegate = self
             cell.textView.text = noteItem.noteItemText
+            cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            // cell.contentBlock.frame = CGRect.offsetBy(textview)
             
             cell.textChanged { [weak tableView] (newText: String) in
                 noteItem.noteItemText = newText
@@ -118,7 +126,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
                     tableView?.beginUpdates()
                     tableView?.endUpdates()
                 }
-                
+               
             }
             return cell
             
@@ -253,6 +261,31 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         present(alert, animated: true)
         
         
+    }
+    
+    // MARK: - keyboard detect (work in progress)
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else { return }
+        
+        switch key.keyCode {
+        case .keyboardReturnOrEnter:
+            saveAndStartTyping()
+        default:
+            super.pressesEnded(presses, with: event)
+        }
+    }
+    
+   // MARK: - Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
+    func saveAndStartTyping() {
+        print("You tapped return button on keyboard")
+        save(blockType: textBlock, blockText: "New text")
+        
+        if let lastBlock = noteItemArray_sorted.last?.noteItemOrder {
+            let cell = noteListTB.dequeueReusableCell(withIdentifier: textBlock, for: IndexPath(index: lastBlock)) as! TVTextBlock
+            cell.textView.becomeFirstResponder()
+        } else {
+            return
+        }
     }
     
 //    // MARK: - Get the order

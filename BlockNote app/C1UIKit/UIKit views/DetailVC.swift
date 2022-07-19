@@ -164,7 +164,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         
-        noteListCollection.backgroundColor = UIColor(named: "DarkBackground")
+        noteListCollection.backgroundColor = UIColor(named: "BackWhite")
         noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
         noteListCollection.allowsSelection = true
         noteListCollection.allowsMultipleSelection = true

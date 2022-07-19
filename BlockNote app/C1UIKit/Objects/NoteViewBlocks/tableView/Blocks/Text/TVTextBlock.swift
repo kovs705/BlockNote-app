@@ -16,6 +16,9 @@ protocol textSaveDelegate: AnyObject {
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var contentBlock: UIView!
+    
+    
     var textChanged: ((String) -> Void)?
     
     weak var delegate: textSaveDelegate?
