@@ -31,7 +31,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     var textForTextlock: String = ""
     var updateBool: Bool = false
-    let cellSpacingHeight: CGFloat = 5
+    let cellSpacingHeight: CGFloat = 50
     
     var indexOfBlock = 0
     // var editingBool = false
@@ -51,6 +51,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         print("Number of blocks: \(noteItemArray_sorted.count)")
         
+        self.noteListTB.sectionHeaderHeight = 50
         
         // Navigation
         title = note.wrappedNoteName
@@ -71,7 +72,11 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        sortAndUpdate()
         noteListTB.reloadData()
+        for item in noteItemArray_sorted {
+            print("\(item.noteItemOrder) ")
+        }
     }
 
     // MARK: - Table view data source
@@ -80,7 +85,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         if noteItem.value(forKey: "noteItemType") as! String == textBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
-                .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
+                .heightWithConstrainedWidth(width: tableView.frame.width-60, font: UIFont.systemFont(ofSize: 17))
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let image = UIImage(data: noteItem.noteItemPhoto!)
@@ -103,6 +108,19 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         return cellSpacingHeight
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+                
+                let label = UILabel()
+                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+                label.text = "Notification Times"
+                label.font = .systemFont(ofSize: 16)
+                label.textColor = .yellow
+                
+                headerView.addSubview(label)
+                
+                return headerView
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
@@ -139,16 +157,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             cell.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
             
             print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
-            
-//            func tableView(noteListTB.self, heightForRowAt: indexPath) {
-//                
-//            }
-            
-            // cell.isSelected = false
-            DispatchQueue.main.async {
-                self.noteListTB.beginUpdates()
-                self.noteListTB.endUpdates()
-            }
             return cell
         }
         return UITableViewCell()
@@ -163,49 +171,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     
     // MARK: - Sort and update
     func sortAndUpdate() {
@@ -264,16 +230,16 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     }
     
     // MARK: - keyboard detect (work in progress)
-    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        guard let key = presses.first?.key else { return }
-        
-        switch key.keyCode {
-        case .keyboardReturnOrEnter:
-            saveAndStartTyping()
-        default:
-            super.pressesEnded(presses, with: event)
-        }
-    }
+//    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+//        guard let key = presses.first?.key else { return }
+//
+//        switch key.keyCode {
+//        case .keyboardReturnOrEnter:
+//            saveAndStartTyping()
+//        default:
+//            super.pressesEnded(presses, with: event)
+//        }
+//    }
     
    // MARK: - Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
     func saveAndStartTyping() {
@@ -435,11 +401,14 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             //update sorted array of block:
             sortAndUpdate()
             // now I need to update the tableView:
-            noteListTB.reloadData()
+            // noteListTB.reloadData()
             
             do {
                 if managedContext.hasChanges {
                     try managedContext.save()
+                    self.noteListTB.performBatchUpdates({
+                        self.noteListTB.deleteRows(at: [IndexPath(row: deletingBlocksOrder - 1, section: 0)], with: .automatic)
+                    }, completion: nil)
                 }
             } catch {
                 print("Something wrong on deleting the block")
@@ -458,9 +427,8 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("works")
         
-        var image: NSData?
+        // var image: NSData?
         
         // Context
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -487,7 +455,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
 //        }
         // image = jpegImage
         
-        image = pickedImage.toData as NSData?
+        // pickedImage.toData as NSData?
 
 //        do {
 //            image = try NSKeyedArchiver.archivedData(withRootObject: image! as Data, requiringSecureCoding: true)
@@ -498,7 +466,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
         blockItem.setValue(photoBlock, forKey: "noteItemType")
 
-        blockItem.setValue(image, forKey: "noteItemPhoto")
+        blockItem.setValue(pickedImage.toData as NSData?, forKey: "noteItemPhoto")
         blockItem.setValue(Date(), forKey: "lastChangedNI")
 
         if noteItemArray_sorted.isEmpty {
@@ -517,8 +485,6 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                 picker.dismiss(animated: true)
                 
                 if note.noteItems?.count == noteItemArray_sorted.count {
-                    
-                    print("Same numbers of note")
                     
                     self.noteListTB.performBatchUpdates({
                         self.noteListTB.insertRows(at: [IndexPath(row: noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
