@@ -328,6 +328,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         
         blockItem.setValue(blockType, forKey: "noteItemType")
         blockItem.setValue(blockText, forKey: "noteItemText")
+        blockItem.setValue(Date(), forKey: "lastChangedNI")
         
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
@@ -340,7 +341,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             note.addObject(value: blockItem, forKey: "noteItems")
             
             if managedContext.hasChanges {
-                print("Successfully added")
+                print("Successfully added text block")
                 sortAndUpdate()
                 try managedContext.save()
             } else {
@@ -477,51 +478,50 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-                blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
         }
-        
-        note.addObject(value: blockItem, forKey: "noteItems")
 
         do {
+            
+            note.addObject(value: blockItem, forKey: "noteItems")
+            
             if managedContext.hasChanges {
-                print("added a photo")
-                try managedContext.save()
-                sortAndUpdate()
                 picker.dismiss(animated: true)
-                
-                if note.noteItems?.count == noteItemArray_sorted.count {
-                    
-                    DispatchQueue.main.async {
-                        self.noteListTB.beginUpdates()
-                        
-                        self.noteListTB.performBatchUpdates({
-                            self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
-                        }, completion: nil)
-                        
-                        print("Updated rows")
-                        
-                        self.noteListTB.endUpdates()
-                    }
-                } else {
-                    sortAndUpdate()
-                    print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                    print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
-                    
-                    DispatchQueue.main.async {
-                        self.noteListTB.beginUpdates()
-                        // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-                        self.noteListTB.endUpdates()
-                    }
-                }
-                
-//                DispatchQueue.main.async {
-//                    self.noteListTB.beginUpdates()
-//                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-//                    self.noteListTB.endUpdates()
-//                }
+                print("added a photo")
+                sortAndUpdate()
+                try managedContext.save()
             } else {
                 print("Okay, the image has not been saved")
             }
+            
+            if note.noteItems?.count == noteItemArray_sorted.count {
+                
+                self.noteListTB.performBatchUpdates({
+                    self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+                }, completion: nil)
+                
+                print("Updated rows")
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    self.noteListTB.endUpdates()
+                }
+            } else {
+                sortAndUpdate()
+                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+                print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
+                
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+                    self.noteListTB.endUpdates()
+                }
+            }
+            
+            //                DispatchQueue.main.async {
+            //                    self.noteListTB.beginUpdates()
+            //                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+            //                    self.noteListTB.endUpdates()
+            //                }
         } catch {
             print("Okay, it crashed, lul")
         }
