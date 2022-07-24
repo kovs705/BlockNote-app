@@ -263,14 +263,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		4E2A9E9C288C13FE0003B99F /* NoteDetail */ = {
-			isa = PBXGroup;
-			children = (
-				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
-			);
-			path = NoteDetail;
-			sourceTree = "<group>";
-		};
 		4E44C797278CD0F20054E5E2 /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +455,7 @@
 		4EC178EA28075C9B004FF965 /* ProgrammaticUI */ = {
 			isa = PBXGroup;
 			children = (
+				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4EC178E828075C96004FF965 /* C1NoteDetailView.swift */,
 			);
@@ -495,8 +488,7 @@
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
-				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
-				4E2A9E9C288C13FE0003B99F /* NoteDetail */,
+				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
 				4EC178EA28075C9B004FF965 /* ProgrammaticUI */,
 			);
 			path = "UIKit views";

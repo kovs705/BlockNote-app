@@ -72,6 +72,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        // navigationController?.navigationBar.prefersLargeTitles = true
+        
         sortAndUpdate()
         noteListTB.reloadData()
         for item in noteItemArray_sorted {
@@ -104,23 +106,25 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         return noteItemArray_sorted.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-                
-                let label = UILabel()
-                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-                label.text = "Notification Times"
-                label.font = .systemFont(ofSize: 16)
-                label.textColor = .yellow
-                
-                headerView.addSubview(label)
-                
-                return headerView
-    }
+    // mARK: - Header
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
+//
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+//
+//                let label = UILabel()
+//                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+//                label.text = "Notification Times"
+//                label.font = .systemFont(ofSize: 16)
+//                label.textColor = .yellow
+//
+//                headerView.addSubview(label)
+//
+//                return headerView
+//    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
@@ -180,6 +184,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         noteItemArray_sorted = note.noteItemArray.sorted {
             $0.noteItemOrder < $1.noteItemOrder
         }
+        // noteListTB.reloadData()
     }
     
     // MARK: - Add photo block
@@ -486,13 +491,15 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                 
                 if note.noteItems?.count == noteItemArray_sorted.count {
                     
-                    self.noteListTB.performBatchUpdates({
-                        self.noteListTB.insertRows(at: [IndexPath(row: noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
-                    }, completion: nil)
-                    
-                    print("Updated rows")
                     DispatchQueue.main.async {
                         self.noteListTB.beginUpdates()
+                        
+                        self.noteListTB.performBatchUpdates({
+                            self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+                        }, completion: nil)
+                        
+                        print("Updated rows")
+                        
                         self.noteListTB.endUpdates()
                     }
                 } else {

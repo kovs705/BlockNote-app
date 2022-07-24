@@ -23,19 +23,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-J8-r6j" userLabel="Page">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="694.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="709.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good night ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-2b-dab">
-                                                <rect key="frame" x="40" y="60" width="310" height="33.666666666666657"/>
+                                                <rect key="frame" x="40" y="75" width="310" height="33.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                 <color key="textColor" name="TextForegroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-dg-pTv" userLabel="ProgressBar">
-                                                <rect key="frame" x="40" y="113.66666666666669" width="310" height="200"/>
+                                                <rect key="frame" x="40" y="128.66666666666666" width="310" height="199.99999999999997"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-uS-rOh">
-                                                        <rect key="frame" x="109.33333333333334" y="84.666666666666671" width="91.666666666666657" height="31"/>
+                                                        <rect key="frame" x="109.33333333333334" y="84.666666666666686" width="91.666666666666657" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Add group"/>
                                                     </button>
@@ -67,7 +67,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-Tm-ZZI" userLabel="ListOfGroups">
-                                                <rect key="frame" x="40" y="333.66666666666669" width="310" height="30.666666666666686"/>
+                                                <rect key="frame" x="40" y="348.66666666666669" width="310" height="30.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zH-RA-89a">
                                                         <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="30.666666666666668"/>
@@ -99,11 +99,11 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" name="DarkBackground"/>
+                                                <color key="backgroundColor" name="BackBlock"/>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="Groups" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="379.33333333333326" width="360" height="300"/>
-                                                <color key="backgroundColor" name="DarkBackground"/>
+                                                <rect key="frame" x="15" y="394.33333333333326" width="360" height="300"/>
+                                                <color key="backgroundColor" name="BackBlock"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8n-MR-BJJ">
                                                     <size key="itemSize" width="175" height="175"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -167,7 +167,7 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" name="DarkBackground"/>
+                                        <color key="backgroundColor" name="BackBlock"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Uw0-wd-HlC" secondAttribute="bottom" constant="15" id="5AE-d1-vji"/>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="top" secondItem="mEw-dg-pTv" secondAttribute="bottom" constant="20" id="6FY-Dc-zBH"/>
@@ -198,13 +198,13 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="DarkBackground"/>
+                                <color key="backgroundColor" name="BackBlock"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Va4-J8-r6j" secondAttribute="bottom" id="4CS-v9-F4p"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="leading" secondItem="ioq-X8-C9f" secondAttribute="leading" id="6tq-hE-Cax"/>
                                     <constraint firstAttribute="trailing" secondItem="Va4-J8-r6j" secondAttribute="trailing" id="8cF-Gx-ZqT"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="width" secondItem="ioq-X8-C9f" secondAttribute="width" id="Uec-5f-V54"/>
-                                    <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="60" id="Xkz-hI-9x7"/>
+                                    <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="75" id="Xkz-hI-9x7"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="top" secondItem="ioq-X8-C9f" secondAttribute="top" id="lsO-9q-fFY">
                                         <variation key="heightClass=compact-widthClass=regular" constant="40"/>
                                     </constraint>
@@ -214,7 +214,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hvI-tt-BmH"/>
-                        <color key="backgroundColor" name="BackWhite"/>
+                        <color key="backgroundColor" name="BackBlock"/>
                         <constraints>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="bottom" secondItem="hvI-tt-BmH" secondAttribute="bottom" constant="34" id="FTX-y2-wwU"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="leading" secondItem="hvI-tt-BmH" secondAttribute="leading" id="Git-Gg-MWn"/>
@@ -222,7 +222,7 @@
                             <constraint firstItem="hvI-tt-BmH" firstAttribute="trailing" secondItem="ioq-X8-C9f" secondAttribute="trailing" id="m8T-57-9ob"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uje-ni-jtr"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Uje-ni-jtr"/>
                     <connections>
                         <outlet property="greetingLabel" destination="cp5-2b-dab" id="Vvu-df-f61"/>
                         <outlet property="groupCollectionView" destination="Uw0-wd-HlC" id="fj8-GV-Cw0"/>
@@ -447,7 +447,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcb-cf-RVJ">
-                                                                    <rect key="frame" x="16.000000000000004" y="16" width="41.333333333333343" height="18"/>
+                                                                    <rect key="frame" x="16" y="16" width="244" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -462,7 +462,9 @@
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
+                                                            <color key="backgroundColor" name="BackBlock"/>
                                                             <constraints>
+                                                                <constraint firstItem="ic2-Kd-5S1" firstAttribute="leading" secondItem="Gcb-cf-RVJ" secondAttribute="trailing" constant="16" id="9wt-9q-6nE"/>
                                                                 <constraint firstAttribute="bottom" secondItem="ic2-Kd-5S1" secondAttribute="bottom" constant="16" id="PqP-7G-lkP"/>
                                                                 <constraint firstAttribute="trailing" secondItem="ic2-Kd-5S1" secondAttribute="trailing" constant="16" id="dYV-Vl-uJX"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Gcb-cf-RVJ" secondAttribute="bottom" constant="16" id="fGs-1E-oS2"/>
@@ -471,6 +473,7 @@
                                                                 <constraint firstItem="Gcb-cf-RVJ" firstAttribute="leading" secondItem="9Mp-6v-jnt" secondAttribute="leading" constant="16" id="r0Q-VB-m9R"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
+                                                        <color key="backgroundColor" name="BackBlock"/>
                                                         <size key="customSize" width="310" height="50"/>
                                                         <connections>
                                                             <segue destination="4hk-C5-ZVN" kind="show" identifier="noteDetail" id="wMY-iL-7SE"/>
@@ -488,7 +491,7 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" name="BackWhite"/>
+                                        <color key="backgroundColor" name="BackBlock"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Tyg-fh-zK1" secondAttribute="bottom" constant="20" id="Sgc-Af-nZA"/>
                                             <constraint firstItem="Tyg-fh-zK1" firstAttribute="leading" secondItem="Z81-rj-aGQ" secondAttribute="leading" constant="20" id="cu8-DS-MKI"/>
@@ -500,7 +503,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="BackWhite"/>
+                                <color key="backgroundColor" name="BackBlock"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Z81-rj-aGQ" secondAttribute="bottom" id="2ba-nE-pXu"/>
                                     <constraint firstItem="Z81-rj-aGQ" firstAttribute="leading" secondItem="QUS-gi-21s" secondAttribute="leading" id="5Er-Ob-AE6"/>
@@ -513,15 +516,14 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T00-35-2eL"/>
-                        <color key="backgroundColor" name="BackWhite"/>
+                        <color key="backgroundColor" name="BackBlock"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QUS-gi-21s" secondAttribute="trailing" id="2H4-Cy-vSv"/>
                             <constraint firstItem="QUS-gi-21s" firstAttribute="top" secondItem="T00-35-2eL" secondAttribute="top" id="AHw-MZ-1lZ"/>
                             <constraint firstItem="T00-35-2eL" firstAttribute="bottom" secondItem="QUS-gi-21s" secondAttribute="bottom" id="dkA-Sg-js8"/>
-                            <constraint firstItem="QUS-gi-21s" firstAttribute="leading" secondItem="T00-35-2eL" secondAttribute="leading" id="qSM-bs-2S0"/>
+                            <constraint firstItem="QUS-gi-21s" firstAttribute="leading" secondItem="Clr-u8-1rt" secondAttribute="leading" id="qSM-bs-2S0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mCn-PQ-wS4"/>
                     <connections>
                         <outlet property="first_column" destination="B4a-AX-Qko" id="Fkx-rT-0zJ"/>
                         <outlet property="importantNotesLabel" destination="0Zd-A3-m1z" id="9La-sH-f4a"/>
@@ -540,11 +542,11 @@
         <!--Note DetailTBC-->
         <scene sceneID="AUK-ss-KKk">
             <objects>
-                <tableViewController id="4hk-C5-ZVN" customClass="C1NoteDetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="4hk-C5-ZVN" customClass="C1NoteDetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ir7-wQ-dUF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackWhite"/>
+                        <color key="backgroundColor" name="BackBlock"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="178" id="ceZ-g4-xTW" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="178"/>
@@ -604,7 +606,6 @@
                             <outlet property="delegate" destination="4hk-C5-ZVN" id="mLd-yD-RM0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Lh1-jN-L7i"/>
                     <connections>
                         <outlet property="noteListTB" destination="Ir7-wQ-dUF" id="VTd-VT-jdm"/>
                     </connections>
@@ -650,9 +651,6 @@
         <image name="rectangle.stack.badge.plus" catalog="system" width="128" height="122"/>
         <namedColor name="BackBlock">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BackWhite">
-            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="BlueBerry">
             <color red="0.75" green="0.83399999141693115" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -99,7 +99,7 @@ class C1NavigationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
         fetchData()
         groupCollectionView.reloadData()
         

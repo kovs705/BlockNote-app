@@ -156,6 +156,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
         noteListCollection.reloadData()
     }
     
@@ -164,7 +165,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         
-        noteListCollection.backgroundColor = UIColor(named: "BackWhite")
+        // noteListCollection.backgroundColor = UIColor(named: "BackWhite")
         noteListCollection.register(UINib(nibName: "NoteViewCell", bundle: nil), forCellWithReuseIdentifier: "NoteViewCell")
         noteListCollection.allowsSelection = true
         noteListCollection.allowsMultipleSelection = true
