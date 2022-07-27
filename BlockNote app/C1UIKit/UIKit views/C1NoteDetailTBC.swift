@@ -35,6 +35,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     
     var indexOfBlock = 0
     // var editingBool = false
+    let baseImage = UIImage(named: "gav")!
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -74,7 +75,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     override func viewWillAppear(_ animated: Bool) {
         // navigationController?.navigationBar.prefersLargeTitles = true
         
-        sortAndUpdate()
+        // sortAndUpdate()
         noteListTB.reloadData()
         for item in noteItemArray_sorted {
             print("\(item.noteItemOrder) ")
@@ -144,6 +145,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
                 self.indexOfBlock = indexPath.row
                 self.getText(text: newText)
                 
+                print("order of this text is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
+                
                 DispatchQueue.main.async {
                     tableView?.beginUpdates()
                     tableView?.endUpdates()
@@ -154,7 +157,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
-            cell.imageBlock.image = UIImage(data: noteItem.noteItemPhoto!)
+            
+            cell.imageBlock?.image = UIImage(data: (noteItem.noteItemPhoto ?? baseImage.toData!))
             
             // width 330, height 270
             cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
@@ -191,7 +195,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     @objc func showPhotoPicker() {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         
         present(imagePicker, animated: true)
@@ -330,10 +334,19 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
         blockItem.setValue(blockText, forKey: "noteItemText")
         blockItem.setValue(Date(), forKey: "lastChangedNI")
         
+        
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+            if note.noteItemArray.last?.noteItemType == photoBlock {
+                var photoBlock = 0
+                print("This is a photo block")
+                photoBlock = note.noteItemArray.last!.noteItemOrder + 1
+                
+                blockItem.setValue(photoBlock, forKey: "noteItemOrder")
+            } else {
+                blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+            }
         }
         
         do {
@@ -425,6 +438,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
 }
 
 // MARK: - Photo block and ImagePicker extension
+    // TODO: Гав, make a cell with up to 3-4 photos with a fixed size
 extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -456,7 +470,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
         // let pickedImage = info[.originalImage] as? UIImage
 
-//        guard let jpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
+//        guard letjpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
 //            return
 //        }
         // image = jpegImage
@@ -525,6 +539,8 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         } catch {
             print("Okay, it crashed, lul")
         }
+        
+        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -600,6 +600,14 @@
                                     <outlet property="imageBlock" destination="I5w-jz-dtX" id="xzF-Mw-5sg"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleBlock" id="7hE-s0-dz8" userLabel="TitleBlock" customClass="TVTitleBlock" customModule="BlockNote_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="519.66666603088379" width="390" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hE-s0-dz8" id="XuH-jL-LZ8">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="4hk-C5-ZVN" id="o5Y-U2-Vhc"/>

@@ -24,7 +24,7 @@ class TVPhotoBlock: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        // imageBlock = nil
+        imageBlock.image = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
