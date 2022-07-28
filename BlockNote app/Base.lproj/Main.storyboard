@@ -606,7 +606,25 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hE-s0-dz8" id="XuH-jL-LZ8">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="shn-LQ-dEV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="0.0" width="360" height="26.333333333333332"/>
+                                            <color key="backgroundColor" name="BackBlock"/>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="BackBlock"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="shn-LQ-dEV" secondAttribute="trailing" constant="15" id="Bmw-tM-qoN"/>
+                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="top" secondItem="XuH-jL-LZ8" secondAttribute="top" id="uzQ-lz-MCK"/>
+                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="leading" secondItem="XuH-jL-LZ8" secondAttribute="leading" constant="15" id="vSW-6a-2pi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleTextView" destination="shn-LQ-dEV" id="jmx-kd-Rh9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -647,6 +665,9 @@
         </designable>
         <designable name="Uw0-wd-HlC">
             <size key="intrinsicContentSize" width="360" height="300"/>
+        </designable>
+        <designable name="shn-LQ-dEV">
+            <size key="intrinsicContentSize" width="90" height="26.333333333333332"/>
         </designable>
         <designable name="t98-5w-jP2">
             <size key="intrinsicContentSize" width="1901" height="20.333333333333332"/>

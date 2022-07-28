@@ -10,7 +10,7 @@ import CoreData
 // import RxSwift
 // import RxCocoa
 
-class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
+class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegate{
     
     @IBOutlet var noteListTB: UITableView!
     // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
@@ -28,6 +28,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     // block types:
     let textBlock = "TextBlock"
     let photoBlock = "PhotoBlock"
+    let titleBlock = "TitleBlock"
+    
+    var textForTitleBlock: String = ""
     
     var textForTextlock: String = ""
     var updateBool: Bool = false
@@ -154,6 +157,27 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
                
             }
             return cell
+            
+        } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
+            let cell = tableView.dequeueReusableCell(withIdentifier: titleBlock, for: indexPath) as! TVTitleBlock
+            
+            cell.delegate = self
+            cell.titleTextView.text = noteItem.noteItemText
+            cell.titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            
+            cell.textChanged { [weak tableView] (newText: String) in
+                noteItem.noteItemText = newText
+                
+                self.indexOfBlock = indexPath.row
+                self.getTitle(text: newText)
+                
+                print("order of this title is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
+                
+                DispatchQueue.main.async {
+                    tableView?.beginUpdates()
+                    tableView?.endUpdates()
+                }
+            }
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
@@ -392,7 +416,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
     }
     
     // MARK: - Delete block
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // ---------save the number of deleting block
         // ---------delete block
@@ -433,6 +456,35 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate {
                 print("Something wrong on deleting the block")
             }
         }
+    }
+    
+    // MARK: - TitleBlock function
+    func update(titleText: String, block: NoteItem?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+/// update the date of the last changing
+        block?.setValue(Date(), forKey: "lastChangedNI")
+/// update the text of the block
+        block?.setValue(titleText, forKey: "noteItemText")
+        
+        do {
+            if managedContext.hasChanges {
+                // backSaveChanging()
+                try managedContext.save()
+            } else {
+                print("Wrong on updating the note item")
+            }
+        } catch let error as NSError {
+            print("Could not update. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getTitle(text: String?) {
+        textForTitleBlock = text ?? "Nothing in the title, or it's just the bug."
+        update(titleText: textForTitleBlock, block: self.noteItemArray_sorted[indexOfBlock])
     }
 
 }

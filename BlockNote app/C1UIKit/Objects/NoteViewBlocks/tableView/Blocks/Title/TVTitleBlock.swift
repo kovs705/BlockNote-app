@@ -6,18 +6,42 @@
 //
 
 import UIKit
+import CoreData
 
-class TVTitleBlock: UITableViewCell {
+protocol titleSaveDelegate: AnyObject {
+    func update(titleText: String, block: NoteItem?)
+    func getTitle(text: String?)
+}
 
+class TVTitleBlock: UITableViewCell, UITextViewDelegate {
+
+    @IBOutlet weak var titleTextView: UITextView!
+    
+    weak var delegate: titleSaveDelegate?
+    var textChanged: ((String) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        titleTextView.delegate = self
+    }
+    
+    func textChanged(action: @escaping (String) -> Void) {
+        self.textChanged = action
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textChanged?(textView.text)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textChanged = nil
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
     
 }
