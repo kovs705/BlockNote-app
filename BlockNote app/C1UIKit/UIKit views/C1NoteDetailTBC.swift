@@ -53,8 +53,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         noteListTB.delegate = self
         noteListTB.dataSource = self
         
-        print("Number of blocks: \(noteItemArray_sorted.count)")
-        
         self.noteListTB.sectionHeaderHeight = 50
         
         // Navigation
@@ -75,15 +73,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     }
     
     // MARK: - viewWillAppear
-    override func viewWillAppear(_ animated: Bool) {
-        // navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // sortAndUpdate()
-        // noteListTB.reloadData()
-        for item in noteItemArray_sorted {
-            print("\(item.noteItemOrder)")
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        // navigationController?.navigationBar.prefersLargeTitles = true
+//
+//        // sortAndUpdate()
+//        // noteListTB.reloadData()
+//        for item in noteItemArray_sorted {
+//            print("\(item.noteItemOrder)")
+//        }
+//    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,10 +91,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width-60, font: UIFont.systemFont(ofSize: 17))
             
+        } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
+            return noteItemArray_sorted[indexPath.row].noteItemText
+                .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 22))
+            
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let image = UIImage(data: noteItem.noteItemPhoto!)
             let imageCrop = image!.getCropRatio()
             return tableView.frame.width / imageCrop
+            
         } else {
             return 250
         }
@@ -148,8 +151,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
                 self.indexOfBlock = indexPath.row
                 self.getText(text: newText)
                 
-                print("order of this text is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
-                
                 DispatchQueue.main.async {
                     tableView?.beginUpdates()
                     tableView?.endUpdates()
@@ -174,8 +175,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
                 self.indexOfBlock = indexPath.row
                 self.getTitle(text: newText)
                 
-                print("order of this title is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
-                
                 DispatchQueue.main.async {
                     tableView?.beginUpdates()
                     tableView?.endUpdates()
@@ -183,6 +182,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             }
             
             print("DEBUG TITLE \(noteItem.noteItemOrder)")
+            
+            return cell
             
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
@@ -220,7 +221,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         }
         // noteListTB.reloadData()
         
-        print("=========\nNumber of notes: \(noteItemArray_sorted.count)")
+        print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
     }
     
     // MARK: - Add photo block
@@ -238,6 +239,14 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let alert = UIAlertController(title: "New block", message: "Choose your block", preferredStyle: .actionSheet)
         
         // textBlock save
+        
+        let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [unowned self] action in
+            
+            let titleToSave = "Lorem ipsum title"
+            
+            self.save(blockType: titleBlock, blockText: titleToSave)
+        }
+        
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [unowned self] action in
             
 //            guard
@@ -261,6 +270,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         // alert.addTextField()
+        alert.addAction(saveTitleBlock)
         alert.addAction(saveTextBlock)
         alert.addAction(savePhotoBlock)
         alert.addAction(cancelAction)

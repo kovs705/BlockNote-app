@@ -33,6 +33,13 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
         textChanged?(textView.text)
     }
     
+    class UITextViewPadding : UITextView {
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+            textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
+        }
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         textChanged = nil

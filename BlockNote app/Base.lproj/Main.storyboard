@@ -262,7 +262,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-Dr-VzR">
-                                                                                <rect key="frame" x="24.000000000000004" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="24" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -557,7 +557,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                            <rect key="frame" x="30" y="0.0" width="330" height="158.33333333333334"/>
+                                            <rect key="frame" x="30" y="0.0" width="330" height="142.33333333333334"/>
                                             <color key="backgroundColor" name="BackBlock"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -609,7 +609,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="shn-LQ-dEV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="0.0" width="360" height="42.333333333333336"/>
+                                            <rect key="frame" x="15" y="0.0" width="360" height="26.333333333333332"/>
                                             <color key="backgroundColor" name="BackBlock"/>
                                             <color key="textColor" systemColor="labelColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
