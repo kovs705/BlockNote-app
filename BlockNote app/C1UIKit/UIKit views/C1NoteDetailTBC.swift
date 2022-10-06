@@ -79,9 +79,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         // navigationController?.navigationBar.prefersLargeTitles = true
         
         // sortAndUpdate()
-        noteListTB.reloadData()
+        // noteListTB.reloadData()
         for item in noteItemArray_sorted {
-            print("\(item.noteItemOrder) ")
+            print("\(item.noteItemOrder)")
         }
     }
 
@@ -156,6 +156,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
                 }
                
             }
+            
+            print("DEBUG TEXT \(noteItem.noteItemOrder)")
+            
             return cell
             
         } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
@@ -179,6 +182,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
                 }
             }
             
+            print("DEBUG TITLE \(noteItem.noteItemOrder)")
+            
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
             
@@ -188,15 +193,16 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
             cell.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
             
-            print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
+            // print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
+            print("DEBUG PHOTO \(noteItem.noteItemOrder)")
             return cell
         }
         return UITableViewCell()
     }
     
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
+//    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.reloadRows(at: [indexPath], with: .automatic)
+//    }
     
     
     
@@ -213,6 +219,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             $0.noteItemOrder < $1.noteItemOrder
         }
         // noteListTB.reloadData()
+        
+        print("=========\nNumber of notes: \(noteItemArray_sorted.count)")
     }
     
     // MARK: - Add photo block
@@ -358,19 +366,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         blockItem.setValue(blockText, forKey: "noteItemText")
         blockItem.setValue(Date(), forKey: "lastChangedNI")
         
-        
+        // MARK: - Give an order number for note:
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-            if note.noteItemArray.last?.noteItemType == photoBlock {
-                var photoBlock = 0
-                print("This is a photo block")
-                photoBlock = note.noteItemArray.last!.noteItemOrder + 1
-                
-                blockItem.setValue(photoBlock, forKey: "noteItemOrder")
-            } else {
-                blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
-            }
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
+//            if note.noteItemArray.last?.noteItemType == photoBlock {
+//                noteListTB.reloadData()
+//                noteItemArray_sorted
+//            }
         }
         
         do {
@@ -378,7 +382,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             note.addObject(value: blockItem, forKey: "noteItems")
             
             if managedContext.hasChanges {
-                print("Successfully added text block")
                 sortAndUpdate()
                 try managedContext.save()
             } else {
@@ -388,13 +391,10 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             // check for changes in sorted array:
             if note.noteItems?.count == noteItemArray_sorted.count {
                 
-                print("Same numbers of note")
-                
                 self.noteListTB.performBatchUpdates({
                     self.noteListTB.insertRows(at: [IndexPath(row: noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
                 }, completion: nil)
                 
-                print("Updated rows")
                 DispatchQueue.main.async {
                     self.noteListTB.beginUpdates()
                     self.noteListTB.endUpdates()
@@ -402,7 +402,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             } else {
                 sortAndUpdate()
                 print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
                 
                 DispatchQueue.main.async {
                     self.noteListTB.beginUpdates()
@@ -544,7 +543,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: "noteItemOrder")
         } else {
-            blockItem.setValue((note.noteItemArray.last?.noteItemOrder ?? 0) + 1, forKey: "noteItemOrder")
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
         }
 
         do {
@@ -552,9 +551,8 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             note.addObject(value: blockItem, forKey: "noteItems")
             
             if managedContext.hasChanges {
-                picker.dismiss(animated: true)
-                print("added a photo")
                 sortAndUpdate()
+                picker.dismiss(animated: true)
                 try managedContext.save()
             } else {
                 print("Okay, the image has not been saved")
@@ -566,7 +564,6 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                     self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
                 }, completion: nil)
                 
-                print("Updated rows")
                 DispatchQueue.main.async {
                     self.noteListTB.beginUpdates()
                     self.noteListTB.endUpdates()
@@ -574,7 +571,6 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             } else {
                 sortAndUpdate()
                 print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                print("YO, NO CHANGES, UPDATE SORTED ARRAY!")
                 
                 DispatchQueue.main.async {
                     self.noteListTB.beginUpdates()

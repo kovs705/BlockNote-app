@@ -1039,6 +1039,7 @@
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BlockNote app/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Blocknote;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1069,6 +1070,7 @@
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BlockNote app/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Blocknote;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

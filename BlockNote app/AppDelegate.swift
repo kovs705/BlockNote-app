@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Customization
         
-        UINavigationBar.appearance().backgroundColor = UIColor(named: "DarkBackground")
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "TextForegroundColor") ?? .white]
+//        UINavigationBar.appearance().backgroundColor = UIColor(named: "DarkBackground")
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "TextForegroundColor") ?? .white]
         
         
         return true
