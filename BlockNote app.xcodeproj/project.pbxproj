@@ -20,6 +20,7 @@
 		4E1803CC274058F00096A87C /* BlockNote_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */; };
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */; };
+		4E1D4CBD293BA2F30032F84A /* SnowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D4CBC293BA2F30032F84A /* SnowScene.swift */; };
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
 		4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429727EE5ABE0020E380 /* NoteCell.swift */; };
 		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
@@ -48,9 +49,7 @@
 		4EAC48C52808A0390094181B /* CVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC48C32808A0390094181B /* CVTextBlock.swift */; };
 		4EAC48C62808A0390094181B /* TextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAC48C42808A0390094181B /* TextBlock.xib */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
-		4EBAB2502873983400A2AC05 /* TVTitleBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB24E2873983400A2AC05 /* TVTitleBlock.xib */; };
 		4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */; };
-		4EBAB2562873987600A2AC05 /* TVPhotoBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB2542873987600A2AC05 /* TVPhotoBlock.xib */; };
 		4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */; };
 		4EBAB25A287398C500A2AC05 /* TVCodeBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB258287398C500A2AC05 /* TVCodeBlock.xib */; };
 		4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */; };
@@ -63,7 +62,6 @@
 		4ED982F2283EB8400063C1F1 /* zeroPaddingTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F1283EB8400063C1F1 /* zeroPaddingTV.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
-		4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE639CC282C534100CD08B2 /* TVTextBlock.xib */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
 		4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
@@ -112,6 +110,7 @@
 		4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITests.swift; sourceTree = "<group>"; };
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1GroupDetailView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		4E1D4CBC293BA2F30032F84A /* SnowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowScene.swift; sourceTree = "<group>"; };
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
 		4E26429727EE5ABE0020E380 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -139,9 +138,7 @@
 		4EAC48C32808A0390094181B /* CVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTextBlock.swift; sourceTree = "<group>"; };
 		4EAC48C42808A0390094181B /* TextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextBlock.xib; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
-		4EBAB24E2873983400A2AC05 /* TVTitleBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVTitleBlock.xib; sourceTree = "<group>"; };
 		4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPhotoBlock.swift; sourceTree = "<group>"; };
-		4EBAB2542873987600A2AC05 /* TVPhotoBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVPhotoBlock.xib; sourceTree = "<group>"; };
 		4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCodeBlock.swift; sourceTree = "<group>"; };
 		4EBAB258287398C500A2AC05 /* TVCodeBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCodeBlock.xib; sourceTree = "<group>"; };
 		4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVToDoBlock.swift; sourceTree = "<group>"; };
@@ -154,7 +151,6 @@
 		4ED982F1283EB8400063C1F1 /* zeroPaddingTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zeroPaddingTV.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
-		4EE639CC282C534100CD08B2 /* TVTextBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVTextBlock.xib; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
 		4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -267,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				4E44C793278CD0EA0054E5E2 /* SnowBackground.sks */,
+				4E1D4CBC293BA2F30032F84A /* SnowScene.swift */,
 				4E44C794278CD0EA0054E5E2 /* Assets.xcassets */,
 			);
 			path = SpriteKit;
@@ -389,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */,
-				4EE639CC282C534100CD08B2 /* TVTextBlock.xib */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -398,7 +394,6 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */,
-				4EBAB24E2873983400A2AC05 /* TVTitleBlock.xib */,
 			);
 			path = Title;
 			sourceTree = "<group>";
@@ -407,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */,
-				4EBAB2542873987600A2AC05 /* TVPhotoBlock.xib */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -677,12 +671,9 @@
 				4E44C795278CD0EA0054E5E2 /* SnowBackground.sks in Resources */,
 				4EBAB2652873997900A2AC05 /* TVListBlock.xib in Resources */,
 				4EBAB25F2873990200A2AC05 /* TVToDoBlock.xib in Resources */,
-				4EBAB2562873987600A2AC05 /* TVPhotoBlock.xib in Resources */,
 				4E1803B7274058F00096A87C /* LaunchScreen.storyboard in Resources */,
-				4EE639CE282C534100CD08B2 /* TVTextBlock.xib in Resources */,
 				4E1803B4274058F00096A87C /* Assets.xcassets in Resources */,
 				4E44C796278CD0EA0054E5E2 /* Assets.xcassets in Resources */,
-				4EBAB2502873983400A2AC05 /* TVTitleBlock.xib in Resources */,
 				4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */,
 				4EAC48C62808A0390094181B /* TextBlock.xib in Resources */,
 				4E1803AF274058EA0096A87C /* Main.storyboard in Resources */,
@@ -852,6 +843,7 @@
 				4E323E0627BD160B0062008A /* noteListObject.swift in Sources */,
 				4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
+				4E1D4CBD293BA2F30032F84A /* SnowScene.swift in Sources */,
 				4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,

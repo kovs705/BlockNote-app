@@ -113,6 +113,7 @@ struct BluredButtonInTabBar: ButtonStyle {
 extension Color {
     static let darkBack = Color("DarkBackground")
     static let lightPart = Color("LightPart")
+    static let frontBack = Color("FrontBack")
     
     // pastel colors:
     static let rosePink = Color("RosePink") // rose

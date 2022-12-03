@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 class C1NavigationViewController: UIViewController {
     
@@ -20,6 +21,8 @@ class C1NavigationViewController: UIViewController {
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var snowBackgroundScene: SKView!
     
     let identifierForCollectionCell = "groupDetail"
     
@@ -50,16 +53,23 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        if let snowParticleScene = SKScene(fileNamed: "SnowBackground") {
+//            snowBackgroundScene.presentScene(snowParticleScene)
+//            snowBackgroundScene.scene?.scaleMode = .fill
+//        }
+//    }
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
         
-        progressBarView.layer.shadowColor = UIColor(named: "PurpleBlackBerry")?.cgColor
-        progressBarView.layer.shadowOpacity = 1
-        progressBarView.layer.shadowOffset = .zero
-        progressBarView.layer.shadowRadius = 10
-        
+        progressBarView.layer.shadowColor = UIColor.black.cgColor
+        progressBarView.layer.masksToBounds = false
+
         
         groupCollectionView.allowsSelection = true
         groupCollectionView.dataSource      = self
@@ -87,6 +97,8 @@ class C1NavigationViewController: UIViewController {
         
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
+        
+        initSnowScene()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -191,6 +203,14 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
+    private func initSnowScene() {
+        let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        snowParticleScene.scaleMode = .aspectFill
+        // snowParticleScene.backgroundColor = returnUIColorFromString(string: "BackBlock")!
+        
+        snowBackgroundScene.presentScene(snowParticleScene)
+    }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if let cell = sender as? UICollectionViewCell,
 //           let indexPath = self.groupCollectionView.indexPath(for: cell) {
@@ -211,19 +231,20 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
-            // cell.groupName.text = group.value(forKey: "groupName") as? String
-            cell.setGroupName(label: group.value(forKey: "groupName") as? String ?? "default name")
-            cell.setBackground(color: group.value(forKey: "groupColor") as? String ?? "GreenAvocado")
-            // cell.setNumber(numLabel: "String", number: 1)
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
-            // cell.numberOfNotes.text = "\(group.value(forKey: "noteTypes") ?? 0) notes"
-            
-            // MARK: - Animation
-            // cell.alpha = 0
-            // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            
-            return cell
+        var numberOfNotes = group.value(forKey: "noteTypes") as! Set<Note>
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
+        // cell.groupName.text = group.value(forKey: "groupName") as? String
+        cell.setGroupName(label: group.value(forKey: "groupName") as? String ?? "default name")
+        cell.setBackground(color: group.value(forKey: "groupColor") as? String ?? "GreenAvocado")
+        cell.setNumber(number: numberOfNotes.count)
+        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // MARK: - Animation
+        // cell.alpha = 0
+        // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        return cell
     }
     
 //    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

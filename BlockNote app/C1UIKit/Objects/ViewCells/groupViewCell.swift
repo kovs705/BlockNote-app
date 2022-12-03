@@ -19,7 +19,7 @@ class groupViewCell: UICollectionViewCell {
     func setGroupName(label: String) {
         groupName.text = label
     }
-    func setNumber(numLabel: String, number: Int) {
+    func setNumber(number: Int) {
         if number == 0 {
         numberOfNotes.text = "0 notes"
         }

@@ -10,7 +10,8 @@ import CoreData
 // import RxSwift
 // import RxCocoa
 
-class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegate{
+// MARK: - Class and properties
+class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegate, UITableViewDragDelegate {
     
     @IBOutlet var noteListTB: UITableView!
     // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
@@ -25,14 +26,14 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     // RxSwift: future thing, I guess
     // var db = DisposeBag()
     
-    // block types:
+    // MARK: - block types:
     let textBlock = "TextBlock"
     let photoBlock = "PhotoBlock"
     let titleBlock = "TitleBlock"
     
     var textForTitleBlock: String = ""
-    
     var textForTextlock: String = ""
+    
     var updateBool: Bool = false
     let cellSpacingHeight: CGFloat = 50
     
@@ -52,20 +53,19 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         
         noteListTB.delegate = self
         noteListTB.dataSource = self
+        // drag&drop:
+        noteListTB.dragDelegate = self
+        noteListTB.dragInteractionEnabled = true
         
         self.noteListTB.sectionHeaderHeight = 50
         
         // Navigation
         title = note.wrappedNoteName
         
-        // Debug
-        // print("\(noteItemArray_sorted.count)")
-        
         /// Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        /// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
         
@@ -113,8 +113,40 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         return noteItemArray_sorted.count
     }
     
+    // MARK: - Drag&Drop UITableView
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = noteItemArray_sorted[indexPath.row]
+        return [dragItem]
+    }
     
-    // mARK: - Header
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // update the model:
+        DispatchQueue.main.async {
+            for block in self.noteItemArray_sorted {
+                var blockIndex = block.noteItemOrder - 1
+                // take the range between the source and destination index
+                if blockIndex < sourceIndexPath.row {
+                    if blockIndex < destinationIndexPath.row {
+                        block.noteItemOrder -= 1
+                    } else { // if it's more than destination
+                        block.noteItemOrder += 1
+                    }
+                }
+                
+                // Save
+                delegateSave()
+            }
+        }
+        
+        let mover = noteItemArray_sorted.remove(at: sourceIndexPath.row)
+        noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)
+        
+        
+        
+    }
+    
+    // MARK: - Header
 //    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return cellSpacingHeight
 //    }
@@ -133,9 +165,11 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
 //                return headerView
 //    }
 
+    // MARK: - cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
         
+        // MARK: textBlock
         if noteItem.value(forKey: "noteItemType") as! String == textBlock {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
@@ -162,6 +196,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             
             return cell
             
+            // MARK: titleBlock
         } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: titleBlock, for: indexPath) as! TVTitleBlock
             
@@ -185,6 +220,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             
             return cell
             
+            // MARK: - photoBlock
         } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
             
@@ -220,7 +256,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             $0.noteItemOrder < $1.noteItemOrder
         }
         // noteListTB.reloadData()
-        
+        // noteListTB.endEditing(true)
         print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
     }
     
@@ -234,7 +270,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         present(imagePicker, animated: true)
     }
     
-    // MARK: - Add text block
+    
+    // MARK: - UIAlertController
     @objc func addBlock() {
         let alert = UIAlertController(title: "New block", message: "Choose your block", preferredStyle: .actionSheet)
         
@@ -286,6 +323,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
 //
 //        switch key.keyCode {
 //        case .keyboardReturnOrEnter:
+//            noteListTB.endEditing(true)
+//
 //            saveAndStartTyping()
 //        default:
 //            super.pressesEnded(presses, with: event)
@@ -294,15 +333,34 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     
    // MARK: - Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
     func saveAndStartTyping() {
-        print("You tapped return button on keyboard")
-        save(blockType: textBlock, blockText: "New text")
         
-        if let lastBlock = noteItemArray_sorted.last?.noteItemOrder {
-            let cell = noteListTB.dequeueReusableCell(withIdentifier: textBlock, for: IndexPath(index: lastBlock)) as! TVTextBlock
-            cell.textView.becomeFirstResponder()
-        } else {
-            return
+        print("You tapped return button on keyboard")           // check with print func
+        save(blockType: textBlock, blockText: "New text")       // saves a new block
+        
+        DispatchQueue.main.async {
+            self.noteListTB.beginUpdates()
+            self.noteListTB.endUpdates()
         }
+
+//        guard let lastBlock = noteItemArray_sorted.last?.noteItemOrder else {
+//            print("Couldn't get the last order after clicking return button")
+//            return
+//        }
+//
+//        // MARK: - TODO - Add text check (for deleting)
+//
+//         let cell = noteListTB.dequeueReusableCell(withIdentifier: textBlock, for: IndexPath(index: lastBlock - 1)) as! TVTextBlock  // order is +1 than indexPath
+//         cell.textView.becomeFirstResponder()
+        
+//        if let lastBlock = noteItemArray_sorted.last?.noteItemOrder {
+//            let cell = noteListTB.dequeueReusableCell(withIdentifier: textBlock, for: IndexPath(index: lastBlock - 1)) as! TVTextBlock
+//            print("\(lastBlock - 1)")
+//            cell.textView.becomeFirstResponder()
+//        } else {
+//            return
+//        }
+        
+        
     }
     
 //    // MARK: - Get the order
@@ -332,26 +390,13 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     
     // MARK: - update block
     func update(blockText: String, block: NoteItem?) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
         
 /// update the date of the last changing
         block?.setValue(Date(), forKey: "lastChangedNI")
 /// update the text of the block
         block?.setValue(blockText, forKey: "noteItemText")
         
-        do {
-            if managedContext.hasChanges {
-                // backSaveChanging()
-                try managedContext.save()
-            } else {
-                print("Wrong on updating the note item")
-            }
-        } catch let error as NSError {
-            print("Could not update. \(error), \(error.userInfo)")
-        }
+        delegateSave()
     }
     
     // MARK: - Save block
@@ -469,26 +514,13 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     
     // MARK: - TitleBlock function
     func update(titleText: String, block: NoteItem?) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
+
 /// update the date of the last changing
         block?.setValue(Date(), forKey: "lastChangedNI")
 /// update the text of the block
         block?.setValue(titleText, forKey: "noteItemText")
         
-        do {
-            if managedContext.hasChanges {
-                // backSaveChanging()
-                try managedContext.save()
-            } else {
-                print("Wrong on updating the note item")
-            }
-        } catch let error as NSError {
-            print("Could not update. \(error), \(error.userInfo)")
-        }
+        delegateSave()
     }
     
     func getTitle(text: String?) {
@@ -601,6 +633,23 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+func delegateSave() {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return
+    }
+    let managedContext = appDelegate.persistentContainerOffline.viewContext
+    
+    do {
+        if managedContext.hasChanges {
+            try managedContext.save()
+        } else {
+            print("Wrong on updating the note item")
+        }
+    } catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+    }
 }
 
 extension UIImage {
