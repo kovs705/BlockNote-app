@@ -26,8 +26,6 @@ class C1NavigationViewController: UIViewController {
     
     let identifierForCollectionCell = "groupDetail"
     
-    #warning("Place a rounded button under the collection view")
-    
     var groups: [NSManagedObject] = []
     // var groupsGroupType: [GroupType] = []
     
@@ -231,7 +229,7 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-        var numberOfNotes = group.value(forKey: "noteTypes") as! Set<Note>
+        let numberOfNotes = group.value(forKey: "noteTypes") as! Set<Note>
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
         // cell.groupName.text = group.value(forKey: "groupName") as? String

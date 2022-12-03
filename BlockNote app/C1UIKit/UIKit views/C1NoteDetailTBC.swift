@@ -122,28 +122,36 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // update the model:
-        DispatchQueue.main.async {
-            for block in self.noteItemArray_sorted {
-                var blockIndex = block.noteItemOrder - 1
-                // take the range between the source and destination index
-                if blockIndex < sourceIndexPath.row {
-                    if blockIndex < destinationIndexPath.row {
-                        block.noteItemOrder -= 1
-                    } else { // if it's more than destination
-                        block.noteItemOrder += 1
-                    }
-                }
-                
-                // Save
-                delegateSave()
-            }
-        }
+        
         
         let mover = noteItemArray_sorted.remove(at: sourceIndexPath.row)
         noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)
         
+        print(sourceIndexPath.row)
+        print(destinationIndexPath.row)
         
+        for block in self.noteItemArray_sorted {
+            let blockIndex = block.noteItemOrder - 1
+            // from top to bottom:
+            if sourceIndexPath.row > destinationIndexPath.row {
+                if !(blockIndex < destinationIndexPath.row) {
+                    if blockIndex <= sourceIndexPath.row {
+                        block.setValue(block.noteItemOrder + 1, forKey: "noteItemOrder")
+                    }
+                }
+            } else {
+                // from bottom to top:
+                if blockIndex > sourceIndexPath.row {
+                    if blockIndex <= destinationIndexPath.row {
+                        block.setValue(block.noteItemOrder - 1, forKey: "noteItemOrder")
+                    }
+                }
+            }
+            
+        }
+        mover.setValue(destinationIndexPath.row + 1, forKey: "noteItemOrder")
         
+        delegateSave()
     }
     
     // MARK: - Header
