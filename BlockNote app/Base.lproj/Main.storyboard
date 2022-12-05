@@ -22,7 +22,6 @@
                         <subviews>
                             <skView contentMode="scaleToFill" sceneName="snow.sks" translatesAutoresizingMaskIntoConstraints="NO" id="sE1-Mt-tze">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <color key="backgroundColor" name="BackBlock"/>
                             </skView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-X8-C9f" userLabel="Scroll">
                                 <rect key="frame" x="0.0" y="3" width="390" height="841"/>
@@ -231,7 +230,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="BackBlock"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Va4-J8-r6j" secondAttribute="bottom" id="4CS-v9-F4p"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="leading" secondItem="ioq-X8-C9f" secondAttribute="leading" id="6tq-hE-Cax"/>
@@ -247,6 +245,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hvI-tt-BmH"/>
+                        <color key="backgroundColor" name="BackBlock"/>
                         <constraints>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="bottom" secondItem="hvI-tt-BmH" secondAttribute="bottom" constant="34" id="FTX-y2-wwU"/>
                             <constraint firstItem="ioq-X8-C9f" firstAttribute="leading" secondItem="hvI-tt-BmH" secondAttribute="leading" id="Git-Gg-MWn"/>
@@ -260,6 +259,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Uje-ni-jtr"/>
                     <connections>
+                        <outlet property="background" destination="6CE-Ri-ZuX" id="CAa-fx-Qy4"/>
                         <outlet property="greetingLabel" destination="cp5-2b-dab" id="Vvu-df-f61"/>
                         <outlet property="groupCollectionView" destination="Uw0-wd-HlC" id="fj8-GV-Cw0"/>
                         <outlet property="progressBarView" destination="mEw-dg-pTv" id="Yk2-Ul-tzU"/>

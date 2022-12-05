@@ -17,6 +17,7 @@ class C1NavigationViewController: UIViewController {
     /// разобраться где будет UIViewController, агде UIHostingController (проблема с dismiss view)
     ///
     // #warning("change greetingLabel with ContainerVIew for SwiftUI")
+    @IBOutlet var background: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
@@ -52,12 +53,6 @@ class C1NavigationViewController: UIViewController {
     }
     
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        if let snowParticleScene = SKScene(fileNamed: "SnowBackground") {
-//            snowBackgroundScene.presentScene(snowParticleScene)
-//            snowBackgroundScene.scene?.scaleMode = .fill
-//        }
-//    }
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -87,7 +82,7 @@ class C1NavigationViewController: UIViewController {
         showGreeting()
         // #warning("work on shadow bug") --> completed
         progressBarView.layer.cornerRadius = 20
-        progressBarView.shadowOffset = CGSize(width: 5, height: 5)
+        progressBarView.shadowOffset = CGSize(width: 15, height: 0)
         progressBarView.layer.shadowRadius = 10
         progressBarView.shadowOpacity = 0.3
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
@@ -112,7 +107,6 @@ class C1NavigationViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         fetchData()
         groupCollectionView.reloadData()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -204,7 +198,10 @@ class C1NavigationViewController: UIViewController {
     private func initSnowScene() {
         let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         snowParticleScene.scaleMode = .aspectFill
-        // snowParticleScene.backgroundColor = returnUIColorFromString(string: "BackBlock")!
+        snowParticleScene.backgroundColor = .clear
+        
+        snowBackgroundScene.allowsTransparency = true
+        snowBackgroundScene.backgroundColor = .clear
         
         snowBackgroundScene.presentScene(snowParticleScene)
     }

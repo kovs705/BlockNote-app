@@ -172,6 +172,15 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         
         numberOfNotesLabel.text = "\(groupType.typesOfNoteArray.count)"
         
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.masksToBounds = false
+        
+        topBar.layer.cornerRadius = 20
+        topBar.shadowOffset = CGSize(width: 5, height: 0)
+        topBar.layer.shadowRadius = 10
+        topBar.shadowOpacity = 0.3
+        topBar.layer.shadowPath = CGPath(rect: topBar.bounds, transform: nil)
+        
         topBar.backgroundColor = UIColor(named: "\(groupType.groupColor ?? "BlueBerry")")
         first_column.backgroundColor = UIColor(named: "\(groupType.groupColor ?? "BlueBerry")")
         second_column.backgroundColor = UIColor(named: "\(groupType.groupColor ?? "BlueBerry")")
