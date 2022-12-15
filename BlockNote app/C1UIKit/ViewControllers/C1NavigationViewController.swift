@@ -11,11 +11,6 @@ import SpriteKit
 
 class C1NavigationViewController: UIViewController {
     
-    ///
-    /// создать ScrollView
-    /// добавить containerView с SwiftUI объектами, взяв их из файлов
-    /// разобраться где будет UIViewController, агде UIHostingController (проблема с dismiss view)
-    ///
     // #warning("change greetingLabel with ContainerVIew for SwiftUI")
     @IBOutlet var background: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
@@ -28,7 +23,6 @@ class C1NavigationViewController: UIViewController {
     let identifierForCollectionCell = "groupDetail"
     
     var groups: [NSManagedObject] = []
-    // var groupsGroupType: [GroupType] = []
     
     var hour = Calendar.current.component(.hour, from: Date())
     
@@ -58,8 +52,6 @@ class C1NavigationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // groupCollectionView.register(UINib(nibName: "GroupCollectionCell", bundle: nil), forCellWithReuseIdentifier: identifierForCollectionCell)
-        
         progressBarView.layer.shadowColor = UIColor.black.cgColor
         progressBarView.layer.masksToBounds = false
 
@@ -80,13 +72,12 @@ class C1NavigationViewController: UIViewController {
         
         // MARK: - Design
         showGreeting()
-        // #warning("work on shadow bug") --> completed
+        
         progressBarView.layer.cornerRadius = 20
         progressBarView.shadowOffset = CGSize(width: 15, height: 0)
         progressBarView.layer.shadowRadius = 10
         progressBarView.shadowOpacity = 0.3
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
-        // progressBarView.shadowColor = UIColor.black
         
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true

@@ -193,6 +193,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E076B232944C839000F7E8F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
+				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4E076B242944C914000F7E8F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4EFA5FBA274079D80096F021 /* Extensions.swift */,
+				4E5A381927AAADB800E1F217 /* Code to test.swift */,
+				4E55324327666AF10013E097 /* ViewModifications.swift */,
+				4EFA5FBC27407A080096F021 /* Persistence.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4E18039B274058EA0096A87C = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +247,8 @@
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
 				4E1803B5274058F00096A87C /* LaunchScreen.storyboard */,
 				4E1803B8274058F00096A87C /* Info.plist */,
+				4ED53DF0278F1A8E00F79A3F /* Views */,
+				4E076B242944C914000F7E8F /* Data */,
 				4E1803DE27405CA00096A87C /* CoreData */,
 			);
 			path = "BlockNote app";
@@ -360,13 +383,13 @@
 			path = C1Views;
 			sourceTree = "<group>";
 		};
-		4EAC48C228089E310094181B /* NoteViewBlocks */ = {
+		4EAC48C228089E310094181B /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
 				4EE639CF282C6DA600CD08B2 /* tableView */,
 				4EE639D0282C6DB900CD08B2 /* CollectionView */,
 			);
-			path = NoteViewBlocks;
+			path = Blocks;
 			sourceTree = "<group>";
 		};
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
@@ -446,46 +469,35 @@
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
-		4EC178EA28075C9B004FF965 /* ProgrammaticUI */ = {
+		4EC178EA28075C9B004FF965 /* ProgrammaticVC */ = {
 			isa = PBXGroup;
 			children = (
 				4E581A7F27E3D55C007731A8 /* C1NoteView.swift */,
 				4E1B4D0A279CAB34008BDC72 /* C1GroupDetailView.swift */,
 				4EC178E828075C96004FF965 /* C1NoteDetailView.swift */,
 			);
-			path = ProgrammaticUI;
+			path = ProgrammaticVC;
 			sourceTree = "<group>";
 		};
 		4ED53DEF278F19EF00F79A3F /* C1UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				4ED53DF1278F1A9800F79A3F /* UIKit views */,
-				4ED53DF0278F1A8E00F79A3F /* Objects */,
+				4E076B232944C839000F7E8F /* ViewControllers */,
+				4EC178EA28075C9B004FF965 /* ProgrammaticVC */,
 			);
 			path = C1UIKit;
 			sourceTree = "<group>";
 		};
-		4ED53DF0278F1A8E00F79A3F /* Objects */ = {
+		4ED53DF0278F1A8E00F79A3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
 				4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */,
-				4EAC48C228089E310094181B /* NoteViewBlocks */,
+				4EAC48C228089E310094181B /* Blocks */,
 				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
 				4E4C715A28193C9300107E18 /* Other objects */,
 			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		4ED53DF1278F1A9800F79A3F /* UIKit views */ = {
-			isa = PBXGroup;
-			children = (
-				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
-				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
-				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
-				4EC178EA28075C9B004FF965 /* ProgrammaticUI */,
-			);
-			path = "UIKit views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4EE639CF282C6DA600CD08B2 /* tableView */ = {
@@ -520,10 +532,6 @@
 			children = (
 				4EBBBE462740A71600041763 /* SwiftUI Views */,
 				4E44C79F278CD41E0054E5E2 /* Additional views */,
-				4EFA5FBA274079D80096F021 /* Extensions.swift */,
-				4E5A381927AAADB800E1F217 /* Code to test.swift */,
-				4E55324327666AF10013E097 /* ViewModifications.swift */,
-				4EFA5FBC27407A080096F021 /* Persistence.swift */,
 			);
 			path = C1SwiftUI;
 			sourceTree = "<group>";
