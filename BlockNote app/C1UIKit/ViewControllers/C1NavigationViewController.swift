@@ -186,6 +186,7 @@ class C1NavigationViewController: UIViewController {
         }
     }
     
+    // MARK: - Snow Scene
     private func initSnowScene() {
         let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         snowParticleScene.scaleMode = .aspectFill

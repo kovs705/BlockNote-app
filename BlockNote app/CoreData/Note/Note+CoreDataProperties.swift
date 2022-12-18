@@ -24,6 +24,7 @@ extension Note {
     @NSManaged public var noteIsMarked: Bool
 
     @NSManaged public var typeOfNote: GroupType?
+    @NSManaged public var agendaItems: Agenda?
 
     public var wrappedNoteType: String {
         noteType ?? "Unknown wrapped group"

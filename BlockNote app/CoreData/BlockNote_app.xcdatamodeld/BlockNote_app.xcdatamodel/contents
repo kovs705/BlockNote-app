@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Agenda" representedClassName=".Agenda" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateStart" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isImportant" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="agendaItems" inverseEntity="Note"/>
+    </entity>
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
         <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" optional="YES" attributeType="String"/>
@@ -8,12 +18,14 @@
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
+        <attribute name="isAgenda" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastChangedNote" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteIsMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noteLevel" optional="YES" attributeType="String"/>
         <attribute name="noteName" optional="YES" attributeType="String"/>
         <attribute name="noteType" optional="YES" attributeType="String"/>
+        <relationship name="agendaItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agenda" inverseName="note" inverseEntity="Agenda"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
@@ -26,9 +38,4 @@
         <attribute name="noteItemType" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
-    <elements>
-        <element name="GroupType" positionX="-54" positionY="45" width="128" height="104"/>
-        <element name="Note" positionX="13.30731201171875" positionY="-218.7766418457031" width="128" height="149"/>
-        <element name="NoteItem" positionX="219.5637817382812" positionY="60.37139892578125" width="128" height="134"/>
-    </elements>
 </model>

@@ -34,6 +34,9 @@
 		4E44C7A1278CD42D0054E5E2 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7A0278CD42D0054E5E2 /* BarButton.swift */; };
 		4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AA278CD52C0054E5E2 /* CodeEditor */; };
 		4E44C7B0278CD54B0054E5E2 /* NoteItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */; };
+		4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */; };
+		4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */; };
+		4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
@@ -123,6 +126,9 @@
 		4E44C79D278CD2C80054E5E2 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		4E44C7A0278CD42D0054E5E2 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
 		4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemObject.swift; sourceTree = "<group>"; };
+		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
+		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
+				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,6 +284,7 @@
 				4E639F50274C126F000E249A /* GroupType */,
 				4E55323727663FCA0013E097 /* Note */,
 				4E55323E276642A30013E097 /* NoteItem */,
+				4E48DFD3294EBE0500E29ABD /* Agenda */,
 				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -323,6 +331,15 @@
 				4E44C7AF278CD54B0054E5E2 /* NoteItemObject.swift */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		4E48DFD3294EBE0500E29ABD /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */,
+				4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */,
+			);
+			path = Agenda;
 			sourceTree = "<group>";
 		};
 		4E4C715A28193C9300107E18 /* Other objects */ = {
@@ -849,11 +866,14 @@
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
 				4E323E0627BD160B0062008A /* noteListObject.swift in Sources */,
+				4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */,
 				4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
 				4E1D4CBD293BA2F30032F84A /* SnowScene.swift in Sources */,
+				4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */,
 				4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
+				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,
 				4E44C7A1278CD42D0054E5E2 /* BarButton.swift in Sources */,

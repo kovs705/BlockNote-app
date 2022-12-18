@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SwiftUI
 // import RxSwift
 // import RxCocoa
 
@@ -17,25 +18,29 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
     
     lazy var note = Note()
+    lazy var textView = UITextView()
     var noteItemArray_sorted: [NoteItem] = []
     
     var imagePicker: UIImagePickerController!
     
     @Published var getNote = "value"
+    var isLargeHidden = false
     
     // RxSwift: future thing, I guess
     // var db = DisposeBag()
     
     // MARK: - block types:
-    let textBlock = "TextBlock"
-    let photoBlock = "PhotoBlock"
-    let titleBlock = "TitleBlock"
+    enum Block {
+        static let textBlock = "TextBlock"
+        static let photoBlock = "PhotoBlock"
+        static let titleBlock = "TitleBlock"
+    }
     
     var textForTitleBlock: String = ""
     var textForTextlock: String = ""
     
     var updateBool: Bool = false
-    let cellSpacingHeight: CGFloat = 50
+//    let cellSpacingHeight: CGFloat = 100
     
     var indexOfBlock = 0
     // var editingBool = false
@@ -57,45 +62,52 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         noteListTB.dragDelegate = self
         noteListTB.dragInteractionEnabled = true
         
-        self.noteListTB.sectionHeaderHeight = 50
+        self.noteListTB.sectionHeaderHeight = 100
+        
         
         // Navigation
         title = note.wrappedNoteName
         
         /// Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
         
         
+//        textView.text = note.wrappedNoteName
+//        textView.font = .systemFont(ofSize: 25, weight: .bold)
+//        textView.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
+//
+//        navigationItem.titleView = textView
+        
     }
     
     // MARK: - viewWillAppear
-//    override func viewWillAppear(_ animated: Bool) {
-//        // navigationController?.navigationBar.prefersLargeTitles = true
-//
-//        // sortAndUpdate()
-//        // noteListTB.reloadData()
-//        for item in noteItemArray_sorted {
-//            print("\(item.noteItemOrder)")
-//        }
-//    }
-
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        // navigationController?.navigationBar.prefersLargeTitles = true
+    //
+    //        // sortAndUpdate()
+    //        // noteListTB.reloadData()
+    //        for item in noteItemArray_sorted {
+    //            print("\(item.noteItemOrder)")
+    //        }
+    //    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let noteItem = noteItemArray_sorted[indexPath.row]
         
-        if noteItem.value(forKey: "noteItemType") as! String == textBlock {
+        if noteItem.value(forKey: "noteItemType") as! String == Block.textBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width-60, font: UIFont.systemFont(ofSize: 17))
             
-        } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
+        } else if noteItem.value(forKey: "noteItemType") as! String == Block.titleBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 22))
             
-        } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
+        } else if noteItem.value(forKey: "noteItemType") as! String == Block.photoBlock {
             let image = UIImage(data: noteItem.noteItemPhoto!)
             let imageCrop = image!.getCropRatio()
             return tableView.frame.width / imageCrop
@@ -104,11 +116,21 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return 250
         }
     }
-
+    
+//    public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let titleHeight = textView.bounds.height
+//
+//        if (scrollView.contentOffset.y <= 0) {
+//            // title is fully visible:
+//            navigationItem.titleView = textView
+//            isLargeHidden = false
+//        }
+//    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noteItemArray_sorted.count
     }
@@ -178,9 +200,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let noteItem = noteItemArray_sorted[indexPath.row]
         
         // MARK: textBlock
-        if noteItem.value(forKey: "noteItemType") as! String == textBlock {
+        if noteItem.value(forKey: "noteItemType") as! String == Block.textBlock {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: textBlock, for: indexPath) as! TVTextBlock
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
             
             cell.delegate = self
             cell.textView.text = noteItem.noteItemText
@@ -205,8 +227,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return cell
             
             // MARK: titleBlock
-        } else if noteItem.value(forKey: "noteItemType") as! String == titleBlock {
-            let cell = tableView.dequeueReusableCell(withIdentifier: titleBlock, for: indexPath) as! TVTitleBlock
+        } else if noteItem.value(forKey: "noteItemType") as! String == Block.titleBlock {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
             
             cell.delegate = self
             cell.titleTextView.text = noteItem.noteItemText
@@ -229,8 +251,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return cell
             
             // MARK: - photoBlock
-        } else if noteItem.value(forKey: "noteItemType") as! String == photoBlock {
-            let cell = tableView.dequeueReusableCell(withIdentifier: photoBlock, for: indexPath) as! TVPhotoBlock
+        } else if noteItem.value(forKey: "noteItemType") as! String == Block.photoBlock {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
             cell.imageBlock?.image = UIImage(data: (noteItem.noteItemPhoto ?? baseImage.toData!))
             
@@ -289,7 +311,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             
             let titleToSave = "Lorem ipsum title"
             
-            self.save(blockType: titleBlock, blockText: titleToSave)
+            self.save(blockType: Block.titleBlock, blockText: titleToSave)
         }
         
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [unowned self] action in
@@ -302,7 +324,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
 //            }
             let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
             
-            self.save(blockType: textBlock, blockText: blockToSave)
+            self.save(blockType: Block.textBlock, blockText: blockToSave)
             // self.groupCollection.reloadData()
         }
         
@@ -343,7 +365,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     func saveAndStartTyping() {
         
         print("You tapped return button on keyboard")           // check with print func
-        save(blockType: textBlock, blockText: "New text")       // saves a new block
+        save(blockType: Block.textBlock, blockText: "New text")       // saves a new block
         
         DispatchQueue.main.async {
             self.noteListTB.beginUpdates()
@@ -585,7 +607,7 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
 //        }
         
         
-        blockItem.setValue(photoBlock, forKey: "noteItemType")
+        blockItem.setValue(Block.photoBlock, forKey: "noteItemType")
 
         blockItem.setValue(pickedImage.toData as NSData?, forKey: "noteItemPhoto")
         blockItem.setValue(Date(), forKey: "lastChangedNI")
