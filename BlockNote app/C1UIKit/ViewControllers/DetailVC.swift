@@ -148,9 +148,16 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? C1NoteDetailTBC,
-           let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-            destination.note = self.noteArraySorted[noteIndex.row]
+        if segue.identifier == "noteDetail" {
+            if let destination = segue.destination as? C1NoteDetailTBC,
+               let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
+                destination.note = self.noteArraySorted[noteIndex.row]
+            }
+        } else if segue.identifier == "agenda" {
+            if let destination = segue.destination as? AgendaVC,
+               let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
+                destination.note = self.noteArraySorted[noteIndex.row]
+            }
         }
     }
     

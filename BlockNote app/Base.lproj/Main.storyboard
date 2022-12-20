@@ -298,7 +298,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-Dr-VzR">
-                                                                                <rect key="frame" x="24" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="24.000000000000004" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -561,6 +561,14 @@
                             <constraint firstItem="QUS-gi-21s" firstAttribute="leading" secondItem="Clr-u8-1rt" secondAttribute="leading" id="qSM-bs-2S0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="muJ-CE-k8e">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="eL4-7H-cri">
+                            <imageReference key="image" image="calendar" catalog="system" renderingMode="original"/>
+                            <connections>
+                                <segue destination="t58-U1-ekL" kind="show" identifier="agenda" id="K7a-FB-LCu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="first_column" destination="B4a-AX-Qko" id="Fkx-rT-0zJ"/>
                         <outlet property="importantNotesLabel" destination="0Zd-A3-m1z" id="9La-sH-f4a"/>
@@ -682,16 +690,16 @@
         <scene sceneID="h9J-S5-wsg">
             <objects>
                 <tableViewController id="t58-U1-ekL" customClass="AgendaVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fYw-rl-mMe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fYw-rl-mMe">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="F5y-n5-ojG">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="agenda" id="F5y-n5-ojG">
+                                <rect key="frame" x="0.0" y="50" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F5y-n5-ojG" id="CLl-A0-RYO">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -701,6 +709,7 @@
                             <outlet property="delegate" destination="t58-U1-ekL" id="RDg-L7-eo1"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="OVj-v0-eNH"/>
                     <size key="freeformSize" width="390" height="844"/>
                     <connections>
                         <outlet property="agendaTBC" destination="fYw-rl-mMe" id="2re-E8-eBK"/>
@@ -744,6 +753,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>

@@ -37,6 +37,7 @@
 		4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */; };
 		4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */; };
 		4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */; };
+		4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD8294EC4D400E29ABD /* AgendaView.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
@@ -129,6 +130,7 @@
 		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
 		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
+				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4E581A8027E3D55C007731A8 /* C1NoteView.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
+				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
 				4EAC48C52808A0390094181B /* CVTextBlock.swift in Sources */,
 				4E82AA922770F90F00ABAA44 /* GroupCollectionViewCell.swift in Sources */,
 				4E1B4D0B279CAB34008BDC72 /* C1GroupDetailView.swift in Sources */,
