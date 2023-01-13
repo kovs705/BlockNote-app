@@ -42,34 +42,30 @@ class AgendaVC: UITableViewController {
         
         if #available(iOS 16.0, *) {
             cell.contentConfiguration = UIHostingConfiguration {
-                VStack(alignment: HorizontalAlignment.leading, spacing: 0) {
-                    HStack {
-                        VStack {
-                            Spacer()
-                            Spacer()
-                            // Text(formatter1.string(from: today))
-                            
-                            Text("1\(0+indexPath.row):00")
-                                .font(.system(.caption))
-                                .foregroundColor(.gray)
-                                .fontWeight(.black)
-                        }
+                HStack(alignment: .center) {
+                        
                         // end of VStack
-                        VStack(alignment: .center, spacing: 0) {
-                            Circle().fill(.blue).frame(width: 25, height: 25)
-                            if !isLast {
-                                Rectangle().fill(Color.blue).frame(width: 3, height: 20, alignment: .center)//.padding(.leading, 15.5)
-                            }
+                    VStack(alignment: .center, spacing: 0) {
+                        Circle().fill(.blue).frame(width: 25, height: 25)
+                        if !isLast {
+                            Rectangle().fill(Color.blue).frame(width: 3, height: 20, alignment: .center)//.padding(.leading, 15.5)
                         }
-                        Text("Задача")
-                        Spacer()
+                    }
+                    Text("Задача")
+                    Spacer()
+//                        VStack {
+//                            Spacer()
+//                            Spacer()
+//                            Text(formatter1.string(from: today))
+//
+//                            Text("1\(0+indexPath.row):00")
+//                                .font(.system(.caption))
+//                                .foregroundColor(.gray)
+//                                .fontWeight(.black)
+//                        }
                         Image(systemName: "chevron.right")
                     }
                     // end of HStack
-                    
-                    
-                }
-                // end of whole VStack
             }
         } else {
             fatalError("Need an iOS 16.0 or newer")
@@ -87,6 +83,8 @@ class AgendaVC: UITableViewController {
     
     
     // MARK: - Functions
+    
+    //TODO: Add deletion on swipe, adding func
     
     
     // MARK: - Data Save functions

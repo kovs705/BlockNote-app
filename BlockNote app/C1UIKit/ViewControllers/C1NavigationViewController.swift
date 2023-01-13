@@ -197,14 +197,6 @@ class C1NavigationViewController: UIViewController {
         
         snowBackgroundScene.presentScene(snowParticleScene)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let cell = sender as? UICollectionViewCell,
-//           let indexPath = self.groupCollectionView.indexPath(for: cell) {
-//            let groupDetailVC = segue.destination as! C1GroupDetailView
-//            groupDetailVC.groupType = self.groups[indexPath.row] as! GroupType
-//        }
-//    }
 }
 
 // MARK: - UICollectionView

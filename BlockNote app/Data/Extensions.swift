@@ -148,7 +148,7 @@ extension Color {
 func returnColorFromString(nameOfColor: String) -> Color {
     return Color.init(nameOfColor)
 }
-// #warning("work on it") --> completed
+
 func returnUIColorFromString(string: String) -> UIColor? {
     // return UIColor.init(Color.init(string))
     return UIColor(named: string)
@@ -177,27 +177,4 @@ extension UIColor {
     }
     
 }
-//        switch name {
-//        case .blueBerry:
-//            return UIColor(named: "BlueBerry")
-//        case .brownSugar:
-//            return UIColor(named: "BrownSugar")
-//        case .darkBackground:
-//            return UIColor(named: "DarkBackground")
-//        case .greenAvocado:
-//            return UIColor(named: "GreenAvocado")
-//        case .greyCloud:
-//            return UIColor(named: "GreyCloud")
-//        case .lightPart:
-//            return UIColor(named: "LightPart")
-//        case .purpleBlackBerry:
-//            return UIColor(named: "PurpleBlackBerry")
-//        case .redStrawBerry:
-//            return UIColor(named: "RedStrawBerry")
-//        case .rosePink:
-//            return UIColor(named: "RosePink")
-//        case .textForegroundColor:
-//            return UIColor(named: "TextForegroundColor")
-//        case .yellowLemon:
-//            return UIColor(named: "YellowLemon")
-//        }
+

@@ -21,6 +21,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     weak var delegate: textSaveDelegate?
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         textView.delegate = self
