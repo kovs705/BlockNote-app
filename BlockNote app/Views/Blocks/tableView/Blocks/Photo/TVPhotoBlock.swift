@@ -14,13 +14,29 @@ import UIKit
 class TVPhotoBlock: UITableViewCell {
 
     @IBOutlet weak var imageBlock: UIImageView!
+    let cache = PersistenceController.shared.cache
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    
+    func downloadImage(for noteitem: NoteItem) {
+        guard let noteItemPhotoData = noteitem.noteItemPhoto else { return }
+        let cacheKey = NSString(data: noteItemPhotoData, encoding: String.Encoding.utf16.rawValue)
+        if let imageCacheData = cache.object(forKey: cacheKey!) {
+            self.imageBlock.image = UIImage(data: imageCacheData as Data)
+            print("We took this image from the cache, good work!")
+            return
+        }
+        
+        // if theres no cache:
+        self.cache.setObject(noteItemPhotoData as NSData, forKey: cacheKey!)
+        print("this image downloaded into cache!")
+        DispatchQueue.main.async {
+            self.imageBlock.image = UIImage(data: noteItemPhotoData)
+        }
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

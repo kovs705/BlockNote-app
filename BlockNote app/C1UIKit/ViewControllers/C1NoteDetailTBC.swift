@@ -209,6 +209,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             // cell.contentBlock.frame = CGRect.offsetBy(textview)
             
+            
             cell.textChanged { [weak tableView] (newText: String) in
                 noteItem.noteItemText = newText
                 
@@ -254,11 +255,13 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         } else if noteItem.value(forKey: "noteItemType") as! String == Block.photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
-            cell.imageBlock?.image = UIImage(data: (noteItem.noteItemPhoto ?? baseImage.toData!))
+            // cell.imageBlock?.image = UIImage(data: (noteItem.noteItemPhoto ?? baseImage.toData!))
+            
+            cell.downloadImage(for: noteItem)
             
             // width 330, height 270
-            cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
-            cell.frame = CGRect(x: 0, y: 0, width: 330, height: 270)
+            cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
+            cell.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
             
             // print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
             print("DEBUG PHOTO \(noteItem.noteItemOrder)")
