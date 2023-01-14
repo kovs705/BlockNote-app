@@ -47,14 +47,11 @@ class C1NavigationViewController: UIViewController {
     }
     
     
-    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        progressBarView.layer.shadowColor = UIColor.black.cgColor
-        progressBarView.layer.masksToBounds = false
-
+        configureProgressBarView()
         
         groupCollectionView.allowsSelection = true
         groupCollectionView.dataSource      = self
@@ -72,12 +69,6 @@ class C1NavigationViewController: UIViewController {
         
         // MARK: - Design
         showGreeting()
-        
-        progressBarView.layer.cornerRadius = 20
-        progressBarView.shadowOffset = CGSize(width: 15, height: 0)
-        progressBarView.layer.shadowRadius = 10
-        progressBarView.shadowOpacity = 0.3
-        progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
         
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
@@ -184,6 +175,17 @@ class C1NavigationViewController: UIViewController {
         else {
             greetingLabel.text = "Have a good night ✨"
         }
+    }
+    
+    func configureProgressBarView() {
+        progressBarView.layer.shadowColor = UIColor.black.cgColor
+        progressBarView.layer.masksToBounds = false
+
+        progressBarView.layer.cornerRadius = 20
+        progressBarView.shadowOffset = CGSize(width: 15, height: 0)
+        progressBarView.layer.shadowRadius = 10
+        progressBarView.shadowOpacity = 0.3
+        progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
     }
     
     // MARK: - Snow Scene
