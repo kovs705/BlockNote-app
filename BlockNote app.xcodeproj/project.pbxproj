@@ -34,6 +34,7 @@
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
 		4E55324427666AF20013E097 /* ViewModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55324327666AF10013E097 /* ViewModifications.swift */; };
+		4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */; };
 		4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A381927AAADB800E1F217 /* Code to test.swift */; };
 		4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */; };
 		4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */; };
@@ -110,6 +111,7 @@
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
+		4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSpaceBlock.swift; sourceTree = "<group>"; };
 		4E5A381927AAADB800E1F217 /* Code to test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Code to test.swift"; sourceTree = "<group>"; };
 		4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -314,6 +316,14 @@
 			path = NoteItem;
 			sourceTree = "<group>";
 		};
+		4E58B39A2972C86700710CE7 /* SpaceBlock */ = {
+			isa = PBXGroup;
+			children = (
+				4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */,
+			);
+			path = SpaceBlock;
+			sourceTree = "<group>";
+		};
 		4E639F50274C126F000E249A /* GroupType */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +344,7 @@
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				4E58B39A2972C86700710CE7 /* SpaceBlock */,
 				4EBAB2512873983800A2AC05 /* Title */,
 				4EBAB24C2873980F00A2AC05 /* Text */,
 				4EBAB2522873985200A2AC05 /* Photo */,
@@ -727,6 +738,7 @@
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */,
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
+				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,

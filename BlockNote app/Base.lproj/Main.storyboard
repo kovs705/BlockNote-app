@@ -298,7 +298,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-Dr-VzR">
-                                                                                <rect key="frame" x="24.000000000000004" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="24" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -601,7 +601,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t98-5w-jP2" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="0.0" width="360" height="132"/>
+                                            <rect key="frame" x="20" y="0.0" width="350" height="132"/>
                                             <color key="backgroundColor" name="BackBlock"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -612,8 +612,8 @@
                                     <color key="backgroundColor" name="BackBlock"/>
                                     <constraints>
                                         <constraint firstItem="t98-5w-jP2" firstAttribute="top" secondItem="P0Q-9D-BaY" secondAttribute="top" id="cAX-5g-eYw"/>
-                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" constant="15" id="mBS-WW-kcT"/>
-                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" constant="15" id="pCW-Y3-XYN"/>
+                                        <constraint firstAttribute="trailing" secondItem="t98-5w-jP2" secondAttribute="trailing" constant="20" id="mBS-WW-kcT"/>
+                                        <constraint firstItem="t98-5w-jP2" firstAttribute="leading" secondItem="P0Q-9D-BaY" secondAttribute="leading" constant="20" id="pCW-Y3-XYN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -646,14 +646,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleBlock" id="7hE-s0-dz8" userLabel="TitleBlock" customClass="TVTitleBlock" customModule="BlockNote_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="525" width="390" height="32.333332061767578"/>
+                                <rect key="frame" x="0.0" y="525" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hE-s0-dz8" id="XuH-jL-LZ8">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="32.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="shn-LQ-dEV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="2.9999999999999982" width="360" height="26.333333333333329"/>
+                                            <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
                                             <color key="backgroundColor" name="BackBlock"/>
                                             <color key="textColor" systemColor="labelColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -662,15 +662,22 @@
                                     </subviews>
                                     <color key="backgroundColor" name="BackBlock"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="shn-LQ-dEV" secondAttribute="trailing" constant="15" id="Bmw-tM-qoN"/>
-                                        <constraint firstAttribute="bottom" secondItem="shn-LQ-dEV" secondAttribute="bottom" constant="3" id="LLp-yX-wgk"/>
-                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="top" secondItem="XuH-jL-LZ8" secondAttribute="top" constant="3" id="uzQ-lz-MCK"/>
-                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="leading" secondItem="XuH-jL-LZ8" secondAttribute="leading" constant="15" id="vSW-6a-2pi"/>
+                                        <constraint firstAttribute="trailing" secondItem="shn-LQ-dEV" secondAttribute="trailing" constant="20" id="Bmw-tM-qoN"/>
+                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="top" secondItem="XuH-jL-LZ8" secondAttribute="top" id="uzQ-lz-MCK"/>
+                                        <constraint firstItem="shn-LQ-dEV" firstAttribute="leading" secondItem="XuH-jL-LZ8" secondAttribute="leading" constant="20" id="vSW-6a-2pi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="titleTextView" destination="shn-LQ-dEV" id="jmx-kd-Rh9"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpaceBlock" translatesAutoresizingMaskIntoConstraints="NO" id="mbL-Wc-usV" customClass="TVSpaceBlock" customModule="BlockNote_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="569" width="390" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mbL-Wc-usV" id="UD7-yh-y0a">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

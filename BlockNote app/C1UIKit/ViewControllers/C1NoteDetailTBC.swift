@@ -34,6 +34,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         static let textBlock = "TextBlock"
         static let photoBlock = "PhotoBlock"
         static let titleBlock = "TitleBlock"
+        static let spaceBlock = "SpaceBlock"
     }
     
     var textForTitleBlock: String = ""
@@ -111,9 +112,8 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             let image = UIImage(data: noteItem.noteItemPhoto!)
             let imageCrop = image!.getCropRatio()
             return tableView.frame.width / imageCrop
-            
         } else {
-            return 250
+            return 30
         }
     }
     
@@ -266,6 +266,11 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             // print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
             print("DEBUG PHOTO \(noteItem.noteItemOrder)")
             return cell
+        } else if noteItem.value(forKey: "noteItemType") as! String == Block.spaceBlock {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as! TVSpaceBlock
+            
+            print("DEBUG LINE \(noteItem.noteItemOrder)")
+            return cell
         }
         return UITableViewCell()
     }
@@ -318,17 +323,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         }
         
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [unowned self] action in
-            
-//            guard
-//                // let textField = alert.textFields?.first,
-//                // let blockToSave = textField.text
-//            else {
-//                return
-//            }
+
             let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
             
             self.save(blockType: Block.textBlock, blockText: blockToSave)
             // self.groupCollection.reloadData()
+        }
+        
+        let saveSpaceBlock = UIAlertAction(title: "Spacer", style: .default) { [unowned self] action in
+            self.saveSpaceLine()
         }
         
         // photoBlock save
@@ -343,6 +346,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         alert.addAction(saveTitleBlock)
         alert.addAction(saveTextBlock)
         alert.addAction(savePhotoBlock)
+        alert.addAction(saveSpaceBlock)
         alert.addAction(cancelAction)
         
         present(alert, animated: true)
@@ -542,6 +546,64 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             } catch {
                 print("Something wrong on deleting the block")
             }
+        }
+    }
+    
+    func saveSpaceLine() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        let entity =
+        NSEntityDescription.entity(forEntityName: "NoteItem",
+                                   in: managedContext)!
+        
+        let blockItem = NSManagedObject(entity: entity,
+                                        insertInto: managedContext)
+        
+        blockItem.setValue(Block.spaceBlock, forKey: "noteItemType")
+
+        blockItem.setValue(Date(), forKey: "lastChangedNI")
+        
+        if noteItemArray_sorted.isEmpty {
+            blockItem.setValue(1, forKey: "noteItemOrder")
+        } else {
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
+        }
+        
+        do {
+            note.addObject(value: blockItem, forKey: "noteItems")
+            
+            if managedContext.hasChanges {
+                sortAndUpdate()
+                try managedContext.save()
+            } else {
+                print("Okay, the line has not been saved")
+            }
+            
+            if note.noteItems?.count == noteItemArray_sorted.count {
+                
+                self.noteListTB.performBatchUpdates({
+                    self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+                }, completion: nil)
+                
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    self.noteListTB.endUpdates()
+                }
+            } else {
+                sortAndUpdate()
+                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+                
+                DispatchQueue.main.async {
+                    self.noteListTB.beginUpdates()
+                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+                    self.noteListTB.endUpdates()
+                }
+            }
+        } catch {
+            print("Okay, it crashed, lul")
         }
     }
     
