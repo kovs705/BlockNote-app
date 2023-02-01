@@ -154,20 +154,6 @@ func returnUIColorFromString(string: String) -> UIColor? {
     return UIColor(named: string)
 }
 
-enum AssetsColor: String {
-    case BlueBerry
-    case BrownSugar
-    case DarkBackground
-    case GreenAvocado
-    case GreyCloud
-    case LightPart
-    case PurpleBlackBerry
-    case RedStrawBerry
-    case RosePink
-    case TextForegroundColor
-    case YellowLemon
-}
-
 extension UIColor {
     static func appColor(_ name: AssetsColor) -> UIColor? {
         return UIColor(named: name.rawValue)

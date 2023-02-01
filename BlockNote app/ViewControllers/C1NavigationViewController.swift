@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import SpriteKit
 
-class C1NavigationViewController: UIViewController {
+class C1NavigationViewController: C1NavViewExt {
     
     // #warning("change greetingLabel with ContainerVIew for SwiftUI")
     @IBOutlet var background: UIView!
@@ -20,60 +20,19 @@ class C1NavigationViewController: UIViewController {
     
     @IBOutlet weak var snowBackgroundScene: SKView!
     
-    let identifierForCollectionCell = "groupDetail"
-    
-    var groups: [NSManagedObject] = []
-    
-    var hour = Calendar.current.component(.hour, from: Date())
-    
-    // animations:
-    // let animationDuration: Double = 5.0
-    // let delayBase: Double = 1.0
-    
-    // MARK: - CoreData
-    func fetchData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let viewContext       = appDelegate.persistentContainerOffline.viewContext
-        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
-        let sort              = NSSortDescriptor(key: "number", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            groups = try viewContext.fetch(fetchRequest)
-            // sortGroupsByNumber(groups)
-        } catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureProgressBarView()
-        
-        groupCollectionView.allowsSelection = true
-        groupCollectionView.dataSource      = self
-        groupCollectionView.delegate        = self
-        
-        // MARK: - Sorting func
-        func sortGroupsByNumber(_ groups: [GroupType]) -> [GroupType] {
-            groups.sorted { groupA, groupB in
-                groupA.number < groupB.number
-            }
-        }
-        
-        // MARK: - fetch data
         fetchData()
         
-        // MARK: - Design
-        showGreeting()
+        configureProgressBarView(progressBarView: progressBarView)
+        configureGroupCollectionView(gCV: groupCollectionView)
+        initSnowScene(snowBack: snowBackgroundScene)
+        showGreeting(greetingLabel: greetingLabel)
+        configureScrollView(scrollView: scrollView)
         
-        scrollView.alwaysBounceVertical = true
-        scrollView.bounces = true
-        
-        initSnowScene()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +46,7 @@ class C1NavigationViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         fetchData()
         groupCollectionView.reloadData()
     }
@@ -102,7 +62,8 @@ class C1NavigationViewController: UIViewController {
         let alert = UIAlertController(title: "New group", message: "Enter a name for the group", preferredStyle: .alert)
         
         // save action button
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
+            guard let self = self else { return }
             
             guard
                 let textField = alert.textFields?.first,
@@ -111,7 +72,7 @@ class C1NavigationViewController: UIViewController {
                 return
             }
             
-            self.save(groupName: groupToSave, groupColor: "GreenAvocado")
+            self.save(groupName: groupToSave, groupColor: "GreenAvocado", groupCollectionView: self.groupCollectionView)
             // self.groupCollection.reloadData()
         }
         // cancel action button
@@ -125,84 +86,10 @@ class C1NavigationViewController: UIViewController {
         
         
     }
-    // MARK: - Save group
-    func save(groupName: String, groupColor: String) {
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-                }
-        let managedContext =
-        appDelegate.persistentContainerOffline.viewContext
-        
-        let entity =
-        NSEntityDescription.entity(forEntityName: "GroupType",
-                                   in: managedContext)!
-        
-        let group = NSManagedObject(entity: entity,
-                                    insertInto: managedContext)
-        
-        group.setValue(groupName, forKey: "groupName")
-        group.setValue(groupColor, forKey: "groupColor")
-        group.setValue((groups.count) + 1, forKey: "number")
-        #warning("work on this number count")
-        // group.setValue(number, forKey: "number")
-        
-        do {
-            groups.insert(group, at: 0)
-
-            print("Successfully added")
-            try managedContext.save()
-            
-            groupCollectionView.reloadData()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
     
-    func showGreeting() {
-        if hour < 4 {
-            greetingLabel.text = "Have a good night ✨"
-        }
-        else if hour < 12 {
-            greetingLabel.text = "Good morning!☀️"
-        }
-        else if hour < 18 {
-            greetingLabel.text = "Have a great day! ⛅️"
-        }
-        else if hour < 23 {
-            greetingLabel.text = "Good evening 🌇"
-        }
-        else {
-            greetingLabel.text = "Have a good night ✨"
-        }
-    }
-    
-    func configureProgressBarView() {
-        progressBarView.layer.shadowColor = UIColor.black.cgColor
-        progressBarView.layer.masksToBounds = false
-
-        progressBarView.layer.cornerRadius = 20
-        progressBarView.shadowOffset = CGSize(width: 15, height: 0)
-        progressBarView.layer.shadowRadius = 10
-        progressBarView.shadowOpacity = 0.3
-        progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
-    }
-    
-    // MARK: - Snow Scene
-    private func initSnowScene() {
-        let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        snowParticleScene.scaleMode = .aspectFill
-        snowParticleScene.backgroundColor = .clear
-        
-        snowBackgroundScene.allowsTransparency = true
-        snowBackgroundScene.backgroundColor = .clear
-        
-        snowBackgroundScene.presentScene(snowParticleScene)
-    }
 }
 
-// MARK: - UICollectionView
-
+// MARK: - UICollectionView extentions
 extension C1NavigationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -214,10 +101,10 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
         
         let numberOfNotes = group.value(forKey: "noteTypes") as! Set<Note>
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierForCollectionCell, for: indexPath as IndexPath) as! groupViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.groupDetail, for: indexPath as IndexPath) as! groupViewCell
         // cell.groupName.text = group.value(forKey: "groupName") as? String
-        cell.setGroupName(label: group.value(forKey: "groupName") as? String ?? "default name")
-        cell.setBackground(color: group.value(forKey: "groupColor") as? String ?? "GreenAvocado")
+        cell.setGroupName(label: group.value(forKey: Keys.gName) as? String ?? "default name")
+        cell.setBackground(color: group.value(forKey: Keys.gColor) as? String ?? "GreenAvocado")
         cell.setNumber(number: numberOfNotes.count)
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -268,5 +155,11 @@ extension C1NavigationViewController: detail_vc_Delegate {
     }
     func closeAndDelete() {
         groupCollectionView.reloadData()
+    }
+    
+    func configureGroupCollectionView(gCV: UICollectionView) {
+        gCV.allowsSelection = true
+        gCV.dataSource      = self
+        gCV.delegate        = self
     }
 }

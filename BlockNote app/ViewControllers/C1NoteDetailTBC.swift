@@ -29,14 +29,6 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     // RxSwift: future thing, I guess
     // var db = DisposeBag()
     
-    // MARK: - block types:
-    enum Block {
-        static let textBlock = "TextBlock"
-        static let photoBlock = "PhotoBlock"
-        static let titleBlock = "TitleBlock"
-        static let spaceBlock = "SpaceBlock"
-    }
-    
     var textForTitleBlock: String = ""
     var textForTextlock: String = ""
     
@@ -100,15 +92,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let noteItem = noteItemArray_sorted[indexPath.row]
         
-        if noteItem.value(forKey: "noteItemType") as! String == Block.textBlock {
+        if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width-60, font: UIFont.systemFont(ofSize: 17))
             
-        } else if noteItem.value(forKey: "noteItemType") as! String == Block.titleBlock {
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 22))
             
-        } else if noteItem.value(forKey: "noteItemType") as! String == Block.photoBlock {
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
             let image = UIImage(data: noteItem.noteItemPhoto!)
             let imageCrop = image!.getCropRatio()
             return tableView.frame.width / imageCrop
@@ -158,20 +150,20 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             if sourceIndexPath.row > destinationIndexPath.row {
                 if !(blockIndex < destinationIndexPath.row) {
                     if blockIndex <= sourceIndexPath.row {
-                        block.setValue(block.noteItemOrder + 1, forKey: "noteItemOrder")
+                        block.setValue(block.noteItemOrder + 1, forKey: Keys.niOrder)
                     }
                 }
             } else {
                 // from bottom to top:
                 if blockIndex > sourceIndexPath.row {
                     if blockIndex <= destinationIndexPath.row {
-                        block.setValue(block.noteItemOrder - 1, forKey: "noteItemOrder")
+                        block.setValue(block.noteItemOrder - 1, forKey: Keys.niOrder)
                     }
                 }
             }
             
         }
-        mover.setValue(destinationIndexPath.row + 1, forKey: "noteItemOrder")
+        mover.setValue(destinationIndexPath.row + 1, forKey: Keys.niOrder)
         
         delegateSave()
     }
@@ -200,7 +192,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let noteItem = noteItemArray_sorted[indexPath.row]
         
         // MARK: textBlock
-        if noteItem.value(forKey: "noteItemType") as! String == Block.textBlock {
+        if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
             
@@ -228,7 +220,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return cell
             
             // MARK: titleBlock
-        } else if noteItem.value(forKey: "noteItemType") as! String == Block.titleBlock {
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
             
             cell.delegate = self
@@ -252,7 +244,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             return cell
             
             // MARK: - photoBlock
-        } else if noteItem.value(forKey: "noteItemType") as! String == Block.photoBlock {
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
             // cell.imageBlock?.image = UIImage(data: (noteItem.noteItemPhoto ?? baseImage.toData!))
@@ -266,7 +258,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             // print("order of this photo is \(noteItem.value(forKey: "noteItemOrder") as! Int)")
             print("DEBUG PHOTO \(noteItem.noteItemOrder)")
             return cell
-        } else if noteItem.value(forKey: "noteItemType") as! String == Block.spaceBlock {
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.spaceBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as! TVSpaceBlock
             
             print("DEBUG LINE \(noteItem.noteItemOrder)")
@@ -315,27 +307,29 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         
         // textBlock save
         
-        let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [unowned self] action in
-            
+        let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [weak self] action in
+            guard let self = self else { return }
             let titleToSave = "Lorem ipsum title"
             
             self.save(blockType: Block.titleBlock, blockText: titleToSave)
         }
         
-        let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [unowned self] action in
-
+        let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [weak self] action in
+            guard let self = self else { return }
             let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
             
             self.save(blockType: Block.textBlock, blockText: blockToSave)
             // self.groupCollection.reloadData()
         }
         
-        let saveSpaceBlock = UIAlertAction(title: "Spacer", style: .default) { [unowned self] action in
+        let saveSpaceBlock = UIAlertAction(title: "Spacer", style: .default) { [weak self] action in
+            guard let self = self else { return }
             self.saveSpaceLine()
         }
         
         // photoBlock save
-        let savePhotoBlock = UIAlertAction(title: "Photo", style: .default) { [unowned self] action in
+        let savePhotoBlock = UIAlertAction(title: "Photo", style: .default) { [weak self] action in
+            guard let self = self else { return }
             self.showPhotoPicker()
         }
         
@@ -429,9 +423,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     func update(blockText: String, block: NoteItem?) {
         
 /// update the date of the last changing
-        block?.setValue(Date(), forKey: "lastChangedNI")
+        block?.setValue(Date(), forKey: Keys.niLastChanged)
 /// update the text of the block
-        block?.setValue(blockText, forKey: "noteItemText")
+        block?.setValue(blockText, forKey: Keys.niText)
         
         delegateSave()
     }
@@ -454,15 +448,15 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let blockItem = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
         
-        blockItem.setValue(blockType, forKey: "noteItemType")
-        blockItem.setValue(blockText, forKey: "noteItemText")
-        blockItem.setValue(Date(), forKey: "lastChangedNI")
+        blockItem.setValue(blockType, forKey: Keys.niType)
+        blockItem.setValue(blockText, forKey: Keys.niText)
+        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
         
         // MARK: - Give an order number for note:
         if noteItemArray_sorted.isEmpty {
-            blockItem.setValue(1, forKey: "noteItemOrder")
+            blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
 //            if note.noteItemArray.last?.noteItemType == photoBlock {
 //                noteListTB.reloadData()
 //                noteItemArray_sorted
@@ -471,7 +465,7 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         
         do {
             
-            note.addObject(value: blockItem, forKey: "noteItems")
+            note.addObject(value: blockItem, forKey: Keys.nItems)
             
             if managedContext.hasChanges {
                 sortAndUpdate()
@@ -523,12 +517,12 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
             // remember row
             deletingBlocksOrder = indexPath.row + 1
             // delete block
-            note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: "noteItems")
+            note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
             // we deleted, but nothing happens on tableView, so before the animations begin, I need to change order numbers to reorder them again:
             for block in noteItemArray_sorted {
-                if block.value(forKey: "noteItemOrder") as! Int >= deletingBlocksOrder {
-                    let value = block.value(forKey: "noteItemOrder") as! Int - 1
-                    block.setValue(value, forKey: "noteItemOrder")
+                if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
+                    let value = block.value(forKey: Keys.niOrder) as! Int - 1
+                    block.setValue(value, forKey: Keys.niOrder)
                 }
             }
             //update sorted array of block:
@@ -562,18 +556,18 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
         let blockItem = NSManagedObject(entity: entity,
                                         insertInto: managedContext)
         
-        blockItem.setValue(Block.spaceBlock, forKey: "noteItemType")
+        blockItem.setValue(Block.spaceBlock, forKey: Keys.niType)
 
-        blockItem.setValue(Date(), forKey: "lastChangedNI")
+        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
         
         if noteItemArray_sorted.isEmpty {
-            blockItem.setValue(1, forKey: "noteItemOrder")
+            blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
         }
         
         do {
-            note.addObject(value: blockItem, forKey: "noteItems")
+            note.addObject(value: blockItem, forKey: Keys.nItems)
             
             if managedContext.hasChanges {
                 sortAndUpdate()
@@ -611,9 +605,9 @@ class C1NoteDetailTBC: UITableViewController, textSaveDelegate, titleSaveDelegat
     func update(titleText: String, block: NoteItem?) {
 
 /// update the date of the last changing
-        block?.setValue(Date(), forKey: "lastChangedNI")
+        block?.setValue(Date(), forKey: Keys.niLastChanged)
 /// update the text of the block
-        block?.setValue(titleText, forKey: "noteItemText")
+        block?.setValue(titleText, forKey: Keys.niText)
         
         delegateSave()
     }
@@ -672,20 +666,20 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
 //        }
         
         
-        blockItem.setValue(Block.photoBlock, forKey: "noteItemType")
+        blockItem.setValue(Block.photoBlock, forKey: Keys.niType)
 
-        blockItem.setValue(pickedImage.toData as NSData?, forKey: "noteItemPhoto")
-        blockItem.setValue(Date(), forKey: "lastChangedNI")
+        blockItem.setValue(pickedImage.toData as NSData?, forKey: Keys.niPhoto)
+        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
 
         if noteItemArray_sorted.isEmpty {
-            blockItem.setValue(1, forKey: "noteItemOrder")
+            blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: "noteItemOrder")
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
         }
 
         do {
             
-            note.addObject(value: blockItem, forKey: "noteItems")
+            note.addObject(value: blockItem, forKey: Keys.nItems)
             
             if managedContext.hasChanges {
                 sortAndUpdate()
