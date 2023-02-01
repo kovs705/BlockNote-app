@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol textSaveDelegate: AnyObject {
-    func update(blockText: String, block: NoteItem?)
+    func update(blockText: String, block: NoteItem?, noteListTB: UITableView)
     func getText(text: String?)
 }
 

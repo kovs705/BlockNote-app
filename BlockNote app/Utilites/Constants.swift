@@ -12,6 +12,9 @@ enum Block {
     static let photoBlock = "PhotoBlock"
     static let titleBlock = "TitleBlock"
     static let spaceBlock = "SpaceBlock"
+    
+    static let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
+    static let titleToSave = "Lorem ipsum title"
 }
 
 enum Cells {

@@ -8,16 +8,11 @@
 import UIKit
 import CoreData
 
-protocol titleSaveDelegate: AnyObject {
-    func update(titleText: String, block: NoteItem?)
-    func getTitle(text: String?)
-}
-
 class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var titleTextView: UITextView!
     
-    weak var delegate: titleSaveDelegate?
+    weak var delegate: textSaveDelegate?
     var textChanged: ((String) -> Void)?
     
     override func awakeFromNib() {
