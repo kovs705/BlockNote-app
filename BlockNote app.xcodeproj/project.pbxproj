@@ -192,7 +192,6 @@
 		4E076B242944C914000F7E8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4E5A381927AAADB800E1F217 /* Code to test.swift */,
 				4EFA5FBC27407A080096F021 /* Persistence.swift */,
 			);
@@ -365,6 +364,7 @@
 				4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */,
 				4E8F7EE3298A76C80085027A /* DetailVCExt.swift */,
 				4E8F7EE5298A7FDC0085027A /* C1NoteDetailExt.swift */,
+				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

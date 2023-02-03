@@ -10,7 +10,7 @@ import CoreData
 
 protocol textSaveDelegate: AnyObject {
     func update(blockText: String, block: NoteItem?, noteListTB: UITableView)
-    func getText(text: String?)
+    func getText(text: String?, noteListTB: UITableView)
 }
 
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
@@ -29,7 +29,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     }
     
     func textChanged(action: @escaping (String) -> Void) {
-        self.textChanged = action
+        textChanged = action
     }
     
     func textViewDidChange(_ textView: UITextView) {

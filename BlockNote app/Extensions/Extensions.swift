@@ -161,6 +161,32 @@ extension UIColor {
     static func getUIColor(_ name: String) -> UIColor? {
         return UIColor(named: name)
     }
+}
+
+extension UIImage {
+    var toData: Data? {
+        return pngData()
+    }
+    
+    func getCropRatio() -> CGFloat {
+        let widthRatio = self.size.width / self.size.height
+        return widthRatio
+    }
+}
+
+extension UITableView {
+    
+    func getAllCells() -> [UITableViewCell] {
+        var cells = [UITableViewCell]()
+        for i in 0..<self.numberOfSections {
+            for j in 0..<self.numberOfRows(inSection: i) {
+                if let cell = self.cellForRow(at: IndexPath(row: j, section: i)) {
+                    cells.append(cell)
+                }
+            }
+        }
+        return cells
+    }
     
 }
 

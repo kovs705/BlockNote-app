@@ -17,10 +17,7 @@ class C1NoteDetailExt: UITableViewController {
     var imagePicker: UIImagePickerController!
     var isLargeHidden = false
     
-    var textForTitleBlock: String = ""
     var textForTextlock: String = ""
-    
-    var updateBool: Bool = false
     
     var indexOfBlock = 0
     let baseImage = UIImage(named: "gav")!

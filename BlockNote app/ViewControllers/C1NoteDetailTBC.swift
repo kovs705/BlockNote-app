@@ -14,16 +14,13 @@ import SwiftUI
 // MARK: - Class and properties
 class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegate {
     
-    @IBOutlet var noteListTB: UITableView!
+    @IBOutlet weak var noteListTB: UITableView!
     // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK: - Global
-        // navigationItem.leftBarButtonItem = backButton
-        
+
         // TODO: Put this in viewWillAppear?
         sortAndUpdate()
         configureTableView()
@@ -31,19 +28,8 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
         // Navigation
         title = note.wrappedNoteName
         
-        /// Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
-        
-        
-//        textView.text = note.wrappedNoteName
-//        textView.font = .systemFont(ofSize: 25, weight: .bold)
-//        textView.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
-//
-//        navigationItem.titleView = textView
         
     }
     
@@ -172,7 +158,8 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
             // cell.contentBlock.frame = CGRect.offsetBy(textview)
             
             
-            cell.textChanged { [weak tableView] (newText: String) in
+            cell.textChanged { [weak self, weak tableView] (newText: String) in
+                guard let self = self else { return }
                 noteItem.noteItemText = newText
                 
                 self.indexOfBlock = indexPath.row
@@ -197,11 +184,12 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
             cell.titleTextView.text = noteItem.noteItemText
             cell.titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             
-            cell.textChanged { [weak tableView] (newText: String) in
+            cell.textChanged { [weak self, weak tableView] (newText: String) in
+                guard let self = self else { return }
                 noteItem.noteItemText = newText
                 
                 self.indexOfBlock = indexPath.row
-                self.getText(text: newText)
+                self.getText(text: newText, noteListTB: self.noteListTB)
                 
                 DispatchQueue.main.async {
                     tableView?.beginUpdates()
@@ -217,7 +205,14 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
-            cell.downloadImage(for: noteItem)
+            cell.downloadImage(for: noteItem) { [weak tableView] image in
+                DispatchQueue.main.async {
+                    tableView?.beginUpdates()
+                    cell.imageBlock.image = image
+                    tableView?.endUpdates()
+                    
+                }
+            }
             
             // width 330, height 270
             cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
@@ -483,11 +478,6 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
         
         delegateSave()
     }
-    
-    func getText(text: String?) { 
-        textForTitleBlock = text ?? "Nothing in the title, or it's just the bug."
-        update(blockText: textForTitleBlock, block: self.noteItemArray_sorted[indexOfBlock], noteListTB: self.noteListTB)
-    }
 
 }
 
@@ -610,16 +600,5 @@ func delegateSave() {
         }
     } catch let error as NSError {
         print("Could not update. \(error), \(error.userInfo)")
-    }
-}
-
-extension UIImage {
-    var toData: Data? {
-        return pngData()
-    }
-    
-    func getCropRatio() -> CGFloat {
-        let widthRatio = self.size.width / self.size.height
-        return widthRatio
     }
 }

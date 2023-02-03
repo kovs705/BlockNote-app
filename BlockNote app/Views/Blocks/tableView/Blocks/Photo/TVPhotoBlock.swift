@@ -21,8 +21,9 @@ class TVPhotoBlock: UITableViewCell {
         // Initialization code
     }
     
-    func downloadImage(for noteitem: NoteItem) {
+    func downloadImage(for noteitem: NoteItem, completed: @escaping (UIImage?) -> Void) {
         guard let noteItemPhotoData = noteitem.noteItemPhoto else { return }
+        
         let cacheKey = NSString(data: noteItemPhotoData, encoding: String.Encoding.utf16.rawValue)
         if let imageCacheData = cache.object(forKey: cacheKey!) {
             self.imageBlock.image = UIImage(data: imageCacheData as Data)
