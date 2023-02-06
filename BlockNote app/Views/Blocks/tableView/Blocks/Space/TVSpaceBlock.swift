@@ -21,7 +21,6 @@ class TVSpaceBlock: UITableViewCell {
         self.addSubview(lineView)
         
         NSLayoutConstraint.activate([
-            lineView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             lineView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }

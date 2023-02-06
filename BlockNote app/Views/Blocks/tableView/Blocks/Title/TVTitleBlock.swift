@@ -10,7 +10,7 @@ import CoreData
 
 class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 
-    @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var titleTextView: UITextViewPadding!
     
     weak var delegate: textSaveDelegate?
     var textChanged: ((String) -> Void)?

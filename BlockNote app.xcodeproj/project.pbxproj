@@ -22,9 +22,7 @@
 		4E1803CC274058F00096A87C /* BlockNote_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */; };
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E239C9627A46FE1000A51A6 /* groupViewCell.swift */; };
-		4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429727EE5ABE0020E380 /* NoteCell.swift */; };
 		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
-		4E323E0627BD160B0062008A /* noteListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E323E0527BD160B0062008A /* noteListObject.swift */; };
 		4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AA278CD52C0054E5E2 /* CodeEditor */; };
 		4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */; };
 		4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */; };
@@ -54,6 +52,9 @@
 		4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
+		4EF38794298D618900CC1306 /* Dock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38793298D618900CC1306 /* Dock.swift */; };
+		4EF38796298D633F00CC1306 /* dockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38795298D633F00CC1306 /* dockButton.swift */; };
+		4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38797298D869500CC1306 /* dockTextButton.swift */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
 		4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */; };
 		4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */; };
@@ -104,9 +105,7 @@
 		4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITests.swift; sourceTree = "<group>"; };
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
-		4E26429727EE5ABE0020E380 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		4E323E0527BD160B0062008A /* noteListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noteListObject.swift; sourceTree = "<group>"; };
 		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
 		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -135,6 +134,9 @@
 		4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailTBC.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
+		4EF38793298D618900CC1306 /* Dock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dock.swift; sourceTree = "<group>"; };
+		4EF38795298D633F00CC1306 /* dockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockButton.swift; sourceTree = "<group>"; };
+		4EF38797298D869500CC1306 /* dockTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockTextButton.swift; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
 		4EF4CBC727F1E7520034D66B /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
 		4EFA5FB5274077540096F021 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -293,15 +295,6 @@
 			path = Agenda;
 			sourceTree = "<group>";
 		};
-		4E4C715A28193C9300107E18 /* Other objects */ = {
-			isa = PBXGroup;
-			children = (
-				4E323E0527BD160B0062008A /* noteListObject.swift */,
-				4E26429727EE5ABE0020E380 /* NoteCell.swift */,
-			);
-			path = "Other objects";
-			sourceTree = "<group>";
-		};
 		4E55323727663FCA0013E097 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,12 +313,12 @@
 			path = NoteItem;
 			sourceTree = "<group>";
 		};
-		4E58B39A2972C86700710CE7 /* SpaceBlock */ = {
+		4E58B39A2972C86700710CE7 /* Space */ = {
 			isa = PBXGroup;
 			children = (
 				4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */,
 			);
-			path = SpaceBlock;
+			path = Space;
 			sourceTree = "<group>";
 		};
 		4E639F50274C126F000E249A /* GroupType */ = {
@@ -380,10 +373,10 @@
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				4E58B39A2972C86700710CE7 /* SpaceBlock */,
 				4EBAB2512873983800A2AC05 /* Title */,
 				4EBAB24C2873980F00A2AC05 /* Text */,
 				4EBAB2522873985200A2AC05 /* Photo */,
+				4E58B39A2972C86700710CE7 /* Space */,
 				4EBAB25B287398CF00A2AC05 /* Code */,
 				4EBAB2602873990A00A2AC05 /* ToDo */,
 				4EBAB2612873991E00A2AC05 /* List */,
@@ -445,11 +438,11 @@
 		4ED53DF0278F1A8E00F79A3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EF38792298D617D00CC1306 /* Dock */,
 				4E370B892972A29700C5AF0B /* SnowScene */,
 				4E370B8A2972A2A500C5AF0B /* DynamicHeight */,
 				4EAC48C228089E310094181B /* Blocks */,
 				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
-				4E4C715A28193C9300107E18 /* Other objects */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -460,6 +453,16 @@
 				4EBAB24B2873980300A2AC05 /* Blocks */,
 			);
 			path = tableView;
+			sourceTree = "<group>";
+		};
+		4EF38792298D617D00CC1306 /* Dock */ = {
+			isa = PBXGroup;
+			children = (
+				4EF38793298D618900CC1306 /* Dock.swift */,
+				4EF38795298D633F00CC1306 /* dockButton.swift */,
+				4EF38797298D869500CC1306 /* dockTextButton.swift */,
+			);
+			path = Dock;
 			sourceTree = "<group>";
 		};
 		4EF4CBCA27F1E76F0034D66B /* ViewCells */ = {
@@ -755,6 +758,7 @@
 				4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
+				4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
 				4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */,
@@ -762,22 +766,22 @@
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
+				4EF38794298D618900CC1306 /* Dock.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
+				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
 				4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */,
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
-				4E323E0627BD160B0062008A /* noteListObject.swift in Sources */,
 				4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */,
 				4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
 				4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */,
-				4E26429827EE5ABE0020E380 /* NoteCell.swift in Sources */,
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
 				4E8F7EE6298A7FDC0085027A /* C1NoteDetailExt.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,

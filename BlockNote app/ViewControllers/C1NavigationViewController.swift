@@ -19,7 +19,7 @@ class C1NavigationViewController: C1NavViewExt {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var snowBackgroundScene: SKView!
-    
+//    @IBOutlet weak var dock: UIView!
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {

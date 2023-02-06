@@ -35,13 +35,26 @@ class C1NoteDetailExt: UITableViewController {
         print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
     }
     
-    
+    func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?) {
+        switch type {
+        case .title:
+            block.setValue(Block.titleBlock, forKey: Keys.niType)
+            block.setValue(Block.titleToSave, forKey: Keys.niText)
+        case .text:
+            block.setValue(Block.textBlock, forKey: Keys.niType)
+            block.setValue(Block.blockToSave, forKey: Keys.niText)
+        case .photo:
+            block.setValue(Block.photoBlock, forKey: Keys.niType)
+            block.setValue(pickedImage?.toData as NSData?, forKey: Keys.niPhoto)
+        case .space:
+            block.setValue(Block.spaceBlock, forKey: Keys.niType)
+        }
 
+    }
     
     
     // MARK: - Save block
-    func save(blockType: String, blockText: String, noteListTB: UITableView) {
-        // var newNumberOfNotes = 0
+    func save(blockType: String, theCase: BlockCases, noteListTB: UITableView, pickedImage: UIImage?) {
         
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -56,9 +69,12 @@ class C1NoteDetailExt: UITableViewController {
         
         let blockItem = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
+        if theCase == .photo {
+            setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
+        } else {
+            setValues(for: blockItem, from: theCase, pickedImage: nil)
+        }
         
-        blockItem.setValue(blockType, forKey: Keys.niType)
-        blockItem.setValue(blockText, forKey: Keys.niText)
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
         
         // MARK: - Give an order number for note:
@@ -66,15 +82,16 @@ class C1NoteDetailExt: UITableViewController {
             blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
             blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
-//            if note.noteItemArray.last?.noteItemType == photoBlock {
-//                noteListTB.reloadData()
-//                noteItemArray_sorted
-//            }
         }
         
+        reorder(for: blockItem, in: noteListTB, using: managedContext)
+        
+    }
+    
+    
+    func reorder(for value: NSManagedObject, in noteListTB: UITableView, using managedContext: NSManagedObjectContext) {
         do {
-            
-            note.addObject(value: blockItem, forKey: Keys.nItems)
+            note.addObject(value: value, forKey: Keys.nItems)
             
             if managedContext.hasChanges {
                 sortAndUpdate()

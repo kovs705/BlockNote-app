@@ -17,11 +17,24 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
     @IBOutlet weak var noteListTB: UITableView!
     // let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: C1NoteDetailTBC.self, action: #selector(backSaveChanging))
     
+    // let dock = UIView()
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // TODO: Put this in viewWillAppear?
+        
+//        view.addSubview(dock)
+//        dock.backgroundColor = .black
+//        NSLayoutConstraint.activate([
+//            dock.heightAnchor.constraint(equalToConstant: 50),
+//            dock.widthAnchor.constraint(equalToConstant: 50),
+//            dock.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            dock.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
+//
+//        view.bringSubviewToFront(dock)
+//
+//
         sortAndUpdate()
         configureTableView()
         
@@ -154,7 +167,7 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
             
             cell.delegate = self
             cell.textView.text = noteItem.noteItemText
-            cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            // cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             // cell.contentBlock.frame = CGRect.offsetBy(textview)
             
             
@@ -182,7 +195,7 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
             
             cell.delegate = self
             cell.titleTextView.text = noteItem.noteItemText
-            cell.titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            // cell.titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
@@ -259,19 +272,18 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
         let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [weak self] action in
             guard let self = self else { return }
             
-            self.save(blockType: Block.titleBlock, blockText: Block.titleToSave, noteListTB: self.noteListTB)
+            self.save(blockType: Block.titleBlock, theCase: .title, noteListTB: self.noteListTB, pickedImage: nil)
         }
         
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [weak self] action in
             guard let self = self else { return }
             
-            self.save(blockType: Block.textBlock, blockText: Block.blockToSave, noteListTB: self.noteListTB)
-            // self.groupCollection.reloadData()
+            self.save(blockType: Block.textBlock, theCase: .text, noteListTB: self.noteListTB, pickedImage: nil)
         }
         
         let saveSpaceBlock = UIAlertAction(title: "Spacer", style: .default) { [weak self] action in
             guard let self = self else { return }
-            self.saveSpaceLine()
+            self.save(blockType: Block.spaceBlock, theCase: .space, noteListTB: self.noteListTB, pickedImage: nil)
         }
         
         // photoBlock save
@@ -313,9 +325,10 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
     func saveAndStartTyping() {
         
         print("You tapped return button on keyboard")           // check with print func
-        save(blockType: Block.textBlock, blockText: "New text", noteListTB: self.noteListTB)       // saves a new block
+        save(blockType: Block.textBlock, theCase: .text, noteListTB: noteListTB, pickedImage: nil)
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.noteListTB.beginUpdates()
             self.noteListTB.endUpdates()
         }
@@ -380,11 +393,10 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
             }
             let managedContext = appDelegate.persistentContainerOffline.viewContext
             
-            // remember row
             deletingBlocksOrder = indexPath.row + 1
-            // delete block
+            
             note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
-            // we deleted, but nothing happens on tableView, so before the animations begin, I need to change order numbers to reorder them again:
+
             for block in noteItemArray_sorted {
                 if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
                     let value = block.value(forKey: Keys.niOrder) as! Int - 1
@@ -409,63 +421,63 @@ class C1NoteDetailTBC: C1NoteDetailExt, textSaveDelegate, UITableViewDragDelegat
         }
     }
     
-    func saveSpaceLine() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
-        let entity =
-        NSEntityDescription.entity(forEntityName: "NoteItem",
-                                   in: managedContext)!
-        
-        let blockItem = NSManagedObject(entity: entity,
-                                        insertInto: managedContext)
-        
-        blockItem.setValue(Block.spaceBlock, forKey: Keys.niType)
-
-        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
-        
-        if noteItemArray_sorted.isEmpty {
-            blockItem.setValue(1, forKey: Keys.niOrder)
-        } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
-        }
-        
-        do {
-            note.addObject(value: blockItem, forKey: Keys.nItems)
-            
-            if managedContext.hasChanges {
-                sortAndUpdate()
-                try managedContext.save()
-            } else {
-                print("Okay, the line has not been saved")
-            }
-            
-            if note.noteItems?.count == noteItemArray_sorted.count {
-                
-                self.noteListTB.performBatchUpdates({
-                    self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
-                }, completion: nil)
-                
-                DispatchQueue.main.async {
-                    self.noteListTB.beginUpdates()
-                    self.noteListTB.endUpdates()
-                }
-            } else {
-                sortAndUpdate()
-                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                
-                DispatchQueue.main.async {
-                    self.noteListTB.beginUpdates()
-                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-                    self.noteListTB.endUpdates()
-                }
-            }
-        } catch {
-            print("Okay, it crashed, lul")
-        }
-    }
+//    func saveSpaceLine() {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//        let managedContext = appDelegate.persistentContainerOffline.viewContext
+//
+//        let entity =
+//        NSEntityDescription.entity(forEntityName: "NoteItem",
+//                                   in: managedContext)!
+//
+//        let blockItem = NSManagedObject(entity: entity,
+//                                        insertInto: managedContext)
+//
+//        blockItem.setValue(Block.spaceBlock, forKey: Keys.niType)
+//
+//        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
+//
+//        if noteItemArray_sorted.isEmpty {
+//            blockItem.setValue(1, forKey: Keys.niOrder)
+//        } else {
+//            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
+//        }
+//
+//        do {
+//            note.addObject(value: blockItem, forKey: Keys.nItems)
+//
+//            if managedContext.hasChanges {
+//                sortAndUpdate()
+//                try managedContext.save()
+//            } else {
+//                print("Okay, the line has not been saved")
+//            }
+//
+//            if note.noteItems?.count == noteItemArray_sorted.count {
+//
+//                self.noteListTB.performBatchUpdates({
+//                    self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
+//                }, completion: nil)
+//
+//                DispatchQueue.main.async {
+//                    self.noteListTB.beginUpdates()
+//                    self.noteListTB.endUpdates()
+//                }
+//            } else {
+//                sortAndUpdate()
+//                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+//
+//                DispatchQueue.main.async {
+//                    self.noteListTB.beginUpdates()
+//                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
+//                    self.noteListTB.endUpdates()
+//                }
+//            }
+//        } catch {
+//            print("Okay, it crashed, lul")
+//        }
+//    }
     
     
     // MARK: - update block
@@ -492,113 +504,67 @@ extension C1NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        // var image: NSData?
-        
-        // Context
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
-        let entity =
-        NSEntityDescription.entity(forEntityName: "NoteItem",
-                                   in: managedContext)!
-        
-        let blockItem = NSManagedObject(entity: entity,
-                                    insertInto: managedContext)
-
         // Image Data
         guard let pickedImage = info[.originalImage] as? UIImage else {
             return
         }
         
         // let pickedImage = info[.originalImage] as? UIImage
-
-//        guard letjpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
-//            return
-//        }
+        
+        //        guard letjpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
+        //            return
+        //        }
         // image = jpegImage
         
         // pickedImage.toData as NSData?
-
-//        do {
-//            image = try NSKeyedArchiver.archivedData(withRootObject: image! as Data, requiringSecureCoding: true)
-//        } catch {
-//            print("error")
-//        }
         
+        //        do {
+        //            image = try NSKeyedArchiver.archivedData(withRootObject: image! as Data, requiringSecureCoding: true)
+        //        } catch {
+        //            print("error")
+        //        }
         
-        blockItem.setValue(Block.photoBlock, forKey: Keys.niType)
-
-        blockItem.setValue(pickedImage.toData as NSData?, forKey: Keys.niPhoto)
-        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
-
-        if noteItemArray_sorted.isEmpty {
-            blockItem.setValue(1, forKey: Keys.niOrder)
-        } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
-        }
-
-        do {
-            
-            note.addObject(value: blockItem, forKey: Keys.nItems)
-            
-            if managedContext.hasChanges {
-                sortAndUpdate()
-                picker.dismiss(animated: true)
-                try managedContext.save()
-            } else {
-                print("Okay, the image has not been saved")
-            }
-            
-            if note.noteItems?.count == noteItemArray_sorted.count {
-                
-                self.noteListTB.performBatchUpdates({
-                    self.noteListTB.insertRows(at: [IndexPath(row: self.noteItemArray_sorted.count - 1, section: 0)], with: .automatic)
-                }, completion: nil)
-                
-                DispatchQueue.main.async {
-                    self.noteListTB.beginUpdates()
-                    self.noteListTB.endUpdates()
-                }
-            } else {
-                sortAndUpdate()
-                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
-                
-                DispatchQueue.main.async {
-                    self.noteListTB.beginUpdates()
-                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-                    self.noteListTB.endUpdates()
-                }
-            }
-            
-            //                DispatchQueue.main.async {
-            //                    self.noteListTB.beginUpdates()
-            //                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
-            //                    self.noteListTB.endUpdates()
-            //                }
-        } catch {
-            print("Okay, it crashed, lul")
-        }
+        save(blockType: Block.photoBlock, theCase: .photo, noteListTB: noteListTB, pickedImage: pickedImage)
+        
+        picker.dismiss(animated: true)
+        //        blockItem.setValue(Block.photoBlock, forKey: Keys.niType)
+        //
+        //        blockItem.setValue(pickedImage.toData as NSData?, forKey: Keys.niPhoto)
+        //
+        //        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
+        //
+        //        if noteItemArray_sorted.isEmpty {
+        //            blockItem.setValue(1, forKey: Keys.niOrder)
+        //        } else {
+        //            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
+        //        }
+        
+        //        if managedContext.hasChanges {
+        //            reorder(for: blockItem, in: noteListTB, using: managedContext)
+        //            picker.dismiss(animated: true)
+        //        } else {
+        //            print("Okay, the image has not been saved")
+        //            fatalError()
+        //        }
         
         dismiss(animated: true, completion: nil)
+        
     }
     
-}
-
-func delegateSave() {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-        return
-    }
-    let managedContext = appDelegate.persistentContainerOffline.viewContext
-    
-    do {
-        if managedContext.hasChanges {
-            try managedContext.save()
-        } else {
-            print("Wrong on updating the note item")
+    func delegateSave() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
-    } catch let error as NSError {
-        print("Could not update. \(error), \(error.userInfo)")
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        do {
+            if managedContext.hasChanges {
+                try managedContext.save()
+            } else {
+                print("Wrong on updating the note item")
+            }
+        } catch let error as NSError {
+            print("Could not update. \(error), \(error.userInfo)")
+        }
     }
 }

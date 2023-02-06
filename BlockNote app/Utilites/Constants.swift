@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum Entities {
+    static let noteItem = "NoteItem"
+    static let group = "GroupType"
+    static let note = "Note"
+    static let agenda = "Agenda"
+}
+
 enum Block {
     static let textBlock = "TextBlock"
     static let photoBlock = "PhotoBlock"
