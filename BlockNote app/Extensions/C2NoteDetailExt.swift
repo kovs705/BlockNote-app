@@ -1,14 +1,14 @@
 //
-//  C1NoteDetailExt.swift
+//  C2NoteDetailExt.swift
 //  BlockNote app
 //
-//  Created by Kovs on 01.02.2023.
+//  Created by Kovs on 08.02.2023.
 //
 
 import UIKit
 import CoreData
 
-class C1NoteDetailExt: UITableViewController {
+class C2NoteDetailExt: UIViewController {
     // MARK: - Properties
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
@@ -32,6 +32,23 @@ class C1NoteDetailExt: UITableViewController {
         // noteListTB.reloadData()
         // noteListTB.endEditing(true)
         print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
+    }
+    
+    func delegateSave() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        do {
+            if managedContext.hasChanges {
+                try managedContext.save()
+            } else {
+                print("Wrong on updating the note item")
+            }
+        } catch let error as NSError {
+            print("Could not update. \(error), \(error.userInfo)")
+        }
     }
     
     func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?) {
@@ -124,4 +141,5 @@ class C1NoteDetailExt: UITableViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
 }

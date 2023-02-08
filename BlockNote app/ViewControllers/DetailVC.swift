@@ -89,7 +89,7 @@ extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "noteDetail" {
-            if let destination = segue.destination as? C1NoteDetailTBC,
+            if let destination = segue.destination as? C2NoteDetailTBC,
                let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
                 destination.note = self.noteArraySorted[noteIndex.row]
             }

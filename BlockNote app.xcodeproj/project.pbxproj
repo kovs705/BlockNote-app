@@ -29,6 +29,7 @@
 		4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */; };
 		4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD8294EC4D400E29ABD /* AgendaView.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
+		4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
 		4E55324427666AF20013E097 /* ViewModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55324327666AF10013E097 /* ViewModifications.swift */; };
@@ -48,6 +49,7 @@
 		4EBAB25F2873990200A2AC05 /* TVToDoBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB25D2873990200A2AC05 /* TVToDoBlock.xib */; };
 		4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2622873997900A2AC05 /* TVListBlock.swift */; };
 		4EBAB2652873997900A2AC05 /* TVListBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB2632873997900A2AC05 /* TVListBlock.xib */; };
+		4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
@@ -111,6 +113,7 @@
 		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		4EBAB25D2873990200A2AC05 /* TVToDoBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVToDoBlock.xib; sourceTree = "<group>"; };
 		4EBAB2622873997900A2AC05 /* TVListBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListBlock.swift; sourceTree = "<group>"; };
 		4EBAB2632873997900A2AC05 /* TVListBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVListBlock.xib; sourceTree = "<group>"; };
+		4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailExt.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailTBC.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
+				4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */,
 				4E8F7EE3298A76C80085027A /* DetailVCExt.swift */,
 				4E8F7EE5298A7FDC0085027A /* C1NoteDetailExt.swift */,
+				4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -756,9 +762,11 @@
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */,
+				4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */,
+				4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
 				4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */,
