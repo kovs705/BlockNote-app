@@ -10,6 +10,7 @@ import UIKit
 class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
 
     @IBOutlet weak var noteListTB: UITableView!
+    let notificationCenter = NotificationCenter.default
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,28 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
+        
+        
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return } // get the frame of keyboard at the end of its animation
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            noteListTB.contentInset = .zero
+        } else {
+            noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        noteListTB.scrollIndicatorInsets = noteListTB.contentInset
+    }
+    
+    
     
     func configureTableView() {
         noteListTB.delegate = self
