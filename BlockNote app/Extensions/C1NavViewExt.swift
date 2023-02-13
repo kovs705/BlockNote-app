@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import SpriteKit
 
+
 class C1NavViewExt: UIViewController {
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
@@ -34,18 +35,6 @@ class C1NavViewExt: UIViewController {
         groups.sorted { groupA, groupB in
             groupA.number < groupB.number
         }
-    }
-    
-    // MARK: - Snow Scene
-    func initSnowScene(snowBack: SKView) {
-        let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        snowParticleScene.scaleMode = .aspectFill
-        snowParticleScene.backgroundColor = .clear
-        
-        snowBack.allowsTransparency = true
-        snowBack.backgroundColor = .clear
-        
-        snowBack.presentScene(snowParticleScene)
     }
     
     // MARK: - ProgressBar
@@ -118,4 +107,18 @@ class C1NavViewExt: UIViewController {
         }
     }
     
+}
+
+extension C1NavViewExt: SKSnowScene {
+    // MARK: - Snow Scene
+    func initSnowScene(snowBack: SKView) {
+        let snowParticleScene = SnowScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        snowParticleScene.scaleMode = .aspectFill
+        snowParticleScene.backgroundColor = .clear
+        
+        snowBack.allowsTransparency = true
+        snowBack.backgroundColor = .clear
+        
+        snowBack.presentScene(snowParticleScene)
+    }
 }

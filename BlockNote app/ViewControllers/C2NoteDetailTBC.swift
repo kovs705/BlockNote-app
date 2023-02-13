@@ -9,7 +9,6 @@ import UIKit
 
 class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
 
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var noteListTB: UITableView!
     
     override func viewDidLoad() {
@@ -300,7 +299,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         }
         mover.setValue(destinationIndexPath.row + 1, forKey: Keys.niOrder)
         
-        // delegateSave()
+        delegateSave()
     }
     
     

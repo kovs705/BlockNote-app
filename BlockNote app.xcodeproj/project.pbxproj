@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BEF933CE572A9F9E47F2285 /* Pods_BlockNote_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */; };
+		4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E085737299A7CF1006A6ABB /* DynamicHeightForTableView.swift */; };
 		4E0EBDBA2971AE39002530FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E0EBDB92971AE39002530FF /* Assets.xcassets */; };
 		4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EBDBB2971AE5C002530FF /* SnowScene.swift */; };
 		4E0EBDBE2971AE5C002530FF /* SnowBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E0EBDBC2971AE5C002530FF /* SnowBackground.sks */; };
@@ -40,7 +41,6 @@
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */; };
 		4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE3298A76C80085027A /* DetailVCExt.swift */; };
-		4E8F7EE6298A7FDC0085027A /* C1NoteDetailExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE5298A7FDC0085027A /* C1NoteDetailExt.swift */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
 		4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */; };
 		4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */; };
@@ -51,7 +51,6 @@
 		4EBAB2652873997900A2AC05 /* TVListBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB2632873997900A2AC05 /* TVListBlock.xib */; };
 		4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
-		4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
 		4EF38794298D618900CC1306 /* Dock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38793298D618900CC1306 /* Dock.swift */; };
@@ -89,6 +88,7 @@
 		1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		294F13A704046044F78BDA64 /* Pods-BlockNote app-BlockNote appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app-BlockNote appUITests.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		301435EC7D9809E0EA4FCE68 /* Pods-BlockNote appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote appTests.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote appTests/Pods-BlockNote appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E085737299A7CF1006A6ABB /* DynamicHeightForTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightForTableView.swift; sourceTree = "<group>"; };
 		4E0EBDB92971AE39002530FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E0EBDBB2971AE5C002530FF /* SnowScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowScene.swift; sourceTree = "<group>"; };
 		4E0EBDBC2971AE5C002530FF /* SnowBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowBackground.sks; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewExt.swift; sourceTree = "<group>"; };
 		4E8F7EE3298A76C80085027A /* DetailVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCExt.swift; sourceTree = "<group>"; };
-		4E8F7EE5298A7FDC0085027A /* C1NoteDetailExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailExt.swift; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
 		4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPhotoBlock.swift; sourceTree = "<group>"; };
 		4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCodeBlock.swift; sourceTree = "<group>"; };
@@ -135,7 +134,6 @@
 		4EBAB2632873997900A2AC05 /* TVListBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVListBlock.xib; sourceTree = "<group>"; };
 		4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailExt.swift; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
-		4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NoteDetailTBC.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
 		4EF38793298D618900CC1306 /* Dock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dock.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
-				4ED97C90283D206000A257D5 /* C1NoteDetailTBC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 				4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */,
@@ -287,6 +284,7 @@
 				4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */,
 				4E0FC393281FE38200334783 /* DynamicHeightLayout.swift */,
 				4ED982F3283EB9110063C1F1 /* StringHeight.swift */,
+				4E085737299A7CF1006A6ABB /* DynamicHeightForTableView.swift */,
 			);
 			path = DynamicHeight;
 			sourceTree = "<group>";
@@ -361,7 +359,6 @@
 			children = (
 				4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */,
 				4E8F7EE3298A76C80085027A /* DetailVCExt.swift */,
-				4E8F7EE5298A7FDC0085027A /* C1NoteDetailExt.swift */,
 				4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 			);
@@ -759,6 +756,7 @@
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
+				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */,
@@ -776,7 +774,6 @@
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
 				4EF38794298D618900CC1306 /* Dock.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
-				4ED97C91283D206000A257D5 /* C1NoteDetailTBC.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
@@ -791,7 +788,6 @@
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
 				4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */,
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
-				4E8F7EE6298A7FDC0085027A /* C1NoteDetailExt.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,

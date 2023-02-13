@@ -9,6 +9,10 @@ import UIKit
 import CoreData
 import SpriteKit
 
+protocol SKSnowScene {
+    func initSnowScene(snowBack: SKView)
+}
+
 class C1NavigationViewController: C1NavViewExt {
     
     // #warning("change greetingLabel with ContainerVIew for SwiftUI")
