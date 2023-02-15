@@ -26,24 +26,23 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        configureDock()
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return } // get the frame of keyboard at the end of its animation
-        
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
         if notification.name == UIResponder.keyboardWillHideNotification {
             noteListTB.contentInset = .zero
         } else {
-            noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+            noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight - view.safeAreaInsets.bottom, right: 0)
         }
         
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
     }
     
     
+
     
     func configureTableView() {
         noteListTB.delegate = self
@@ -226,26 +225,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         save(blockType: Block.photoBlock, theCase: .photo, noteListTB: noteListTB, pickedImage: pickedImage)
         
         picker.dismiss(animated: true)
-        //        blockItem.setValue(Block.photoBlock, forKey: Keys.niType)
-        //
-        //        blockItem.setValue(pickedImage.toData as NSData?, forKey: Keys.niPhoto)
-        //
-        //        blockItem.setValue(Date(), forKey: Keys.niLastChanged)
-        //
-        //        if noteItemArray_sorted.isEmpty {
-        //            blockItem.setValue(1, forKey: Keys.niOrder)
-        //        } else {
-        //            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
-        //        }
-        
-        //        if managedContext.hasChanges {
-        //            reorder(for: blockItem, in: noteListTB, using: managedContext)
-        //            picker.dismiss(animated: true)
-        //        } else {
-        //            print("Okay, the image has not been saved")
-        //            fatalError()
-        //        }
-        
+
         dismiss(animated: true, completion: nil)
         
     }

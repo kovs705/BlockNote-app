@@ -8,10 +8,6 @@
 import SwiftUI
 import CoreData
 
-enum BlockCases {
-    case title, text, space, photo
-}
-
 class PersistenceController {
     static let shared = PersistenceController()
     @Environment(\.managedObjectContext) var viewContext

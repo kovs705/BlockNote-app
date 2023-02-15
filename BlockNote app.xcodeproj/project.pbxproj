@@ -53,7 +53,6 @@
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
-		4EF38794298D618900CC1306 /* Dock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38793298D618900CC1306 /* Dock.swift */; };
 		4EF38796298D633F00CC1306 /* dockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38795298D633F00CC1306 /* dockButton.swift */; };
 		4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38797298D869500CC1306 /* dockTextButton.swift */; };
 		4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */; };
@@ -136,7 +135,6 @@
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
-		4EF38793298D618900CC1306 /* Dock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dock.swift; sourceTree = "<group>"; };
 		4EF38795298D633F00CC1306 /* dockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockButton.swift; sourceTree = "<group>"; };
 		4EF38797298D869500CC1306 /* dockTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockTextButton.swift; sourceTree = "<group>"; };
 		4EF4CBC627F1E7520034D66B /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
@@ -461,7 +459,6 @@
 		4EF38792298D617D00CC1306 /* Dock */ = {
 			isa = PBXGroup;
 			children = (
-				4EF38793298D618900CC1306 /* Dock.swift */,
 				4EF38795298D633F00CC1306 /* dockButton.swift */,
 				4EF38797298D869500CC1306 /* dockTextButton.swift */,
 			);
@@ -772,7 +769,6 @@
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
-				4EF38794298D618900CC1306 /* Dock.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
@@ -985,7 +981,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1015,7 +1011,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -9,40 +9,37 @@ import UIKit
 
 class dockTextButton: UIButton {
     
-    let back = UIView()
     let title = UILabel()
     
     let padding: CGFloat = 5
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         configure()
     }
-    
-    convenience init(to parent: UIView, leftObject: UIButton, rightObject: UIButton) {
-        self.init(frame: .zero)
         
-        NSLayoutConstraint.activate([
-            back.heightAnchor.constraint(equalToConstant: 18),
-            back.topAnchor.constraint(equalTo: parent.topAnchor, constant: 5)
-        ])
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func configure() {
-        back.addSubview(title)
+        translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .systemGray5
+        layer.cornerRadius = 10
         
-        back.backgroundColor = .lightGray
-        back.layer.cornerRadius = 10
+        addSubview(title)
         
-        title.textColor = .gray
-        title.font = .systemFont(ofSize: 14)
+        title.textColor = .systemGray
+        title.font = .systemFont(ofSize: 17)
+        title.text = "Aa"
+        title.textAlignment = .center
         
         NSLayoutConstraint.activate([
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            title.topAnchor.constraint(equalTo: topAnchor),
+            title.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

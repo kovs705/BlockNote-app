@@ -21,6 +21,61 @@ class C2NoteDetailExt: UIViewController {
     var indexOfBlock = 0
     let baseImage = UIImage(named: "gav")!
     
+    let addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
+    let textDockButton = dockTextButton(frame: .zero)
+    
+    
+    // MARK: - UI part
+    let padding: CGFloat = 10
+    
+    lazy var contentView: UIStackView = {
+        let contentView = UIStackView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.axis = .horizontal
+        contentView.distribution = .fill
+        contentView.spacing = 10
+        contentView.backgroundColor = .systemGray6
+        
+        return contentView
+    }()
+    
+    lazy var dock: UIView = {
+       let dock = UIView()
+        dock.backgroundColor = .systemGray6
+        dock.translatesAutoresizingMaskIntoConstraints = false
+        return dock
+    }()
+    
+    func configureDock() {
+        view.addSubview(dock)
+        
+        NSLayoutConstraint.activate([
+            dock.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            dock.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dock.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            dock.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            dock.heightAnchor.constraint(equalToConstant: 80)
+            
+        ])
+        
+        // placing contentView - UIStackView
+        dock.addSubview(contentView)
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: dock.topAnchor, constant: padding),
+            contentView.leadingAnchor.constraint(equalTo: dock.leadingAnchor, constant: padding*2),
+            contentView.trailingAnchor.constraint(equalTo: dock.trailingAnchor, constant: -(padding*2)),
+            contentView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        // placing text buttons:
+        contentView.addArrangedSubview(addBlockButton)
+        contentView.addArrangedSubview(textDockButton)
+    }
+    
+    
+    
     
     // MARK: - Sort and update
     func sortAndUpdate() {
@@ -133,7 +188,6 @@ class C2NoteDetailExt: UIViewController {
                 
                 DispatchQueue.main.async {
                     noteListTB.beginUpdates()
-                    // noteListTB.reloadRows(at: [indexPath], with: .automatic)
                     noteListTB.endUpdates()
                 }
             }

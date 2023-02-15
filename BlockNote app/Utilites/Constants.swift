@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum Icons {
+    static let addGroup = "plus.rectangle.on.rectangle"
+}
+
+enum BlockCases {
+    case title, text, space, photo
+}
+
 enum Entities {
     static let noteItem = "NoteItem"
     static let group = "GroupType"
