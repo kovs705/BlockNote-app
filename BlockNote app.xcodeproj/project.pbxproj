@@ -108,8 +108,8 @@
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
 		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
-		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Agenda+CoreDataProperties.swift"; path = "BlockNote app/CoreData/Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Agenda+CoreDataClass.swift"; path = "BlockNote app/CoreData/Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; };
@@ -260,7 +260,8 @@
 				4E639F50274C126F000E249A /* GroupType */,
 				4E55323727663FCA0013E097 /* Note */,
 				4E55323E276642A30013E097 /* NoteItem */,
-				4E48DFD3294EBE0500E29ABD /* Agenda */,
+				4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */,
+				4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */,
 				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -285,15 +286,6 @@
 				4E085737299A7CF1006A6ABB /* DynamicHeightForTableView.swift */,
 			);
 			path = DynamicHeight;
-			sourceTree = "<group>";
-		};
-		4E48DFD3294EBE0500E29ABD /* Agenda */ = {
-			isa = PBXGroup;
-			children = (
-				4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */,
-				4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */,
-			);
-			path = Agenda;
 			sourceTree = "<group>";
 		};
 		4E55323727663FCA0013E097 /* Note */ = {
