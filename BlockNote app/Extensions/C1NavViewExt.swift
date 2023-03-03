@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import SpriteKit
 
+// I have problems with xcode and cant commit 
 
 class C1NavViewExt: UIViewController {
     var groups: [NSManagedObject] = []
