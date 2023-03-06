@@ -11,6 +11,7 @@ import SpriteKit
 
 // I have problems with xcode and cant commit
 // another try after damn deleting and installing this xcode!!!!!!
+// damn, not now..
 
 class C1NavViewExt: UIViewController {
     var groups: [NSManagedObject] = []
