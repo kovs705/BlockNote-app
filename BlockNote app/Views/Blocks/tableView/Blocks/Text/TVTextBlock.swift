@@ -16,6 +16,7 @@ protocol textSaveDelegate: AnyObject {
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label: UILabel!
     
     var textChanged: ((String) -> Void)?
     
@@ -36,12 +37,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         textChanged?(textView.text)
     }
     
-    class UITextViewPadding : UITextView {
-      required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
-      }
-    }
+    
     
 //    func textViewDidEndEditing(_ textView: UITextView) {
 //        // textChanged?(textView.text)

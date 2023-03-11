@@ -240,7 +240,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
         if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
-                .heightWithConstrainedWidth(width: tableView.frame.width-60, font: UIFont.systemFont(ofSize: 17))
+                .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
             
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
@@ -316,6 +316,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             
             cell.delegate = self
             cell.textView.text = noteItem.noteItemText
+            cell.label.text = noteItem.noteItemText
             // cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             // cell.contentBlock.frame = CGRect.offsetBy(textview)
             

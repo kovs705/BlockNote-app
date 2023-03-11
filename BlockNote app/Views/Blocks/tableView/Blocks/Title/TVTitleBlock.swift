@@ -10,7 +10,7 @@ import CoreData
 
 class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 
-    @IBOutlet weak var titleTextView: UITextViewPadding!
+    @IBOutlet weak var titleTextView: UITextView!
     
     weak var delegate: textSaveDelegate?
     var textChanged: ((String) -> Void)?
@@ -26,13 +26,6 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
-    }
-    
-    class UITextViewPadding : UITextView {
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
-        }
     }
     
     override func prepareForReuse() {
