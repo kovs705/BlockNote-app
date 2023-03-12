@@ -23,12 +23,12 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
         
-        
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         configureDock()
     }
+    
     
     @objc func adjustForKeyboard(notification: Notification) {
         
@@ -42,8 +42,6 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
     }
     
     
-
-    
     func configureTableView() {
         noteListTB.delegate = self
         noteListTB.dataSource = self
@@ -51,6 +49,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         noteListTB.dragInteractionEnabled = true
         noteListTB.sectionHeaderHeight = 100
     }
+    
     
     // MARK: - Add photo block
     @objc func showPhotoPicker() {
@@ -61,6 +60,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
 
         present(imagePicker, animated: true)
     }
+    
     
     // MARK: - UIAlertController
     @objc func addBlock() {
@@ -104,6 +104,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         
     }
     
+    
     // MARK: - Get text
     func getText(text: String?, noteListTB: UITableView) {
         
@@ -111,6 +112,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock], noteListTB: noteListTB)
         // print("you changed the block with the index of \(indexOfBlock)")
     }
+    
     
     // MARK: - update block
     func update(blockText: String, block: NoteItem?, noteListTB: UITableView) {
@@ -137,6 +139,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
 //            super.pressesEnded(presses, with: event)
 //        }
 //    }
+    
     
    // MARK: - Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
     func saveAndStartTyping() {
@@ -171,6 +174,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         
     }
     
+    
 //    // MARK: - Get the order
 //    func startEndEditing(switchType: Bool) {
 //        if switchType == true {
@@ -191,6 +195,7 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
 
 }
 
+
 // MARK: - Photo block and ImagePicker extension
     // TODO: Гав, make a cell with up to 3-4 photos with a fixed size
 extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -202,25 +207,9 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        // Image Data
         guard let pickedImage = info[.originalImage] as? UIImage else {
             return
         }
-        
-        // let pickedImage = info[.originalImage] as? UIImage
-        
-        //        guard letjpegImage = pickedImage.jpegData(compressionQuality: 1.0) else {
-        //            return
-        //        }
-        // image = jpegImage
-        
-        // pickedImage.toData as NSData?
-        
-        //        do {
-        //            image = try NSKeyedArchiver.archivedData(withRootObject: image! as Data, requiringSecureCoding: true)
-        //        } catch {
-        //            print("error")
-        //        }
         
         save(blockType: Block.photoBlock, theCase: .photo, noteListTB: noteListTB, pickedImage: pickedImage)
         
@@ -230,9 +219,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
     }
 
-
-
-
+    
 // MARK: - UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -263,12 +250,14 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         return noteItemArray_sorted.count
     }
     
+    
     // MARK: - Drag&Drop UITableView
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())
         dragItem.localObject = noteItemArray_sorted[indexPath.row]
         return [dragItem]
     }
+    
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // update the model:
@@ -317,9 +306,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             cell.delegate = self
             cell.textView.text = noteItem.noteItemText
             cell.label.text = noteItem.noteItemText
-            // cell.textView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-            // cell.contentBlock.frame = CGRect.offsetBy(textview)
-            
             
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
@@ -394,6 +380,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
         return UITableViewCell()
     }
+    
     
     // MARK: - Delete block
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
