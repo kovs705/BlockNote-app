@@ -27,15 +27,33 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         configureDock()
+        
+        noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            tapGesture.cancelsTouchesInView = false
+            noteListTB.superview?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        // handle tap on non-cell area
+        print("Tapped outside of cells")
     }
     
     
     @objc func adjustForKeyboard(notification: Notification) {
         
         if notification.name == UIResponder.keyboardWillHideNotification {
-            noteListTB.contentInset = .zero
+            UIView.performWithoutAnimation { [weak self] in
+                guard let self = self else { return }
+                // self.noteListTB.contentInset = .zero
+                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0)
+            }
         } else {
-            noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight - view.safeAreaInsets.bottom, right: 0)
+            UIView.performWithoutAnimation { [weak self] in
+                guard let self = self else { return }
+                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom + 160, right: 0)
+            }
         }
         
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
@@ -231,7 +249,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             return noteItemArray_sorted[indexPath.row].noteItemText
-                .heightWithConstrainedWidth(width: tableView.frame.width, font: UIFont.systemFont(ofSize: 22))
+                .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 22, weight: .bold))
             
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
             let image = UIImage(data: noteItem.noteItemPhoto!)
@@ -304,21 +322,26 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
             
             cell.delegate = self
-            cell.textView.text = noteItem.noteItemText
-            cell.label.text = noteItem.noteItemText
+            
+            cell.loadText(for: noteItem) { [weak tableView] string in
+                tableView?.performBatchUpdates({
+                    cell.textView.text = string
+                    cell.label.text = string
+                })
+            }
             
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                
                 self.indexOfBlock = indexPath.row
-                self.getText(text: newText, noteListTB: self.noteListTB)
                 
-                DispatchQueue.main.async {
-                    tableView?.beginUpdates()
-                    tableView?.endUpdates()
-                }
-               
+                tableView?.performBatchUpdates({
+                    cell.label.text = newText
+                    self.getText(text: newText, noteListTB: self.noteListTB)
+                })
+                
+                // tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                
             }
             
             print("DEBUG TEXT \(noteItem.noteItemOrder)")
@@ -330,20 +353,23 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
             
             cell.delegate = self
-            cell.titleTextView.text = noteItem.noteItemText
-            // cell.titleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            
+            cell.loadText(for: noteItem) { [weak tableView] string in
+                tableView?.performBatchUpdates({
+                    cell.textView.text = string
+                    cell.label.text = string
+                })
+            }
             
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                
                 self.indexOfBlock = indexPath.row
-                self.getText(text: newText, noteListTB: self.noteListTB)
                 
-                DispatchQueue.main.async {
-                    tableView?.beginUpdates()
-                    tableView?.endUpdates()
-                }
+                tableView?.performBatchUpdates({
+                    cell.label.text = newText
+                    self.getText(text: newText, noteListTB: self.noteListTB)
+                })
             }
             
             print("DEBUG TITLE \(noteItem.noteItemOrder)")
@@ -355,12 +381,9 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
             cell.downloadImage(for: noteItem) { [weak tableView] image in
-                DispatchQueue.main.async {
-                    tableView?.beginUpdates()
+                tableView?.performBatchUpdates({
                     cell.imageBlock.image = image
-                    tableView?.endUpdates()
-                    
-                }
+                })
             }
             
             // width 330, height 270
@@ -379,6 +402,24 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        let noteItem = noteItemArray_sorted[indexPath.row]
+        
+        if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
+            
+            cell.textView.becomeFirstResponder()
+            print("Became")
+            
+        } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
+            cell.textView.becomeFirstResponder()
+        }
     }
     
     

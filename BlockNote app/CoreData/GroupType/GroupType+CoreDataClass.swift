@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 
-public class GroupType: NSManagedObject {
-    @NSManaged var number: Int
-}
+public class GroupType: NSManagedObject {}

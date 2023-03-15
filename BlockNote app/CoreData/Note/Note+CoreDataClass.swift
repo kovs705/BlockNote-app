@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 
-public class Note: NSManagedObject {
-    @NSManaged var noteID: Int
-}
+public class Note: NSManagedObject {}

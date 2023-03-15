@@ -14,7 +14,7 @@ import UIKit
 class TVPhotoBlock: UITableViewCell {
 
     @IBOutlet weak var imageBlock: UIImageView!
-    let cache = PersistenceController.shared.cache
+    let cache = PersistenceController.shared.cachePhoto
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,14 +10,41 @@ import CoreData
 
 class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 
-    @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label: UILabel!
     
     weak var delegate: textSaveDelegate?
     var textChanged: ((String) -> Void)?
     
+    let cache = PersistenceController.shared.cacheString
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleTextView.delegate = self
+        textView.delegate = self
+    }
+    
+    func loadText(for noteItem: NoteItem, completed: @escaping (String?) -> Void) {
+        let noteItemStringData = noteItem.noteItemText
+        let cacheKey = NSString(utf8String: noteItemStringData)
+        
+        if let stringCacheData = cache.object(forKey: cacheKey!) {
+            // print("We took this text from cache, good work!")
+            let stringCache = stringCacheData as String
+            
+            self.textView.text = stringCache
+            self.label.text = stringCache
+            
+            return
+        }
+        
+        // if theres no cache:
+        self.cache.setObject(noteItemStringData as NSString, forKey: cacheKey!)
+        // print("this text downloaded into cache!")
+        
+        DispatchQueue.main.async {
+            self.textView.text = noteItemStringData
+            self.label.text = noteItemStringData
+        }
     }
     
     func textChanged(action: @escaping (String) -> Void) {

@@ -11,7 +11,8 @@ import CoreData
 class PersistenceController {
     static let shared = PersistenceController()
     @Environment(\.managedObjectContext) var viewContext
-    let cache = NSCache<NSString, NSData>()
+    let cachePhoto = NSCache<NSString, NSData>()
+    let cacheString = NSCache<NSString, NSString>()
 
     static var preview: PersistenceController = {
         let result = PersistenceController()

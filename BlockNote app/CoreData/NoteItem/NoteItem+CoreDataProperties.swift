@@ -15,7 +15,9 @@ extension NoteItem {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<NoteItem> {
         return NSFetchRequest<NoteItem>(entityName: "NoteItem")
     }
-
+    
+    @NSManaged var noteItemOrder: Int
+    
     @NSManaged public var noteItemType: String?
     @NSManaged public var noteItemName: String?
     @NSManaged public var lastChangedNI: Date?

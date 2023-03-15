@@ -26,8 +26,6 @@
 		4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E26429927EE5B7E0020E380 /* DetailVC.swift */; };
 		4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E44C7AA278CD52C0054E5E2 /* CodeEditor */; };
 		4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */; };
-		4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */; };
-		4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */; };
 		4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD8294EC4D400E29ABD /* AgendaView.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
 		4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */; };
@@ -44,12 +42,11 @@
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
 		4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */; };
 		4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */; };
-		4EBAB25A287398C500A2AC05 /* TVCodeBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB258287398C500A2AC05 /* TVCodeBlock.xib */; };
 		4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */; };
-		4EBAB25F2873990200A2AC05 /* TVToDoBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB25D2873990200A2AC05 /* TVToDoBlock.xib */; };
 		4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2622873997900A2AC05 /* TVListBlock.swift */; };
-		4EBAB2652873997900A2AC05 /* TVListBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBAB2632873997900A2AC05 /* TVListBlock.xib */; };
 		4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */; };
+		4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */; };
+		4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */; };
 		4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
@@ -108,11 +105,9 @@
 		4E239C9627A46FE1000A51A6 /* groupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupViewCell.swift; sourceTree = "<group>"; };
 		4E26429927EE5B7E0020E380 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
-		4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Agenda+CoreDataProperties.swift"; path = "BlockNote app/CoreData/Agenda+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Agenda+CoreDataClass.swift"; path = "BlockNote app/CoreData/Agenda+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
-		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; };
+		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
@@ -126,12 +121,11 @@
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
 		4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPhotoBlock.swift; sourceTree = "<group>"; };
 		4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCodeBlock.swift; sourceTree = "<group>"; };
-		4EBAB258287398C500A2AC05 /* TVCodeBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCodeBlock.xib; sourceTree = "<group>"; };
 		4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVToDoBlock.swift; sourceTree = "<group>"; };
-		4EBAB25D2873990200A2AC05 /* TVToDoBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVToDoBlock.xib; sourceTree = "<group>"; };
 		4EBAB2622873997900A2AC05 /* TVListBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListBlock.swift; sourceTree = "<group>"; };
-		4EBAB2632873997900A2AC05 /* TVListBlock.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVListBlock.xib; sourceTree = "<group>"; };
 		4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailExt.swift; sourceTree = "<group>"; };
+		4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationViewController.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
@@ -260,8 +254,7 @@
 				4E639F50274C126F000E249A /* GroupType */,
 				4E55323727663FCA0013E097 /* Note */,
 				4E55323E276642A30013E097 /* NoteItem */,
-				4E48DFD5294EBFED00E29ABD /* Agenda+CoreDataClass.swift */,
-				4E48DFD4294EBFEC00E29ABD /* Agenda+CoreDataProperties.swift */,
+				4ECC8C4329BDC37B00E7F64B /* Agenda */,
 				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -405,7 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */,
-				4EBAB258287398C500A2AC05 /* TVCodeBlock.xib */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -414,7 +406,6 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */,
-				4EBAB25D2873990200A2AC05 /* TVToDoBlock.xib */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -423,9 +414,17 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB2622873997900A2AC05 /* TVListBlock.swift */,
-				4EBAB2632873997900A2AC05 /* TVListBlock.xib */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		4ECC8C4329BDC37B00E7F64B /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */,
+				4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */,
+			);
+			path = Agenda;
 			sourceTree = "<group>";
 		};
 		4ED53DF0278F1A8E00F79A3F /* Views */ = {
@@ -605,10 +604,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EBAB25A287398C500A2AC05 /* TVCodeBlock.xib in Resources */,
-				4EBAB2652873997900A2AC05 /* TVListBlock.xib in Resources */,
 				4E0EBDBE2971AE5C002530FF /* SnowBackground.sks in Resources */,
-				4EBAB25F2873990200A2AC05 /* TVToDoBlock.xib in Resources */,
 				4E1803B7274058F00096A87C /* LaunchScreen.storyboard in Resources */,
 				4E1803B4274058F00096A87C /* Assets.xcassets in Resources */,
 				4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */,
@@ -750,9 +746,11 @@
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */,
 				4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */,
+				4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */,
+				4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */,
 				4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
@@ -771,10 +769,8 @@
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
-				4E48DFD6294EBFED00E29ABD /* Agenda+CoreDataProperties.swift in Sources */,
 				4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
-				4E48DFD7294EBFED00E29ABD /* Agenda+CoreDataClass.swift in Sources */,
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
@@ -969,6 +965,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -999,6 +996,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

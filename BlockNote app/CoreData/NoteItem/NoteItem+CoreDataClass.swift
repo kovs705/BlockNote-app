@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 // @objc(Noteitem)
-public class NoteItem: NSManagedObject {
-    @NSManaged var noteItemOrder: Int
-}
+public class NoteItem: NSManagedObject {}
