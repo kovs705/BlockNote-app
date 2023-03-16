@@ -28,18 +28,19 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         
         configureDock()
         
-        noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0)
+        noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
             tapGesture.cancelsTouchesInView = false
-            noteListTB.superview?.addGestureRecognizer(tapGesture)
+            noteListTB.addGestureRecognizer(tapGesture)
     }
     
-    @objc func handleTap() {
-        // handle tap on non-cell area
-        print("Tapped outside of cells")
+    @objc func handleTap(_ gRecognizer: UITapGestureRecognizer) {
+        let tapLocation = gRecognizer.location(in: noteListTB)
+        if noteListTB.indexPathForRow(at: tapLocation) == nil {
+            print("Outside of the cell")
+        }
     }
-    
     
     @objc func adjustForKeyboard(notification: Notification) {
         
