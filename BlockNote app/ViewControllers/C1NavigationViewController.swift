@@ -25,6 +25,9 @@ class C1NavigationViewController: C1NavViewExt {
     @IBOutlet weak var snowBackgroundScene: SKView!
 //    @IBOutlet weak var dock: UIView!
     
+    enum Section { case main }
+    var dataSource: UICollectionViewDiffableDataSource<Section, GroupType>!
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,14 @@ class C1NavigationViewController: C1NavViewExt {
         showGreeting(greetingLabel: greetingLabel)
         configureScrollView(scrollView: scrollView)
         
+    }
+    
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, GroupType>(collectionView: groupCollectionView, cellProvider: { (collectionView, indexPath, group) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.groupDetail, for: indexPath) as! groupViewCell
+            cell.setGroupCell(group: group)
+            return cell
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,18 +114,9 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let group = self.groups[indexPath.row]
         
-        let numberOfNotes = group.value(forKey: "noteTypes") as! Set<Note>
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.groupDetail, for: indexPath as IndexPath) as! groupViewCell
-        // cell.groupName.text = group.value(forKey: "groupName") as? String
-        cell.setGroupName(label: group.value(forKey: Keys.gName) as? String ?? "default name")
-        cell.setBackground(color: group.value(forKey: Keys.gColor) as? String ?? "GreenAvocado")
-        cell.setNumber(number: numberOfNotes.count)
+        cell.setGroupCell(group: group as! GroupType)
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // MARK: - Animation
-        // cell.alpha = 0
-        // cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
         return cell
     }

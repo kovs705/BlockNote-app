@@ -34,7 +34,7 @@ class C1NavViewExt: UIViewController {
     }
     
     // MARK: - Sorting func
-    func sortGroupsByNumber(_ groups: [GroupType]) -> [GroupType] {
+    func sortGroupsByNumber(_ groups: [GroupType]) -> [GroupType] { //TODO: гав sorting func
         groups.sorted { groupA, groupB in
             groupA.number < groupB.number
         }

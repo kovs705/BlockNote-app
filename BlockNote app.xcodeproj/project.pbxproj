@@ -39,6 +39,8 @@
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */; };
 		4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE3298A76C80085027A /* DetailVCExt.swift */; };
+		4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */; };
+		4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53829C632AE00D41AC1 /* Sorting.swift */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
 		4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */; };
 		4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */; };
@@ -118,6 +120,8 @@
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewExt.swift; sourceTree = "<group>"; };
 		4E8F7EE3298A76C80085027A /* DetailVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCExt.swift; sourceTree = "<group>"; };
+		4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUICollectionViewCellAnimated.swift; sourceTree = "<group>"; };
+		4EB9E53829C632AE00D41AC1 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
 		4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPhotoBlock.swift; sourceTree = "<group>"; };
 		4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCodeBlock.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 			children = (
 				4E8F7EDE298A54130085027A /* Constants.swift */,
 				4E55324327666AF10013E097 /* ViewModifications.swift */,
+				4EB9E53829C632AE00D41AC1 /* Sorting.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				4E8F7EE3298A76C80085027A /* DetailVCExt.swift */,
 				4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
+				4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -738,6 +744,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */,
+				4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */,
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
@@ -754,6 +761,7 @@
 				4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
+				4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */,
 				4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
