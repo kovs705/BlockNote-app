@@ -37,6 +37,13 @@ extension GroupType {
             $0.noteID < $1.noteID
         }
     }
+    
+//    func groupedGroupTypes(using SortOrder: SortOrder) -> [GroupType] {
+//        switch SortOrder {
+//        case .optimized:
+//            
+//        }
+//    }
 }
 
 // MARK: Generated accessors for noteTypes

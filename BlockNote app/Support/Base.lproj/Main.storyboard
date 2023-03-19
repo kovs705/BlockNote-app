@@ -78,29 +78,51 @@
                                                         <color key="textColor" name="TextForegroundColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx">
-                                                        <rect key="frame" x="257.66666666666669" y="0.0" width="52.333333333333314" height="34.333333333333336"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal">
-                                                            <color key="titleColor" name="TextForeground"/>
-                                                            <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
-                                                        </state>
-                                                        <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
-                                                            <imageReference key="image" image="rectangle.stack.badge.plus" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
-                                                                <hierarchicalColors>
-                                                                    <color systemColor="labelColor"/>
-                                                                    <color systemColor="secondaryLabelColor"/>
-                                                                    <color systemColor="tertiaryLabelColor"/>
-                                                                </hierarchicalColors>
-                                                            </imageReference>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
-                                                            <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="addGroup:" destination="qrx-ni-D9i" eventType="touchUpInside" id="dVy-Pf-5yJ"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-fS-YkV" userLabel="Stack of buttons">
+                                                        <rect key="frame" x="199" y="0.0" width="111" height="34.333333333333336"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx" userLabel="Sort">
+                                                                <rect key="frame" x="0.0" y="0.0" width="54.666666666666664" height="34.333333333333336"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" name="TextForeground"/>
+                                                                    <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                                </state>
+                                                                <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
+                                                                    <imageReference key="image" image="arrow.up.arrow.down" catalog="system" symbolScale="large" renderingMode="original" variableValue="0.80000000000000004"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="SortCV:" destination="qrx-ni-D9i" eventType="touchUpInside" id="QP2-zh-cBE"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mm-xw-OSD">
+                                                                <rect key="frame" x="58.666666666666686" y="0.0" width="52.333333333333343" height="34.333333333333336"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" name="TextForeground"/>
+                                                                    <imageReference key="image" image="doc.text.image" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                                </state>
+                                                                <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
+                                                                    <imageReference key="image" image="rectangle.stack.badge.plus" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                                        <hierarchicalColors>
+                                                                            <color systemColor="labelColor"/>
+                                                                            <color systemColor="secondaryLabelColor"/>
+                                                                            <color systemColor="tertiaryLabelColor"/>
+                                                                        </hierarchicalColors>
+                                                                    </imageReference>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="addGroup:" destination="qrx-ni-D9i" eventType="touchUpInside" id="FKN-Bb-SNr"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-wd-HlC" userLabel="Groups" customClass="DynamicHeightCollectionView" customModule="BlockNote_app" customModuleProvider="target">
@@ -113,10 +135,10 @@
                                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="groupDetail" id="245-IZ-UgW" customClass="groupViewCell" customModule="BlockNote_app" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="groupDetail" id="245-IZ-UgW" customClass="groupViewCell" customModule="BlockNote_app" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="10" width="165" height="165"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nCP-C6-VB1">
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nCP-C6-VB1">
                                                             <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
@@ -297,7 +319,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-Dr-VzR">
-                                                                                <rect key="frame" x="24.000000000000004" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="24" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -797,6 +819,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="97"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>

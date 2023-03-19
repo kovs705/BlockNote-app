@@ -12,6 +12,8 @@ import SwiftUI
 protocol detail_vc_Delegate {
     func deleteAndUpdate()
     func closeAndDelete()
+    
+    //TODO: first sort important on top, then sort by order
 }
 
 class DetailVC: DetailVCExt {

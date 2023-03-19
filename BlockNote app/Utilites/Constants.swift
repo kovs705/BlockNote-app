@@ -15,6 +15,12 @@ enum BlockCases {
     case title, text, space, photo
 }
 
+enum SortOrder {
+    static let optimized = "number"
+    static let title = "groupName"
+    static let lastChangedGroup = "lastChangedGroup"
+}
+
 enum Entities {
     static let noteItem = "NoteItem"
     static let group = "GroupType"

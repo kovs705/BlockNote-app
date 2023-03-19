@@ -18,25 +18,28 @@ class C1NavViewExt: UIViewController {
     var hour = Calendar.current.component(.hour, from: Date())
     
     // MARK: - CoreData
-    func fetchData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let viewContext       = appDelegate.persistentContainerOffline.viewContext
-        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
-        let sort              = NSSortDescriptor(key: "number", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
+    func updateData(using sort: String, for fetchRequest: NSFetchRequest<NSManagedObject>, with viewContext: NSManagedObjectContext) {
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
         
         do {
             groups = try viewContext.fetch(fetchRequest)
-            // sortGroupsByNumber(groups)
         } catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
     }
     
-    // MARK: - Sorting func
-    func sortGroupsByNumber(_ groups: [GroupType]) -> [GroupType] { //TODO: гав sorting func
-        groups.sorted { groupA, groupB in
-            groupA.number < groupB.number
+    func fetchData(using sort: String, for collectionView: UICollectionView) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        let fetchRequest      = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+        
+        updateData(using: sort, for: fetchRequest, with: viewContext)
+        collectionView.reloadData()
+    }
+    
+    func update(the collectionView: UICollectionView) {
+        UIView.animate(withDuration: 0.05, delay: 0, options: [.beginFromCurrentState]) {
+            collectionView.reloadInputViews()
         }
     }
     
@@ -44,7 +47,6 @@ class C1NavViewExt: UIViewController {
     func configureProgressBarView(progressBarView: UIView) {
         progressBarView.layer.shadowColor = UIColor.black.cgColor
         progressBarView.layer.masksToBounds = false
-
         progressBarView.layer.cornerRadius = 20
         progressBarView.shadowOffset = CGSize(width: 15, height: 0)
         progressBarView.layer.shadowRadius = 10

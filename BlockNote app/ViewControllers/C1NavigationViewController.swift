@@ -23,16 +23,14 @@ class C1NavigationViewController: C1NavViewExt {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var snowBackgroundScene: SKView!
-//    @IBOutlet weak var dock: UIView!
     
-    enum Section { case main }
-    var dataSource: UICollectionViewDiffableDataSource<Section, GroupType>!
+    var sortingKey: String = SortOrder.optimized
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
+        fetchData(using: sortingKey, for: groupCollectionView)
         
         configureProgressBarView(progressBarView: progressBarView)
         configureGroupCollectionView(gCV: groupCollectionView)
@@ -40,14 +38,6 @@ class C1NavigationViewController: C1NavViewExt {
         showGreeting(greetingLabel: greetingLabel)
         configureScrollView(scrollView: scrollView)
         
-    }
-    
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, GroupType>(collectionView: groupCollectionView, cellProvider: { (collectionView, indexPath, group) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.groupDetail, for: indexPath) as! groupViewCell
-            cell.setGroupCell(group: group)
-            return cell
-        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,8 +52,7 @@ class C1NavigationViewController: C1NavViewExt {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        fetchData()
-        groupCollectionView.reloadData()
+        fetchData(using: sortingKey, for: groupCollectionView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,6 +91,38 @@ class C1NavigationViewController: C1NavViewExt {
         
     }
     
+    @IBAction func SortCV(_ sender: UIButton) {
+        let alertSheet = UIAlertController(title: "Sort by..", message: "", preferredStyle: .actionSheet)
+        
+        let optimized = UIAlertAction(title: "Number", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            self.sortingKey = SortOrder.optimized
+            self.fetchData(using: self.sortingKey, for: self.groupCollectionView)
+        }
+        
+        let title = UIAlertAction(title: "Name", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            self.sortingKey = SortOrder.title
+            self.fetchData(using: self.sortingKey, for: self.groupCollectionView)
+        }
+        let lastChangedGroup = UIAlertAction(title: "Creation date", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            self.sortingKey = SortOrder.lastChangedGroup
+            self.fetchData(using: self.sortingKey, for: self.groupCollectionView)
+        }
+        
+        let cancelButton = UIAlertAction(title: "cancel", style: .cancel)
+        
+        alertSheet.addAction(title)
+        alertSheet.addAction(optimized)
+        alertSheet.addAction(lastChangedGroup)
+        
+        alertSheet.addAction(cancelButton)
+        
+        present(alertSheet, animated: true)
+    }
+    
+    
 }
 
 // MARK: - UICollectionView extentions
@@ -121,14 +142,14 @@ extension C1NavigationViewController: UICollectionViewDelegate, UICollectionView
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//
-//        UIView.animate(withDuration: animationDuration) {
-//            cell.alpha = 1
-//            cell.transform = .identity
-//          }
-//
-//    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        UIView.animate(withDuration: 0.5, delay: 0) {
+            cell.alpha = 1
+            cell.contentView.alpha = 1
+        }
+
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfGroupsPerRow = 2
