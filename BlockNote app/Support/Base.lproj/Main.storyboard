@@ -319,7 +319,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="75"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG7-Dr-VzR">
-                                                                                <rect key="frame" x="24" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="24.000000000000004" y="27.333333333333343" width="45.333333333333343" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -613,8 +613,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6nc-Zv-4kP" userLabel="noteTV" customClass="TableViewAdjustedHeight" customModule="BlockNote_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="91" width="390" height="879"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6nc-Zv-4kP" userLabel="noteTV" customClass="TableViewAdjustedHeight" customModule="BlockNote_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <color key="backgroundColor" name="BackBlock"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextBlock" rowHeight="134" id="JxA-xL-KYC" customClass="TVTextBlock" customModule="BlockNote_app" customModuleProvider="target">
@@ -734,7 +734,7 @@
                         <constraints>
                             <constraint firstItem="6nc-Zv-4kP" firstAttribute="leading" secondItem="2wj-iY-rJU" secondAttribute="leading" id="Dh0-vL-RRf"/>
                             <constraint firstItem="6nc-Zv-4kP" firstAttribute="trailing" secondItem="2wj-iY-rJU" secondAttribute="trailing" id="UTT-Vq-PtN"/>
-                            <constraint firstItem="2wj-iY-rJU" firstAttribute="bottom" secondItem="6nc-Zv-4kP" secondAttribute="bottom" constant="-160" id="btT-Fq-JB7"/>
+                            <constraint firstItem="2wj-iY-rJU" firstAttribute="bottom" secondItem="6nc-Zv-4kP" secondAttribute="bottom" id="btT-Fq-JB7"/>
                             <constraint firstItem="6nc-Zv-4kP" firstAttribute="top" secondItem="2wj-iY-rJU" secondAttribute="top" id="kUR-Ki-ujQ"/>
                         </constraints>
                     </view>

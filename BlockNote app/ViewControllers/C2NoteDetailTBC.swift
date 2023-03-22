@@ -7,6 +7,8 @@
 
 import UIKit
 
+//TODO: Place everything to the right files and folders + extensions!!!!!!!!!
+
 class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
 
     @IBOutlet weak var noteListTB: UITableView!
@@ -45,16 +47,16 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
     @objc func adjustForKeyboard(notification: Notification) {
         
         if notification.name == UIResponder.keyboardWillHideNotification {
-            UIView.performWithoutAnimation { [weak self] in
+            // UIView.performWithoutAnimation { [weak self] in
+            UIView.animate(withDuration: 0.2, delay: 0, animations: { [weak self] in
                 guard let self = self else { return }
-                // self.noteListTB.contentInset = .zero
-                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0)
-            }
+                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
+            })
         } else {
-            UIView.performWithoutAnimation { [weak self] in
+            UIView.animate(withDuration: 0.2, delay: 0, animations: { [weak self] in
                 guard let self = self else { return }
-                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom + 160, right: 0)
-            }
+                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom, right: 0)
+            })
         }
         
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
@@ -131,6 +133,9 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock], noteListTB: noteListTB)
         // print("you changed the block with the index of \(indexOfBlock)")
     }
+    
+    
+    
     
     
     // MARK: - update block
@@ -312,7 +317,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         delegateSave()
     }
     
-    
     // MARK: - cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = noteItemArray_sorted[indexPath.row]
@@ -322,7 +326,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
             
-            cell.delegate = self
+            cell.textSaveDelegate = self
             
             cell.loadText(for: noteItem) { [weak tableView] string in
                 tableView?.performBatchUpdates({
@@ -341,8 +345,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                     self.getText(text: newText, noteListTB: self.noteListTB)
                 })
                 
-                // tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                
             }
             
             print("DEBUG TEXT \(noteItem.noteItemOrder)")
@@ -353,7 +355,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
             
-            cell.delegate = self
+            cell.titleSaveDelegate = self
             
             cell.loadText(for: noteItem) { [weak tableView] string in
                 tableView?.performBatchUpdates({
@@ -404,25 +406,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-        
-        let noteItem = noteItemArray_sorted[indexPath.row]
-        
-        if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
-            
-            cell.textView.becomeFirstResponder()
-            print("Became")
-            
-        } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
-            cell.textView.becomeFirstResponder()
-        }
-    }
-    
     
     // MARK: - Delete block
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

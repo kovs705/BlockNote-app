@@ -13,7 +13,7 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
-    weak var delegate: textSaveDelegate?
+    weak var titleSaveDelegate: textSaveDelegate?
     var textChanged: ((String) -> Void)?
     
     let cache = PersistenceController.shared.cacheString

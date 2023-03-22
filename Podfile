@@ -9,6 +9,7 @@ target 'BlockNote app' do
   pod 'RxSwift', '~> 4.0'
   pod 'SnapKit', '~> 5.6.0'
   pod 'RxCocoa'
+  pod 'Hero'
 
   target 'BlockNote appTests' do
     inherit! :search_paths

@@ -19,7 +19,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var label: UILabel!
     
     var textChanged: ((String) -> Void)?
-    weak var delegate: textSaveDelegate?
+    weak var textSaveDelegate: textSaveDelegate?
     
     let cache = PersistenceController.shared.cacheString
     
@@ -58,6 +58,51 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
         textView.delegate = self
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        
+        // add a new block here
+        
+        return true
+    }
+    
+    func scrollToLine(_ textView: UITextView) {
+        
+        // getting caretRect of UITextView
+        let caretRect = textView.caretRect(for: textView.selectedTextRange!.start)
+        textView.caretRect(for: textView.selectedTextRange!.start)
+        
+        // calculate the position
+        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
+        
+        if let tableView = textView.superview?.superview?.superview as? UITableView {
+            tableView.setContentOffset(contentOffset, animated: true)
+            print("Scrolling completed")
+        }
+        
+    }
+    
+    func scrollToCell(_ textView: UITextView) {
+        if let cell = textView.superview?.superview as? UITableViewCell {
+            if let tableView = cell.superview as? UITableView {
+                if let indexPath = tableView.indexPath(for: cell) {
+                    tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    print("Scroll to the indexPath: \(indexPath.row) completed")
+                }
+            }
+        }
+    }
+    
+    func configureTag(forIndexPath indexPath: IndexPath) {
+        textView.tag = indexPath.row
+    }
+    
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        scrollToLine(textView)
+//    }
     
     func textChanged(action: @escaping (String) -> Void) {
         textChanged = action
