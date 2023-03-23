@@ -97,9 +97,11 @@ class C1NavViewExt: UIViewController {
         
         group.setValue(groupName, forKey: Keys.gName)
         group.setValue(groupColor, forKey: Keys.gColor)
-        group.setValue((groups.count) + 1, forKey: Keys.gNumber)
-        #warning("work on this number count")
-        // group.setValue(number, forKey: "number")
+        if groups.isEmpty {
+            group.setValue(1, forKey: Keys.gNumber)
+        } else {
+            group.setValue((groups.count) + 1, forKey: Keys.gNumber)
+        }
         
         do {
             groups.insert(group, at: 0)

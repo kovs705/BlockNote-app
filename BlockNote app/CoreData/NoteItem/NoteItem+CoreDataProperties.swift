@@ -23,6 +23,7 @@ extension NoteItem {
     @NSManaged public var lastChangedNI: Date?
     
     @NSManaged public var noteItemPhoto: Data?
+    @NSManaged public var isFocused: Bool
     
     @NSManaged public var noteItemText: String
     @NSManaged public var note: Note?

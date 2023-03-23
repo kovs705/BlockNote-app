@@ -626,22 +626,19 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" verticalHuggingPriority="500" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-tY-6AV" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="122"/>
-                                                    <color key="backgroundColor" name="BackBlock"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.64999997615814198" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmH-jj-69n">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmH-jj-69n">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="122"/>
-                                                    <color key="backgroundColor" name="RedStrawBerry"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="BackBlock"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="MkO-tY-6AV" secondAttribute="trailing" constant="20" id="1PB-8f-8IB"/>
                                                 <constraint firstItem="XmH-jj-69n" firstAttribute="leading" secondItem="YFl-HJ-BFa" secondAttribute="leading" constant="20" id="DNw-1J-LzX"/>
@@ -666,10 +663,8 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t0Y-mZ-Xha">
                                                     <rect key="frame" x="20" y="16" width="350" height="265"/>
-                                                    <color key="backgroundColor" name="BackBlock"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="BackBlock"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="t0Y-mZ-Xha" secondAttribute="trailing" id="8Ir-LQ-DFX"/>
                                                 <constraint firstItem="t0Y-mZ-Xha" firstAttribute="top" secondItem="tdb-zE-Shl" secondAttribute="topMargin" constant="5" id="A86-dg-eOu"/>
@@ -690,20 +685,17 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-iJ-9FV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
-                                                    <color key="backgroundColor" name="BackBlock"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.64999997615814198" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-lW-4qB">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-lW-4qB">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
-                                                    <color key="backgroundColor" name="RedStrawBerry"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="BackBlock"/>
                                             <constraints>
                                                 <constraint firstItem="ffH-lW-4qB" firstAttribute="leading" secondItem="BKg-UG-isi" secondAttribute="leading" constant="20" id="AWv-8h-QcI"/>
                                                 <constraint firstItem="vAf-iJ-9FV" firstAttribute="top" secondItem="BKg-UG-isi" secondAttribute="top" id="EOp-gr-0qw"/>
@@ -842,9 +834,6 @@
         </namedColor>
         <namedColor name="PurpleBlackBerry">
             <color red="0.83499997854232788" green="0.75099998712539673" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="RedStrawBerry">
-            <color red="0.91600000858306885" green="0.51399999856948853" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TextForeground">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -34,6 +34,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
             self.textView.text = stringCache
             self.label.text = stringCache
             
+            configureFocusLineView()
+            
             return
         }
         
@@ -69,20 +71,26 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         return true
     }
     
-    func scrollToLine(_ textView: UITextView) {
-        
-        // getting caretRect of UITextView
-        let caretRect = textView.caretRect(for: textView.selectedTextRange!.start)
-        textView.caretRect(for: textView.selectedTextRange!.start)
-        
-        // calculate the position
-        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
-        
-        if let tableView = textView.superview?.superview?.superview as? UITableView {
-            tableView.setContentOffset(contentOffset, animated: true)
-            print("Scrolling completed")
-        }
-        
+//    func scrollToLine(_ textView: UITextView) {
+//
+//        // getting caretRect of UITextView
+//        let caretRect = textView.caretRect(for: textView.selectedTextRange!.start)
+//        textView.caretRect(for: textView.selectedTextRange!.start)
+//
+//        // calculate the position
+//        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
+//
+//        if let tableView = textView.superview?.superview?.superview as? UITableView {
+//            tableView.setContentOffset(contentOffset, animated: true)
+//            print("Scrolling completed")
+//        }
+//
+//    }
+    
+    private func configureFocusLineView() {
+        let verticalLineView = UIView(frame: CGRectMake(10, 0, 4, textView.frame.height + 4))
+        verticalLineView.backgroundColor = .blue
+        self.contentView.addSubview(verticalLineView)
     }
     
     func scrollToCell(_ textView: UITextView) {
