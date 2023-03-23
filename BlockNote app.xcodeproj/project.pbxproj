@@ -39,6 +39,11 @@
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */; };
 		4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE3298A76C80085027A /* DetailVCExt.swift */; };
+		4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */; };
+		4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */; };
+		4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */; };
+		4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */; };
+		4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */; };
 		4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */; };
 		4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53829C632AE00D41AC1 /* Sorting.swift */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
@@ -120,6 +125,11 @@
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewExt.swift; sourceTree = "<group>"; };
 		4E8F7EE3298A76C80085027A /* DetailVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCExt.swift; sourceTree = "<group>"; };
+		4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoBlock.swift; sourceTree = "<group>"; };
+		4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUICollectionViewCellAnimated.swift; sourceTree = "<group>"; };
 		4EB9E53829C632AE00D41AC1 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
@@ -258,6 +268,7 @@
 				4E639F50274C126F000E249A /* GroupType */,
 				4E55323727663FCA0013E097 /* Note */,
 				4E55323E276642A30013E097 /* NoteItem */,
+				4EAB130E29CC90C400416718 /* Photo */,
 				4ECC8C4329BDC37B00E7F64B /* Agenda */,
 				4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */,
 			);
@@ -354,6 +365,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4EAB130E29CC90C400416718 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */,
+				4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		4EAC48C228089E310094181B /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +416,9 @@
 			isa = PBXGroup;
 			children = (
 				4EBAB2532873987600A2AC05 /* TVPhotoBlock.swift */,
+				4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */,
+				4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */,
+				4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -613,6 +636,7 @@
 				4E0EBDBE2971AE5C002530FF /* SnowBackground.sks in Resources */,
 				4E1803B7274058F00096A87C /* LaunchScreen.storyboard in Resources */,
 				4E1803B4274058F00096A87C /* Assets.xcassets in Resources */,
+				4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */,
 				4EF4CBC927F1E7520034D66B /* NoteViewCell.xib in Resources */,
 				4E0EBDBA2971AE39002530FF /* Assets.xcassets in Resources */,
 				4E1803AF274058EA0096A87C /* Main.storyboard in Resources */,
@@ -745,9 +769,11 @@
 			files = (
 				4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */,
 				4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */,
+				4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */,
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
+				4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */,
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
@@ -775,7 +801,9 @@
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
+				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
+				4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
 				4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */,
 				4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */,
@@ -978,7 +1006,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1009,7 +1037,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

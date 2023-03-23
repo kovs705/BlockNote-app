@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Agenda" representedClassName=".Agenda" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -37,5 +37,11 @@
         <attribute name="noteItemText" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="noteItemType" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="noteItem" inverseEntity="Photo"/>
+    </entity>
+    <entity name="Photo" representedClassName=".Photo" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photoData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="noteItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="photos" inverseEntity="NoteItem"/>
     </entity>
 </model>

@@ -69,6 +69,8 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         noteListTB.dragDelegate = self
         noteListTB.dragInteractionEnabled = true
         noteListTB.sectionHeaderHeight = 100
+        
+        // noteListTB.register(UINib(nibName: "NewPhotoBlock", bundle: nil), forCellReuseIdentifier: NewPhotoBlock.newPhotoBlockID)
     }
     
     
