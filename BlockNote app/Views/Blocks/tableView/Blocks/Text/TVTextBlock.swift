@@ -18,7 +18,11 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
+    lazy var verticalLineView = UIView(frame: CGRectMake(10, 0, 4, textView.text.heightWithConstrainedWidth(width: textView.frame.width, font: UIFont.systemFont(ofSize: 17)) + 4))
+    
     var textChanged: ((String) -> Void)?
+    // var indexOfBlock: ((Int) -> Void)?
+    
     weak var textSaveDelegate: textSaveDelegate?
     
     let cache = PersistenceController.shared.cacheString
@@ -31,21 +35,25 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
             // print("We took this text from cache, good work!")
             let stringCache = stringCacheData as String
             
-            self.textView.text = stringCache
-            self.label.text = stringCache
-            
-            configureFocusLineView()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.textView.text = stringCache
+                self.label.text = stringCache
+                self.configureFocusLineView(color: .purple)
+            }
             
             return
         }
         
         // if theres no cache:
-        self.cache.setObject(noteItemStringData as NSString, forKey: cacheKey!)
+        cache.setObject(noteItemStringData as NSString, forKey: cacheKey!)
         // print("this text downloaded into cache!")
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.textView.text = noteItemStringData
             self.label.text = noteItemStringData
+            self.configureFocusLineView(color: .purple)
         }
     }
     
@@ -71,25 +79,25 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         return true
     }
     
-//    func scrollToLine(_ textView: UITextView) {
-//
-//        // getting caretRect of UITextView
-//        let caretRect = textView.caretRect(for: textView.selectedTextRange!.start)
-//        textView.caretRect(for: textView.selectedTextRange!.start)
-//
-//        // calculate the position
-//        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
-//
-//        if let tableView = textView.superview?.superview?.superview as? UITableView {
-//            tableView.setContentOffset(contentOffset, animated: true)
-//            print("Scrolling completed")
-//        }
-//
-//    }
+    func scrollToLine(_ textView: UITextView) {
+
+        // getting caretRect of UITextView
+        let caretRect = textView.caretRect(for: textView.selectedTextRange!.start)
+        textView.caretRect(for: textView.selectedTextRange!.start)
+
+        // calculate the position
+        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
+
+            if let tableView = textView.superview?.superview?.superview as? UITableView {
+                tableView.setContentOffset(contentOffset, animated: true)
+                print("Scrolling completed")
+            }
+
+
+    }
     
-    private func configureFocusLineView() {
-        let verticalLineView = UIView(frame: CGRectMake(10, 0, 4, textView.frame.height + 4))
-        verticalLineView.backgroundColor = .blue
+    func configureFocusLineView(color: UIColor) {
+        verticalLineView.backgroundColor = color
         self.contentView.addSubview(verticalLineView)
     }
     
@@ -112,6 +120,14 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
 //        scrollToLine(textView)
 //    }
     
+//    func textViewDidBeginEditing(_ textView: UITextView, action: @escaping () -> Void) {
+//        print("Ok, started")
+//    }
+    
+//    func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
+//        print("Ok, ended")
+//    }
+    
     func textChanged(action: @escaping (String) -> Void) {
         textChanged = action
     }
@@ -123,6 +139,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     override func prepareForReuse() {
         super.prepareForReuse()
         textChanged = nil
+        textView.text = nil
+        label.text = nil
     }
     
 //    override func setSelected(_ selected: Bool, animated: Bool) {
