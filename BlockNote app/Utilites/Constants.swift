@@ -8,6 +8,7 @@
 import UIKit
 
 // check
+// test #2
 
 enum Icons {
     static let addGroup = "plus.rectangle.on.rectangle"
