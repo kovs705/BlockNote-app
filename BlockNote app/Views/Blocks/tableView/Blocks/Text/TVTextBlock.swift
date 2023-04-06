@@ -86,7 +86,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         textView.caretRect(for: textView.selectedTextRange!.start)
 
         // calculate the position
-        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 15)
+        let contentOffset = CGPoint(x: 0, y: (caretRect.origin.y - textView.frame.size.height / 2) + 17)
 
             if let tableView = textView.superview?.superview?.superview as? UITableView {
                 tableView.setContentOffset(contentOffset, animated: true)
@@ -120,13 +120,13 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
 //        scrollToLine(textView)
 //    }
     
-//    func textViewDidBeginEditing(_ textView: UITextView, action: @escaping () -> Void) {
-//        print("Ok, started")
-//    }
+    func textViewDidBeginEditing(_ textView: UITextView, action: @escaping () -> Void) {
+        print("Ok, started")
+    }
     
-//    func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
-//        print("Ok, ended")
-//    }
+    func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
+        print("Ok, ended")
+    }
     
     func textChanged(action: @escaping (String) -> Void) {
         textChanged = action

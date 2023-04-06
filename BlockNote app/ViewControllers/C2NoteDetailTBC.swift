@@ -25,8 +25,8 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
         
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         configureDock()
         
@@ -47,16 +47,34 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
     @objc func adjustForKeyboard(notification: Notification) {
         
         if notification.name == UIResponder.keyboardWillHideNotification {
-            // UIView.performWithoutAnimation { [weak self] in
-            UIView.animate(withDuration: 0.2, delay: 0, animations: { [weak self] in
-                guard let self = self else { return }
-                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
-            })
+            
+//            DispatchQueue.main.async {
+//                UIView.performWithoutAnimation {
+//                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
+//                }
+//            }
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.35, delay: 0, animations: { [weak self] in
+                    guard let self = self else { return }
+                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
+                })
+            }
+            
         } else {
-            UIView.animate(withDuration: 0.2, delay: 0, animations: { [weak self] in
-                guard let self = self else { return }
-                self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom, right: 0)
-            })
+//            DispatchQueue.main.async {
+//                UIView.performWithoutAnimation {
+//                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom, right: 0)
+//                }
+//            }
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.35, delay: 0, animations: { [weak self] in
+                    guard let self = self else { return }
+                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom, right: 0)
+                })
+            }
+
         }
         
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
@@ -346,6 +364,10 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                     cell.label.text = newText
                     self.getText(text: newText, noteListTB: self.noteListTB)
                 })
+                
+//                self.noteListTB.isScrollEnabled = false
+//                cell.scrollToLine(cell.textView)
+//                self.noteListTB.isScrollEnabled = true
                 
             }
             
