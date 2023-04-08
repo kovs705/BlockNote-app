@@ -28,6 +28,7 @@
 		4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */; };
 		4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD8294EC4D400E29ABD /* AgendaView.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
+		4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */; };
 		4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
@@ -114,6 +115,7 @@
 		4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaController.swift; sourceTree = "<group>"; };
 		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceBlockController.swift; sourceTree = "<group>"; };
 		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				4E5A381927AAADB800E1F217 /* Code to test.swift */,
 				4EFA5FBC27407A080096F021 /* Persistence.swift */,
+				4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
+				4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */,
 				4E26429A27EE5B7E0020E380 /* DetailVC.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
@@ -1006,7 +1010,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.3;
+				MARKETING_VERSION = 2.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1037,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.3;
+				MARKETING_VERSION = 2.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CodingKovs.BlockNote-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

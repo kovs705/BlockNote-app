@@ -7,12 +7,12 @@
 
 import UIKit
 
-//TODO: Place everything to the right files and folders + extensions!!!!!!!!!
-
-class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
+class C2NoteDetailTBC: C2NoteDetailExt, UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate {
 
     @IBOutlet weak var noteListTB: UITableView!
     let notificationCenter = NotificationCenter.default
+    
+    let ext = C2NoteDetailExt.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,39 +150,9 @@ class C2NoteDetailTBC: C2NoteDetailExt, textSaveDelegate, UITableViewDelegate, U
     func getText(text: String?, noteListTB: UITableView) {
         
         textForTextlock = text ?? "Nothing in the text, or it's just the bug."
-        update(blockText: textForTextlock, block: self.noteItemArray_sorted[indexOfBlock], noteListTB: noteListTB)
+        PersistenceBlockController.shared.update(blockText: textForTextlock, block: self.noteItemArray_sorted[ext.indexOfBlock], noteListTB: noteListTB)
         // print("you changed the block with the index of \(indexOfBlock)")
     }
-    
-    
-    
-    
-    
-    // MARK: - update block
-    func update(blockText: String, block: NoteItem?, noteListTB: UITableView) {
-        
-/// update the date of the last changing
-        block?.setValue(Date(), forKey: Keys.niLastChanged)
-/// update the text of the block
-        block?.setValue(blockText, forKey: Keys.niText)
-        
-        delegateSave()
-    }
-    
-    
-    // MARK: - keyboard detect (work in progress)
-//    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-//        guard let key = presses.first?.key else { return }
-//
-//        switch key.keyCode {
-//        case .keyboardReturnOrEnter:
-//            noteListTB.endEditing(true)
-//
-//            saveAndStartTyping()
-//        default:
-//            super.pressesEnded(presses, with: event)
-//        }
-//    }
     
     
    // MARK: - Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
@@ -334,7 +304,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         }
         mover.setValue(destinationIndexPath.row + 1, forKey: Keys.niOrder)
         
-        delegateSave()
+        PersistenceBlockController.shared.delegateSave()
     }
     
     // MARK: - cellForRowAt
@@ -346,8 +316,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
             
-            cell.textSaveDelegate = self
-            
             cell.loadText(for: noteItem) { [weak tableView] string in
                 tableView?.performBatchUpdates({
                     cell.textView.text = string
@@ -355,10 +323,11 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
                 })
             }
             
+            
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
+                self.ext.indexOfBlock = indexPath.row
                 
                 tableView?.performBatchUpdates({
                     cell.label.text = newText
@@ -379,8 +348,6 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
             
-            cell.titleSaveDelegate = self
-            
             cell.loadText(for: noteItem) { [weak tableView] string in
                 tableView?.performBatchUpdates({
                     cell.textView.text = string
@@ -391,7 +358,7 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
+                self.ext.indexOfBlock = indexPath.row
                 
                 tableView?.performBatchUpdates({
                     cell.label.text = newText
@@ -431,47 +398,20 @@ extension C2NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         return UITableViewCell()
     }
     
+    
     // MARK: - Delete block
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // ---------save the number of deleting block
         // ---------delete block
         // compare this number with the blocks that are higher than him
         // for every block than is higher - make them lower by 1
-        var deletingBlocksOrder: Int = 0
-        
         if editingStyle == .delete {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            let managedContext = appDelegate.persistentContainerOffline.viewContext
-            
-            deletingBlocksOrder = indexPath.row + 1
-            
-            note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
-
-            for block in noteItemArray_sorted {
-                if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
-                    let value = block.value(forKey: Keys.niOrder) as! Int - 1
-                    block.setValue(value, forKey: Keys.niOrder)
-                }
-            }
-            //update sorted array of block:
-            sortAndUpdate()
-            // now I need to update the tableView:
-            // noteListTB.reloadData()
-            
-            do {
-                if managedContext.hasChanges {
-                    try managedContext.save()
-                    self.noteListTB.performBatchUpdates({
-                        self.noteListTB.deleteRows(at: [IndexPath(row: deletingBlocksOrder - 1, section: 0)], with: .automatic)
-                    }, completion: nil)
-                }
-            } catch {
-                print("Something wrong on deleting the block")
-            }
+            print("it will delete \(indexPath.row)")
+            deleteblock(noteListTB: noteListTB, at: indexPath)
         }
     }
+    
+ 
     
 }
 

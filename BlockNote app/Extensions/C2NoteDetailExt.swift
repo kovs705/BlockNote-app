@@ -12,13 +12,14 @@ class C2NoteDetailExt: UIViewController {
     // MARK: - Properties
     lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
+    var deletingBlocksOrder: Int = 0
     
     var imagePicker: UIImagePickerController!
     var isLargeHidden = false
     
     var textForTextlock: String = ""
     
-    var indexOfBlock = 0
+    static var indexOfBlock = 0
     let baseImage = UIImage(named: "gav")!
     
     let addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
@@ -89,40 +90,6 @@ class C2NoteDetailExt: UIViewController {
         print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
     }
     
-    func delegateSave() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
-        do {
-            if managedContext.hasChanges {
-                try managedContext.save()
-            } else {
-                print("Wrong on updating the note item")
-            }
-        } catch let error as NSError {
-            print("Could not update. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?) {
-        switch type {
-        case .title:
-            block.setValue(Block.titleBlock, forKey: Keys.niType)
-            block.setValue(Block.titleToSave, forKey: Keys.niText)
-        case .text:
-            block.setValue(Block.textBlock, forKey: Keys.niType)
-            block.setValue(Block.blockToSave, forKey: Keys.niText)
-        case .photo:
-            block.setValue(Block.photoBlock, forKey: Keys.niType)
-            block.setValue(pickedImage?.toData as NSData?, forKey: Keys.niPhoto)
-        case .space:
-            block.setValue(Block.spaceBlock, forKey: Keys.niType)
-        }
-
-    }
-    
     
     // MARK: - Save block
     func save(blockType: String, theCase: BlockCases, noteListTB: UITableView, pickedImage: UIImage?) {
@@ -141,9 +108,9 @@ class C2NoteDetailExt: UIViewController {
         let blockItem = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
         if theCase == .photo {
-            setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
+            PersistenceBlockController.shared.setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
         } else {
-            setValues(for: blockItem, from: theCase, pickedImage: nil)
+            PersistenceBlockController.shared.setValues(for: blockItem, from: theCase, pickedImage: nil)
         }
         
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
@@ -159,7 +126,7 @@ class C2NoteDetailExt: UIViewController {
         
     }
     
-    
+    // MARK: - Reorder
     func reorder(for value: NSManagedObject, in noteListTB: UITableView, using managedContext: NSManagedObjectContext) {
         do {
             note.addObject(value: value, forKey: Keys.nItems)
@@ -168,7 +135,8 @@ class C2NoteDetailExt: UIViewController {
                 sortAndUpdate()
                 try managedContext.save()
             } else {
-                print("Something wrong on saving block. No changes? No bitches?")
+                print("Something wrong on saving block")
+                return
             }
             
             // check for changes in sorted array:
@@ -193,6 +161,39 @@ class C2NoteDetailExt: UIViewController {
             }
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    // MARK: - Delete block
+    func deleteblock(noteListTB: UITableView, at indexPath: IndexPath) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        deletingBlocksOrder = indexPath.row + 1
+        
+        note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
+        
+        for block in noteItemArray_sorted {
+            if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
+                let value = block.value(forKey: Keys.niOrder) as! Int - 1
+                block.setValue(value, forKey: Keys.niOrder)
+            }
+        }
+        
+        sortAndUpdate()
+        
+        do {
+            if managedContext.hasChanges {
+                try managedContext.save()
+                noteListTB.performBatchUpdates({
+                    noteListTB.deleteRows(at: [IndexPath(row: deletingBlocksOrder - 1, section: 0)], with: .automatic)
+                }, completion: nil)
+            }
+        } catch {
+            print("Something wrong on deleting the block")
         }
     }
     

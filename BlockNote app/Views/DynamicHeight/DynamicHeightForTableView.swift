@@ -11,7 +11,6 @@ class TableViewAdjustedHeight: UITableView {
     override var intrinsicContentSize: CGSize {
         UIView.performWithoutAnimation {
             self.layoutIfNeeded()
-            print("LAYOUT")
         }
         return CGSize(width: self.contentSize.width, height: self.contentSize.height + (UIScreen.main.bounds.height / 2))
     }

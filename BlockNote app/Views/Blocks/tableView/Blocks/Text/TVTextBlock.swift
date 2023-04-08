@@ -8,22 +8,16 @@
 import UIKit
 import CoreData
 
-protocol textSaveDelegate: AnyObject {
-    func update(blockText: String, block: NoteItem?, noteListTB: UITableView)
-    func getText(text: String?, noteListTB: UITableView)
-}
-
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
+    let c2ext = C2NoteDetailExt()
+    
     lazy var verticalLineView = UIView(frame: CGRectMake(10, 0, 4, textView.text.heightWithConstrainedWidth(width: textView.frame.width, font: UIFont.systemFont(ofSize: 17)) + 4))
     
     var textChanged: ((String) -> Void)?
-    // var indexOfBlock: ((Int) -> Void)?
-    
-    weak var textSaveDelegate: textSaveDelegate?
     
     let cache = PersistenceController.shared.cacheString
     
@@ -74,7 +68,13 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
             textView.resignFirstResponder()
         }
         
-        // add a new block here
+//        if (text == "" && textView.text.isEmpty) {
+//            if let cell = textView.superview?.superview as? UITableViewCell {
+//                if let tableView = cell.superview as? UITableView {
+//                    c2ext.deleteblock(noteListTB: tableView, at: IndexPath(row: 1, section: 0))
+//                }
+//            }
+//        }
         
         return true
     }
@@ -116,9 +116,17 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         textView.tag = indexPath.row
     }
     
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        scrollToLine(textView)
-//    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if let cell = textView.superview?.superview as? UITableViewCell {
+            if let tableView = cell.superview as? UITableView {
+                if let indexPath = tableView.indexPath(for: cell) {
+                    C2NoteDetailExt.indexOfBlock = indexPath.row
+                    print("IT BECAME \(C2NoteDetailExt.indexOfBlock)")
+                }
+            }
+        }
+        
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView, action: @escaping () -> Void) {
         print("Ok, started")
