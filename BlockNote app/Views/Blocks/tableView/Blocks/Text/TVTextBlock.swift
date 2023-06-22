@@ -51,12 +51,12 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         }
     }
     
-//    func deleteCacheBeforeUsing(for noteItem: NoteItem, completed: @escaping (String?) -> Void) {
-//        let noteItemStringData = noteItem.noteItemText
-//        if let cacheKey = NSString(utf8String: noteItemStringData) {
-//            cache.removeObject(forKey: cacheKey)
-//        }
-//    }
+    func deleteCacheBeforeUsing(for noteItem: NoteItem, completed: @escaping (String?) -> Void) {
+        let noteItemStringData = noteItem.noteItemText
+        if let cacheKey = NSString(utf8String: noteItemStringData) {
+            cache.removeObject(forKey: cacheKey)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -120,8 +120,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         if let cell = textView.superview?.superview as? UITableViewCell {
             if let tableView = cell.superview as? UITableView {
                 if let indexPath = tableView.indexPath(for: cell) {
-                    C2NoteDetailExt.indexOfBlock = indexPath.row
-                    print("IT BECAME \(C2NoteDetailExt.indexOfBlock)")
+                    C3NoteDetailExt.indexOfBlock = indexPath.row
+                    print("IT BECAME \(C3NoteDetailExt.indexOfBlock)")
                 }
             }
         }

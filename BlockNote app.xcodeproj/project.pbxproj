@@ -40,6 +40,7 @@
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4E8F7EE1298A703E0085027A /* C1NavViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */; };
 		4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE3298A76C80085027A /* DetailVCExt.swift */; };
+		4E9D7CC02A1A40520079052B /* C1NavPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9D7CBF2A1A40520079052B /* C1NavPresenter.swift */; };
 		4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */; };
 		4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */; };
 		4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */; };
@@ -129,6 +130,7 @@
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavViewExt.swift; sourceTree = "<group>"; };
 		4E8F7EE3298A76C80085027A /* DetailVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCExt.swift; sourceTree = "<group>"; };
+		4E9D7CBF2A1A40520079052B /* C1NavPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavPresenter.swift; sourceTree = "<group>"; };
 		4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoBlock.swift; sourceTree = "<group>"; };
 		4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 		4E076B232944C839000F7E8F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E9D7CBE2A1A40090079052B /* NavVC */,
 				4E26429927EE5B7E0020E380 /* DetailVC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
@@ -364,7 +366,6 @@
 		4E8F7EE2298A76B60085027A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */,
 				4E8F7EE3298A76C80085027A /* DetailVCExt.swift */,
 				4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
@@ -372,6 +373,16 @@
 				4EC0242B29E5FB0D0064A987 /* C3NoteDetailExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4E9D7CBE2A1A40090079052B /* NavVC */ = {
+			isa = PBXGroup;
+			children = (
+				4ED53DF2278F1AC800F79A3F /* C1NavigationViewController.swift */,
+				4E8F7EE0298A703E0085027A /* C1NavViewExt.swift */,
+				4E9D7CBF2A1A40520079052B /* C1NavPresenter.swift */,
+			);
+			path = NavVC;
 			sourceTree = "<group>";
 		};
 		4EAB130E29CC90C400416718 /* Photo */ = {
@@ -812,6 +823,7 @@
 				4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */,
 				4ED53DF3278F1AC800F79A3F /* C1NavigationViewController.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
+				4E9D7CC02A1A40520079052B /* C1NavPresenter.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,

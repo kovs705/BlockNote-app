@@ -375,15 +375,21 @@ extension C3NoteDetailTBC: UIImagePickerControllerDelegate, UINavigationControll
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
             let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
             
-            cell.downloadImage(for: noteItem) { [weak tableView] image in
-                tableView?.performBatchUpdates({
-                    cell.imageBlock.image = image
-                })
-            }
-            
+            // animation?
             // width 330, height 270
             cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
             cell.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
+            
+            DispatchQueue.main.async {
+                cell.downloadImage(for: noteItem) { [weak tableView] image in
+                    tableView?.performBatchUpdates({
+                        UIView.animate(withDuration: 0.2, delay: 0) {
+                            cell.imageBlock.image = image
+                        }
+                    })
+                }
+            }
+                
             
             print("DEBUG PHOTO \(noteItem.noteItemOrder)")
             return cell
