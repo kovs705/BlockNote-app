@@ -43,6 +43,7 @@
 		4E8209AA2A4D9476006E8CC1 /* C2NavViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */; };
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4E8F7EE4298A76C80085027A /* DetailVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EE3298A76C80085027A /* DetailVCExt.swift */; };
+		4EA3A4692A599FDA002201CD /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3A4682A599FDA002201CD /* Builder.swift */; };
 		4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */; };
 		4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */; };
 		4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */; };
@@ -132,6 +133,7 @@
 		4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NavViewPresenter.swift; sourceTree = "<group>"; };
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E8F7EE3298A76C80085027A /* DetailVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCExt.swift; sourceTree = "<group>"; };
+		4EA3A4682A599FDA002201CD /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoBlock.swift; sourceTree = "<group>"; };
 		4EAB130229CC3F9F00416718 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
 				4E1803B5274058F00096A87C /* LaunchScreen.storyboard */,
+				4EA3A4682A599FDA002201CD /* Builder.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
 				4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */,
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
+				4EA3A4692A599FDA002201CD /* Builder.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */,

@@ -5,24 +5,176 @@
 //  Created by Kovs on 08.07.2023.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
-protocol DetailViewProtocol: AnyObject {
-    
+protocol C2DetailViewProtocol: AnyObject {
+    var delegate: detail_vc_Delegate? { get set }
+    func popVC()
+    func presentAlert(_ alert: UIAlertController, animated: Bool)
+    func performBatchUpdates()
 }
 
-protocol DetailPresenterProtocol: AnyObject {
+protocol C2DetailPresenterProtocol: AnyObject {
+    var groupType: GroupType { get set }
+    var noteObject: Note { get set }
     
-    init(view: DetailViewProtocol)
+    var noteArraySorted: [Note] { get set }
+    
+    init(view: C2DetailViewProtocol)
+    
+    func addNote()
+    func acceptAttention()
+    func sortArray()
+    func deleteGroup(groupName: String)
 }
 
-final class DetailPresenter: DetailPresenterProtocol {
+final class C2DetailPresenter: C2DetailPresenterProtocol {
     
-    weak var view: DetailViewProtocol?
+    lazy var groupType = GroupType()
+    lazy var noteObject = Note()
+    var noteArraySorted: [Note] = [Note]()
     
-    required init(view: DetailViewProtocol) {
+    weak var view: C2DetailViewProtocol?
+    
+    required init(view: C2DetailViewProtocol) {
         self.view = view
     }
     
+    func sortArray() {
+        noteArraySorted = groupType.typesOfNoteArray.sorted {
+            $0.noteID < $1.noteID
+        }
+    }
+    
+    // MARK: - Delete group
+    func deleteGroup(groupName: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewContext       = appDelegate.persistentContainerOffline.viewContext
+        
+        if groupType.wrappedGroupName == groupName {
+            
+            if !self.groupType.typesOfNoteArray.isEmpty {
+                
+                for note in self.groupType.typesOfNoteArray {
+                    viewContext.delete(note)
+                }
+            } else {
+                print("No notes in array")
+            }
+            
+            viewContext.delete(self.groupType)
+            
+            do {
+                try viewContext.save()
+                self.view?.popVC()
+                self.view?.delegate?.closeAndDelete()
+            } catch {
+                print("Something went wrong while deleting the group and note!!")
+            }
+        } else {
+            print("Something wrong on checking the name of the group!")
+        }
+    }
+    
+    // MARK: - Add note
+    @objc func addNote() {
+        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save button
+        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            
+            guard
+                let textField = alert.textFields?.first,
+                let noteToSave = textField.text
+            else {
+                print("Note has not been saved")
+                return
+            }
+            // save action:
+            self.saveNote(noteName: noteToSave) // -----------> Check this
+            
+        }
+        // cancel button
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveNoteButton)
+        alert.addAction(cancelButton)
+        
+        self.view?.presentAlert(alert, animated: true)
+    }
+    
+    
+    // MARK: - accept attention and repeat
+    func acceptAttention() {
+        let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
+        
+        let acceptButton = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            self.addNote()
+        }
+        
+        attentionAlert.addAction(acceptButton)
+        self.view?.presentAlert(attentionAlert, animated: true)
+    }
+    
+    
+    // MARK: - Save the note to the group from the Adding alert
+    func saveNote(noteName: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let viewContext = appDelegate.persistentContainerOffline.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: viewContext) else { return }
+        let note = NSManagedObject(entity: entity, insertInto: viewContext)
+        
+        if groupType.wrappedGroupName == "" {
+            note.setValue("Unknown group", forKey: Keys.nType)
+        } else {
+            note.setValue(self.groupType.wrappedGroupName, forKey: Keys.nType)
+        }
+        
+        if groupType.typesOfNoteArray.isEmpty {
+            note.setValue(1, forKey: Keys.nID)
+        } else {
+            note.setValue((groupType.typesOfNoteArray.last?.noteID ?? 0) + 1, forKey: Keys.nID)
+            print("\((groupType.typesOfNoteArray.count) + 1) note added already")
+        }
+        
+        note.setValue("Test level", forKey: Keys.nLevel)
+        
+        if noteName == "" || noteName.isEmpty {
+            acceptAttention()
+            return
+        } else {
+            note.setValue(noteName, forKey: Keys.nName)
+        }
+        // Append the note to the group:
+        do {
+            // adding object
+            self.groupType.addObject(value: note, forKey: Keys.noteTypes)
+            // saving changes
+            
+            if self.groupType.hasChanges {
+                sortArray()
+                self.view?.performBatchUpdates()
+                try viewContext.save()
+            } else {
+                print("Something wrong on saving note. No changes? No bitches?")
+            }
+            
+            
+            
+        } catch let error as NSError {
+            print("Could not save and add note. \(error), \(error.userInfo)")
+        }
+        
+        //        noteName  noteLevel   noteType    noteItems   noteIsMarked
+        //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
+    }
     
 }

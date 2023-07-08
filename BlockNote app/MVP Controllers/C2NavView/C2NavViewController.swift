@@ -38,9 +38,9 @@ class C2NavViewControllerVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DetailVC,
+        if let destination = segue.destination as? C2DetailVC,
            let groupIndex = groupCollectionView.indexPathsForSelectedItems?.first {
-            destination.groupType = presenter.groups[groupIndex.row] as! GroupType
+            destination.presenter.groupType = presenter.groups[groupIndex.row] as! GroupType
         }
     }
     
