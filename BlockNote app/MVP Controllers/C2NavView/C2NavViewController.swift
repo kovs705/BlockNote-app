@@ -8,6 +8,10 @@
 import UIKit
 import SpriteKit
 
+protocol SKSnowScene {
+    func initSnowScene(snowBack: SKView)
+}
+
 class C2NavViewControllerVC: UIViewController {
     
     @IBOutlet var background: UIView!
