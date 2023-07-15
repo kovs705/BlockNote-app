@@ -40,6 +40,8 @@
 		4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */; };
 		4E8209A72A4D9436006E8CC1 /* C2NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */; };
 		4E8209AA2A4D9476006E8CC1 /* C2NavViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */; };
+		4E8A43182A62C2BE004999CF /* C3NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A43172A62C2BE004999CF /* C3NoteDetailVC.swift */; };
+		4E8A431A2A62C2CB004999CF /* C3NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A43192A62C2CB004999CF /* C3NoteDetailPresenter.swift */; };
 		4E8F7EDF298A54130085027A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F7EDE298A54130085027A /* Constants.swift */; };
 		4EA3A4692A599FDA002201CD /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3A4682A599FDA002201CD /* Builder.swift */; };
 		4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */; };
@@ -54,7 +56,6 @@
 		4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */; };
 		4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */; };
 		4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2622873997900A2AC05 /* TVListBlock.swift */; };
-		4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */; };
 		4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */; };
 		4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
@@ -128,6 +129,8 @@
 		4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NavViewController.swift; sourceTree = "<group>"; };
 		4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NavViewPresenter.swift; sourceTree = "<group>"; };
+		4E8A43172A62C2BE004999CF /* C3NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C3NoteDetailVC.swift; sourceTree = "<group>"; };
+		4E8A43192A62C2CB004999CF /* C3NoteDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C3NoteDetailPresenter.swift; sourceTree = "<group>"; };
 		4E8F7EDE298A54130085027A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4EA3A4682A599FDA002201CD /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		4EAB12FE29CC372800416718 /* NewPhotoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoBlock.swift; sourceTree = "<group>"; };
@@ -142,7 +145,6 @@
 		4EBAB257287398C500A2AC05 /* TVCodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCodeBlock.swift; sourceTree = "<group>"; };
 		4EBAB25C2873990200A2AC05 /* TVToDoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVToDoBlock.swift; sourceTree = "<group>"; };
 		4EBAB2622873997900A2AC05 /* TVListBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListBlock.swift; sourceTree = "<group>"; };
-		4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailExt.swift; sourceTree = "<group>"; };
 		4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
@@ -194,9 +196,9 @@
 		4E076B232944C839000F7E8F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
-				4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -349,6 +351,7 @@
 			children = (
 				4E8209A82A4D9466006E8CC1 /* C2NavView */,
 				4E1A41A62A598022007BFC4A /* C2DetailVC */,
+				4E8A43162A62C299004999CF /* C3NoteDetail */,
 			);
 			path = "MVP Controllers";
 			sourceTree = "<group>";
@@ -360,6 +363,15 @@
 				4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */,
 			);
 			path = C2NavView;
+			sourceTree = "<group>";
+		};
+		4E8A43162A62C299004999CF /* C3NoteDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4E8A43172A62C2BE004999CF /* C3NoteDetailVC.swift */,
+				4E8A43192A62C2CB004999CF /* C3NoteDetailPresenter.swift */,
+			);
+			path = C3NoteDetail;
 			sourceTree = "<group>";
 		};
 		4E8F7EDC298A53B50085027A /* Support */ = {
@@ -388,7 +400,6 @@
 		4E8F7EE2298A76B60085027A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4ECB10AB2993DAC700149157 /* C2NoteDetailExt.swift */,
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */,
 			);
@@ -809,13 +820,13 @@
 				4EA3A4692A599FDA002201CD /* Builder.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
-				4ECB10AC2993DAC700149157 /* C2NoteDetailExt.swift in Sources */,
 				4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
 				4E8209A72A4D9436006E8CC1 /* C2NavViewController.swift in Sources */,
 				4E1803A8274058EA0096A87C /* AppDelegate.swift in Sources */,
 				4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */,
 				4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */,
+				4E8A431A2A62C2CB004999CF /* C3NoteDetailPresenter.swift in Sources */,
 				4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
@@ -841,6 +852,7 @@
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
+				4E8A43182A62C2BE004999CF /* C3NoteDetailVC.swift in Sources */,
 				4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,

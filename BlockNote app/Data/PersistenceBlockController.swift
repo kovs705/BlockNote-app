@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 
 class PersistenceBlockController {
-    static let shared = PersistenceBlockController()
     
     func delegateSave() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
