@@ -49,9 +49,9 @@ class C2DetailVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "noteDetail" {
-            if let destination = segue.destination as? C2NoteDetailTBC,
+            if let destination = segue.destination as? C2DetailVC,
                let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-                destination.note = presenter.noteArraySorted[noteIndex.row]
+                destination.presenter.noteObject = presenter.noteArraySorted[noteIndex.row]
             }
         } else if segue.identifier == "agenda" {
             if let destination = segue.destination as? AgendaVC,
@@ -130,11 +130,22 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     
     // MARK: - Segue to the blocks
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let note = presenter.noteArraySorted[indexPath.row]
+        
         defer {
             collectionView.isUserInteractionEnabled = true
         }
-        performSegue(withIdentifier: Cells.noteDetail, sender: indexPath)
+//        performSegue(withIdentifier: Cells.noteDetail, sender: indexPath)
+        pushToNoteDetail(using: note)
         collectionView.isUserInteractionEnabled = false
+    }
+    
+    func pushToNoteDetail(using note: Note) {
+        let coordinator = Builder()
+        let vc = coordinator.getC3NoteDetailVC(note: note)
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen // fullscreen?
+        present(vc, animated: true)
     }
     
     //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

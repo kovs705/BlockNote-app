@@ -11,9 +11,7 @@ import UIKit
 
 protocol C3NoteDetailViewProtocol: AnyObject {
     // prop
-    var note: Note { get set }
     var noteItemArray_sorted: [NoteItem] { get set }
-    var deletingBlocksOrder: Int { get set }
     
     var imagePicker: UIImagePickerController! { get }
     var isLargeHidden: Bool { get set }
@@ -32,7 +30,10 @@ protocol C3NoteDetailViewProtocol: AnyObject {
 
 protocol C3NoteDetailPresenterProtocol: AnyObject {
     
-    init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController)
+    var note: Note? { get set }
+    var deletingBlocksOrder: Int { get set }
+    
+    init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note)
     
     /// Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
      func saveAndStartTyping()
@@ -58,12 +59,16 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
 
 final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     
+    var note: Note?
+    var deletingBlocksOrder: Int = 0
+    
     weak var view: C3NoteDetailViewProtocol?
     weak var persistenceBC: PersistenceBlockController?
     
-    required init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController) {
+    required init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note) {
         self.view = view
         self.persistenceBC = persistenceBC
+        self.note = note
     }
     
     // MARK: - Persistence funcs
@@ -87,21 +92,20 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     }
     
     func sortAndUpdate() {
-        guard let note = self.view?.note else { return }
-        
+        guard let view = self.view else { return }
+        guard let note = note else { return }
         /// made for reuse multiple times to update sorted array of
         //TODO: make a switch for other objects in CoreData, (make a reusable public func)
-        self.view?.noteItemArray_sorted = note.noteItemArray.sorted {
+        view.noteItemArray_sorted = note.noteItemArray.sorted {
             $0.noteItemOrder < $1.noteItemOrder
         }
         // noteListTB.reloadData()
         // noteListTB.endEditing(true)
-        print("=========\nNumber of blocks: \(self.view?.noteItemArray_sorted.count)")
+        print("=========\nNumber of blocks: \(view.noteItemArray_sorted.count)")
     }
     
     func save(blockType: String, theCase: BlockCases, pickedImage: UIImage?) {
-        
-        guard let noteItemArray_sorted = self.view?.noteItemArray_sorted else { return }
+        guard let view = self.view else { return }
         
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -125,18 +129,18 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
         
         // MARK: - Give an order number for note:
-        if noteItemArray_sorted.isEmpty {
+        if view.noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
-            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
+            blockItem.setValue(view.noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
         }
         
         reorder(for: blockItem, using: managedContext)
     }
     
     func reorder(for value: NSManagedObject, using managedContext: NSManagedObjectContext) {
-        guard let note = self.view?.note else { return }
-        guard let noteItemArray_sorted = self.view?.noteItemArray_sorted else { return }
+        guard let view = self.view else { return }
+        guard let note = note else { return }
         
         do {
             note.addObject(value: value, forKey: Keys.nItems)
@@ -150,13 +154,13 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
             }
             
             // check for changes in sorted array:
-            if note.noteItems?.count == noteItemArray_sorted.count {
+            if note.noteItems?.count == view.noteItemArray_sorted.count {
                 
-                self.view?.performBatchUpdates(at: noteItemArray_sorted.count)
+                self.view?.performBatchUpdates(at: view.noteItemArray_sorted.count)
                 
             } else {
                 sortAndUpdate()
-                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
+                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(view.noteItemArray_sorted.count)")
                 
                 self.view?.beginEndUpdates()
             }
@@ -167,20 +171,19 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     
     func deleteblock(noteListTB: UITableView, at indexPath: IndexPath) {
         guard let view = self.view else { return }
-        guard let note = self.view?.note else { return }
-        guard let noteItemArray_sorted = self.view?.noteItemArray_sorted else { return }
+        guard let note = note else { return }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainerOffline.viewContext
         
-        view.deletingBlocksOrder = indexPath.row + 1
+        deletingBlocksOrder = indexPath.row + 1
         
-        note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
+        note.removeObject(value: view.noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
         
-        for block in noteItemArray_sorted {
-            if block.value(forKey: Keys.niOrder) as! Int >= view.deletingBlocksOrder {
+        for block in view.noteItemArray_sorted {
+            if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
                 let value = block.value(forKey: Keys.niOrder) as! Int - 1
                 block.setValue(value, forKey: Keys.niOrder)
             }
@@ -191,7 +194,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         do {
             if managedContext.hasChanges {
                 try managedContext.save()
-                view.performDeleteUpdates(at: view.deletingBlocksOrder)
+                view.performDeleteUpdates(at: deletingBlocksOrder)
             }
         } catch {
             print("Something wrong on deleting the block")

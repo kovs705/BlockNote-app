@@ -9,8 +9,8 @@ import UIKit
 
 protocol BuilderProtocol {
     func getC2NavView() -> UIViewController
-    func getC2DetailVC() -> UIViewController
-//    func getC3NoteDetailVC() -> UIViewController
+    func getC2DetailVC(groupType: GroupType, noteObject: Note) -> UIViewController
+    func getC3NoteDetailVC(note: Note) -> UIViewController
 }
 
 final class Builder: BuilderProtocol {
@@ -22,17 +22,20 @@ final class Builder: BuilderProtocol {
         return view
     }
     
-    func getC2DetailVC() -> UIViewController {
+    func getC2DetailVC(groupType: GroupType, noteObject: Note) -> UIViewController {
         let view = C2DetailVC()
-        let presenter = C2DetailPresenter(view: view)
+        let presenter = C2DetailPresenter(view: view, groupType: groupType, noteObject: noteObject)
         view.presenter = presenter
         return view
     }
     
-//    func getC3NoteDetailVC() -> UIViewController {
-//        // code to come
-//        return view
-//    }
+    func getC3NoteDetailVC(note: Note) -> UIViewController {
+        let view = C3NoteDetailVC()
+        let persistenceBC = PersistenceBlockController()
+        let presenter = C3NoteDetailPresenter(view: view, persistenceBC: persistenceBC, note: note)
+        view.presenter = presenter
+        return view
+    }
     
     // TODO: Make a second project to code UI there and then place it in app here
     

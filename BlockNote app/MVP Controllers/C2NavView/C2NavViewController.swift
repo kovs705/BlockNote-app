@@ -222,6 +222,14 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
 //         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
 //         print("clicked")
     }
+    
+    func pushToDetailVC(using group: GroupType) {
+        let coordinator = Builder()
+        let vc = coordinator.getC2DetailVC(groupType: group, noteObject: <#T##Note#>)
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen // fullscreen?
+        present(vc, animated: true)
+    }
 }
 
 extension C2NavViewControllerVC: detail_vc_Delegate {

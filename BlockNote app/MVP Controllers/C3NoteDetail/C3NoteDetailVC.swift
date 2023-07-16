@@ -10,7 +10,6 @@ import UIKit
 class C3NoteDetailVC: UIViewController {
     
     // MARK: - Properties
-    lazy var note = Note()
     var noteItemArray_sorted: [NoteItem] = []
     var deletingBlocksOrder: Int = 0
     
@@ -58,7 +57,7 @@ class C3NoteDetailVC: UIViewController {
         presenter.sortAndUpdate()
         configureTableView()
         
-        title = note.wrappedNoteName
+        title = presenter.note?.wrappedNoteName
         
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
@@ -170,13 +169,11 @@ class C3NoteDetailVC: UIViewController {
         
         let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [weak self] action in
             guard let self = self else { return }
-            
             self.presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil)
         }
         
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [weak self] action in
             guard let self = self else { return }
-            
             self.presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil)
         }
         
