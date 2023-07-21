@@ -37,13 +37,6 @@ class C2NavViewControllerVC: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? C2DetailVC,
-           let groupIndex = groupCollectionView.indexPathsForSelectedItems?.first {
-            destination.presenter.groupType = presenter.groups[groupIndex.row] as! GroupType
-        }
-    }
-    
     func performTransitionToDetailVC(groupType: GroupType) {
         let navView = UINavigationController(rootViewController: self)
         let coordinator = Builder()
@@ -223,12 +216,10 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
             // return CGSize(width: 165, height: 165)
         }
     
-    // MARK: - Segue for the groupDetail
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
         let groupType = presenter.groups[indexPath.row]
-//         print("clicked")
+        
         performTransitionToDetailVC(groupType: groupType as! GroupType)
     }
     
