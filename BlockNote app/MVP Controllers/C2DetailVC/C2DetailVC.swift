@@ -48,12 +48,7 @@ class C2DetailVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "noteDetail" {
-            if let destination = segue.destination as? C2DetailVC,
-               let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-                destination.presenter.noteObject = presenter.noteArraySorted[noteIndex.row]
-            }
-        } else if segue.identifier == "agenda" {
+        if segue.identifier == "agenda" {
             if let destination = segue.destination as? AgendaVC,
                let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
                 destination.note = presenter.noteArraySorted[noteIndex.row]

@@ -17,11 +17,10 @@ protocol C2DetailViewProtocol: AnyObject {
 
 protocol C2DetailPresenterProtocol: AnyObject {
     var groupType: GroupType { get set }
-    var noteObject: Note { get set }
     
     var noteArraySorted: [Note] { get set }
     
-    init(view: C2DetailViewProtocol, groupType: GroupType, noteObject: Note)
+    init(view: C2DetailViewProtocol, groupType: GroupType)
     
     func addNote()
     func acceptAttention()
@@ -32,15 +31,13 @@ protocol C2DetailPresenterProtocol: AnyObject {
 final class C2DetailPresenter: C2DetailPresenterProtocol {
     
     var groupType: GroupType
-    var noteObject: Note
     var noteArraySorted: [Note] = [Note]()
     
     weak var view: C2DetailViewProtocol?
     
-    required init(view: C2DetailViewProtocol, groupType: GroupType, noteObject: Note) {
+    required init(view: C2DetailViewProtocol, groupType: GroupType) {
         self.view = view
         self.groupType = groupType
-        self.noteObject = noteObject
     }
     
     func sortArray() {

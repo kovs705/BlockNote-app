@@ -44,6 +44,13 @@ class C2NavViewControllerVC: UIViewController {
         }
     }
     
+    func performTransitionToDetailVC(groupType: GroupType) {
+        let navView = UINavigationController(rootViewController: self)
+        let coordinator = Builder()
+        let detailVC = coordinator.getC2DetailVC(groupType: groupType)
+        navView.pushViewController(detailVC, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -220,12 +227,14 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //         self.performSegue(withIdentifier: "groupDetail", sender: indexPath)
+        let groupType = presenter.groups[indexPath.row]
 //         print("clicked")
+        performTransitionToDetailVC(groupType: groupType as! GroupType)
     }
     
     func pushToDetailVC(using group: GroupType) {
         let coordinator = Builder()
-        let vc = coordinator.getC2DetailVC(groupType: group, noteObject: <#T##Note#>)
+        let vc = coordinator.getC2DetailVC(groupType: group)
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overFullScreen // fullscreen?
         present(vc, animated: true)

@@ -9,7 +9,7 @@ import UIKit
 
 protocol BuilderProtocol {
     func getC2NavView() -> UIViewController
-    func getC2DetailVC(groupType: GroupType, noteObject: Note) -> UIViewController
+    func getC2DetailVC(groupType: GroupType) -> UIViewController
     func getC3NoteDetailVC(note: Note) -> UIViewController
 }
 
@@ -22,9 +22,9 @@ final class Builder: BuilderProtocol {
         return view
     }
     
-    func getC2DetailVC(groupType: GroupType, noteObject: Note) -> UIViewController {
+    func getC2DetailVC(groupType: GroupType) -> UIViewController {
         let view = C2DetailVC()
-        let presenter = C2DetailPresenter(view: view, groupType: groupType, noteObject: noteObject)
+        let presenter = C2DetailPresenter(view: view, groupType: groupType)
         view.presenter = presenter
         return view
     }
