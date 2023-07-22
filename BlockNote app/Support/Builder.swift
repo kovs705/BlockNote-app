@@ -16,21 +16,21 @@ protocol BuilderProtocol {
 final class Builder: BuilderProtocol {
     
     func getC2NavView() -> UIViewController {
-        let view = C2NavViewControllerVC()
+        let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "nav") as! C2NavViewControllerVC
         let presenter = C2NavViewControllerPresenter(view: view)
         view.presenter = presenter
         return view
     }
     
     func getC2DetailVC(groupType: GroupType) -> UIViewController {
-        let view = C2DetailVC()
+        let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! C2DetailVC
         let presenter = C2DetailPresenter(view: view, groupType: groupType)
         view.presenter = presenter
         return view
     }
     
     func getC3NoteDetailVC(note: Note) -> UIViewController {
-        let view = C3NoteDetailVC()
+        let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "noteDetail") as! C3NoteDetailVC
         let persistenceBC = PersistenceBlockController()
         let presenter = C3NoteDetailPresenter(view: view, persistenceBC: persistenceBC, note: note)
         view.presenter = presenter

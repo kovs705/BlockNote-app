@@ -19,7 +19,6 @@ class C3NoteDetailVC: UIViewController {
     var textForTextlock: String = ""
     
     var indexOfBlock = 0
-    let baseImage = UIImage(named: "gav")!
     
     var addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
     let textDockButton = dockTextButton(frame: .zero)
@@ -87,6 +86,7 @@ class C3NoteDetailVC: UIViewController {
         noteListTB.dragInteractionEnabled = true
         noteListTB.sectionHeaderHeight = 100
         
+        noteListTB.backgroundColor = .blue
         // noteListTB.register(UINib(nibName: "NewPhotoBlock", bundle: nil), forCellReuseIdentifier: NewPhotoBlock.newPhotoBlockID)
     }
     

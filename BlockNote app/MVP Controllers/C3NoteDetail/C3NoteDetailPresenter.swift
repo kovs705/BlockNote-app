@@ -19,7 +19,6 @@ protocol C3NoteDetailViewProtocol: AnyObject {
     var textForTextlock: String { get set }
     
     var indexOfBlock: Int { get set }
-    var baseImage: UIImage { get }
     
     
     // func

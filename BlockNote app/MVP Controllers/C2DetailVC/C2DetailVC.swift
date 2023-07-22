@@ -47,15 +47,6 @@ class C2DetailVC: UIViewController {
         noteListCollection.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "agenda" {
-            if let destination = segue.destination as? AgendaVC,
-               let noteIndex = noteListCollection.indexPathsForSelectedItems?.first {
-                destination.note = presenter.noteArraySorted[noteIndex.row]
-            }
-        }
-    }
-    
     
     // MARK: - IBActions
     @IBAction func addNoteButton(sender: UIButton!) {
@@ -123,14 +114,14 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         CGSize(width: (collectionView.frame.width-4)/1, height: 50)
     }
     
-    // MARK: - Segue to the blocks
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let note = presenter.noteArraySorted[indexPath.row]
         
         defer {
             collectionView.isUserInteractionEnabled = true
         }
-//        performSegue(withIdentifier: Cells.noteDetail, sender: indexPath)
+        
         pushToNoteDetail(using: note)
         collectionView.isUserInteractionEnabled = false
     }

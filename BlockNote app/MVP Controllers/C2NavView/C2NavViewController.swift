@@ -35,23 +35,27 @@ class C2NavViewControllerVC: UIViewController {
         initSnowScene(snowBack: snowBackgroundScene)
         showGreeting(for: greetingLabel)
         
+        scrollView.bounces = true
+        scrollView.alwaysBounceVertical = true
+        
     }
     
     func performTransitionToDetailVC(groupType: GroupType) {
-        let navView = UINavigationController(rootViewController: self)
         let coordinator = Builder()
         let detailVC = coordinator.getC2DetailVC(groupType: groupType)
-        navView.pushViewController(detailVC, animated: true)
+        detailVC.modalTransitionStyle = .coverVertical
+        detailVC.modalPresentationStyle = .fullScreen
+        present(detailVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+
         presenter.fetchData(using: sortingKey)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)

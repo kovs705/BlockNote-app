@@ -15,7 +15,7 @@
         <!--BlockNote-->
         <scene sceneID="1Tv-BO-uXV">
             <objects>
-                <viewController title="BlockNote" id="qrx-ni-D9i" customClass="C1NavigationViewController" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nav" title="BlockNote" id="qrx-ni-D9i" customClass="C2NavViewControllerVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6CE-Ri-ZuX" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,7 +295,7 @@
         <!--DetailVC-->
         <scene sceneID="q6X-Kl-ySs">
             <objects>
-                <viewController id="Tgf-rB-iEw" customClass="DetailVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="Tgf-rB-iEw" customClass="C2DetailVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Clr-u8-1rt" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -605,10 +605,10 @@
             </objects>
             <point key="canvasLocation" x="2676.9230769230767" y="42.654028436018955"/>
         </scene>
-        <!--Note DetailTBC-->
+        <!--Note DetailVC-->
         <scene sceneID="OeT-qb-SsQ">
             <objects>
-                <viewController id="pAL-lk-cqn" customClass="C2NoteDetailTBC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noteDetail" id="pAL-lk-cqn" customClass="C3NoteDetailVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AU3-mj-EsB">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -625,7 +625,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" verticalHuggingPriority="500" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-tY-6AV" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="158.33333333333334"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="122"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -684,7 +684,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-iJ-9FV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="42.333333333333336"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -742,7 +742,7 @@
         <!--AgendaVC-->
         <scene sceneID="h9J-S5-wsg">
             <objects>
-                <tableViewController id="t58-U1-ekL" customClass="AgendaVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="agenda" id="t58-U1-ekL" customClass="AgendaVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fYw-rl-mMe">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -794,8 +794,11 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="6nc-Zv-4kP">
+            <size key="intrinsicContentSize" width="390" height="1017"/>
+        </designable>
         <designable name="MkO-tY-6AV">
-            <size key="intrinsicContentSize" width="1911" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="1901" height="20.333333333333332"/>
         </designable>
         <designable name="Tyg-fh-zK1">
             <size key="intrinsicContentSize" width="310" height="128"/>
@@ -804,7 +807,7 @@
             <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
         <designable name="vAf-iJ-9FV">
-            <size key="intrinsicContentSize" width="55" height="42.333333333333336"/>
+            <size key="intrinsicContentSize" width="45" height="26.333333333333332"/>
         </designable>
     </designables>
     <resources>

@@ -9,6 +9,40 @@ import Foundation
 import SwiftUI
 import Combine
 
+extension UIView {
+    // незамений помощник быстро добавить массив из вьюх (UIButton, UIView, UILabel и тд.)
+    // пример: view.addSubviews(button, layer, image) - всё.
+    func addSubviews(_ views: UIView...) {
+        for view in views {
+            addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    // быстро добавить тень к любой вьюхе, одной строчкой (аналогично примеру вызова функции выше)
+    func addShadow(color: CGColor, opacity: Float, shadowOffset: CGSize, shadowRadius: CGFloat) {
+        self.layer.shadowColor = color
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = shadowOffset
+        self.layer.shadowRadius = shadowRadius
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    // анимирование надавливания для кнопок
+    func animatePressing(isRestoring: Bool) {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.beginFromCurrentState, .curveEaseInOut]) {
+            if !isRestoring {
+                // пользователь опустил палец на кнопку
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            } else {
+                // пользователь убрал палец и нужно вернуть кнопку в прежнее состояние
+                self.transform = .identity
+            }
+        }
+    }
+}
+
 // MARK: - Combine extenstions
 extension Notification {
     var keyboardHeight: CGFloat {
