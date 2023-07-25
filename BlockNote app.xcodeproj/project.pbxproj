@@ -30,12 +30,10 @@
 		4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48DFD8294EC4D400E29ABD /* AgendaView.swift */; };
 		4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */; };
 		4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */; };
-		4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */; };
 		4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */; };
 		4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */; };
 		4E55324427666AF20013E097 /* ViewModifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55324327666AF10013E097 /* ViewModifications.swift */; };
 		4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */; };
-		4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A381927AAADB800E1F217 /* Code to test.swift */; };
 		4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */; };
 		4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */; };
 		4E8209A72A4D9436006E8CC1 /* C2NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */; };
@@ -70,7 +68,6 @@
 		4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBC27407A080096F021 /* Persistence.swift */; };
 		6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */; };
 		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
-		CEEA73E72A6BF9F500A832D7 /* C2Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA73E62A6BF9F500A832D7 /* C2Nav.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,12 +117,10 @@
 		4E48DFD8294EC4D400E29ABD /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		4E53EAFA2794288800D89CB7 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceBlockController.swift; sourceTree = "<group>"; };
-		4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NoteDetailTBC.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		4E55323A2766412F0013E097 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E55323B2766412F0013E097 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E55324327666AF10013E097 /* ViewModifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifications.swift; sourceTree = "<group>"; };
 		4E58B39B2972C89E00710CE7 /* TVSpaceBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSpaceBlock.swift; sourceTree = "<group>"; };
-		4E5A381927AAADB800E1F217 /* Code to test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Code to test.swift"; sourceTree = "<group>"; };
 		4E639F4C274C118E000E249A /* GroupType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E639F4D274C118E000E249A /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2NavViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +156,6 @@
 		A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_app_BlockNote_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BAEC32ACC57C1051FDF84E /* Pods-BlockNote app-BlockNote appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEEA73E62A6BF9F500A832D7 /* C2Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2Nav.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,7 +192,6 @@
 		4E076B232944C839000F7E8F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4E5451D729916EBA006381A7 /* C2NoteDetailTBC.swift */,
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 			);
@@ -208,7 +201,6 @@
 		4E076B242944C914000F7E8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4E5A381927AAADB800E1F217 /* Code to test.swift */,
 				4EFA5FBC27407A080096F021 /* Persistence.swift */,
 				4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */,
 			);
@@ -363,7 +355,6 @@
 			children = (
 				4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */,
 				4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */,
-				CEEA73E62A6BF9F500A832D7 /* C2Nav.swift */,
 			);
 			path = C2NavView;
 			sourceTree = "<group>";
@@ -819,7 +810,6 @@
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
 				4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */,
-				CEEA73E72A6BF9F500A832D7 /* C2Nav.swift in Sources */,
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
 				4EA3A4692A599FDA002201CD /* Builder.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
@@ -831,7 +821,6 @@
 				4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */,
 				4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */,
 				4E8A431A2A62C2CB004999CF /* C3NoteDetailPresenter.swift in Sources */,
-				4E5451D829916EBA006381A7 /* C2NoteDetailTBC.swift in Sources */,
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
 				4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */,
@@ -844,7 +833,6 @@
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
-				4E5A381A27AAADB800E1F217 /* Code to test.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,

@@ -305,10 +305,9 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
         return [dragItem]
     }
     
-    
+    // MARK: - Move row
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // update the model:
-        
         
         let mover = noteItemArray_sorted.remove(at: sourceIndexPath.row)
         noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)

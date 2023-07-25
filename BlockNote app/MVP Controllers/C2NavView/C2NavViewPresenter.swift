@@ -14,6 +14,8 @@ protocol C2NavViewControllerViewProtocol: AnyObject {
     func updateData()
     func update()
     
+    func performTransition(to vc: UIViewController)
+    func showGreeting(with text: String)
 }
 
 protocol C2NavViewControllerPresenterProtocol: AnyObject {
@@ -24,6 +26,10 @@ protocol C2NavViewControllerPresenterProtocol: AnyObject {
     
     func fetchData(using sort: String)
     func save(groupName: String, groupColor: String)
+    
+    func manageGreeting()
+    
+    func performTransitionToDetailVC(groupType: GroupType)
 }
 
 final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
@@ -78,6 +84,31 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    
+    func manageGreeting() {
+        switch hour {
+        case 0..<4:
+            view?.showGreeting(with: GreetingPhrases.night)
+        case 4..<12:
+            view?.showGreeting(with: GreetingPhrases.morning)
+        case 12..<18:
+            view?.showGreeting(with: GreetingPhrases.day)
+        case 18..<23:
+            view?.showGreeting(with: GreetingPhrases.evening)
+        default:
+            view?.showGreeting(with: GreetingPhrases.night)
+        }
+    }
+    
+    // MARK: - Transition
+    func performTransitionToDetailVC(groupType: GroupType) {
+        let coordinator = Builder()
+        let detailVC = coordinator.getC2DetailVC(groupType: groupType)
+        detailVC.modalTransitionStyle = .coverVertical
+        detailVC.modalPresentationStyle = .fullScreen
+        
+        self.view?.performTransition(to: detailVC)
     }
     
 }

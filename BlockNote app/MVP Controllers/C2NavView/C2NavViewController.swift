@@ -33,19 +33,11 @@ class C2NavViewControllerVC: UIViewController {
         configureProgressBarView(progressBarView: progressBarView)
         configureGroupCollectionView(gCV: groupCollectionView)
         initSnowScene(snowBack: snowBackgroundScene)
-        showGreeting(for: greetingLabel)
+        presenter.manageGreeting()
         
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
         
-    }
-    
-    func performTransitionToDetailVC(groupType: GroupType) {
-        let coordinator = Builder()
-        let detailVC = coordinator.getC2DetailVC(groupType: groupType)
-        detailVC.modalTransitionStyle = .coverVertical
-        detailVC.modalPresentationStyle = .fullScreen
-        present(detailVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,21 +125,6 @@ class C2NavViewControllerVC: UIViewController {
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
     }
     
-    private func showGreeting(for greetingLabel: UILabel) {
-        switch presenter.hour {
-        case 0..<4:
-            greetingLabel.text = GreetingPhrases.night
-        case 4..<12:
-            greetingLabel.text = GreetingPhrases.morning
-        case 12..<18:
-            greetingLabel.text = GreetingPhrases.day
-        case 18..<23:
-            greetingLabel.text = GreetingPhrases.evening
-        default:
-            greetingLabel.text = GreetingPhrases.night
-        }
-    }
-    
 }
 
 // MARK: - SpriteKit snowScene
@@ -176,6 +153,14 @@ extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
             guard let self = self else { return }
             self.groupCollectionView.reloadInputViews()
         }
+    }
+    
+    func performTransition(to vc: UIViewController) {
+        present(vc, animated: true)
+    }
+    
+    func showGreeting(with text: String) {
+        greetingLabel.text = text
     }
 }
 
@@ -224,18 +209,11 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let groupType = presenter.groups[indexPath.row]
         
-        performTransitionToDetailVC(groupType: groupType as! GroupType)
-    }
-    
-    func pushToDetailVC(using group: GroupType) {
-        let coordinator = Builder()
-        let vc = coordinator.getC2DetailVC(groupType: group)
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen // fullscreen?
-        present(vc, animated: true)
+        presenter.performTransitionToDetailVC(groupType: groupType as! GroupType)
     }
 }
 
+// MARK: - Detail_vc_Delegate
 extension C2NavViewControllerVC: detail_vc_Delegate {
     // place a func to update UICollectionView in rootVC just after deleting a group in detailVC:
     func deleteAndUpdate() {
