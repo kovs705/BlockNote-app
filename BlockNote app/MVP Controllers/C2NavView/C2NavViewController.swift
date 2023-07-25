@@ -7,6 +7,7 @@
 
 import UIKit
 import SpriteKit
+import SnapKit
 
 protocol SKSnowScene {
     func initSnowScene(snowBack: SKView)
@@ -20,6 +21,9 @@ class C2NavViewControllerVC: UIViewController {
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var snowBackgroundScene: SKView!
+    
+    let heightForStatusBar: CGFloat = 45
+    var thinStatusBar = UIVisualEffectView()
     
     var sortingKey: String = SortOrder.optimized
     var presenter: C2NavViewControllerPresenterProtocol!
@@ -37,6 +41,7 @@ class C2NavViewControllerVC: UIViewController {
         
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
+        configureStatusBar()
         
     }
     
@@ -51,6 +56,19 @@ class C2NavViewControllerVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    func configureStatusBar() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        view.addSubviews(thinStatusBar)
+        thinStatusBar.backgroundColor = .clear
+        thinStatusBar.effect = blurEffect
+        
+        thinStatusBar.snp.makeConstraints { make in
+            make.height.equalTo(heightForStatusBar)
+            make.width.equalTo(view.snp.width)
+            make.top.equalTo(view)
+        }
     }
     
     
