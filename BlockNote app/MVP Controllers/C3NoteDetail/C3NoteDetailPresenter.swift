@@ -64,7 +64,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     var noteItemArray_sorted: [NoteItem] = []
     
     weak var view: C3NoteDetailViewProtocol?
-    weak var persistenceBC: PersistenceBlockController?
+    var persistenceBC: PersistenceBlockController?
     
     required init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note) {
         self.view = view
@@ -100,6 +100,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         noteItemArray_sorted = note.noteItemArray.sorted {
             $0.noteItemOrder < $1.noteItemOrder
         }
+        
         // noteListTB.reloadData()
         // noteListTB.endEditing(true)
         print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
@@ -107,11 +108,9 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     
     func save(blockType: String, theCase: BlockCases, pickedImage: UIImage?) {
         guard let view = self.view else { return }
+        guard let persistenceBC = self.persistenceBC else { return }
         
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-                }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext =
         appDelegate.persistentContainerOffline.viewContext
         
@@ -122,9 +121,9 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         let blockItem = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
         if theCase == .photo {
-            persistenceBC?.setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
+            persistenceBC.setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
         } else {
-            persistenceBC?.setValues(for: blockItem, from: theCase, pickedImage: nil)
+            persistenceBC.setValues(for: blockItem, from: theCase, pickedImage: nil)
         }
         
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
@@ -157,13 +156,13 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
             // check for changes in sorted array:
             if note.noteItems?.count == noteItemArray_sorted.count {
                 
-                self.view?.performBatchUpdates(at: noteItemArray_sorted.count)
+                view.performBatchUpdates(at: noteItemArray_sorted.count)
                 
             } else {
                 sortAndUpdate()
                 print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
                 
-                self.view?.beginEndUpdates()
+                view.beginEndUpdates()
             }
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
