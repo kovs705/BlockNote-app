@@ -10,7 +10,6 @@ import UIKit
 class C3NoteDetailVC: UIViewController {
     
     // MARK: - Properties
-    var noteItemArray_sorted: [NoteItem] = []
     var deletingBlocksOrder: Int = 0
     
     var imagePicker: UIImagePickerController!
@@ -57,6 +56,7 @@ class C3NoteDetailVC: UIViewController {
         configureTableView()
         
         title = presenter.note?.wrappedNoteName
+        configureDockButtons()
         
         let addBlockButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addBlock))
         self.navigationItem.rightBarButtonItem = addBlockButton
@@ -163,6 +163,18 @@ class C3NoteDetailVC: UIViewController {
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
     }
     
+    func configureDockButtons() {
+        addBlockButton.addTarget(self, action: #selector(addBlock), for: .touchUpInside)
+        textDockButton.addTarget(self, action: #selector(createTextBlock), for: .touchUpInside)
+    }
+    
+    @objc func createTextBlock() {
+        if presenter.noteItemArray_sorted.isEmpty {
+            presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil)
+        } else {
+            presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil)
+        }
+    }
 
     @objc func addBlock() {
         let alert = UIAlertController(title: "New block", message: "Choose your block", preferredStyle: .actionSheet)
@@ -270,14 +282,14 @@ extension C3NoteDetailVC: UIImagePickerControllerDelegate, UINavigationControlle
 extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let noteItem = noteItemArray_sorted[indexPath.row]
+        let noteItem = presenter.noteItemArray_sorted[indexPath.row]
         
         if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
-            return noteItemArray_sorted[indexPath.row].noteItemText
+            return presenter.noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 17))
             
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
-            return noteItemArray_sorted[indexPath.row].noteItemText
+            return presenter.noteItemArray_sorted[indexPath.row].noteItemText
                 .heightWithConstrainedWidth(width: tableView.frame.width-40, font: UIFont.systemFont(ofSize: 22, weight: .bold))
             
         } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
@@ -294,14 +306,14 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noteItemArray_sorted.count
+        return presenter.noteItemArray_sorted.count
     }
     
     
     // MARK: - Drag&Drop UITableView
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())
-        dragItem.localObject = noteItemArray_sorted[indexPath.row]
+        dragItem.localObject = presenter.noteItemArray_sorted[indexPath.row]
         return [dragItem]
     }
     
@@ -309,13 +321,13 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // update the model:
         
-        let mover = noteItemArray_sorted.remove(at: sourceIndexPath.row)
-        noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)
+        let mover = presenter.noteItemArray_sorted.remove(at: sourceIndexPath.row)
+        presenter.noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)
         
         print(sourceIndexPath.row)
         print(destinationIndexPath.row)
         
-        for block in self.noteItemArray_sorted {
+        for block in self.presenter.noteItemArray_sorted {
             let blockIndex = block.noteItemOrder - 1
             // from top to bottom:
             if sourceIndexPath.row > destinationIndexPath.row {
@@ -341,7 +353,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
     
     // MARK: - cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteItem = noteItemArray_sorted[indexPath.row]
+        let noteItem = presenter.noteItemArray_sorted[indexPath.row]
         
         // MARK: textBlock
         if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {

@@ -10,8 +10,6 @@ import CoreData
 import UIKit
 
 protocol C3NoteDetailViewProtocol: AnyObject {
-    // prop
-    var noteItemArray_sorted: [NoteItem] { get set }
     
     var imagePicker: UIImagePickerController! { get }
     var isLargeHidden: Bool { get set }
@@ -31,6 +29,8 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
     
     var note: Note? { get set }
     var deletingBlocksOrder: Int { get set }
+    
+    var noteItemArray_sorted: [NoteItem] { get set }
     
     init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note)
     
@@ -61,6 +61,8 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     var note: Note?
     var deletingBlocksOrder: Int = 0
     
+    var noteItemArray_sorted: [NoteItem] = []
+    
     weak var view: C3NoteDetailViewProtocol?
     weak var persistenceBC: PersistenceBlockController?
     
@@ -86,7 +88,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         guard let view = self.view else { return }
         
         self.view?.textForTextlock = text ?? "Nothing in the text, or it's just the bug."
-        persistenceBC?.update(blockText: view.textForTextlock, block: view.noteItemArray_sorted[view.indexOfBlock], noteListTB: noteListTB)
+        persistenceBC?.update(blockText: view.textForTextlock, block: noteItemArray_sorted[view.indexOfBlock], noteListTB: noteListTB)
         // print("you changed the block with the index of \(indexOfBlock)")
     }
     
@@ -95,12 +97,12 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         guard let note = note else { return }
         /// made for reuse multiple times to update sorted array of
         //TODO: make a switch for other objects in CoreData, (make a reusable public func)
-        view.noteItemArray_sorted = note.noteItemArray.sorted {
+        noteItemArray_sorted = note.noteItemArray.sorted {
             $0.noteItemOrder < $1.noteItemOrder
         }
         // noteListTB.reloadData()
         // noteListTB.endEditing(true)
-        print("=========\nNumber of blocks: \(view.noteItemArray_sorted.count)")
+        print("=========\nNumber of blocks: \(noteItemArray_sorted.count)")
     }
     
     func save(blockType: String, theCase: BlockCases, pickedImage: UIImage?) {
@@ -128,10 +130,10 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
         
         // MARK: - Give an order number for note:
-        if view.noteItemArray_sorted.isEmpty {
+        if noteItemArray_sorted.isEmpty {
             blockItem.setValue(1, forKey: Keys.niOrder)
         } else {
-            blockItem.setValue(view.noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
+            blockItem.setValue(noteItemArray_sorted.count + 1, forKey: Keys.niOrder)
         }
         
         reorder(for: blockItem, using: managedContext)
@@ -153,13 +155,13 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
             }
             
             // check for changes in sorted array:
-            if note.noteItems?.count == view.noteItemArray_sorted.count {
+            if note.noteItems?.count == noteItemArray_sorted.count {
                 
-                self.view?.performBatchUpdates(at: view.noteItemArray_sorted.count)
+                self.view?.performBatchUpdates(at: noteItemArray_sorted.count)
                 
             } else {
                 sortAndUpdate()
-                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(view.noteItemArray_sorted.count)")
+                print("notes: \(note.noteItems?.count ?? 0) === sortedNotes: \(noteItemArray_sorted.count)")
                 
                 self.view?.beginEndUpdates()
             }
@@ -179,9 +181,9 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         
         deletingBlocksOrder = indexPath.row + 1
         
-        note.removeObject(value: view.noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
+        note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
         
-        for block in view.noteItemArray_sorted {
+        for block in noteItemArray_sorted {
             if block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
                 let value = block.value(forKey: Keys.niOrder) as! Int - 1
                 block.setValue(value, forKey: Keys.niOrder)
