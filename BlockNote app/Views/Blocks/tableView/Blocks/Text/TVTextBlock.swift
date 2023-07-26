@@ -13,7 +13,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
-    let c2ext = C2NoteDetailExt()
+//    let c2ext = C2NoteDetailExt()
+    let noteDetail = C3NoteDetailVC()
     
     lazy var verticalLineView = UIView(frame: CGRectMake(10, 0, 4, textView.text.heightWithConstrainedWidth(width: textView.frame.width, font: UIFont.systemFont(ofSize: 17)) + 4))
     
@@ -51,12 +52,12 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    func deleteCacheBeforeUsing(for noteItem: NoteItem, completed: @escaping (String?) -> Void) {
-        let noteItemStringData = noteItem.noteItemText
-        if let cacheKey = NSString(utf8String: noteItemStringData) {
-            cache.removeObject(forKey: cacheKey)
-        }
-    }
+//    func deleteCacheBeforeUsing(for noteItem: NoteItem, completed: @escaping (String?) -> Void) {
+//        let noteItemStringData = noteItem.noteItemText
+//        if let cacheKey = NSString(utf8String: noteItemStringData) {
+//            cache.removeObject(forKey: cacheKey)
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -120,8 +121,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
         if let cell = textView.superview?.superview as? UITableViewCell {
             if let tableView = cell.superview as? UITableView {
                 if let indexPath = tableView.indexPath(for: cell) {
-                    C3NoteDetailExt.indexOfBlock = indexPath.row
-                    print("IT BECAME \(C3NoteDetailExt.indexOfBlock)")
+                    noteDetail.indexOfBlock = indexPath.row
+                    print("IT BECAME \(noteDetail.indexOfBlock)")
                 }
             }
         }
