@@ -85,8 +85,6 @@ class C3NoteDetailVC: UIViewController {
         noteListTB.dragDelegate = self
         noteListTB.dragInteractionEnabled = true
         noteListTB.sectionHeaderHeight = 100
-        
-        noteListTB.backgroundColor = .blue
         // noteListTB.register(UINib(nibName: "NewPhotoBlock", bundle: nil), forCellReuseIdentifier: NewPhotoBlock.newPhotoBlockID)
     }
     
