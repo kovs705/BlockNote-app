@@ -68,6 +68,7 @@
 		4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA5FBC27407A080096F021 /* Persistence.swift */; };
 		6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC88396065F4498B4887CE5 /* Pods_BlockNote_app.framework */; };
 		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
+		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_app_BlockNote_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BAEC32ACC57C1051FDF84E /* Pods-BlockNote app-BlockNote appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				4E48DFCD294EB9A100E29ABD /* TimeAgendaController.swift */,
+				CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 			);
 			path = ViewControllers;
@@ -849,6 +852,7 @@
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,
 				4E8F7EDF298A54130085027A /* Constants.swift in Sources */,
+				CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
