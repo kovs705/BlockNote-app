@@ -5,9 +5,8 @@ blocks that you can reorder, change and make new pages from them.
 ## Stack
 - Swift, SwiftUI
 - Storyboard, xib/nib, UI Programmatically
-- MVC (VIPER next)
-- CoreData, UserDefaults, caching
-- UICollectionView, UITableView
+- MVP
+- CoreData, UserDefaults, cache
 - HERO animations, CodeEditor, SnapKit, SnapKit, CocoaPods
 
 ## Screenshots
@@ -24,12 +23,11 @@ blocks that you can reorder, change and make new pages from them.
 ## Requirements
 - ***Open project through the 'xcworkspace' file***
 - iPhone, iPad mini or simulator
-- iOS 16.2 minimum
+- iOS 16.0 minimum
 
 ## Things to come
-- VIPER
+- Agenda screen
 - App for iPad and Mac
-- New page from block
-- New CollectionView on the main page with just notes, not only groups
-- Stats (with new attributes for entities to track them): creationDate...
+- New CollectionView on the main page with notes and groups together
+- Stats (with new attributes for entities to track them): creationDate and so on...
 - Edit screen for groups (colors, emojis, names)
