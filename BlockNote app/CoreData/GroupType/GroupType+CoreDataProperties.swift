@@ -21,6 +21,7 @@ extension GroupType {
     @NSManaged public var groupColor: String?
     @NSManaged public var lastChangedGroup: Date?
     @NSManaged public var noteTypes: NSSet?
+    @NSManaged public var agendaItems: NSSet?
     
     public var wrappedNumber: Int {
         number
@@ -35,6 +36,13 @@ extension GroupType {
         return set.sorted {
             // $0.wrappedNoteName < $1.wrappedNoteName
             $0.noteID < $1.noteID
+        }
+    }
+    
+    public var itemsOfAgendaArray: [Agenda] {
+        let set = agendaItems as? Set<Agenda> ?? []
+        return set.sorted {
+            $0.wrappedAgendaName < $1.wrappedAgendaName
         }
     }
     

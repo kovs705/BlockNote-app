@@ -28,6 +28,10 @@ extension Agenda {
     @NSManaged public var isDone: Bool
     
     @NSManaged public var note: Note?
+    
+    public var wrappedAgendaName: String {
+        name ?? "Unknown event"
+    }
 
 }
 

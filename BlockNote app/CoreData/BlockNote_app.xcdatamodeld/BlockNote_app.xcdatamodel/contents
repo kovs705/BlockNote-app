@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Agenda" representedClassName=".Agenda" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -8,24 +8,23 @@
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isImportant" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="agendaItems" inverseEntity="Note"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="agendaItems" inverseEntity="GroupType"/>
     </entity>
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
         <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" optional="YES" attributeType="String"/>
         <attribute name="lastChangedGroup" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="agendaItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Agenda" inverseName="group" inverseEntity="Agenda"/>
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
-        <attribute name="isAgenda" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastChangedNote" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteIsMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noteLevel" optional="YES" attributeType="String"/>
         <attribute name="noteName" optional="YES" attributeType="String"/>
         <attribute name="noteType" optional="YES" attributeType="String"/>
-        <relationship name="agendaItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agenda" inverseName="note" inverseEntity="Agenda"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
