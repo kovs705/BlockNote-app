@@ -63,6 +63,11 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         appDelegate.persistentContainerOffline.viewContext
         
         guard let entity = NSEntityDescription.entity(forEntityName: "GroupType", in: managedContext) else { return }
+        guard let agendaEntity = NSEntityDescription.entity(forEntityName: "Agenda", in: managedContext) else { return }
+        
+        let newAgenda = NSManagedObject(entity: agendaEntity,
+                                        insertInto: managedContext)
+        
         
         let newGroup = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
@@ -74,6 +79,9 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         } else {
             newGroup.setValue((groups.count) + 1, forKey: Keys.gNumber)
         }
+        
+        newAgenda.setValue("Name", forKey: "name")
+        newGroup.addObject(value: newAgenda, forKey: "agendaItems")
         
         do {
             groups.insert(newGroup, at: 0)

@@ -9,15 +9,24 @@ import SwiftUI
 
 struct TimeAgendaView: View {
     
-//    var note: Note = Note()
+    let group = GroupType()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List(group.itemsOfAgendaArray) { agenda in
+                AgendaView(isLast: false)
+            }
+        }
     }
 }
 
 struct TimeAgendaView_Previews: PreviewProvider {
+    
+    static var dataController = DataController.preview
+    
     static var previews: some View {
         TimeAgendaView()
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
     }
 }

@@ -10,7 +10,7 @@ import CoreData
 
 struct AgendaView: View {
     
-    let agenda = Note()
+    let agenda = Agenda()
     
     let today = Date.now
     var formatter1 = DateFormatter()
