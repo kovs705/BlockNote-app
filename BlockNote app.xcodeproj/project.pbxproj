@@ -70,6 +70,7 @@
 		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
 		CE3ADCF82A73A504008F922B /* TimeAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */; };
 		CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCFA2A73AAB0008F922B /* DataController.swift */; };
+		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,7 @@
 		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaView.swift; sourceTree = "<group>"; };
 		CE3ADCFA2A73AAB0008F922B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		4E8F7EDD298A54080085027A /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				CE79522D2A8369950003EDD8 /* UIHelper.swift */,
 				4E8F7EDE298A54130085027A /* Constants.swift */,
 				4E55324327666AF10013E097 /* ViewModifications.swift */,
 				4EB9E53829C632AE00D41AC1 /* Sorting.swift */,
@@ -848,6 +851,7 @@
 				4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
+				CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol detail_vc_Delegate {
     func deleteAndUpdate()
@@ -40,11 +41,19 @@ class C2DetailVC: UIViewController {
         // noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
         
         setupDetailVC(scrollView: scrollView, noteListCollection: noteListCollection, numberOfNotesLabel: numberOfNotesLabel, topBar: topBar, first_column: first_column, second_column: second_column, third_column: third_column)
+        
+        navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "calendar", withConfiguration: UIHelper.giveConfigForImage(size: 18, weight: .medium)), style: .plain, target: self, action: #selector(openAgenda))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
         noteListCollection.reloadData()
+    }
+    
+    // MARK: - Objc funcs
+    @objc func openAgenda() {
+        
+        
     }
     
     

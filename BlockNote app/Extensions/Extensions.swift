@@ -97,30 +97,33 @@ struct KeyboardAdaptive: ViewModifier {
                 .padding(.bottom, self.bottomPadding)
                 
                 .onReceive(Publishers.keyboardHeight) { keyboardHeight in
-                    
-                    let keyboardTop = geometry.frame(in: .global).height - keyboardHeight
-                    
-                    let focusedTextInputBottom = UIResponder.currentFirstResponder?.globalFrame?.maxY ?? 0
-                    
-                    self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
+                    withAnimation(.easeOut(duration: 0.16)) {
+                        let keyboardTop = geometry.frame(in: .global).height - keyboardHeight
+                        
+                        let focusedTextInputBottom = UIResponder.currentFirstResponder?.globalFrame?.maxY ?? 0
+                        
+                        self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
+                    }
             }
-                
-            .animation(.easeOut(duration: 0.16))
+//            .animation(.easeOut(duration: 0.16))
         }
     }
 }
- // MARK: - View Extensions
+
+
+// MARK: - View Extensions
 extension View {
     func keyboardAdaptive() -> some View {
         ModifiedContent(content: self, modifier: KeyboardAdaptive())
     }
-}
-extension View {
-    public func gradientForegroundColor(colors: [Color]) -> some View {
+    
+    func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
     }
 }
+
+
 // MARK: - BluredButtonInTabBar
 struct BluredButtonInTabBar: ButtonStyle {
     @Environment(\.colorScheme) public var detectTheme

@@ -52,6 +52,25 @@ extension GroupType {
 //            
 //        }
 //    }
+    
+    static var example: GroupType {
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+        
+        let agenda = Agenda(context: viewContext)
+        agenda.name = "Test agenda"
+        agenda.color = "YellowLemon"
+        agenda.dateStart = Date()
+        agenda.dateEnd = Date()
+        agenda.isDone = false
+        
+        let group = GroupType(context: viewContext)
+        group.groupName = "Example group"
+        group.groupColor = "RosePink"
+        group.agendaItems = [agenda, agenda, agenda, agenda, agenda]
+        
+        return group
+    }
 }
 
 // MARK: Generated accessors for noteTypes
