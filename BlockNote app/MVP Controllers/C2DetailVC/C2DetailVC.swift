@@ -52,8 +52,8 @@ class C2DetailVC: UIViewController {
     
     // MARK: - Objc funcs
     @objc func openAgenda() {
-        
-        
+        let vc = UIHostingController(rootView: TimeAgendaView(viewModel: TimeAgendaViewModel(), group: presenter.groupType))
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

@@ -727,7 +727,7 @@
                             <constraint firstItem="6nc-Zv-4kP" firstAttribute="leading" secondItem="2wj-iY-rJU" secondAttribute="leading" id="Dh0-vL-RRf"/>
                             <constraint firstItem="6nc-Zv-4kP" firstAttribute="trailing" secondItem="2wj-iY-rJU" secondAttribute="trailing" id="UTT-Vq-PtN"/>
                             <constraint firstItem="2wj-iY-rJU" firstAttribute="bottom" secondItem="6nc-Zv-4kP" secondAttribute="bottom" id="btT-Fq-JB7"/>
-                            <constraint firstItem="6nc-Zv-4kP" firstAttribute="top" secondItem="2wj-iY-rJU" secondAttribute="top" id="kUR-Ki-ujQ"/>
+                            <constraint firstItem="6nc-Zv-4kP" firstAttribute="top" secondItem="AU3-mj-EsB" secondAttribute="top" id="kUR-Ki-ujQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wai-DC-Ao0"/>

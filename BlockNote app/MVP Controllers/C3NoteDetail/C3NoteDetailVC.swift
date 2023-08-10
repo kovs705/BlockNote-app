@@ -21,6 +21,8 @@ class C3NoteDetailVC: UIViewController {
     
     var addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
     let textDockButton = dockTextButton(frame: .zero)
+    var thinStatusBar = UIVisualEffectView()
+    let heightForStatusBar: CGFloat = 45
     
     @IBOutlet weak var noteListTB: UITableView!
     let notificationCenter = NotificationCenter.default
@@ -49,6 +51,15 @@ class C3NoteDetailVC: UIViewController {
         return dock
     }()
     
+    lazy var backbutton: UIButton = {
+       let backButton = UIButton()
+        backButton.cornerRadius = 15
+        backButton.backgroundColor = .systemGray6
+        backButton.setImage(UIImage(systemName: "xmark", withConfiguration: UIHelper.giveConfigForImage(size: 18, weight: .medium)), for: .normal)
+        
+        return backButton
+    }()
+    
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -65,8 +76,10 @@ class C3NoteDetailVC: UIViewController {
          notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         configureDock()
+        configureBackButton()
+        configureStatusBar()
         
-        noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
+        noteListTB.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 160, right: 0)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
             tapGesture.cancelsTouchesInView = false
@@ -88,8 +101,21 @@ class C3NoteDetailVC: UIViewController {
         // noteListTB.register(UINib(nibName: "NewPhotoBlock", bundle: nil), forCellReuseIdentifier: NewPhotoBlock.newPhotoBlockID)
     }
     
+    func configureStatusBar() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        view.addSubviews(thinStatusBar)
+        thinStatusBar.backgroundColor = .clear
+        thinStatusBar.effect = blurEffect
+        
+        thinStatusBar.snp.makeConstraints { make in
+            make.height.equalTo(heightForStatusBar)
+            make.width.equalTo(view.snp.width)
+            make.top.equalTo(view)
+        }
+    }
+    
     func configureDock() {
-        view.addSubview(dock)
+        view.addSubviews(dock)
         
         NSLayoutConstraint.activate([
             dock.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -102,7 +128,7 @@ class C3NoteDetailVC: UIViewController {
         ])
         
         // placing contentView - UIStackView
-        dock.addSubview(contentView)
+        dock.addSubviews(contentView)
         
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: dock.topAnchor, constant: padding),
@@ -116,8 +142,25 @@ class C3NoteDetailVC: UIViewController {
         contentView.addArrangedSubview(textDockButton)
     }
     
+    func configureBackButton() {
+        view.addSubviews(backbutton)
+        
+        NSLayoutConstraint.activate([
+            backbutton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backbutton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            backbutton.heightAnchor.constraint(equalToConstant: 35),
+            backbutton.widthAnchor.constraint(equalToConstant: 35)
+        ])
+        
+        backbutton.addTarget(self, action: #selector(printIt), for: .touchUpInside)
+    }
+    
     
     // MARK: - Objc funcs
+    @objc func printIt() {
+        dismiss(animated: true)
+    }
+    
     @objc func handleTap(_ gRecognizer: UITapGestureRecognizer) {
         let tapLocation = gRecognizer.location(in: noteListTB)
         if noteListTB.indexPathForRow(at: tapLocation) == nil {
@@ -273,6 +316,26 @@ extension C3NoteDetailVC: UIImagePickerControllerDelegate, UINavigationControlle
         
     }
     
+}
+
+// MARK: - UITableView Scroll
+extension C3NoteDetailVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        if translation.y > 0 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.backbutton.layer.opacity = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.backbutton.layer.opacity = 0
+                
+            }
+        }
+    }
 }
 
 

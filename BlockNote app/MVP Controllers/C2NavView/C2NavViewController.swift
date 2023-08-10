@@ -58,19 +58,6 @@ class C2NavViewControllerVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    func configureStatusBar() {
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-        view.addSubviews(thinStatusBar)
-        thinStatusBar.backgroundColor = .clear
-        thinStatusBar.effect = blurEffect
-        
-        thinStatusBar.snp.makeConstraints { make in
-            make.height.equalTo(heightForStatusBar)
-            make.width.equalTo(view.snp.width)
-            make.top.equalTo(view)
-        }
-    }
-    
     
     // MARK: - IBActions
     @IBAction func addGroup(_ sender: UIButton) {
@@ -143,6 +130,19 @@ class C2NavViewControllerVC: UIViewController {
         progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
     }
     
+    func configureStatusBar() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        view.addSubviews(thinStatusBar)
+        thinStatusBar.backgroundColor = .clear
+        thinStatusBar.effect = blurEffect
+        
+        thinStatusBar.snp.makeConstraints { make in
+            make.height.equalTo(heightForStatusBar)
+            make.width.equalTo(view.snp.width)
+            make.top.equalTo(view)
+        }
+    }
+    
 }
 
 // MARK: - SpriteKit snowScene
@@ -174,7 +174,8 @@ extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
     }
     
     func performTransition(to vc: UIViewController) {
-        present(vc, animated: true)
+//        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showGreeting(with text: String) {
