@@ -86,6 +86,10 @@ class C3NoteDetailVC: UIViewController {
             noteListTB.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     
     // MARK: - Other funcs
     

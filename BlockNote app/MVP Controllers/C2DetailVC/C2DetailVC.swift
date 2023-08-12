@@ -47,6 +47,7 @@ class C2DetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         noteListCollection.reloadData()
     }
     
@@ -138,8 +139,8 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     func pushToNoteDetail(using note: Note) {
         let coordinator = Builder()
         let vc = coordinator.getC3NoteDetailVC(note: note)
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen // fullscreen?
+        vc.modalTransitionStyle = .partialCurl
+        vc.modalPresentationStyle = .fullScreen // fullscreen?
         present(vc, animated: true)
     }
     

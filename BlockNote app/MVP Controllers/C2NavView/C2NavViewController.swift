@@ -27,8 +27,8 @@ class C2NavViewControllerVC: UIViewController {
     
     var sortingKey: String = SortOrder.optimized
     var presenter: C2NavViewControllerPresenterProtocol!
-
-// MARK: - Lifecycle
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,10 +49,11 @@ class C2NavViewControllerVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
         presenter.fetchData(using: sortingKey)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -201,12 +202,12 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
+        
         UIView.animate(withDuration: 0.5, delay: 0) {
             cell.alpha = 1
             cell.contentView.alpha = 1
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -214,15 +215,15 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         
         let totalSpace = flowLayout.sectionInset.left
-                + flowLayout.sectionInset.right
-                + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfGroupsPerRow - 1))
+        + flowLayout.sectionInset.right
+        + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfGroupsPerRow - 1))
         
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfGroupsPerRow))
         
         return CGSize(width: size, height: size)
         
-            // return CGSize(width: 165, height: 165)
-        }
+        // return CGSize(width: 165, height: 165)
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
