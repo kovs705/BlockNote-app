@@ -22,9 +22,14 @@ extension GroupType {
     @NSManaged public var lastChangedGroup: Date?
     @NSManaged public var noteTypes: NSSet?
     @NSManaged public var agendaItems: NSSet?
+    @NSManaged public var emoji: String?
     
     public var wrappedNumber: Int {
         number
+    }
+    
+    public var wrappedEmoji: String {
+        emoji
     }
     
     public var wrappedGroupName: String {

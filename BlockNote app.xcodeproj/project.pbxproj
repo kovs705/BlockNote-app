@@ -47,6 +47,8 @@
 		4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */; };
 		4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */; };
 		4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */; };
+		4EB3A2BB2A87F42C00B3B743 /* C2GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */; };
+		4EB3A2BE2A87F54D00B3B743 /* С2GroupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */; };
 		4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */; };
 		4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53829C632AE00D41AC1 /* Sorting.swift */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
@@ -138,6 +140,8 @@
 		4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupView.swift; sourceTree = "<group>"; };
+		4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "С2GroupVM.swift"; sourceTree = "<group>"; };
 		4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUICollectionViewCellAnimated.swift; sourceTree = "<group>"; };
 		4EB9E53829C632AE00D41AC1 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
@@ -426,6 +430,24 @@
 			path = Blocks;
 			sourceTree = "<group>";
 		};
+		4EB3A2B92A87F3AA00B3B743 /* С2GroupView */ = {
+			isa = PBXGroup;
+			children = (
+				4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */,
+				4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */,
+			);
+			path = "С2GroupView";
+			sourceTree = "<group>";
+		};
+		4EB3A2BC2A87F44000B3B743 /* TimeAgenda */ = {
+			isa = PBXGroup;
+			children = (
+				CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */,
+				CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */,
+			);
+			path = TimeAgenda;
+			sourceTree = "<group>";
+		};
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,8 +587,8 @@
 		CE3ADCF92A73AA6F008F922B /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */,
-				CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */,
+				4EB3A2B92A87F3AA00B3B743 /* С2GroupView */,
+				4EB3A2BC2A87F44000B3B743 /* TimeAgenda */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 				CE3ADCFA2A73AAB0008F922B /* DataController.swift */,
 			);
@@ -858,6 +880,7 @@
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
+				4EB3A2BE2A87F54D00B3B743 /* С2GroupVM.swift in Sources */,
 				CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */,
 				4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
@@ -867,6 +890,7 @@
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
+				4EB3A2BB2A87F42C00B3B743 /* C2GroupView.swift in Sources */,
 				4E8A43182A62C2BE004999CF /* C3NoteDetailVC.swift in Sources */,
 				4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
