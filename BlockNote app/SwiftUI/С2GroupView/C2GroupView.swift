@@ -10,39 +10,72 @@ import SwiftUI
 struct C2GroupView: View {
     
     @StateObject var viewModel: C2GroupViewModel
-    let group: GroupType
+    @State var group: GroupType
+    @State var presentSheet = false
     
     var body: some View {
         NavigationStack {
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(.greenAvocado)
-                    VStack {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.white).opacity(0.5)
-                                Text(group.wrappedEmoji)
+            
+            Form {
+                Section {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(.greenAvocado)
+                        VStack {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(.white).opacity(0.5)
+                                    Text(group.wrappedEmoji)
+                                }
+                                .padding(13)
+                                
+                                Spacer()
                             }
-                            .padding(13)
                             
                             Spacer()
-                        }
-                        
-                        Spacer()
-                        
-                        Text(group.wrappedGroupName)
-                            .padding(.leading, 13)
-                            .padding(.trailing, 5)
                             
-                        // Text(group.number)
-                        // number of notes
-                        Text(setNumber(group))
+                            Text(group.wrappedGroupName)
+                                .padding(.leading, 13)
+                                .padding(.trailing, 5)
+                            
+                            // Text(group.number)
+                            // number of notes
+                            Text(setNumber(group))
+                        }
                     }
+                    .frame(width: 165, height: 165)
                 }
-                .frame(width: 165, height: 165)
+                
+                Section {
+                    TextField("Group name", text: $group.groupName) // make checking for group name
+                    Button {
+                        presentSheet.toggle()
+                    } label: {
+                        HStack {
+                            Text("Change icon")
+                            Spacer()
+                            Text(group.wrappedEmoji)
+                        }
+                    }
+
+                }
+                
+                Spacer()
+                
+                Button {
+                    // save changes
+                } label: {
+                    Text("Save changes")
+                }
+
+                Spacer()
+                
             }
+            .sheet(isPresented: $presentSheet, content: {
+                EmojiPicker()
+                    .presentationDetents([.height(250), .medium])
+            })
             .navigationTitle("Edit")
         }
     }

@@ -59,6 +59,7 @@
 		4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */; };
 		4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
+		4EDC0FEE2A893B5A001A70D1 /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
 		4EF38796298D633F00CC1306 /* dockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38795298D633F00CC1306 /* dockButton.swift */; };
 		4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38797298D869500CC1306 /* dockTextButton.swift */; };
@@ -152,6 +153,7 @@
 		4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
+		4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
 		4EF38795298D633F00CC1306 /* dockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockButton.swift; sourceTree = "<group>"; };
 		4EF38797298D869500CC1306 /* dockTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockTextButton.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 			children = (
 				4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */,
 				4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */,
+				4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */,
 			);
 			path = "С2GroupView";
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
 				4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */,
+				4EDC0FEE2A893B5A001A70D1 /* EmojiPicker.swift in Sources */,
 				4E8209AA2A4D9476006E8CC1 /* C2NavViewPresenter.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,

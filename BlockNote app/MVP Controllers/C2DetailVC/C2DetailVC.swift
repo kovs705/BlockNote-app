@@ -35,7 +35,7 @@ class C2DetailVC: UIViewController {
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = presenter.groupType.groupName ?? "Unknown"
+        title = presenter.groupType.groupName
         
         presenter.sortArray()
         // noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
@@ -139,7 +139,7 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     func pushToNoteDetail(using note: Note) {
         let coordinator = Builder()
         let vc = coordinator.getC3NoteDetailVC(note: note)
-        vc.modalTransitionStyle = .partialCurl
+        vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .fullScreen // fullscreen?
         present(vc, animated: true)
     }

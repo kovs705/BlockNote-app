@@ -7,6 +7,7 @@
 
 import CoreData
 import UIKit
+import SwiftUI
 
 protocol C2NavViewControllerViewProtocol: AnyObject {
     var sortingKey: String { get set }
@@ -19,7 +20,7 @@ protocol C2NavViewControllerViewProtocol: AnyObject {
 }
 
 protocol C2NavViewControllerPresenterProtocol: AnyObject {
-
+    
     init(view: C2NavViewControllerViewProtocol)
     var groups: [NSManagedObject] { get set }
     var hour: Int { get set }
@@ -30,6 +31,7 @@ protocol C2NavViewControllerPresenterProtocol: AnyObject {
     func manageGreeting()
     
     func performTransitionToDetailVC(groupType: GroupType)
+    func showGroupEdit(group: GroupType)
 }
 
 final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
@@ -121,4 +123,9 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         self.view?.performTransition(to: detailVC)
     }
     
+    func showGroupEdit(group: GroupType) {
+        let groupEditView = C2GroupView(viewModel: C2GroupViewModel(), group: group)
+        let editVC = UIHostingController(rootView: groupEditView)
+        self.view?.performTransition(to: editVC)
+    }
 }

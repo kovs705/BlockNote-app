@@ -201,6 +201,25 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let indexPath = indexPaths.first else { return nil }
+        let group = presenter.groups[indexPath.row]
+        
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let menuActions = [
+                UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.presenter.showGroupEdit(group: group as! GroupType)
+                }
+            ]
+            
+            let menu = UIMenu(title: "Choose operation", children: menuActions)
+            return menu
+        }
+        
+        return configuration
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         UIView.animate(withDuration: 0.5, delay: 0) {

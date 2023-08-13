@@ -13,7 +13,7 @@
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
         <attribute name="emoji" optional="YES" attributeType="String"/>
         <attribute name="groupColor" optional="YES" attributeType="String"/>
-        <attribute name="groupName" optional="YES" attributeType="String"/>
+        <attribute name="groupName" attributeType="String" defaultValueString="No group name"/>
         <attribute name="lastChangedGroup" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="agendaItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Agenda" inverseName="group" inverseEntity="Agenda"/>

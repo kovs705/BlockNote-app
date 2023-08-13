@@ -12,7 +12,6 @@ import UIKit
 protocol C3NoteDetailViewProtocol: AnyObject {
     
     var imagePicker: UIImagePickerController! { get }
-    var isLargeHidden: Bool { get set }
     
     var textForTextlock: String { get set }
     
