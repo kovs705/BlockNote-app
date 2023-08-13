@@ -14,70 +14,67 @@ struct C2GroupView: View {
     @State var presentSheet = false
     
     var body: some View {
-        NavigationStack {
-            
-            Form {
-                Section {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.greenAvocado)
-                        VStack {
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .foregroundColor(.white).opacity(0.5)
-                                    Text(group.wrappedEmoji)
-                                }
-                                .padding(13)
-                                
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                            
-                            Text(group.wrappedGroupName)
-                                .padding(.leading, 13)
-                                .padding(.trailing, 5)
-                            
-                            // Text(group.number)
-                            // number of notes
-                            Text(setNumber(group))
-                        }
-                    }
-                    .frame(width: 165, height: 165)
-                }
-                
-                Section {
-                    TextField("Group name", text: $group.groupName) // make checking for group name
-                    Button {
-                        presentSheet.toggle()
-                    } label: {
+        Form {
+            Section {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.greenAvocado)
+                    VStack {
                         HStack {
-                            Text("Change icon")
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.white).opacity(0.5)
+                                Text(group.wrappedEmoji)
+                            }
+                            .padding(13)
+                            
                             Spacer()
-                            Text(group.wrappedEmoji)
                         }
+                        
+                        Spacer()
+                        
+                        Text(group.wrappedGroupName)
+                            .padding(.leading, 13)
+                            .padding(.trailing, 5)
+                        
+                        // Text(group.number)
+                        // number of notes
+                        Text(setNumber(group))
                     }
-
                 }
-                
-                Spacer()
-                
+                .frame(width: 165, height: 165)
+            }
+            
+            Section {
+                TextField("Group name", text: $group.groupName) // make checking for group name
                 Button {
-                    // save changes
+                    presentSheet.toggle()
                 } label: {
-                    Text("Save changes")
+                    HStack {
+                        Text("Change icon")
+                        Spacer()
+                        Text(group.wrappedEmoji)
+                    }
                 }
-
-                Spacer()
                 
             }
-            .sheet(isPresented: $presentSheet, content: {
-                EmojiPicker()
-                    .presentationDetents([.height(250), .medium])
-            })
-            .navigationTitle("Edit")
+            
+            Spacer()
+            
+            Button {
+                // save changes
+            } label: {
+                Text("Save changes")
+            }
+            
+            Spacer()
+            
         }
+        .sheet(isPresented: $presentSheet, content: {
+            EmojiPicker()
+                .presentationDetents([.height(250), .medium])
+        })
+        .navigationTitle("Edit")
     }
     
     func setNumber(_ group: GroupType) -> String {
