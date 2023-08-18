@@ -17,13 +17,14 @@ struct C2GroupView: View {
         Form {
             Section {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .foregroundColor(.greenAvocado)
                     VStack {
                         HStack {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.white).opacity(0.5)
+                                    .frame(width: 35, height: 35)
                                 Text(group.wrappedEmoji)
                             }
                             .padding(13)
@@ -33,20 +34,29 @@ struct C2GroupView: View {
                         
                         Spacer()
                         
-                        Text(group.wrappedGroupName)
-                            .padding(.leading, 13)
-                            .padding(.trailing, 5)
-                        
-                        // Text(group.number)
-                        // number of notes
-                        Text(setNumber(group))
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(group.wrappedGroupName)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(size: 17, weight: .bold))
+                                    .padding(.leading, 13)
+                                    .padding(.trailing, 5)
+                                Text(setNumber(group))
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(size: 17, weight: .regular))
+                                    .padding(.leading, 13)
+                                    .padding(.trailing, 5)
+                                    .padding(.bottom, 13)
+                            }
+                            Spacer()
+                        }
                     }
                 }
                 .frame(width: 165, height: 165)
             }
             
             Section {
-                TextField("Group name", text: $group.groupName) // make checking for group name
+                TextField("Group name", text: $group.groupName) // make checking for group name using Combine
                 Button {
                     presentSheet.toggle()
                 } label: {
@@ -59,20 +69,18 @@ struct C2GroupView: View {
                 
             }
             
-            Spacer()
-            
             Button {
                 // save changes
             } label: {
                 Text("Save changes")
             }
             
-            Spacer()
-            
         }
         .sheet(isPresented: $presentSheet, content: {
             EmojiPicker()
-                .presentationDetents([.height(250), .medium])
+                .presentationDetents([.height(200), .medium])
+                .background(.ultraThinMaterial)
+                .scrollContentBackground(.hidden)
         })
         .navigationTitle("Edit")
     }

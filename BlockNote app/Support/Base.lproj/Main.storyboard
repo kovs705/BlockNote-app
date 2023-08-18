@@ -157,8 +157,8 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gX-PK-1hY">
                                                                     <rect key="frame" x="13" y="13" width="35" height="35"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🫠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeK-dk-VU7">
-                                                                            <rect key="frame" x="5.6666666666666679" y="6" width="24" height="23"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="🫠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeK-dk-VU7">
+                                                                            <rect key="frame" x="5.6666666666666661" y="6" width="24" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -624,7 +624,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" verticalHuggingPriority="500" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-tY-6AV" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="158.33333333333334"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="122"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -683,7 +683,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-iJ-9FV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="42.333333333333336"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -797,7 +797,7 @@
             <size key="intrinsicContentSize" width="390" height="1017"/>
         </designable>
         <designable name="MkO-tY-6AV">
-            <size key="intrinsicContentSize" width="1911" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="1901" height="20.333333333333332"/>
         </designable>
         <designable name="Tyg-fh-zK1">
             <size key="intrinsicContentSize" width="310" height="128"/>
@@ -806,7 +806,7 @@
             <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
         <designable name="vAf-iJ-9FV">
-            <size key="intrinsicContentSize" width="55" height="42.333333333333336"/>
+            <size key="intrinsicContentSize" width="45" height="26.333333333333332"/>
         </designable>
     </designables>
     <resources>

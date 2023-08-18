@@ -10,17 +10,41 @@ import SwiftUI
 struct EmojiPicker: View {
     
     @State var emojies: [String] = []
+    @State private var type: EmojiType = .emoticons
+    let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible())]
     
     var body: some View {
-        LazyHStack(spacing: 8) {
-            ForEach(emojies, id: \.self) { emoji in
-                Text(emoji)
+        VStack {
+            Picker(selection: $type) {
+                ForEach(EmojiType.allCases, id: \.self) { type in
+                    Text(type.rawValue)
+                }
+            } label: {
+                Text("Text")
+            }
+            .pickerStyle(.menu)
+
+            
+            ScrollView {
+                LazyHGrid(rows: columns) {
+                    ForEach(emojies, id: \.self) { emoji in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white).opacity(0.5)
+                                .frame(width: 50, height: 50)
+                            Text(emoji)
+                                .font(.system(size: 35))
+                        }
+                    }
+                }
+                .background(.ultraThinMaterial)
+                .onAppear {
+                    giveEmojies(type: .emoticons)
+                }
             }
         }
+        .padding()
         .background(.ultraThinMaterial)
-        .onAppear {
-            giveEmojies(type: .emoticons)
-        }
     }
     
     func giveEmojies(type: EmojiType) {
@@ -54,9 +78,9 @@ struct EmojiPicker_Previews: PreviewProvider {
     }
 }
 
-enum EmojiType {
-    case flags
-    case transport
-    case emoticons
-    case miscItems
+enum EmojiType: String, CaseIterable {
+    case flags     = "Flags"
+    case transport = "Transport"
+    case emoticons = "Emoticons"
+    case miscItems = "Misc items"
 }
