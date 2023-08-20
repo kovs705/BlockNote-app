@@ -58,6 +58,7 @@
 		4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2622873997900A2AC05 /* TVListBlock.swift */; };
 		4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */; };
 		4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */; };
+		4ED5C4612A92B5400009DC5E /* CustomPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
 		4EDC0FEE2A893B5A001A70D1 /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
@@ -152,6 +153,7 @@
 		4EBAB2622873997900A2AC05 /* TVListBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListBlock.swift; sourceTree = "<group>"; };
 		4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverView.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			children = (
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */,
+				4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
 				4EB3A2BB2A87F42C00B3B743 /* C2GroupView.swift in Sources */,
 				4E8A43182A62C2BE004999CF /* C3NoteDetailVC.swift in Sources */,
+				4ED5C4612A92B5400009DC5E /* CustomPopoverView.swift in Sources */,
 				4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,

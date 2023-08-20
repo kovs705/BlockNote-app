@@ -14,37 +14,41 @@ struct EmojiPicker: View {
     let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible())]
     
     var body: some View {
-        VStack {
-            Picker(selection: $type) {
-                ForEach(EmojiType.allCases, id: \.self) { type in
-                    Text(type.rawValue)
+        Form {
+            VStack {
+                Picker(selection: $type) {
+                    ForEach(EmojiType.allCases, id: \.self) { type in
+                        Text(type.rawValue)
+                    }
+                } label: {
+                    Text("Text")
                 }
-            } label: {
-                Text("Text")
-            }
-            .pickerStyle(.menu)
-
-            
-            ScrollView {
-                LazyHGrid(rows: columns) {
-                    ForEach(emojies, id: \.self) { emoji in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white).opacity(0.5)
-                                .frame(width: 50, height: 50)
-                            Text(emoji)
-                                .font(.system(size: 35))
+                .pickerStyle(.menu)
+                
+                
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: columns) {
+                        ForEach(emojies, id: \.self) { emoji in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.white).opacity(0.5)
+                                    .frame(width: 50, height: 50)
+                                Text(emoji)
+                                    .font(.system(size: 35))
+                            }
                         }
                     }
-                }
-                .background(.ultraThinMaterial)
-                .onAppear {
-                    giveEmojies(type: .emoticons)
+                    .padding()
+//                    .background(.ultraThinMaterial)
+                    .onAppear {
+                        giveEmojies(type: .emoticons)
+                    }
                 }
             }
         }
-        .padding()
-        .background(.ultraThinMaterial)
+        .background(.blue)
+//        .background(.ultraThinMaterial)
+        .scrollContentBackground(.hidden)
     }
     
     func giveEmojies(type: EmojiType) {

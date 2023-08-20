@@ -78,8 +78,8 @@ struct C2GroupView: View {
         }
         .sheet(isPresented: $presentSheet, content: {
             EmojiPicker()
-                .presentationDetents([.height(200), .medium])
-                .background(.ultraThinMaterial)
+                .padding()
+                .presentationDetents([.height(150), .height(230)])
                 .scrollContentBackground(.hidden)
         })
         .navigationTitle("Edit")
