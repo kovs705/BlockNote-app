@@ -75,14 +75,16 @@ struct C2GroupView: View {
                 Text("Save changes")
             }
             
+            Color.blueBerry
+                .frame(width: 200, height: 2400)
+            
         }
+        .navigationTitle("Edit")
         .sheet(isPresented: $presentSheet, content: {
             EmojiPicker()
-                .padding()
-                .presentationDetents([.height(150), .height(230)])
-                .scrollContentBackground(.hidden)
+                .presentationDetents([.height(250)])
+//                .scrollContentBackground(.hidden)
         })
-        .navigationTitle("Edit")
     }
     
     func setNumber(_ group: GroupType) -> String {

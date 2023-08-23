@@ -11,44 +11,40 @@ struct EmojiPicker: View {
     
     @State var emojies: [String] = []
     @State private var type: EmojiType = .emoticons
-    let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible())]
+    let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55))]
     
     var body: some View {
-        Form {
-            VStack {
-                Picker(selection: $type) {
-                    ForEach(EmojiType.allCases, id: \.self) { type in
-                        Text(type.rawValue)
-                    }
-                } label: {
-                    Text("Text")
+        VStack {
+            Picker(selection: $type) {
+                ForEach(EmojiType.allCases, id: \.self) { type in
+                    Text(type.rawValue)
                 }
-                .pickerStyle(.menu)
-                
-                
-                ScrollView(.horizontal) {
-                    LazyHGrid(rows: columns) {
-                        ForEach(emojies, id: \.self) { emoji in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.white).opacity(0.5)
-                                    .frame(width: 50, height: 50)
-                                Text(emoji)
-                                    .font(.system(size: 35))
-                            }
+            } label: {
+                Text("Text")
+            }
+            .pickerStyle(.menu)
+            .padding(.top, 15)
+            
+            
+            ScrollView(.horizontal) {
+                LazyHGrid(rows: columns) {
+                    ForEach(emojies, id: \.self) { emoji in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white).opacity(0.5)
+                                .frame(width: 50, height: 50)
+                            Text(emoji)
+                                .font(.system(size: 35))
                         }
                     }
-                    .padding()
-//                    .background(.ultraThinMaterial)
-                    .onAppear {
-                        giveEmojies(type: .emoticons)
-                    }
+                }
+                .padding()
+                .onAppear {
+                    giveEmojies(type: .emoticons)
                 }
             }
         }
-        .background(.blue)
-//        .background(.ultraThinMaterial)
-        .scrollContentBackground(.hidden)
+        .background(BackgroundClearView())
     }
     
     func giveEmojies(type: EmojiType) {
