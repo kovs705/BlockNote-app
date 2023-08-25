@@ -31,7 +31,7 @@ struct EmojiPicker: View {
                     ForEach(emojies, id: \.self) { emoji in
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white).opacity(0.5)
+                                .foregroundColor(Color("back")).opacity(0.5)
                                 .frame(width: 50, height: 50)
                             Text(emoji)
                                 .font(.system(size: 35))
@@ -40,35 +40,36 @@ struct EmojiPicker: View {
                 }
                 .padding()
                 .onAppear {
-                    giveEmojies(type: .emoticons)
+                    giveEmojies()
                 }
             }
+            .onChange(of: type, perform: { value in
+                giveEmojies()
+            })
         }
         .background(BackgroundClearView())
     }
     
-    func giveEmojies(type: EmojiType) {
-        emojies.removeAll()
-        
+    func giveEmojies() {
         switch type {
-        case .flags:
-            createEmojies(start: 0x1F1E6, end: 0x1F1FF)
-        case .transport:
-            createEmojies(start: 0x1F680, end: 0x1F6FF)
+        case .letters:
+            emojies = createEmojies(start: 0x1F1E6, end: 0x1F1FF)
+        case .misc:
+            emojies = createEmojies(start: 0x1F680, end: 0x1F6FF)
         case .emoticons:
-            createEmojies(start: 0x1F600, end: 0x1F64F)
-        case .miscItems:
-            createEmojies(start: 9100, end: 9300)
+            emojies = createEmojies(start: 0x1F600, end: 0x1F64F)
+        case .symbols:
+            emojies = createEmojies(start: 9100, end: 9300)
         }
     }
     
-    func createEmojies(start: Int, end: Int) {
+    func createEmojies(start: Int, end: Int) -> [String] {
+        var emojies: [String] = []
         for i in start...end {
             let c = String(UnicodeScalar(i) ?? "-")
-            withAnimation(.spring()) {
-                emojies.append(c)
-            }
+            emojies.append(c)
         }
+        return emojies
     }
 }
 
@@ -79,8 +80,8 @@ struct EmojiPicker_Previews: PreviewProvider {
 }
 
 enum EmojiType: String, CaseIterable {
-    case flags     = "Flags"
-    case transport = "Transport"
-    case emoticons = "Emoticons"
-    case miscItems = "Misc items"
+    case letters     = "Letters"
+    case misc        = "Misc items"
+    case emoticons   = "Emoticons"
+    case symbols     = "B&W Symbols"
 }
