@@ -117,10 +117,12 @@ struct WhiteView: UIViewRepresentable {
 }
 
 struct AnimatedButton: ButtonStyle {
+    var scale: CGFloat = 1.0
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .animation(.spring())
+            .animation(.spring(), value: scale)
+//            .animation(.spring())
     }
 }
 
