@@ -9,9 +9,13 @@ import SwiftUI
 
 struct EmojiPicker: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var emojies: [String] = []
     @State private var type: EmojiType = .emoticons
     let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55))]
+    
+    var action: (String) -> Void
     
     var body: some View {
         VStack {
@@ -20,7 +24,7 @@ struct EmojiPicker: View {
                     Text(type.rawValue)
                 }
             } label: {
-                Text("Text")
+                Text("Emoji picker")
             }
             .pickerStyle(.menu)
             .padding(.top, 15)
@@ -29,12 +33,17 @@ struct EmojiPicker: View {
             ScrollView(.horizontal) {
                 LazyHGrid(rows: columns) {
                     ForEach(emojies, id: \.self) { emoji in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(Color("back")).opacity(0.5)
-                                .frame(width: 50, height: 50)
-                            Text(emoji)
-                                .font(.system(size: 35))
+                        Button {
+                            action(emoji)
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(Color("back")).opacity(0.5)
+                                    .frame(width: 50, height: 50)
+                                Text(emoji)
+                                    .font(.system(size: 35))
+                            }
                         }
                     }
                 }
@@ -73,11 +82,11 @@ struct EmojiPicker: View {
     }
 }
 
-struct EmojiPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        EmojiPicker()
-    }
-}
+//struct EmojiPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EmojiPicker()
+//    }
+//}
 
 enum EmojiType: String, CaseIterable {
     case letters     = "Letters"

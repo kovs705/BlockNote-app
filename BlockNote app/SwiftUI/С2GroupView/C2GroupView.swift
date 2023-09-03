@@ -13,19 +13,23 @@ struct C2GroupView: View {
     @State var group: GroupType
     @State var presentSheet = false
     
+    @State var groupName: String
+    @State var groupColor: String
+    @State var groupEmoji: String
+    
     var body: some View {
         Form {
             Section {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .foregroundColor(.greenAvocado)
+                        .foregroundColor(Color(groupColor))
                     VStack {
                         HStack {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.white).opacity(0.5)
                                     .frame(width: 35, height: 35)
-                                Text(group.wrappedEmoji)
+                                Text(groupEmoji)
                             }
                             .padding(13)
                             
@@ -36,11 +40,12 @@ struct C2GroupView: View {
                         
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(group.wrappedGroupName)
+                                Text($groupName.wrappedValue)
                                     .multilineTextAlignment(.leading)
                                     .font(.system(size: 17, weight: .bold))
                                     .padding(.leading, 13)
                                     .padding(.trailing, 5)
+                                    .lineLimit(3)
                                 Text(setNumber(group))
                                     .multilineTextAlignment(.leading)
                                     .font(.system(size: 17, weight: .regular))
@@ -56,7 +61,7 @@ struct C2GroupView: View {
             }
             
             Section {
-                TextField("Group name", text: $group.groupName) // make checking for group name using Combine
+                TextField("Group name", text: $groupName) // make checking for group name using Combine
                 Button {
                     presentSheet.toggle()
                 } label: {
@@ -76,10 +81,13 @@ struct C2GroupView: View {
             }
             
         }
+        
         .navigationTitle("Edit")
         .blurredSheet(.init(.regularMaterial), show: $presentSheet) {
         } content: {
-            EmojiPicker()
+            EmojiPicker(action: { emoji in
+                groupEmoji = emoji
+            })
                 .presentationDetents([.height(250)])
         }
     }
@@ -100,7 +108,7 @@ struct C2GroupView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     
     static var previews: some View {
-        C2GroupView(viewModel: C2GroupViewModel(), group: GroupType.example)
+        C2GroupView(viewModel: C2GroupViewModel(), group: GroupType.example, groupName: "Test words", groupColor: "GreenAvocado", groupEmoji: "😍")
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }

@@ -8,27 +8,35 @@
 import UIKit
 
 class GroupUICollectionViewCellAnimated: UICollectionViewCell {
-    
-    
-    override var isHighlighted: Bool {
+        
+    override var isSelected: Bool {
         didSet {
-            if isHighlighted {
-                handleTouchDown()
-            } else {
+            if !isSelected {
                 handleTouchUp()
             }
         }
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+        handleTouchDown()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        handleTouchUp()
+    }
+    
     private func handleTouchDown() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.beginFromCurrentState, .curveEaseInOut], animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
             guard let self = self else { return }
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }, completion: nil)
     }
     
     private func handleTouchUp() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.beginFromCurrentState, .curveEaseInOut], animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
             guard let self = self else { return }
             self.transform = .identity
         }, completion: nil)
