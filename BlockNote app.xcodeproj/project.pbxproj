@@ -74,6 +74,9 @@
 		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
 		CE3ADCF82A73A504008F922B /* TimeAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */; };
 		CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCFA2A73AAB0008F922B /* DataController.swift */; };
+		CE41AE032AA84884004AE375 /* TVProgressBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41AE022AA84884004AE375 /* TVProgressBlock.swift */; };
+		CE41AE052AA849CC004AE375 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41AE042AA849CC004AE375 /* ProgressView.swift */; };
+		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
 /* End PBXBuildFile section */
@@ -170,6 +173,9 @@
 		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaView.swift; sourceTree = "<group>"; };
 		CE3ADCFA2A73AAB0008F922B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		CE41AE022AA84884004AE375 /* TVProgressBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgressBlock.swift; sourceTree = "<group>"; };
+		CE41AE042AA849CC004AE375 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		CE76BC142AA84C1800725ED0 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
@@ -457,6 +463,7 @@
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				CE41AE012AA84841004AE375 /* Progress */,
 				4EBAB2512873983800A2AC05 /* Title */,
 				4EBAB24C2873980F00A2AC05 /* Text */,
 				4EBAB2522873985200A2AC05 /* Photo */,
@@ -599,6 +606,16 @@
 				CE3ADCFA2A73AAB0008F922B /* DataController.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CE41AE012AA84841004AE375 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				CE41AE022AA84884004AE375 /* TVProgressBlock.swift */,
+				CE41AE042AA849CC004AE375 /* ProgressView.swift */,
+				CE76BC142AA84C1800725ED0 /* CircularView.swift */,
+			);
+			path = Progress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -876,6 +893,7 @@
 				4E8209AA2A4D9476006E8CC1 /* C2NavViewPresenter.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
+				CE41AE032AA84884004AE375 /* TVProgressBlock.swift in Sources */,
 				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
 				4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
@@ -884,9 +902,11 @@
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
+				CE41AE052AA849CC004AE375 /* ProgressView.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
+				CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */,
 				4EB3A2BE2A87F54D00B3B743 /* С2GroupVM.swift in Sources */,
 				CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */,
 				4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */,
@@ -1098,7 +1118,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1129,7 +1149,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
