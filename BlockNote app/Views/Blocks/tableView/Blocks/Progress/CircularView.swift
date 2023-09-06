@@ -69,3 +69,34 @@ struct CircularView_Previews: PreviewProvider {
         CircularView(startDate: Date(), endDate: Date())
     }
 }
+
+
+// MARK: - Check this code
+
+/*
+ 
+ extension Calendar {
+     
+     func calculateTimeIntervalSince(start: Date, end: Date) -> Double {
+         return end.timeIntervalSince(start)
+     }
+     
+     func calculateDaysBetween(_ from: Date, and to: Date) -> Double {
+         let fromDate = startOfDay(for: from)
+         let toDate = startOfDay(for: to)
+
+         let numberOfDays = dateComponents([.day], from: fromDate+1, to: toDate+1)
+         return Double(Double(numberOfDays.day!))
+     }
+
+ //    func calculateHoursBetween(_ from: Date, and to: Date) -> Double {
+ //        let fromDate = startOfDay(for: from)
+ //        let toDate = startOfDay(for: to)
+ //
+ //        let hoursToEnd = dateComponents([.hour], from: fromDate, to: toDate)
+ //
+ //        return Double(hoursToEnd.hour!)
+ //    }
+ }
+ 
+ */
