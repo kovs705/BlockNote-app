@@ -79,6 +79,7 @@
 		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
+		E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
+		E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupViewBuilder.swift; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -445,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */,
+				E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */,
 				4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */,
 				4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */,
 			);
@@ -899,6 +902,7 @@
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */,
+				E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,

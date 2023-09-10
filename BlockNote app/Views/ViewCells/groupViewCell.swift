@@ -11,11 +11,13 @@ class groupViewCell: GroupUICollectionViewCellAnimated {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var numberOfNotes: UILabel!
+    @IBOutlet weak var groupEmoji: UILabel!
     
     func setGroupCell(group: GroupType) {
         setBackground(group)
         setGroupName(group)
         setNumber(group)
+        setGroupEmoji(group)
     }
     
     func setBackground(_ group: GroupType) {
@@ -34,6 +36,10 @@ class groupViewCell: GroupUICollectionViewCellAnimated {
         } else {
             numberOfNotes.text = "\(number) notes"
         }
+    }
+    
+    func setGroupEmoji(_ group: GroupType) {
+        groupEmoji.text = group.wrappedEmoji
     }
     
 }

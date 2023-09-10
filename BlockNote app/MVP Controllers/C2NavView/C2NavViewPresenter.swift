@@ -124,7 +124,7 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
     }
     
     func showGroupEdit(group: GroupType) {
-        let groupEditView = C2GroupView(viewModel: C2GroupViewModel(), group: group, groupName: group.wrappedGroupName, groupColor: group.groupColor ?? "GreenAvocado", groupEmoji: group.wrappedEmoji)
+        let groupEditView = C2GroupView(vm: C2GroupViewModel(group: group, groupName: group.wrappedGroupName, groupColor: group.groupColor ?? "GreenAvocado", groupEmoji: group.wrappedEmoji))
         let editVC = UIHostingController(rootView: groupEditView)
         self.view?.performTransition(to: editVC)
     }

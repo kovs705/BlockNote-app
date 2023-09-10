@@ -9,66 +9,35 @@ import SwiftUI
 
 struct C2GroupView: View {
     
-    @StateObject var viewModel: C2GroupViewModel
-    @State var group: GroupType
-    @State var presentSheet = false
-    
-    @State var groupName: String
-    @State var groupColor: String
-    @State var groupEmoji: String
+    @StateObject var vm: C2GroupViewModel
+    var viewBuilder = C2GroupViewBuilder()
     
     var body: some View {
         Form {
             Section {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .foregroundColor(Color(groupColor))
+                        .foregroundColor(Color(vm.groupColor))
                     VStack {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.white).opacity(0.5)
-                                    .frame(width: 35, height: 35)
-                                Text(groupEmoji)
-                            }
-                            .padding(13)
-                            
-                            Spacer()
-                        }
+                        viewBuilder.placeGroupEmoji(vm.groupEmoji)
                         
                         Spacer()
                         
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text($groupName.wrappedValue)
-                                    .multilineTextAlignment(.leading)
-                                    .font(.system(size: 17, weight: .bold))
-                                    .padding(.leading, 13)
-                                    .padding(.trailing, 5)
-                                    .lineLimit(3)
-                                Text(setNumber(group))
-                                    .multilineTextAlignment(.leading)
-                                    .font(.system(size: 17, weight: .regular))
-                                    .padding(.leading, 13)
-                                    .padding(.trailing, 5)
-                                    .padding(.bottom, 13)
-                            }
-                            Spacer()
-                        }
+                        viewBuilder.placeGroupNameAndNumber(name: $vm.groupName, group: vm.group)
                     }
                 }
                 .frame(width: 165, height: 165)
             }
             
             Section {
-                TextField("Group name", text: $groupName) // make checking for group name using Combine
+                TextField("Group name", text: $vm.groupName) // make checking for group name using Combine
                 Button {
-                    presentSheet.toggle()
+                    vm.reduce(intent: .presentSheet)
                 } label: {
                     HStack {
                         Text("Change icon")
                         Spacer()
-                        Text(group.wrappedEmoji)
+                        Text(vm.groupEmoji)
                     }
                 }
                 
@@ -76,6 +45,7 @@ struct C2GroupView: View {
             
             Button {
                 // save changes
+                vm.reduce(intent: .saveChanges)
             } label: {
                 Text("Save changes")
             }
@@ -83,32 +53,24 @@ struct C2GroupView: View {
         }
         
         .navigationTitle("Edit")
-        .blurredSheet(.init(.regularMaterial), show: $presentSheet) {
+        .blurredSheet(.init(.regularMaterial), show: $vm.presentSheet) {
         } content: {
             EmojiPicker(action: { emoji in
-                groupEmoji = emoji
+                vm.reduce(intent: .updateEmoji(emoji: emoji))
             })
                 .presentationDetents([.height(250)])
         }
     }
     
-    func setNumber(_ group: GroupType) -> String {
-        if group.number == 0 {
-            return "0 notes"
-        } else if group.number == 1 {
-            return "1 note"
-        } else {
-            return "\(group.number) notes"
-        }
-    }
 }
 
 struct C2GroupView_Previews: PreviewProvider {
     
     static var dataController = DataController.preview
+    static var testGroup = GroupType.example
     
     static var previews: some View {
-        C2GroupView(viewModel: C2GroupViewModel(), group: GroupType.example, groupName: "Test words", groupColor: "GreenAvocado", groupEmoji: "😍")
+        C2GroupView(vm: C2GroupViewModel(group: testGroup, groupName: "Test", groupColor: "GreenAvocado", groupEmoji: "😍"))
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
