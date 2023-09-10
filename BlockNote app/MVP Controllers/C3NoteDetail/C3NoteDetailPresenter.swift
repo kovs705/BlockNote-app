@@ -31,6 +31,8 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
     
     var noteItemArray_sorted: [NoteItem] { get set }
     
+    var managedContext: NSManagedObjectContext { get }
+    
     init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note)
     
     /// Func to create a new textBlock by clicking on return button + make the last block (this text block) as a first responder and start typing there:
@@ -65,10 +67,18 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     weak var view: C3NoteDetailViewProtocol?
     var persistenceBC: PersistenceBlockController?
     
+    var managedContext: NSManagedObjectContext
+    
     required init(view: C3NoteDetailViewProtocol, persistenceBC: PersistenceBlockController, note: Note) {
         self.view = view
         self.persistenceBC = persistenceBC
         self.note = note
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            self.managedContext = appDelegate.persistentContainerOffline.viewContext
+        } else {
+            self.managedContext = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
+        }
     }
     
     // MARK: - Persistence funcs
@@ -92,7 +102,6 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     }
     
     func sortAndUpdate() {
-        guard let view = self.view else { return }
         guard let note = note else { return }
         /// made for reuse multiple times to update sorted array of
         //TODO: make a switch for other objects in CoreData, (make a reusable public func)
@@ -106,13 +115,8 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     }
     
     func save(blockType: String, theCase: BlockCases, pickedImage: UIImage?) {
-        guard let view = self.view else { return }
         guard let persistenceBC = self.persistenceBC else { return }
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext =
-        appDelegate.persistentContainerOffline.viewContext
-        
+
         let entity =
         NSEntityDescription.entity(forEntityName: "NoteItem",
                                    in: managedContext)!
@@ -172,10 +176,6 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         guard let view = self.view else { return }
         guard let note = note else { return }
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
         
         deletingBlocksOrder = indexPath.row + 1
         
