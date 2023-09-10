@@ -26,6 +26,9 @@ protocol C2DetailPresenterProtocol: AnyObject {
     func acceptAttention()
     func sortArray()
     func deleteGroup(groupName: String)
+    
+    
+    var managedContext: NSManagedObjectContext { get }
 }
 
 final class C2DetailPresenter: C2DetailPresenterProtocol {
@@ -35,9 +38,17 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
     
     weak var view: C2DetailViewProtocol?
     
+    var managedContext: NSManagedObjectContext
+    
     required init(view: C2DetailViewProtocol, groupType: GroupType) {
         self.view = view
         self.groupType = groupType
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            self.managedContext = appDelegate.persistentContainerOffline.viewContext
+        } else {
+            self.managedContext = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
+        }
     }
     
     func sortArray() {
@@ -49,24 +60,21 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
     // MARK: - Delete group
     func deleteGroup(groupName: String) {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let viewContext       = appDelegate.persistentContainerOffline.viewContext
-        
         if groupType.wrappedGroupName == groupName {
             
             if !self.groupType.typesOfNoteArray.isEmpty {
                 
                 for note in self.groupType.typesOfNoteArray {
-                    viewContext.delete(note)
+                    managedContext.delete(note)
                 }
             } else {
                 print("No notes in array")
             }
             
-            viewContext.delete(self.groupType)
+            managedContext.delete(self.groupType)
             
             do {
-                try viewContext.save()
+                try managedContext.save()
                 self.view?.popVC()
                 self.view?.delegate?.closeAndDelete()
             } catch {
@@ -123,13 +131,9 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
     
     // MARK: - Save the note to the group from the Adding alert
     func saveNote(noteName: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let viewContext = appDelegate.persistentContainerOffline.viewContext
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: viewContext) else { return }
-        let note = NSManagedObject(entity: entity, insertInto: viewContext)
+        guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext) else { return }
+        let note = NSManagedObject(entity: entity, insertInto: managedContext)
         
         if groupType.wrappedGroupName == "" {
             note.setValue("Unknown group", forKey: Keys.nType)
@@ -161,7 +165,7 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
             if self.groupType.hasChanges {
                 sortArray()
                 self.view?.performBatchUpdates()
-                try viewContext.save()
+                try managedContext.save()
             } else {
                 print("Something wrong on saving note. No changes? No bitches?")
             }

@@ -123,6 +123,38 @@ extension View {
     }
 }
 
+// MARK: - Transparent back for sheets
+extension View {
+    
+    func blurredSheet<Content: View>(_ style: AnyShapeStyle, show: Binding<Bool>, onDismiss: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) -> some View {
+        self
+            .sheet(isPresented: show, onDismiss: onDismiss, content: {
+                content()
+                    .background(BackgroundClearView())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background {
+                        Rectangle()
+                            .fill(style)
+                            .ignoresSafeArea(.container, edges: .all)
+                    }
+            })
+    }
+    
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> UIView {
+        return UIView()
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        DispatchQueue.main.async {
+            uiView.superview?.superview?.backgroundColor = .clear
+        }
+    }
+}
+
 
 // MARK: - BluredButtonInTabBar
 struct BluredButtonInTabBar: ButtonStyle {

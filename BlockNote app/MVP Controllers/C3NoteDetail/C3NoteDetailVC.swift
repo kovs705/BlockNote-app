@@ -13,7 +13,6 @@ class C3NoteDetailVC: UIViewController {
     var deletingBlocksOrder: Int = 0
     
     var imagePicker: UIImagePickerController!
-    var isLargeHidden = false
     
     var textForTextlock: String = ""
     
@@ -86,6 +85,17 @@ class C3NoteDetailVC: UIViewController {
             noteListTB.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.backbutton.layer.opacity = 1
+        }
+    }
+    
     
     // MARK: - Other funcs
     
@@ -152,12 +162,12 @@ class C3NoteDetailVC: UIViewController {
             backbutton.widthAnchor.constraint(equalToConstant: 35)
         ])
         
-        backbutton.addTarget(self, action: #selector(printIt), for: .touchUpInside)
+        backbutton.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
     }
     
     
     // MARK: - Objc funcs
-    @objc func printIt() {
+    @objc func dismissIt() {
         dismiss(animated: true)
     }
     
@@ -172,16 +182,10 @@ class C3NoteDetailVC: UIViewController {
         
         if notification.name == UIResponder.keyboardWillHideNotification {
             
-    //            DispatchQueue.main.async {
-    //                UIView.performWithoutAnimation {
-    //                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
-    //                }
-    //            }
-            
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.35, delay: 0, animations: { [weak self] in
                     guard let self = self else { return }
-                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 160, right: 0)
+                    self.noteListTB.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 160, right: 0)
                 })
             }
             
@@ -299,7 +303,7 @@ extension C3NoteDetailVC: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("closed")
-        self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -311,8 +315,6 @@ extension C3NoteDetailVC: UIImagePickerControllerDelegate, UINavigationControlle
         presenter.save(blockType: Block.photoBlock, theCase: .photo, pickedImage: pickedImage)
         
         picker.dismiss(animated: true)
-
-        dismiss(animated: true, completion: nil)
         
     }
     

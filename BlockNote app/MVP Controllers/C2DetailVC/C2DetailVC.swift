@@ -35,7 +35,7 @@ class C2DetailVC: UIViewController {
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = presenter.groupType.groupName ?? "Unknown"
+        title = presenter.groupType.groupName
         
         presenter.sortArray()
         // noteArraySorted = groupType.typesOfNoteArray.sorted(by: { $0.noteID < $1.noteID })
@@ -47,6 +47,7 @@ class C2DetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         noteListCollection.reloadData()
     }
     
@@ -139,7 +140,7 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         let coordinator = Builder()
         let vc = coordinator.getC3NoteDetailVC(note: note)
         vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen // fullscreen?
+        vc.modalPresentationStyle = .fullScreen // fullscreen?
         present(vc, animated: true)
     }
     

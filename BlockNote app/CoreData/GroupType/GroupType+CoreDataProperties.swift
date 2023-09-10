@@ -17,14 +17,19 @@ extension GroupType {
     }
     @NSManaged var number: Int
     
-    @NSManaged public var groupName: String?
+    @NSManaged public var groupName: String
     @NSManaged public var groupColor: String?
     @NSManaged public var lastChangedGroup: Date?
     @NSManaged public var noteTypes: NSSet?
     @NSManaged public var agendaItems: NSSet?
+    @NSManaged public var emoji: String?
     
     public var wrappedNumber: Int {
         number
+    }
+    
+    public var wrappedEmoji: String {
+        emoji ?? "👨‍💻"
     }
     
     public var wrappedGroupName: String {

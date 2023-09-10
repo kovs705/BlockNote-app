@@ -47,6 +47,8 @@
 		4EAB130529CC3F9F00416718 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */; };
 		4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */; };
 		4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */; };
+		4EB3A2BB2A87F42C00B3B743 /* C2GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */; };
+		4EB3A2BE2A87F54D00B3B743 /* С2GroupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */; };
 		4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */; };
 		4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB9E53829C632AE00D41AC1 /* Sorting.swift */; };
 		4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */; };
@@ -56,7 +58,9 @@
 		4EBAB2642873997900A2AC05 /* TVListBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBAB2622873997900A2AC05 /* TVListBlock.swift */; };
 		4ECC8C4629BDC3A400E7F64B /* Agenda+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */; };
 		4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */; };
+		4ED5C4612A92B5400009DC5E /* CustomPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */; };
 		4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED982F3283EB9110063C1F1 /* StringHeight.swift */; };
+		4EDC0FEE2A893B5A001A70D1 /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */; };
 		4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */; };
 		4EF38796298D633F00CC1306 /* dockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38795298D633F00CC1306 /* dockButton.swift */; };
 		4EF38798298D869500CC1306 /* dockTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF38797298D869500CC1306 /* dockTextButton.swift */; };
@@ -70,8 +74,12 @@
 		8060F336A684D6361B5B5B4A /* Pods_BlockNote_app_BlockNote_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EECB4F15FDF54EF6348190 /* Pods_BlockNote_app_BlockNote_appUITests.framework */; };
 		CE3ADCF82A73A504008F922B /* TimeAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */; };
 		CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3ADCFA2A73AAB0008F922B /* DataController.swift */; };
+		CE41AE032AA84884004AE375 /* TVProgressBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41AE022AA84884004AE375 /* TVProgressBlock.swift */; };
+		CE41AE052AA849CC004AE375 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41AE042AA849CC004AE375 /* ProgressView.swift */; };
+		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
+		E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +146,8 @@
 		4EAB130329CC3F9F00416718 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		4EAB130F29CC91AE00416718 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EAB131029CC91AE00416718 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupView.swift; sourceTree = "<group>"; };
+		4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "С2GroupVM.swift"; sourceTree = "<group>"; };
 		4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUICollectionViewCellAnimated.swift; sourceTree = "<group>"; };
 		4EB9E53829C632AE00D41AC1 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		4EBAB24D2873983400A2AC05 /* TVTitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTitleBlock.swift; sourceTree = "<group>"; };
@@ -147,7 +157,9 @@
 		4EBAB2622873997900A2AC05 /* TVListBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListBlock.swift; sourceTree = "<group>"; };
 		4ECC8C4429BDC3A400E7F64B /* Agenda+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ECC8C4529BDC3A400E7F64B /* Agenda+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Agenda+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverView.swift; sourceTree = "<group>"; };
 		4ED982F3283EB9110063C1F1 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
+		4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		4EE639C7282C43AF00CD08B2 /* TVTextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTextBlock.swift; sourceTree = "<group>"; };
 		4EF38795298D633F00CC1306 /* dockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockButton.swift; sourceTree = "<group>"; };
 		4EF38797298D869500CC1306 /* dockTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dockTextButton.swift; sourceTree = "<group>"; };
@@ -162,9 +174,13 @@
 		C9FE5105619F2122C1A13D5E /* Pods_BlockNote_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlockNote_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaView.swift; sourceTree = "<group>"; };
 		CE3ADCFA2A73AAB0008F922B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		CE41AE022AA84884004AE375 /* TVProgressBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgressBlock.swift; sourceTree = "<group>"; };
+		CE41AE042AA849CC004AE375 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		CE76BC142AA84C1800725ED0 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
+		E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupViewBuilder.swift; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -405,6 +421,7 @@
 			children = (
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */,
+				4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,9 +443,30 @@
 			path = Blocks;
 			sourceTree = "<group>";
 		};
+		4EB3A2B92A87F3AA00B3B743 /* С2GroupView */ = {
+			isa = PBXGroup;
+			children = (
+				4EB3A2BA2A87F42C00B3B743 /* C2GroupView.swift */,
+				E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */,
+				4EB3A2BD2A87F54D00B3B743 /* С2GroupVM.swift */,
+				4EDC0FED2A893B5A001A70D1 /* EmojiPicker.swift */,
+			);
+			path = "С2GroupView";
+			sourceTree = "<group>";
+		};
+		4EB3A2BC2A87F44000B3B743 /* TimeAgenda */ = {
+			isa = PBXGroup;
+			children = (
+				CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */,
+				CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */,
+			);
+			path = TimeAgenda;
+			sourceTree = "<group>";
+		};
 		4EBAB24B2873980300A2AC05 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				CE41AE012AA84841004AE375 /* Progress */,
 				4EBAB2512873983800A2AC05 /* Title */,
 				4EBAB24C2873980F00A2AC05 /* Text */,
 				4EBAB2522873985200A2AC05 /* Photo */,
@@ -565,12 +603,22 @@
 		CE3ADCF92A73AA6F008F922B /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				CE3ADCF72A73A504008F922B /* TimeAgendaView.swift */,
-				CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */,
+				4EB3A2B92A87F3AA00B3B743 /* С2GroupView */,
+				4EB3A2BC2A87F44000B3B743 /* TimeAgenda */,
 				4E48DFD8294EC4D400E29ABD /* AgendaView.swift */,
 				CE3ADCFA2A73AAB0008F922B /* DataController.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CE41AE012AA84841004AE375 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				CE41AE022AA84884004AE375 /* TVProgressBlock.swift */,
+				CE41AE042AA849CC004AE375 /* ProgressView.swift */,
+				CE76BC142AA84C1800725ED0 /* CircularView.swift */,
+			);
+			path = Progress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -844,20 +892,26 @@
 				4E55324427666AF20013E097 /* ViewModifications.swift in Sources */,
 				4EBAB25E2873990200A2AC05 /* TVToDoBlock.swift in Sources */,
 				4EB9E53929C632AE00D41AC1 /* Sorting.swift in Sources */,
+				4EDC0FEE2A893B5A001A70D1 /* EmojiPicker.swift in Sources */,
 				4E8209AA2A4D9476006E8CC1 /* C2NavViewPresenter.swift in Sources */,
 				4E55323D2766412F0013E097 /* Note+CoreDataProperties.swift in Sources */,
 				4EFA5FB7274077540096F021 /* NoteItem+CoreDataClass.swift in Sources */,
+				CE41AE032AA84884004AE375 /* TVProgressBlock.swift in Sources */,
 				4E48DFD9294EC4D400E29ABD /* AgendaView.swift in Sources */,
 				4E53FD6F29E169B300C0FFC3 /* PersistenceBlockController.swift in Sources */,
 				4EBAB24F2873983400A2AC05 /* TVTitleBlock.swift in Sources */,
 				4EFA5FB8274077540096F021 /* NoteItem+CoreDataProperties.swift in Sources */,
 				CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */,
+				E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */,
 				4E53EAFB2794288800D89CB7 /* DynamicHeightCollectionView.swift in Sources */,
 				4EF38796298D633F00CC1306 /* dockButton.swift in Sources */,
 				4E58B39C2972C89E00710CE7 /* TVSpaceBlock.swift in Sources */,
+				CE41AE052AA849CC004AE375 /* ProgressView.swift in Sources */,
 				4E239C9727A46FE1000A51A6 /* groupViewCell.swift in Sources */,
 				4EAB131129CC91AE00416718 /* Photo+CoreDataProperties.swift in Sources */,
 				4E1803AA274058EA0096A87C /* SceneDelegate.swift in Sources */,
+				CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */,
+				4EB3A2BE2A87F54D00B3B743 /* С2GroupVM.swift in Sources */,
 				CE3ADCFB2A73AAB0008F922B /* DataController.swift in Sources */,
 				4EAB130429CC3F9F00416718 /* ImageCollectionViewCell.swift in Sources */,
 				4EFA5FBD27407A080096F021 /* Persistence.swift in Sources */,
@@ -867,7 +921,9 @@
 				4E0EBDBD2971AE5C002530FF /* SnowScene.swift in Sources */,
 				4EFA5FBB274079D80096F021 /* Extensions.swift in Sources */,
 				4E48DFCE294EB9A100E29ABD /* TimeAgendaController.swift in Sources */,
+				4EB3A2BB2A87F42C00B3B743 /* C2GroupView.swift in Sources */,
 				4E8A43182A62C2BE004999CF /* C3NoteDetailVC.swift in Sources */,
+				4ED5C4612A92B5400009DC5E /* CustomPopoverView.swift in Sources */,
 				4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,
@@ -1066,7 +1122,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.6.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1097,7 +1153,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.6.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

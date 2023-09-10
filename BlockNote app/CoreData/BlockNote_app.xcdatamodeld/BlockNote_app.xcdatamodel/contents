@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G651" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Agenda" representedClassName=".Agenda" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -11,8 +11,9 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="agendaItems" inverseEntity="GroupType"/>
     </entity>
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
+        <attribute name="emoji" optional="YES" attributeType="String"/>
         <attribute name="groupColor" optional="YES" attributeType="String"/>
-        <attribute name="groupName" optional="YES" attributeType="String"/>
+        <attribute name="groupName" attributeType="String" defaultValueString="No group name"/>
         <attribute name="lastChangedGroup" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="agendaItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Agenda" inverseName="group" inverseEntity="Agenda"/>
