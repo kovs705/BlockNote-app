@@ -21,7 +21,7 @@ class C3NoteDetailVC: UIViewController {
     var addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
     let textDockButton = dockTextButton(frame: .zero)
     var thinStatusBar = UIVisualEffectView()
-    let heightForStatusBar: CGFloat = 45
+    let heightForStatusBar: CGFloat = 55
     
     @IBOutlet weak var noteListTB: UITableView!
     let notificationCenter = NotificationCenter.default

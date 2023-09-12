@@ -12,17 +12,11 @@ enum TimeAgendaIntent {
     case test
 }
 
-struct TimeAgendaState {
-    // states
-}
-
 class TimeAgendaViewModel: ObservableObject {
     
-    @Published var state: TimeAgendaState
     var persistenceController: PersistenceController
     
-    init(state: TimeAgendaState = TimeAgendaState(), persC: PersistenceController = PersistenceController()) {
-        self.state = state
+    init(persC: PersistenceController = PersistenceController()) {
         self.persistenceController = persC
     }
     

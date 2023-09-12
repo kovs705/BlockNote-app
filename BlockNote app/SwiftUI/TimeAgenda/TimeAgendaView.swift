@@ -15,8 +15,9 @@ struct TimeAgendaView: View {
     var body: some View {
         NavigationStack {
             List(group.itemsOfAgendaArray) { agenda in
-                Text(agenda.wrappedAgendaName)
+                Text("Hello")
             }
+            .navigationTitle("Agenda")
         }
     }
 }
@@ -26,7 +27,7 @@ struct TimeAgendaView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     
     static var previews: some View {
-        TimeAgendaView(viewModel: TimeAgendaViewModel(state: TimeAgendaState(), persC: PersistenceController()), group: GroupType.example)
+        TimeAgendaView(viewModel: TimeAgendaViewModel(), group: GroupType.example)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }

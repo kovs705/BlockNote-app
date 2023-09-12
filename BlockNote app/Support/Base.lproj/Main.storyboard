@@ -653,7 +653,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" verticalHuggingPriority="500" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-tY-6AV" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="158.33333333333334"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="122"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -712,7 +712,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-iJ-9FV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="42.333333333333336"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -800,7 +800,22 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCt-iz-t32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4246" y="41"/>
+            <point key="canvasLocation" x="2675" y="-648"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="diT-0K-a2h">
+            <objects>
+                <viewController id="NK4-mG-fc7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k6A-qi-bAn">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YAT-dp-vTy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2m-Ri-2U9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3349" y="-648"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">

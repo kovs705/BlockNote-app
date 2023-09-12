@@ -120,10 +120,9 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
     func performTransitionToDetailVC(groupType: GroupType) {
         let coordinator = Builder()
         let detailVC = coordinator.getC2DetailVC(groupType: groupType)
-//        detailVC.modalTransitionStyle = .coverVertical
-        detailVC.modalTransitionStyle = .crossDissolve
-        detailVC.modalPresentationStyle = .currentContext
-//        detailVC.modalPresentationStyle = .fullScreen
+        
+        detailVC.modalTransitionStyle = .coverVertical
+        detailVC.modalPresentationStyle = .fullScreen
         
         self.view?.performTransition(to: detailVC)
     }

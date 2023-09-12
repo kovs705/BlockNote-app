@@ -11,6 +11,7 @@ protocol BuilderProtocol {
     func getC2NavView() -> UIViewController
     func getC2DetailVC(groupType: GroupType) -> UIViewController
     func getC3NoteDetailVC(note: Note) -> UIViewController
+    func getAgendaVC(group: GroupType) -> UIViewController
 }
 
 final class Builder: BuilderProtocol {
@@ -33,6 +34,13 @@ final class Builder: BuilderProtocol {
         let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "noteDetail") as! C3NoteDetailVC
         let persistenceBC = PersistenceBlockController()
         let presenter = C3NoteDetailPresenter(view: view, persistenceBC: persistenceBC, note: note)
+        view.presenter = presenter
+        return view
+    }
+    
+    func getAgendaVC(group: GroupType) -> UIViewController {
+        let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "agenda") as! AgendaVC
+        let presenter = AgendaVCPresenter(view: view, group: group)
         view.presenter = presenter
         return view
     }

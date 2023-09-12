@@ -22,7 +22,6 @@ class C2NavViewControllerVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var snowBackgroundScene: SKView!
     
-    let heightForStatusBar: CGFloat = 45
     var thinStatusBar = UIVisualEffectView()
     
     var sortingKey: String = SortOrder.optimized
@@ -138,7 +137,7 @@ class C2NavViewControllerVC: UIViewController {
         thinStatusBar.effect = blurEffect
         
         thinStatusBar.snp.makeConstraints { make in
-            make.height.equalTo(heightForStatusBar)
+            make.height.equalTo(55)
             make.width.equalTo(view.snp.width)
             make.top.equalTo(view)
         }

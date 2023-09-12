@@ -15,8 +15,6 @@ struct AgendaView: View {
     let today = Date.now
     var formatter1 = DateFormatter()
     
-    
-    
     var isLast: Bool
     
     var body: some View {
