@@ -611,10 +611,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="muJ-CE-k8e">
-                        <barButtonItem key="rightBarButtonItem" id="eL4-7H-cri">
-                            <imageReference key="image" image="calendar" catalog="system" renderingMode="original"/>
+                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="eL4-7H-cri">
+                            <imageReference key="image" image="calendar" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                <hierarchicalColors>
+                                    <color systemColor="systemRedColor"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
                             <connections>
-                                <segue destination="t58-U1-ekL" kind="show" identifier="agenda" id="zZY-Ws-ILv"/>
+                                <action selector="pushToAgenda:" destination="Tgf-rB-iEw" id="u5c-3a-n58"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -768,54 +774,20 @@
             <point key="canvasLocation" x="3458.4615384615386" y="37.677725118483409"/>
         </scene>
         <!--AgendaVC-->
-        <scene sceneID="h9J-S5-wsg">
-            <objects>
-                <tableViewController storyboardIdentifier="agenda" id="t58-U1-ekL" customClass="AgendaVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fYw-rl-mMe">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="agenda" id="F5y-n5-ojG">
-                                <rect key="frame" x="0.0" y="50" width="390" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F5y-n5-ojG" id="CLl-A0-RYO">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="t58-U1-ekL" id="xpV-rs-viW"/>
-                            <outlet property="delegate" destination="t58-U1-ekL" id="RDg-L7-eo1"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="OVj-v0-eNH"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="390" height="844"/>
-                    <connections>
-                        <outlet property="agendaTBC" destination="fYw-rl-mMe" id="2re-E8-eBK"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fCt-iz-t32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2675" y="-648"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="diT-0K-a2h">
             <objects>
-                <viewController id="NK4-mG-fc7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="agenda" id="NK4-mG-fc7" customClass="AgendaVC" customModule="BlockNote_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k6A-qi-bAn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="YAT-dp-vTy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Pz3-Bt-Uqj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2m-Ri-2U9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3349" y="-648"/>
+            <point key="canvasLocation" x="2677" y="-665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a74-Tz-uUl">
@@ -896,6 +868,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>

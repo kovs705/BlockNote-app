@@ -10,25 +10,20 @@ import SwiftUI
 struct TimeAgendaView: View {
     
     @StateObject var viewModel: TimeAgendaViewModel
-    let group: GroupType
     
     var body: some View {
-        NavigationStack {
-            List(group.itemsOfAgendaArray) { agenda in
-                Text("Hello")
-            }
-            .navigationTitle("Agenda")
+        List(viewModel.group.itemsOfAgendaArray) { agenda in
+            AgendaView(agenda: agenda, isLast: false)
+                .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
+        .navigationTitle("Agenda")
     }
 }
 
 struct TimeAgendaView_Previews: PreviewProvider {
     
-    static var dataController = DataController.preview
-    
     static var previews: some View {
-        TimeAgendaView(viewModel: TimeAgendaViewModel(), group: GroupType.example)
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+        TimeAgendaView(viewModel: TimeAgendaViewModel(group: GroupType.example))
     }
 }

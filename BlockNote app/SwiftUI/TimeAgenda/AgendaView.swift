@@ -10,7 +10,7 @@ import CoreData
 
 struct AgendaView: View {
     
-    let agenda = Agenda()
+    let agenda: Agenda
     
     let today = Date.now
     var formatter1 = DateFormatter()
@@ -18,36 +18,41 @@ struct AgendaView: View {
     var isLast: Bool
     
     var body: some View {
-        VStack(alignment: HorizontalAlignment.leading, spacing: 0) {
+        
             HStack {
+                ZStack(alignment: .center) {
+                    Circle()
+                        .frame(width: 35, height: 35)
+                    if !isLast {
+                        Capsule()
+                            .fill(Color.blue)
+                            .frame(width: 15, height: 35, alignment: .center)
+                            .offset(y: 20)
+                    }
+                }
+                .padding(.horizontal)
+                
                 VStack {
-                    Spacer()
+                    Text(agenda.wrappedAgendaName)
+                        .font(.title3)
+                    
                     Text(formatter1.string(from: today))
                         .font(.system(.caption))
                         .foregroundColor(.gray)
                         .fontWeight(.black)
                 }
-                // end of VStack
                 
-                Circle().fill(.blue).frame(width: 25, height: 25)
-                Text("Задача")
                 Spacer()
+                
                 Image(systemName: "chevron.right")
+                    .padding(.horizontal)
             }
-            // end of HStack
-            
-            if !isLast {
-                Rectangle().fill(Color.blue).frame(width: 1, height: 14, alignment: .center).padding(.leading, 15.5)
-            }
-        }
-        // end of whole VStack
-        
         
     }
 }
 
 struct AgendaView_Previews: PreviewProvider {
     static var previews: some View {
-        AgendaView(isLast: false)
+        AgendaView(agenda: GroupType.example.itemsOfAgendaArray.first!, isLast: false)
     }
 }

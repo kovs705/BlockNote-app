@@ -13,6 +13,8 @@ protocol C2DetailViewProtocol: AnyObject {
     func popVC()
     func presentAlert(_ alert: UIAlertController, animated: Bool)
     func performBatchUpdates()
+    
+    func performTransition(to vc: UIViewController)
 }
 
 protocol C2DetailPresenterProtocol: AnyObject {
@@ -27,8 +29,8 @@ protocol C2DetailPresenterProtocol: AnyObject {
     func sortArray()
     func deleteGroup(groupName: String)
     
-    
     var managedContext: NSManagedObjectContext { get }
+    func performTransitionToAgendaVC(groupType: GroupType)
 }
 
 final class C2DetailPresenter: C2DetailPresenterProtocol {
@@ -178,6 +180,13 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
         
         //        noteName  noteLevel   noteType    noteItems   noteIsMarked
         //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
+    }
+    
+    func performTransitionToAgendaVC(groupType: GroupType) {
+        let coordinator = Builder()
+        let agendaVC = coordinator.getAgendaVC(group: groupType)
+        
+        self.view?.performTransition(to: agendaVC)
     }
     
 }

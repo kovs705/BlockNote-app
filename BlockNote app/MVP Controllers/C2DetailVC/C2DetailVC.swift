@@ -42,7 +42,7 @@ class C2DetailVC: UIViewController {
         
         setupDetailVC(scrollView: scrollView, noteListCollection: noteListCollection, numberOfNotesLabel: numberOfNotesLabel, topBar: topBar, first_column: first_column, second_column: second_column, third_column: third_column)
         
-        navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "calendar", withConfiguration: UIHelper.giveConfigForImage(size: 18, weight: .medium)), style: .plain, target: self, action: #selector(openAgenda))
+        print(presenter.groupType)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,9 +52,9 @@ class C2DetailVC: UIViewController {
     }
     
     // MARK: - Objc funcs
-    @objc func openAgenda() {
-        let vc = UIHostingController(rootView: TimeAgendaView(viewModel: TimeAgendaViewModel(), group: presenter.groupType))
-        navigationController?.pushViewController(vc, animated: true)
+    
+    @IBAction func pushToAgenda(_ sender: UIBarButtonItem) {
+        presenter.performTransitionToAgendaVC(groupType: presenter.groupType)
     }
     
     
@@ -166,6 +166,20 @@ extension C2DetailVC: C2DetailViewProtocol {
     
     func presentAlert(_ alert: UIAlertController, animated: Bool) {
         present(alert, animated: animated)
+    }
+    
+    func pushToAgenda(using groupType: GroupType) {
+        let coordinator = Builder()
+        let vc = coordinator.getAgendaVC(group: groupType)
+        vc.modalPresentationStyle = .popover
+        
+        let uinav = UINavigationController(rootViewController: self)
+        uinav.pushViewController(vc, animated: true)
+    }
+    
+    func performTransition(to vc: UIViewController) {
+//        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

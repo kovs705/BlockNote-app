@@ -16,7 +16,7 @@ class AgendaVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hostingController = UIHostingController(rootView: TimeAgendaView(viewModel: TimeAgendaViewModel(), group: presenter.group))
+        let hostingController = UIHostingController(rootView: TimeAgendaView(viewModel: TimeAgendaViewModel(group: self.presenter.group)))
         addChild(hostingController)
         view.addSubview(hostingController.view)
         hostingController.didMove(toParent: self)
