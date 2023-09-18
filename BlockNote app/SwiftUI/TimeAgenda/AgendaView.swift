@@ -9,16 +9,16 @@ import SwiftUI
 import CoreData
 
 struct AgendaView: View {
-    
+
     let agenda: Agenda
-    
+
     let today = Date.now
     var formatter1 = DateFormatter()
-    
+
     var isLast: Bool
-    
+
     var body: some View {
-        
+
             HStack {
                 ZStack(alignment: .center) {
                     Circle()
@@ -31,23 +31,28 @@ struct AgendaView: View {
                     }
                 }
                 .padding(.horizontal)
-                
+
                 VStack {
                     Text(agenda.wrappedAgendaName)
                         .font(.title3)
-                    
-                    Text(formatter1.string(from: today))
+
+                    Text(showTime())
                         .font(.system(.caption))
                         .foregroundColor(.gray)
                         .fontWeight(.black)
                 }
-                
+
                 Spacer()
-                
+
                 Image(systemName: "chevron.right")
                     .padding(.horizontal)
             }
-        
+
+    }
+
+    func showTime() -> String {
+        formatter1.dateFormat = "DD.mm"
+        return formatter1.string(from: today)
     }
 }
 

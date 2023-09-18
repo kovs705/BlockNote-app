@@ -1,7 +1,7 @@
 //
 //  groupViewCell.swift
 //  BlockNote app
-//ц
+// ц
 //  Created by Kovs on 28.01.2022.
 //
 
@@ -12,14 +12,14 @@ class groupViewCell: GroupUICollectionViewCellAnimated {
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var numberOfNotes: UILabel!
     @IBOutlet weak var groupEmoji: UILabel!
-    
+
     func setGroupCell(group: GroupType) {
         setBackground(group)
         setGroupName(group)
         setNumber(group)
         setGroupEmoji(group)
     }
-    
+
     func setBackground(_ group: GroupType) {
         // containerView.backgroundColor = returnUIColorFromString(string: color)
         containerView.backgroundColor = UIColor.appColor(AssetsColor(rawValue: group.groupColor!)!)
@@ -37,10 +37,9 @@ class groupViewCell: GroupUICollectionViewCellAnimated {
             numberOfNotes.text = "\(number) notes"
         }
     }
-    
+
     func setGroupEmoji(_ group: GroupType) {
         groupEmoji.text = group.wrappedEmoji
     }
-    
-}
 
+}

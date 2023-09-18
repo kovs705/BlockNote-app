@@ -6,31 +6,31 @@
 //
 
 import UIKit
-    
+
 @IBDesignable extension UIView {
-    
+
     @IBInspectable var cornerRadius: CGFloat {
-        
+
         set {
             layer.cornerRadius = newValue
             layer.masksToBounds = cornerRadius > 0
         }
-        
+
         get {
             return layer.cornerRadius
         }
     }
-    
+
     @IBInspectable var borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue
         }
-        
+
         get {
             return layer.borderWidth
         }
     }
-    
+
     @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -39,7 +39,7 @@ import UIKit
             layer.shadowRadius = newValue
         }
     }
-    
+
     @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
@@ -48,7 +48,7 @@ import UIKit
             layer.shadowOpacity = newValue
         }
     }
-    
+
     @IBInspectable var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
@@ -57,7 +57,7 @@ import UIKit
             layer.shadowOffset = newValue
         }
     }
-    
+
     @IBInspectable var shadowColor: UIColor? {
         get {
             if let color = layer.shadowColor {
@@ -65,7 +65,7 @@ import UIKit
             }
             return nil
         }
-        
+
         set {
             if let color = newValue {
                 layer.shadowColor = color.cgColor
@@ -83,5 +83,5 @@ import UIKit
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
     }
-    
+
 }

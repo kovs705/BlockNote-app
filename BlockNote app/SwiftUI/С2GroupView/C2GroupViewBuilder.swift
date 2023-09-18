@@ -8,7 +8,7 @@
 import SwiftUI
 
 class C2GroupViewBuilder {
-    
+
     func setNumber(_ group: GroupType) -> String {
         if group.number == 0 {
             return "0 notes"
@@ -18,7 +18,7 @@ class C2GroupViewBuilder {
            return  "\(group.number) notes"
         }
     }
-    
+
     @ViewBuilder func placeGroupNameAndNumber(name: Binding<String>, group: GroupType) -> some View {
         HStack {
             VStack(alignment: .leading) {
@@ -39,7 +39,7 @@ class C2GroupViewBuilder {
         }
 
     }
-    
+
     @ViewBuilder func placeGroupEmoji(_ emoji: String) -> some View {
         HStack {
             ZStack {
@@ -49,7 +49,7 @@ class C2GroupViewBuilder {
                 Text(emoji)
             }
             .padding(13)
-            
+
             Spacer()
         }
     }

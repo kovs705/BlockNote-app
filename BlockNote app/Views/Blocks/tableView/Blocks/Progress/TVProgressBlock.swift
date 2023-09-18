@@ -12,10 +12,7 @@ class TVProgressBlock: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
-        
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,7 +20,7 @@ class TVProgressBlock: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     override func prepareForReuse() {
         //
     }

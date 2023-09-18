@@ -11,17 +11,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let coordinator = Builder()
-        
-        let vc = UINavigationController(rootViewController: coordinator.getC2NavView())
-        window.rootViewController = vc
+
+        guard let vc = coordinator.getC2NavView() else { return }
+
+        let nav = UINavigationController(rootViewController: vc)
+        window.rootViewController = nav
         window.makeKeyAndVisible()
-        
+
         self.window = window
     }
 
@@ -53,10 +54,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        
+
         // (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
 }
-

@@ -14,7 +14,7 @@ class TableViewAdjustedHeight: UITableView {
         }
         return CGSize(width: self.contentSize.width, height: self.contentSize.height + (UIScreen.main.bounds.height / 2))
     }
-    
+
     override var contentSize: CGSize {
         didSet {
             UIView.performWithoutAnimation {
@@ -22,7 +22,7 @@ class TableViewAdjustedHeight: UITableView {
             }
         }
     }
-    
+
     override func reloadData() {
         UIView.performWithoutAnimation {
             super.reloadData()

@@ -17,21 +17,20 @@ class PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController()
         let viewContext = result.viewContext
-        
+
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             return true
         }
-        
+
         do {
             try viewContext.save()
         } catch let error as NSError {
-            print(error)
-            fatalError()
+            print(error.localizedDescription)
         }
-        
+
         return result
     }()
-    
+
 //    func ultimateSave(for entity: String, blockType: BlockCases, in object: NSManagedObject, blockText: String?, usingArray: [NSManagedObject], tableView: UITableView) {
 //        
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -68,10 +67,10 @@ class PersistenceController {
 //            }
 //        })
 //    }
-    
+
     lazy var persistentContainerOffline: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "BlockNote_app")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -79,4 +78,3 @@ class PersistenceController {
         return container
     }()
 }
-

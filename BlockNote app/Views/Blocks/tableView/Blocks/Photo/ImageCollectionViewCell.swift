@@ -9,9 +9,9 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     static let imageCell = "imageCell"
-    
+
     @IBOutlet weak var imageView: UIImageView!
-    
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }

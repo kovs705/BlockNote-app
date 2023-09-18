@@ -10,14 +10,13 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Customization
-        
-//        UINavigationBar.appearance().backgroundColor = UIColor(named: "DarkBackground")
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "TextForegroundColor") ?? .white]
-        
-        
+
+//        UINavigationBar.appearance().backgroundColor = UIColor(named: "darkBackground")
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "textForegroundColor") ?? .white]
+
         return true
     }
 
@@ -36,22 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data Stack
-    
-    
+
     // let entity = NSEntityDescription.entity(forEntityName: "GroupType", in: CoreDataStack)!
 
-    
     lazy var persistentContainerOffline: NSPersistentContainer = {
-        
+
         let container = NSPersistentContainer(name: "BlockNote_app")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error)")
             }
         })
         return container
     }()
-    
+
 //    lazy var persistentContainer: NSPersistentCloudKitContainer = {
 //
 //        let container = NSPersistentCloudKitContainer(name: "BlockNote_app")
@@ -77,4 +74,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

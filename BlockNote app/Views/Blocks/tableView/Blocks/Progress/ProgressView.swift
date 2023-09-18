@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ProgressView: View {
-    
+
     var startDate: Date
     var endDate: Date
-    
+
     var body: some View {
         HStack {
             CircularView(startDate: startDate, endDate: endDate)
-            
+
             Spacer()
-            
+
             Button(action: {
                 //
             }, label: {
@@ -33,7 +33,7 @@ struct ProgressView: View {
 }
 
 struct ProgressView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         ProgressView(startDate: Date(), endDate: Date())
     }

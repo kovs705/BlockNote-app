@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TimeAgendaView: View {
-    
+
     @StateObject var viewModel: TimeAgendaViewModel
-    
+
     var body: some View {
         List(viewModel.group.itemsOfAgendaArray) { agenda in
             AgendaView(agenda: agenda, isLast: false)
@@ -22,7 +22,7 @@ struct TimeAgendaView: View {
 }
 
 struct TimeAgendaView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         TimeAgendaView(viewModel: TimeAgendaViewModel(group: GroupType.example))
     }

@@ -19,7 +19,7 @@
 		4E1803B2274058EA0096A87C /* BlockNote_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803B0274058EA0096A87C /* BlockNote_app.xcdatamodeld */; };
 		4E1803B4274058F00096A87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1803B3274058F00096A87C /* Assets.xcassets */; };
 		4E1803B7274058F00096A87C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1803B5274058F00096A87C /* LaunchScreen.storyboard */; };
-		4E1803C2274058F00096A87C /* BlockNote_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803C1274058F00096A87C /* BlockNote_appTests.swift */; };
+		4E1803C2274058F00096A87C /* BlockNoteAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803C1274058F00096A87C /* BlockNoteAppTests.swift */; };
 		4E1803CC274058F00096A87C /* BlockNote_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */; };
 		4E1803CE274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */; };
 		4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A41A72A59803A007BFC4A /* C2DetailVC.swift */; };
@@ -120,7 +120,7 @@
 		4E1803B6274058F00096A87C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E1803B8274058F00096A87C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E1803BD274058F00096A87C /* BlockNote appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlockNote appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E1803C1274058F00096A87C /* BlockNote_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appTests.swift; sourceTree = "<group>"; };
+		4E1803C1274058F00096A87C /* BlockNoteAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNoteAppTests.swift; sourceTree = "<group>"; };
 		4E1803C7274058F00096A87C /* BlockNote appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlockNote appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1803CB274058F00096A87C /* BlockNote_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITests.swift; sourceTree = "<group>"; };
 		4E1803CD274058F00096A87C /* BlockNote_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNote_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		4E1803C0274058F00096A87C /* BlockNote appTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E1803C1274058F00096A87C /* BlockNote_appTests.swift */,
+				4E1803C1274058F00096A87C /* BlockNoteAppTests.swift */,
 			);
 			path = "BlockNote appTests";
 			sourceTree = "<group>";
@@ -647,6 +647,7 @@
 				4E1803A1274058EA0096A87C /* Frameworks */,
 				4E1803A2274058EA0096A87C /* Resources */,
 				08EB21DF2050F7BAC60073E1 /* [CP] Embed Pods Frameworks */,
+				E53920982AB8AF92006641F7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -877,6 +878,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlockNote app-BlockNote appUITests/Pods-BlockNote app-BlockNote appUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E53920982AB8AF92006641F7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -952,7 +970,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E1803C2274058F00096A87C /* BlockNote_appTests.swift in Sources */,
+				4E1803C2274058F00096A87C /* BlockNoteAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,7 +1206,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1214,7 +1232,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1239,6 +1257,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1263,6 +1282,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PVHGUKPAW;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

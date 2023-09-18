@@ -8,10 +8,10 @@
 import UIKit
 
 final class UIHelper {
-    
+
     static func giveConfigForImage(size: CGFloat, weight: UIImage.SymbolWeight) -> UIImage.SymbolConfiguration {
         let config = UIImage.SymbolConfiguration(pointSize: size, weight: weight)
         return config
     }
-    
+
 }

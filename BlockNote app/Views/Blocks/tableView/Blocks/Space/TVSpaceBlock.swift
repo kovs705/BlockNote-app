@@ -8,18 +8,18 @@
 import UIKit
 
 class TVSpaceBlock: UITableViewCell {
-    
-    let lineView = UIView(frame: CGRectMake(20, 15, UIScreen.main.bounds.width-40, 1))
-    
+
+    let lineView = UIView(frame: CGRect(x: 20, y: 15, width: UIScreen.main.bounds.width - 40, height: 1))
+
     override func awakeFromNib() {
         super.awakeFromNib()
         configureLineView()
     }
-    
+
     private func configureLineView() {
         lineView.backgroundColor = .darkGray
         self.addSubview(lineView)
-        
+
         NSLayoutConstraint.activate([
             lineView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])

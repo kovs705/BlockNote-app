@@ -9,25 +9,24 @@
 import Foundation
 import CoreData
 
-
 extension NoteItem {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<NoteItem> {
         return NSFetchRequest<NoteItem>(entityName: "NoteItem")
     }
-    
+
     @NSManaged var noteItemOrder: Int
-    
+
     @NSManaged public var noteItemType: String?
     @NSManaged public var noteItemName: String?
     @NSManaged public var lastChangedNI: Date?
-    
+
     @NSManaged public var noteItemPhoto: Data?
     @NSManaged public var isFocused: Bool
-    
+
     @NSManaged public var noteItemText: String
     @NSManaged public var note: Note?
-    
+
     public var wrappedNoteItemName: String {
         noteItemName ?? "Unknown NoteItem name"
     }
@@ -39,6 +38,6 @@ extension NoteItem {
     }
 }
 
-extension NoteItem : Identifiable {
+extension NoteItem: Identifiable {
 
 }

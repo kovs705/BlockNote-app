@@ -5,7 +5,6 @@
 //  Created by Kovs on 16.01.2022.
 //
 
-
 import UIKit
 
 class DynamicHeightCollectionView: UICollectionView {
@@ -15,7 +14,7 @@ class DynamicHeightCollectionView: UICollectionView {
             self.invalidateIntrinsicContentSize()
         }
     }
-    
+
     override var intrinsicContentSize: CGSize {
         return contentSize
     }

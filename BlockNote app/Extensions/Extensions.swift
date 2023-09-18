@@ -18,7 +18,7 @@ extension UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
+
     // быстро добавить тень к любой вьюхе, одной строчкой (аналогично примеру вызова функции выше)
     func addShadow(color: CGColor, opacity: Float, shadowOffset: CGSize, shadowRadius: CGFloat) {
         self.layer.shadowColor = color
@@ -28,7 +28,7 @@ extension UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
     }
-    
+
     // анимирование надавливания для кнопок
     func animatePressing(isRestoring: Bool) {
         UIView.animate(withDuration: 0.25, delay: 0, options: [.beginFromCurrentState, .curveEaseInOut]) {
@@ -58,12 +58,12 @@ extension UIApplication {
 
 extension Publishers {
     static var keyboardHeight: AnyPublisher<CGFloat, Never> {
-        
+
         let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
             .map { $0.keyboardHeight }
         let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
             .map { _ in CGFloat(0) }
-        
+
         return MergeMany(willShow, willHide)
             .eraseToAnyPublisher()
     }
@@ -89,19 +89,19 @@ extension UIResponder {
  // MARK: - KeyboardAdaptive Struct
 struct KeyboardAdaptive: ViewModifier {
     @State private var bottomPadding: CGFloat = 0
-    
+
     func body(content: Content) -> some View {
-        
+
         GeometryReader { geometry in
             content
                 .padding(.bottom, self.bottomPadding)
-                
+
                 .onReceive(Publishers.keyboardHeight) { keyboardHeight in
                     withAnimation(.easeOut(duration: 0.16)) {
                         let keyboardTop = geometry.frame(in: .global).height - keyboardHeight
-                        
+
                         let focusedTextInputBottom = UIResponder.currentFirstResponder?.globalFrame?.maxY ?? 0
-                        
+
                         self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
                     }
             }
@@ -110,13 +110,12 @@ struct KeyboardAdaptive: ViewModifier {
     }
 }
 
-
 // MARK: - View Extensions
 extension View {
     func keyboardAdaptive() -> some View {
         ModifiedContent(content: self, modifier: KeyboardAdaptive())
     }
-    
+
     func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
@@ -125,7 +124,7 @@ extension View {
 
 // MARK: - Transparent back for sheets
 extension View {
-    
+
     func blurredSheet<Content: View>(_ style: AnyShapeStyle, show: Binding<Bool>, onDismiss: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) -> some View {
         self
             .sheet(isPresented: show, onDismiss: onDismiss, content: {
@@ -139,11 +138,11 @@ extension View {
                     }
             })
     }
-    
+
 }
 
 struct BackgroundClearView: UIViewRepresentable {
-    
+
     func makeUIView(context: Context) -> UIView {
         return UIView()
     }
@@ -155,11 +154,10 @@ struct BackgroundClearView: UIViewRepresentable {
     }
 }
 
-
 // MARK: - BluredButtonInTabBar
 struct BluredButtonInTabBar: ButtonStyle {
     @Environment(\.colorScheme) public var detectTheme
-    
+
     func makeBody(configuration: Self.Configuration) -> some View {
         if detectTheme == .dark {
         configuration.label
@@ -180,26 +178,26 @@ struct BluredButtonInTabBar: ButtonStyle {
 }
 // MARK: - Color Extenstion
 extension Color {
-    static let darkBack = Color("DarkBackground")
-    static let lightPart = Color("LightPart")
+    static let darkBack = Color("darkBackground")
+    static let lightPart = Color("lightPart")
     static let frontBack = Color("FrontBack")
-    
+
     // pastel colors:
-    static let rosePink = Color("RosePink") // rose
-    static let greenAvocado = Color("GreenAvocado") // green
-    static let blueBerry = Color("BlueBerry") // blue
-    static let yellowLemon = Color("YellowLemon") // yellow
-    static let redStrawBerry = Color("RedStrawBerry") // red
-    static let purpleBlackBerry = Color("PurpleBlackBerry") // purple
-    static let greyCloud = Color("GreyCloud") // grey
-    static let brownSugar = Color("BrownSugar") // brown
-    
+    static let rosePink = Color("rosePink") // rose
+    static let greenAvocado = Color("greenAvocado") // green
+    static let blueBerry = Color("blueBerry") // blue
+    static let yellowLemon = Color("yellowLemon") // yellow
+    static let redStrawBerry = Color("redStrawBerry") // red
+    static let purpleBlackBerry = Color("purpleBlackBerry") // purple
+    static let greyCloud = Color("greyCloud") // grey
+    static let brownSugar = Color("brownSugar") // brown
+
     static let backWhite = Color("BackWhite")
     static let backBlock = Color("BackBlock")
-    
-    static let textForeground = Color("TextForegroundColor") // text based on theme (dark and light)
+
+    static let textForeground = Color("textForegroundColor") // text based on theme (dark and light)
     static let itemListBackground = Color("ItemListBackground")
-    
+
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)
     }
@@ -236,7 +234,7 @@ extension UIImage {
     var toData: Data? {
         return pngData()
     }
-    
+
     func getCropRatio() -> CGFloat {
         let widthRatio = self.size.width / self.size.height
         return widthRatio
@@ -244,7 +242,7 @@ extension UIImage {
 }
 
 extension UITableView {
-    
+
     func getAllCells() -> [UITableViewCell] {
         var cells = [UITableViewCell]()
         for i in 0..<self.numberOfSections {
@@ -256,6 +254,5 @@ extension UITableView {
         }
         return cells
     }
-    
-}
 
+}

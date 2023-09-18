@@ -9,14 +9,13 @@
 import Foundation
 import CoreData
 
-
 extension Note {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Note> {
         return NSFetchRequest<Note>(entityName: "Note")
     }
     @NSManaged var noteID: Int
-    
+
     @NSManaged public var noteName: String?
     @NSManaged public var noteLevel: String?
     @NSManaged public var noteType: String?
@@ -60,6 +59,6 @@ extension Note {
 
 }
 
-extension Note : Identifiable {
+extension Note: Identifiable {
 
 }

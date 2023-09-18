@@ -33,7 +33,7 @@ enum Block {
     static let photoBlock = "PhotoBlock"
     static let titleBlock = "TitleBlock"
     static let spaceBlock = "SpaceBlock"
-    
+
     static let blockToSave = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. MEOW"
     static let titleToSave = "Lorem ipsum title"
 }
@@ -50,7 +50,7 @@ enum Keys {
     static let gColor = "groupColor"
     static let gNumber = "number"
     static let noteTypes = "noteTypes"
-    
+
     // note
     static let nID = "noteID"
     static let nName = "noteName"
@@ -60,7 +60,7 @@ enum Keys {
     static let nMarked = "noteIsMarked"
     static let nTypeOfNote = "typeOfNote"
     static let agendaItems = "agendaItems"
-    
+
     // noteItem
     static let niOrder = "noteItemOrder"
     static let niType = "noteItemType"
@@ -68,7 +68,7 @@ enum Keys {
     static let niPhoto = "noteItemPhoto"
     static let niText = "noteItemText"
     static let niNote = "note"
-    
+
     // agenda
     static let aName = "name"
     static let aDesc = "desc"
@@ -88,16 +88,15 @@ enum GreetingPhrases {
 }
 
 enum AssetsColor: String {
-    case BlueBerry
-    case BrownSugar
-    case DarkBackground
-    case GreenAvocado
-    case GreyCloud
-    case LightPart
-    case PurpleBlackBerry
-    case RedStrawBerry
-    case RosePink
-    case TextForegroundColor
-    case YellowLemon
+    case blueBerry
+    case brownSugar
+    case darkBackground
+    case greenAvocado
+    case greyCloud
+    case lightPart
+    case purpleBlackBerry
+    case redStrawBerry
+    case rosePink
+    case textForegroundColor
+    case yellowLemon
 }
-

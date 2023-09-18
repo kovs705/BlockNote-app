@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct EmojiPicker: View {
-    
+
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var emojies: [String] = []
     @State private var type: EmojiType = .emoticons
     let columns = [GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55)), GridItem(.flexible(minimum: 55, maximum: 55))]
-    
+
     var action: (String) -> Void
-    
+
     var body: some View {
         VStack {
             Picker(selection: $type) {
@@ -28,8 +28,7 @@ struct EmojiPicker: View {
             }
             .pickerStyle(.menu)
             .padding(.top, 15)
-            
-            
+
             ScrollView(.horizontal) {
                 LazyHGrid(rows: columns) {
                     ForEach(emojies, id: \.self) { emoji in
@@ -52,13 +51,13 @@ struct EmojiPicker: View {
                     giveEmojies()
                 }
             }
-            .onChange(of: type, perform: { value in
+            .onChange(of: type, perform: { _ in
                 giveEmojies()
             })
         }
         .background(BackgroundClearView())
     }
-    
+
     func giveEmojies() {
         switch type {
         case .letters:
@@ -71,7 +70,7 @@ struct EmojiPicker: View {
             emojies = createEmojies(start: 9100, end: 9300)
         }
     }
-    
+
     func createEmojies(start: Int, end: Int) -> [String] {
         var emojies: [String] = []
         for i in start...end {
@@ -82,11 +81,11 @@ struct EmojiPicker: View {
     }
 }
 
-//struct EmojiPicker_Previews: PreviewProvider {
+// struct EmojiPicker_Previews: PreviewProvider {
 //    static var previews: some View {
 //        EmojiPicker()
 //    }
-//}
+// }
 
 enum EmojiType: String, CaseIterable {
     case letters     = "Letters"

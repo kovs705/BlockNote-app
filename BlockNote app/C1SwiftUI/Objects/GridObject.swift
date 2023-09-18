@@ -10,7 +10,7 @@ import CoreData
 
 struct GridObject: View {
     let groupType: GroupType
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -49,4 +49,3 @@ struct GridObject: View {
 func returnColorFromString(nameOfColor: String) -> Color {
     return Color.init(nameOfColor)
 }
-

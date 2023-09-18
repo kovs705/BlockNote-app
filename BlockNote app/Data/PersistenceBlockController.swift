@@ -9,13 +9,13 @@ import UIKit
 import CoreData
 
 class PersistenceBlockController {
-    
+
     func delegateSave() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
+
         do {
             if managedContext.hasChanges {
                 try managedContext.save()
@@ -26,20 +26,18 @@ class PersistenceBlockController {
             print("Could not update. \(error), \(error.userInfo)")
         }
     }
-    
-    
+
     // MARK: - update block
     func update(blockText: String, block: NoteItem?, noteListTB: UITableView) {
-        
+
 /// update the date of the last changing
         block?.setValue(Date(), forKey: Keys.niLastChanged)
 /// update the text of the block
         block?.setValue(blockText, forKey: Keys.niText)
-        
+
         delegateSave()
     }
-    
-    
+
     func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?) {
         switch type {
         case .title:
@@ -56,8 +54,5 @@ class PersistenceBlockController {
         }
 
     }
-    
-    
-    
-    
+
 }

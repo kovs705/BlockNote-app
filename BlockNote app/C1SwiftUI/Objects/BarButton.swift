@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BarButton: View {
-    
+
     // 4 buttons: Themes, Search, Tasks, Settings:
     @Environment(\.colorScheme) public var detectTheme
-    
+
     var body: some View {
-        
+
         HStack {
             Spacer()
             Button(action: {
@@ -28,13 +28,13 @@ struct BarButton: View {
                 }
                 // .padding()
             }
-            
+
             .cornerRadius(20)
             .buttonStyle(BluredButtonInTabBar())
             .padding(5)
             .padding(.vertical, 5)
             // end of the Themes button
-            
+
             Button(action: {
                 // Search:
             }) {
@@ -47,12 +47,12 @@ struct BarButton: View {
                 }
                 // .padding()
             }
-            
+
             .cornerRadius(20)
             .buttonStyle(BluredButtonInTabBar())
             .padding(5)
             .padding(.vertical, 5)
-            
+
             Button(action: {
                 // Tasks:
             }) {
@@ -65,12 +65,12 @@ struct BarButton: View {
                 }
                 // .padding()
             }
-            
+
             .cornerRadius(20)
             .buttonStyle(BluredButtonInTabBar())
             .padding(5)
             .padding(.vertical, 5)
-            
+
             Button(action: {
                 // Settings:
             }) {
@@ -81,13 +81,13 @@ struct BarButton: View {
                             .font(.system(size: 30))
                     }
                 }
-                
+
             }
             .cornerRadius(20)
             .buttonStyle(BluredButtonInTabBar())
             .padding(3)
             .padding(.vertical, 4)
-            
+
             Spacer()
         }
         .background(BlurView(style: .systemMaterial))

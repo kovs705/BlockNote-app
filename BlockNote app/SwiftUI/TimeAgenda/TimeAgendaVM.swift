@@ -14,15 +14,15 @@ enum TimeAgendaIntent {
 }
 
 class TimeAgendaViewModel: ObservableObject {
-    
+
     var persistenceController: PersistenceController
     var group: GroupType
-    
+
     init(persC: PersistenceController = PersistenceController(), group: GroupType) {
         self.persistenceController = persC
         self.group = group
     }
-    
+
     func reduce(intent: TimeAgendaIntent) {
         switch intent {
         case .test:
@@ -30,6 +30,5 @@ class TimeAgendaViewModel: ObservableObject {
             break
         }
     }
-    
-    
+
 }
