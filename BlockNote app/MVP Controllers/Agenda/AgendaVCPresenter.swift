@@ -11,7 +11,6 @@ import SwiftUI
 
 protocol AgendaViewProtocol: AnyObject {
     
-    
 }
 
 protocol AgendaVCPresenterProtocol: AnyObject {

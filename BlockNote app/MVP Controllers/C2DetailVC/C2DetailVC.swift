@@ -134,7 +134,7 @@ extension C2DetailVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
 
     func pushToNoteDetail(using note: Note) {
         let coordinator = Builder()
-        guard let vc = coordinator.getC3NoteDetailVC(note: note) else { return }
+        let vc = coordinator.getC3NoteDetailVC(note: note)
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .fullScreen // fullscreen?
         present(vc, animated: true)
@@ -165,7 +165,7 @@ extension C2DetailVC: C2DetailViewProtocol {
 
     func pushToAgenda(using groupType: GroupType) {
         let coordinator = Builder()
-        guard let vc = coordinator.getAgendaVC(group: groupType) else { return }
+        let vc = coordinator.getAgendaVC(group: groupType)
         vc.modalPresentationStyle = .popover
 
         let uinav = UINavigationController(rootViewController: self)

@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let coordinator = Builder()
 
-        guard let vc = coordinator.getC2NavView() else { return }
+        let vc = coordinator.getC2NavView()
 
         let nav = UINavigationController(rootViewController: vc)
         window.rootViewController = nav

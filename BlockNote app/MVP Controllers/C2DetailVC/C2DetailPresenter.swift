@@ -180,7 +180,7 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
 
     func performTransitionToAgendaVC(groupType: GroupType) {
         let coordinator = Builder()
-        guard let agendaVC = coordinator.getAgendaVC(group: groupType) else { return }
+        let agendaVC = coordinator.getAgendaVC(group: groupType)
 
         self.view?.performTransition(to: agendaVC)
     }
