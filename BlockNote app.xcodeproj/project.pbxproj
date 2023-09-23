@@ -78,6 +78,8 @@
 		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
+		E52DC01D2ABF2B0200C344F1 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = E52DC01C2ABF2B0200C344F1 /* Markdown */; };
+		E52DC0212ABF327200C344F1 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DC0202ABF327200C344F1 /* StatisticsView.swift */; };
 		E5352BFC2AB65EC9000C9474 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */; };
 		E553D6C42AB0E13300937685 /* AgendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C32AB0E13300937685 /* AgendaVC.swift */; };
 		E553D6C62AB0E14300937685 /* AgendaVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */; };
@@ -181,6 +183,7 @@
 		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
+		E52DC0202ABF327200C344F1 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E553D6C32AB0E13300937685 /* AgendaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVC.swift; sourceTree = "<group>"; };
 		E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVCPresenter.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52DC01D2ABF2B0200C344F1 /* Markdown in Frameworks */,
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
 				6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */,
 			);
@@ -253,6 +257,7 @@
 			children = (
 				CE3ADCF92A73AA6F008F922B /* SwiftUI */,
 				4E8209A52A4D941B006E8CC1 /* MVP Controllers */,
+				E5A30C962AAE4689004BA5EE /* Agenda */,
 				4E8F7EDD298A54080085027A /* Utilites */,
 				4E8F7EE2298A76B60085027A /* Extensions */,
 				4ED53DF0278F1A8E00F79A3F /* Views */,
@@ -363,7 +368,6 @@
 		4E8209A52A4D941B006E8CC1 /* MVP Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E5A30C962AAE4689004BA5EE /* Agenda */,
 				4E8209A82A4D9466006E8CC1 /* C2NavView */,
 				4E1A41A62A598022007BFC4A /* C2DetailVC */,
 				4E8A43162A62C299004999CF /* C3NoteDetail */,
@@ -539,6 +543,7 @@
 		4ED53DF0278F1A8E00F79A3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E52DC01F2ABF326500C344F1 /* New elements */,
 				4EF38792298D617D00CC1306 /* Dock */,
 				4E370B892972A29700C5AF0B /* SnowScene */,
 				4E370B8A2972A2A500C5AF0B /* DynamicHeight */,
@@ -618,6 +623,14 @@
 			path = Progress;
 			sourceTree = "<group>";
 		};
+		E52DC01F2ABF326500C344F1 /* New elements */ = {
+			isa = PBXGroup;
+			children = (
+				E52DC0202ABF327200C344F1 /* StatisticsView.swift */,
+			);
+			path = "New elements";
+			sourceTree = "<group>";
+		};
 		E5352BFA2AB65EB8000C9474 /* ViewElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,11 +656,11 @@
 			buildConfigurationList = 4E1803D1274058F00096A87C /* Build configuration list for PBXNativeTarget "BlockNote app" */;
 			buildPhases = (
 				14650B34698CA4A6938EF95C /* [CP] Check Pods Manifest.lock */,
+				E53920982AB8AF92006641F7 /* ShellScript */,
 				4E1803A0274058EA0096A87C /* Sources */,
 				4E1803A1274058EA0096A87C /* Frameworks */,
 				4E1803A2274058EA0096A87C /* Resources */,
 				08EB21DF2050F7BAC60073E1 /* [CP] Embed Pods Frameworks */,
-				E53920982AB8AF92006641F7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -656,6 +669,7 @@
 			name = "BlockNote app";
 			packageProductDependencies = (
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
+				E52DC01C2ABF2B0200C344F1 /* Markdown */,
 			);
 			productName = "BlockNote app";
 			productReference = 4E1803A4274058EA0096A87C /* BlockNote app.app */;
@@ -734,6 +748,7 @@
 			mainGroup = 4E18039B274058EA0096A87C;
 			packageReferences = (
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
+				E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
 			projectDirPath = "";
@@ -893,7 +908,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -909,6 +924,7 @@
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
+				E52DC0212ABF327200C344F1 /* StatisticsView.swift in Sources */,
 				E553D6C62AB0E14300937685 /* AgendaVCPresenter.swift in Sources */,
 				4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */,
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
@@ -1348,6 +1364,14 @@
 				kind = branch;
 			};
 		};
+		E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-markdown.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1355,6 +1379,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */;
 			productName = CodeEditor;
+		};
+		E52DC01C2ABF2B0200C344F1 /* Markdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 

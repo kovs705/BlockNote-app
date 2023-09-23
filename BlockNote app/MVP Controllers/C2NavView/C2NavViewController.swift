@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SpriteKit
 import SnapKit
 
@@ -23,6 +24,7 @@ class C2NavViewControllerVC: UIViewController {
     @IBOutlet weak var snowBackgroundScene: SKView!
 
     var thinStatusBar = UIVisualEffectView()
+    var thinProgress  = UIVisualEffectView()
 
     var sortingKey: String = SortOrder.optimized
     var presenter: C2NavViewControllerPresenterProtocol!
@@ -41,6 +43,8 @@ class C2NavViewControllerVC: UIViewController {
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
         configureStatusBar()
+        
+        configureStatisticsView()
 
     }
 
@@ -119,13 +123,9 @@ class C2NavViewControllerVC: UIViewController {
 
     // MARK: - UI configurations
     private func configureProgressBarView(progressBarView: UIView) {
-        progressBarView.layer.shadowColor = UIColor.black.cgColor
         progressBarView.layer.masksToBounds = false
         progressBarView.layer.cornerRadius = 20
-        progressBarView.shadowOffset = CGSize(width: 15, height: 0)
-        progressBarView.layer.shadowRadius = 10
-        progressBarView.shadowOpacity = 0.3
-        progressBarView.layer.shadowPath = CGPath(rect: progressBarView.bounds, transform: nil)
+        
     }
 
     func configureStatusBar() {
@@ -139,6 +139,23 @@ class C2NavViewControllerVC: UIViewController {
             make.width.equalTo(view.snp.width)
             make.top.equalTo(view)
         }
+    }
+    
+    func configureStatisticsView() {
+        let hostingController = UIHostingController(rootView: StatisticsView())
+        let statView = hostingController.view!
+        progressBarView.addSubviews(statView)
+
+        statView.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalTo(progressBarView)
+        }
+        
+        statView.cornerRadius = 20
+        
+//        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+//        thinProgress.backgroundColor = .gray
+//        thinProgress.effect = blurEffect
+//        thinProgress.cornerRadius = 20
     }
 
 }

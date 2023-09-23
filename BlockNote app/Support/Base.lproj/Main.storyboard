@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -37,17 +37,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-dg-pTv" userLabel="ProgressBar">
                                                 <rect key="frame" x="40" y="128.66666666666666" width="310" height="199.99999999999997"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH9-uS-rOh">
-                                                        <rect key="frame" x="103.33333333333334" y="83" width="103.66666666666666" height="34.333333333333343"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Add group"/>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" name="LightPart"/>
                                                 <constraints>
-                                                    <constraint firstItem="BH9-uS-rOh" firstAttribute="centerX" secondItem="mEw-dg-pTv" secondAttribute="centerX" id="6oa-Pg-5dS"/>
-                                                    <constraint firstItem="BH9-uS-rOh" firstAttribute="centerY" secondItem="mEw-dg-pTv" secondAttribute="centerY" id="GiX-fh-Cfu"/>
                                                     <constraint firstAttribute="height" constant="200" id="xq2-tP-IuJ">
                                                         <variation key="heightClass=regular-widthClass=regular" constant="250"/>
                                                     </constraint>
@@ -56,17 +46,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                        <size key="value" width="10" height="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                        <color key="value" name="PurpleBlackBerry"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -80,7 +61,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-fS-YkV" userLabel="Stack of buttons">
-                                                        <rect key="frame" x="199" y="0.0" width="111" height="34.333333333333336"/>
+                                                        <rect key="frame" x="199.33333333333334" y="0.0" width="110.66666666666666" height="34.333333333333336"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-Z3-hpx" userLabel="Sort">
                                                                 <rect key="frame" x="0.0" y="0.0" width="54.666666666666664" height="34.333333333333336"/>
@@ -100,7 +81,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mm-xw-OSD">
-                                                                <rect key="frame" x="58.666666666666686" y="0.0" width="52.333333333333343" height="34.333333333333336"/>
+                                                                <rect key="frame" x="58.666666666666657" y="0.0" width="52" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal">
@@ -182,7 +163,7 @@
                                                                     <rect key="frame" x="127" y="13" width="25" height="25"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zam-bW-c75">
-                                                                            <rect key="frame" x="2.6666666666666572" y="8.6666666666666661" width="20" height="7.9999999999999982"/>
+                                                                            <rect key="frame" x="2.6666666666666572" y="8.9999999999999982" width="20" height="7.6666666666666661"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="AbL-oz-8OC"/>
                                                                                 <constraint firstAttribute="height" constant="20" id="BGm-aA-EtE"/>
@@ -269,6 +250,7 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="35"/>
                                             </constraint>
                                             <constraint firstItem="Uw0-wd-HlC" firstAttribute="top" secondItem="PsN-Tm-ZZI" secondAttribute="bottom" constant="15" id="Qcc-Ja-QUB"/>
+                                            <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="75" id="Xkz-hI-9x7"/>
                                             <constraint firstItem="PsN-Tm-ZZI" firstAttribute="leading" secondItem="Va4-J8-r6j" secondAttribute="leading" constant="40" id="eNT-Lz-brv">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                                             </constraint>
@@ -284,7 +266,6 @@
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="leading" secondItem="ioq-X8-C9f" secondAttribute="leading" id="6tq-hE-Cax"/>
                                     <constraint firstAttribute="trailing" secondItem="Va4-J8-r6j" secondAttribute="trailing" id="8cF-Gx-ZqT"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="width" secondItem="ioq-X8-C9f" secondAttribute="width" id="Uec-5f-V54"/>
-                                    <constraint firstItem="cp5-2b-dab" firstAttribute="top" secondItem="Va4-J8-r6j" secondAttribute="top" constant="75" id="Xkz-hI-9x7"/>
                                     <constraint firstItem="Va4-J8-r6j" firstAttribute="top" secondItem="ioq-X8-C9f" secondAttribute="top" id="lsO-9q-fFY">
                                         <variation key="heightClass=compact-widthClass=regular" constant="40"/>
                                     </constraint>
@@ -659,7 +640,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" verticalHuggingPriority="500" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-tY-6AV" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="122"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="158.33333333333334"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -718,7 +699,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-iJ-9FV" userLabel="Text View" customClass="zeroPaddingTV" customModule="BlockNote_app" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="26.333333333333332"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="42.333333333333336"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -809,11 +790,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="6nc-Zv-4kP">
-            <size key="intrinsicContentSize" width="390" height="1017"/>
-        </designable>
         <designable name="MkO-tY-6AV">
-            <size key="intrinsicContentSize" width="1901" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="1911" height="36.333333333333336"/>
         </designable>
         <designable name="Tyg-fh-zK1">
             <size key="intrinsicContentSize" width="310" height="128"/>
@@ -822,7 +800,7 @@
             <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
         <designable name="vAf-iJ-9FV">
-            <size key="intrinsicContentSize" width="45" height="26.333333333333332"/>
+            <size key="intrinsicContentSize" width="55" height="42.333333333333336"/>
         </designable>
     </designables>
     <resources>
@@ -845,9 +823,6 @@
         <namedColor name="FrontBack">
             <color red="0.079000003635883331" green="0.086000002920627594" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="LightPart">
-            <color red="0.93400001525878906" green="0.99599999189376831" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="PurpleBlackBerry">
             <color red="0.83499997854232788" green="0.75099998712539673" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -861,7 +836,7 @@
             <color red="0.97500002384185791" green="0.92500001192092896" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
