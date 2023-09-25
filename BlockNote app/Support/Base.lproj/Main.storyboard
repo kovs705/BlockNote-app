@@ -292,6 +292,8 @@
                         <outlet property="background" destination="6CE-Ri-ZuX" id="CAa-fx-Qy4"/>
                         <outlet property="greetingLabel" destination="cp5-2b-dab" id="Vvu-df-f61"/>
                         <outlet property="groupCollectionView" destination="Uw0-wd-HlC" id="fj8-GV-Cw0"/>
+                        <outlet property="listOfGroups" destination="PsN-Tm-ZZI" id="h8D-lc-Glk"/>
+                        <outlet property="page" destination="Va4-J8-r6j" id="l7Y-wO-tg5"/>
                         <outlet property="progressBarView" destination="mEw-dg-pTv" id="Yk2-Ul-tzU"/>
                         <outlet property="scrollView" destination="ioq-X8-C9f" id="AIg-s6-gzV"/>
                         <outlet property="snowBackgroundScene" destination="sE1-Mt-tze" id="okd-Ep-E94"/>

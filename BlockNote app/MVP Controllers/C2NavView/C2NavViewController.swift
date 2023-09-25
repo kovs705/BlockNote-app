@@ -16,24 +16,28 @@ protocol SKSnowScene {
 
 class C2NavViewControllerVC: UIViewController {
 
+    @IBOutlet weak var page: UIView!
     @IBOutlet var background: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var groupCollectionView: UICollectionView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var snowBackgroundScene: SKView!
+    
+    @IBOutlet weak var listOfGroups: UIStackView!
+    var emptyTitle = UILabel()
+    var back       = UIView()
 
     var thinStatusBar = UIVisualEffectView()
     var thinProgress  = UIVisualEffectView()
-
-    var sortingKey: String = SortOrder.optimized
+    
     var presenter: C2NavViewControllerPresenterProtocol!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter.fetchData(using: sortingKey)
+        presenter.fetchData(using: SortOrder.optimized)
 
         configureProgressBarView(progressBarView: progressBarView)
         configureGroupCollectionView(gCV: groupCollectionView)
@@ -42,10 +46,11 @@ class C2NavViewControllerVC: UIViewController {
 
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
+        scrollView.delegate = self
         configureStatusBar()
         
         configureStatisticsView()
-
+        configureEmptyView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +59,10 @@ class C2NavViewControllerVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
-        presenter.fetchData(using: sortingKey)
+        presenter.fetchData(using: SortOrder.optimized)
+        thinStatusBar.alpha = 0.0
+        
+        checkOnNotes()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,19 +103,16 @@ class C2NavViewControllerVC: UIViewController {
 
         let optimized = UIAlertAction(title: "Number", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.sortingKey = SortOrder.optimized
-            self.presenter.fetchData(using: self.sortingKey)
+            self.presenter.fetchData(using: SortOrder.optimized)
         }
 
         let title = UIAlertAction(title: "Name", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.sortingKey = SortOrder.title
-            self.presenter.fetchData(using: self.sortingKey)
+            self.presenter.fetchData(using: SortOrder.title)
         }
         let lastChangedGroup = UIAlertAction(title: "Creation date", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.sortingKey = SortOrder.lastChangedGroup
-            self.presenter.fetchData(using: self.sortingKey)
+            self.presenter.fetchData(using: SortOrder.lastChangedGroup)
         }
 
         let cancelButton = UIAlertAction(title: "cancel", style: .cancel)
@@ -128,6 +133,7 @@ class C2NavViewControllerVC: UIViewController {
         
     }
 
+    // MARK: status bar
     func configureStatusBar() {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         view.addSubviews(thinStatusBar)
@@ -142,7 +148,7 @@ class C2NavViewControllerVC: UIViewController {
     }
     
     func configureStatisticsView() {
-        let hostingController = UIHostingController(rootView: StatisticsView())
+        let hostingController = UIHostingController(rootView: BlankView())
         let statView = hostingController.view!
         progressBarView.addSubviews(statView)
 
@@ -151,11 +157,47 @@ class C2NavViewControllerVC: UIViewController {
         }
         
         statView.cornerRadius = 20
+    }
+    
+    // MARK: Emoty view config
+    func configureEmptyView() {
+        page.addSubviews(back)
+        back.backgroundColor = UIColor(resource: .frontBack)
+        back.layer.cornerRadius = 25
         
-//        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-//        thinProgress.backgroundColor = .gray
-//        thinProgress.effect = blurEffect
-//        thinProgress.cornerRadius = 20
+        back.snp.makeConstraints { make in
+            make.top.equalTo(listOfGroups.snp.bottom).offset(15)
+            make.leading.equalTo(view).offset(15)
+            make.trailing.equalTo(view).offset(-15)
+            make.height.greaterThanOrEqualTo(50)
+        }
+        
+        back.addSubviews(emptyTitle)
+        
+        emptyTitle.snp.makeConstraints { make in
+            make.centerX.equalTo(back.snp.centerX)
+            make.centerY.equalTo(back.snp.centerY)
+        }
+        
+        emptyTitle.text = "No groups.\nClick + to add a new one!"
+        emptyTitle.numberOfLines = 0
+        emptyTitle.textAlignment = .center
+        emptyTitle.textColor = UIColor.white
+        emptyTitle.font = .systemFont(ofSize: 16, weight: .semibold)
+        
+        back.isHidden = true
+        emptyTitle.isHidden = true
+    }
+    
+    // MARK: Note check
+    func checkOnNotes() {
+        if !presenter.groups.isEmpty {
+            back.isHidden = true
+            emptyTitle.isHidden = true
+        } else {
+            back.isHidden = false
+            emptyTitle.isHidden = false
+        }
     }
 
 }
@@ -178,6 +220,7 @@ extension C2NavViewControllerVC: SKSnowScene {
 // MARK: - Presenter methods
 extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
     func updateData() {
+        checkOnNotes()
         self.groupCollectionView.reloadData()
     }
 
@@ -195,6 +238,24 @@ extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
 
     func showGreeting(with text: String) {
         greetingLabel.text = text
+    }
+}
+
+// MARK: - ScrollView extension
+extension C2NavViewControllerVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= 1 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.thinStatusBar.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.thinStatusBar.alpha = 0.0
+            }
+        }
     }
 }
 

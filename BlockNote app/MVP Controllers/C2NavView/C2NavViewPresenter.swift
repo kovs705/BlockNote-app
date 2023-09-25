@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 
 protocol C2NavViewControllerViewProtocol: AnyObject {
-    var sortingKey: String { get set }
 
     func updateData()
     func update()

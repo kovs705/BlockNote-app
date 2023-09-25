@@ -84,6 +84,7 @@
 		E553D6C42AB0E13300937685 /* AgendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C32AB0E13300937685 /* AgendaVC.swift */; };
 		E553D6C62AB0E14300937685 /* AgendaVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */; };
 		E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */; };
+		E5F8A5832AC206D1006D972B /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8A5822AC206D1006D972B /* BlankView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		E553D6C32AB0E13300937685 /* AgendaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVC.swift; sourceTree = "<group>"; };
 		E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVCPresenter.swift; sourceTree = "<group>"; };
 		E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupViewBuilder.swift; sourceTree = "<group>"; };
+		E5F8A5822AC206D1006D972B /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				E52DC0202ABF327200C344F1 /* StatisticsView.swift */,
+				E5F8A5822AC206D1006D972B /* BlankView.swift */,
 			);
 			path = "New elements";
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
 				4EA3A4692A599FDA002201CD /* Builder.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
+				E5F8A5832AC206D1006D972B /* BlankView.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
@@ -1172,7 +1176,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.3;
+				MARKETING_VERSION = 2.6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1203,7 +1207,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.3;
+				MARKETING_VERSION = 2.6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
