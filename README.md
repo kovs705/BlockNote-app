@@ -3,11 +3,11 @@ App project for people who make notes, not matter what they do. You make make th
 blocks that you can reorder, change and make new pages from them.
 
 ## Stack
-- Swift, SwiftUI
+- Swift, SwiftUI (iOS 16)
 - Storyboard, xib/nib, UI Programmatically
-- MVP
-- CoreData, UserDefaults, cache
-- HERO animations, CodeEditor, SnapKit, SnapKit, CocoaPods
+- MVP + Builder (UIkit), MVI (SwiftUI)
+- CoreData, UserDefaults
+- Apple Swift markdown, CodeEditor, SnapKit, CocoaPods
 
 ## Screenshots
 ### Main Page VC with CollectionView of groups:
@@ -22,12 +22,12 @@ blocks that you can reorder, change and make new pages from them.
 
 ## Requirements
 - ***Open project through the 'xcworkspace' file***
-- iPhone, iPad mini or simulator
+- physical iPhone, iPad mini or simulator
 - iOS 16.0 minimum
 
 ## Things to come
-- Agenda screen
+- [in progress] Agenda screen
 - App for iPad and Mac
 - New CollectionView on the main page with notes and groups together
-- Stats (with new attributes for entities to track them): creationDate and so on...
-- Edit screen for groups (colors, emojis, names)
+- Stats (with new attributes for entities to track them): creationDate, summerize the number of creations and so on...
+- [90% done] Edit screen for groups (colors, emojis, names)
