@@ -1,7 +1,7 @@
 # BlockNote
-App project for people who make notes, not matter what they do. You make this app your own by using different and customizable
-blocks that you can reorder, change and make new pages from them. Currently you can create the basic group, edit it later, create aomw notes with the basic blocks:
-(Spacer, photo, title and text). I'm working on groups color changer and markdown library to customize notes.
+App project for people who make notes, no matter what they do. You make this app your own by using different and customizable
+blocks that you can reorder, change and make new pages from them. Currently you can create the basic group, edit it later, create some notes with the basic blocks:
+(spacer, photo, title and text). I'm working on groups color changer and markdown library to customize notes.
 
 ## Stack
 - Swift, SwiftUI (iOS 16)
