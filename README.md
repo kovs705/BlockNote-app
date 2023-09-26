@@ -9,9 +9,10 @@ blocks that you can reorder, change and make new pages from them. Currently you 
 - MVP + Builder (UIkit), MVI (SwiftUI)
 - CoreData, UserDefaults
 - Apple Swift markdown, CodeEditor, SnapKit, CocoaPods
+- Swiftlint
 
 ## Screenshots
-### Main Page VC with CollectionView of groups:
+### Main Page VC with CollectionView of groups: (outdated)
 <img src="https://user-images.githubusercontent.com/56929597/230763301-967c0952-92e1-4b43-b221-1830224974a5.png" width="356" height="665">  
 
 ### Group Detail VC with TableView of notes:
