@@ -21,12 +21,13 @@ class groupViewCell: GroupUICollectionViewCellAnimated {
     }
 
     func setBackground(_ group: GroupType) {
-        // containerView.backgroundColor = returnUIColorFromString(string: color)
-        containerView.backgroundColor = UIColor.appColor(AssetsColor(rawValue: group.groupColor!)!)
+        containerView.backgroundColor = UIColor.appColor(AssetsColor(rawValue: group.groupColor ?? AssetsColor.textForegroundColor.rawValue) ?? AssetsColor.blueBerry)
     }
+    
     func setGroupName(_ group: GroupType) {
         groupName.text = group.groupName
     }
+    
     func setNumber(_ group: GroupType) {
         guard let number = group.noteTypes?.count else { return }
         if number == 0 {

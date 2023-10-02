@@ -85,7 +85,8 @@ class C2NavViewControllerVC: UIViewController {
                 return
             }
 
-            self.presenter.save(groupName: groupToSave, groupColor: "greenAvocado")
+            self.presenter.save(groupName: groupToSave, groupColor: AssetsColor.allCases.randomElement()?.rawValue ?? "GreenAvocado")
+            
         }
         // cancel action button
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -159,7 +160,7 @@ class C2NavViewControllerVC: UIViewController {
         statView.cornerRadius = 20
     }
     
-    // MARK: Emoty view config
+    // MARK: Empty view config
     func configureEmptyView() {
         page.addSubviews(back)
         back.backgroundColor = UIColor(resource: .frontBack)

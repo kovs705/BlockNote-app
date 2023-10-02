@@ -57,7 +57,7 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
     func fetchData(using sort: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
-
+        
         do {
             groups = try managedContext.fetch(fetchRequest)
             self.view?.updateData()
