@@ -19,7 +19,10 @@ extension Note {
     @NSManaged public var noteName: String?
     @NSManaged public var noteLevel: String?
     @NSManaged public var noteType: String?
+    
     @NSManaged public var lastChangedNote: Date?
+    @NSManaged public var creationDate: Date?
+    
     @NSManaged public var noteItems: NSSet?
     @NSManaged public var noteIsMarked: Bool
 

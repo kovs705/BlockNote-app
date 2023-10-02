@@ -19,7 +19,9 @@ extension NoteItem {
 
     @NSManaged public var noteItemType: String?
     @NSManaged public var noteItemName: String?
+    
     @NSManaged public var lastChangedNI: Date?
+    @NSManaged public var creationDate: Date?
 
     @NSManaged public var noteItemPhoto: Data?
     @NSManaged public var isFocused: Bool

@@ -18,7 +18,10 @@ extension GroupType {
 
     @NSManaged public var groupName: String?
     @NSManaged public var groupColor: String?
+    
     @NSManaged public var lastChangedGroup: Date?
+    @NSManaged public var creationDate: Date?
+    
     @NSManaged public var noteTypes: NSSet?
     @NSManaged public var agendaItems: NSSet?
     @NSManaged public var emoji: String?

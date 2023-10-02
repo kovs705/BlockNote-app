@@ -18,5 +18,7 @@ extension Photo {
     @NSManaged public var photoData: Data?
     @NSManaged public var number: Int16
     @NSManaged public var noteItem: NoteItem?
+    
+    @NSManaged public var creationDate: Date?
 
 }

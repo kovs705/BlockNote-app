@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G651" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G90" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Agenda" representedClassName=".Agenda" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateStart" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
@@ -11,6 +12,7 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="agendaItems" inverseEntity="GroupType"/>
     </entity>
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="emoji" optional="YES" attributeType="String"/>
         <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" attributeType="String" defaultValueString="No group name"/>
@@ -20,6 +22,7 @@
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastChangedNote" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteIsMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -30,6 +33,7 @@
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isFocused" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastChangedNI" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
@@ -41,6 +45,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="noteItem" inverseEntity="Photo"/>
     </entity>
     <entity name="Photo" representedClassName=".Photo" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="photoData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <relationship name="noteItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="photos" inverseEntity="NoteItem"/>

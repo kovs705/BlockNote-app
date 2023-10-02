@@ -81,12 +81,6 @@ struct EmojiPicker: View {
     }
 }
 
-// struct EmojiPicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmojiPicker()
-//    }
-// }
-
 enum EmojiType: String, CaseIterable {
     case letters     = "Letters"
     case misc        = "Misc items"

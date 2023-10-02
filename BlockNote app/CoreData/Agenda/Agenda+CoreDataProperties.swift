@@ -20,6 +20,8 @@ extension Agenda {
 
     @NSManaged public var dateStart: Date?
     @NSManaged public var dateEnd: Date?
+    
+    @NSManaged public var creationDate: Date?
 
     @NSManaged public var color: String?
 

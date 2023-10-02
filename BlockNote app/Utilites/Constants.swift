@@ -49,6 +49,7 @@ enum Keys {
     static let gName = "groupName"
     static let gColor = "groupColor"
     static let gNumber = "number"
+    static let gCreationDate = "creationDate"
     static let noteTypes = "noteTypes"
 
     // note
@@ -60,11 +61,13 @@ enum Keys {
     static let nMarked = "noteIsMarked"
     static let nTypeOfNote = "typeOfNote"
     static let agendaItems = "agendaItems"
+    static let nCreationDate = "creationDate"
 
     // noteItem
     static let niOrder = "noteItemOrder"
     static let niType = "noteItemType"
     static let niLastChanged = "lastChangedNI"
+    static let niCreationDate = "creationDate"
     static let niPhoto = "noteItemPhoto"
     static let niText = "noteItemText"
     static let niNote = "note"
@@ -74,6 +77,7 @@ enum Keys {
     static let aDesc = "desc"
     static let aStart = "dateStart"
     static let aEnd = "dateEnd"
+    static let aCreationDate = "creationDate"
     static let aColor = "color"
     static let aIsImportant = "isImportant"
     static let aIsDone = "isDone"

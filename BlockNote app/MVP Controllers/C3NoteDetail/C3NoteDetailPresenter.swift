@@ -52,7 +52,7 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
     /// Delete block
     func deleteblock(noteListTB: UITableView, at indexPath: IndexPath)
 
-    // Persistence funcs:
+    /// Persistence funcs:
     func delegateSave()
 }
 
@@ -129,6 +129,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         }
 
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
+        blockItem.setValue(Date(), forKey: Keys.niCreationDate)
 
         // MARK: - Give an order number for note:
         if noteItemArray_sorted.isEmpty {

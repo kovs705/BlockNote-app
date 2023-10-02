@@ -32,10 +32,8 @@ class C2GroupViewModel: ObservableObject {
         switch intent {
         case .test:
             print("Test")
-            break
         case .saveChanges:
             saveChanges()
-            break
         case .presentSheet:
             presentSheet.toggle()
         case .updateEmoji(let emoji):
@@ -50,6 +48,7 @@ class C2GroupViewModel: ObservableObject {
         group.emoji = groupEmoji
         group.groupName = groupName
         group.groupColor = groupColor
+        group.lastChangedGroup = Date()
 
         do {
             try managedContext.save()

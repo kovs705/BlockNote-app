@@ -149,6 +149,7 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
         }
 
         note.setValue("Test level", forKey: Keys.nLevel)
+        note.setValue(Date(), forKey: Keys.nCreationDate)
 
         if noteName == "" || noteName.isEmpty {
             acceptAttention()
