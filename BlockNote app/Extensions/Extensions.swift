@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 extension UIView {
-    // незамений помощник быстро добавить массив из вьюх (UIButton, UIView, UILabel и тд.)
+    // незаменимый помощник быстро добавить массив из вьюх (UIButton, UIView, UILabel и тд.)
     // пример: view.addSubviews(button, layer, image) - всё.
     func addSubviews(_ views: UIView...) {
         for view in views {

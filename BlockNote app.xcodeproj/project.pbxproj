@@ -226,6 +226,7 @@
 		4E076B242944C914000F7E8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CE3ADCFA2A73AAB0008F922B /* DataController.swift */,
 				4EFA5FBC27407A080096F021 /* Persistence.swift */,
 				4E53FD6E29E169B300C0FFC3 /* PersistenceBlockController.swift */,
 			);
@@ -257,15 +258,11 @@
 		4E1803A6274058EA0096A87C /* BlockNote app */ = {
 			isa = PBXGroup;
 			children = (
-				CE3ADCF92A73AA6F008F922B /* SwiftUI */,
-				4E8209A52A4D941B006E8CC1 /* MVP Controllers */,
-				E5A30C962AAE4689004BA5EE /* Agenda */,
+				E5787C0B2ACB525C000EC2F9 /* Presentation */,
 				4E8F7EDD298A54080085027A /* Utilites */,
 				4E8F7EE2298A76B60085027A /* Extensions */,
-				4ED53DF0278F1A8E00F79A3F /* Views */,
 				4E1803B8274058F00096A87C /* Info.plist */,
-				4E076B242944C914000F7E8F /* Data */,
-				4E1803DE27405CA00096A87C /* CoreData */,
+				E5787C0E2ACB5419000EC2F9 /* Transportation */,
 				4E8F7EDC298A53B50085027A /* Support */,
 			);
 			path = "BlockNote app";
@@ -291,7 +288,6 @@
 		4E1803DE27405CA00096A87C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CE3ADCFA2A73AAB0008F922B /* DataController.swift */,
 				4E639F50274C126F000E249A /* GroupType */,
 				4E55323727663FCA0013E097 /* Note */,
 				4E55323E276642A30013E097 /* NoteItem */,
@@ -403,7 +399,6 @@
 				4E1803A9274058EA0096A87C /* SceneDelegate.swift */,
 				4E1803B3274058F00096A87C /* Assets.xcassets */,
 				4E1803B5274058F00096A87C /* LaunchScreen.storyboard */,
-				4EA3A4682A599FDA002201CD /* Builder.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -424,7 +419,6 @@
 			children = (
 				4EFA5FBA274079D80096F021 /* Extensions.swift */,
 				4EB9E53629C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift */,
-				4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +435,7 @@
 		4EAC48C228089E310094181B /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				E5787C0C2ACB5375000EC2F9 /* collectionView */,
 				4EE639CF282C6DA600CD08B2 /* tableView */,
 			);
 			path = Blocks;
@@ -545,12 +540,12 @@
 		4ED53DF0278F1A8E00F79A3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E52DC01F2ABF326500C344F1 /* New elements */,
+				E5787C0D2ACB53F5000EC2F9 /* Custom views */,
+				E52DC01F2ABF326500C344F1 /* UISubElements */,
 				4EF38792298D617D00CC1306 /* Dock */,
 				4E370B892972A29700C5AF0B /* SnowScene */,
 				4E370B8A2972A2A500C5AF0B /* DynamicHeight */,
 				4EAC48C228089E310094181B /* Blocks */,
-				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -625,13 +620,13 @@
 			path = Progress;
 			sourceTree = "<group>";
 		};
-		E52DC01F2ABF326500C344F1 /* New elements */ = {
+		E52DC01F2ABF326500C344F1 /* UISubElements */ = {
 			isa = PBXGroup;
 			children = (
 				E52DC0202ABF327200C344F1 /* StatisticsView.swift */,
 				E5F8A5822AC206D1006D972B /* BlankView.swift */,
 			);
-			path = "New elements";
+			path = UISubElements;
 			sourceTree = "<group>";
 		};
 		E5352BFA2AB65EB8000C9474 /* ViewElements */ = {
@@ -640,6 +635,43 @@
 				E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */,
 			);
 			path = ViewElements;
+			sourceTree = "<group>";
+		};
+		E5787C0B2ACB525C000EC2F9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CE3ADCF92A73AA6F008F922B /* SwiftUI */,
+				4E8209A52A4D941B006E8CC1 /* MVP Controllers */,
+				E5A30C962AAE4689004BA5EE /* Agenda */,
+				4ED53DF0278F1A8E00F79A3F /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E5787C0C2ACB5375000EC2F9 /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4EF4CBCA27F1E76F0034D66B /* ViewCells */,
+			);
+			path = collectionView;
+			sourceTree = "<group>";
+		};
+		E5787C0D2ACB53F5000EC2F9 /* Custom views */ = {
+			isa = PBXGroup;
+			children = (
+				4ED5C4602A92B5400009DC5E /* CustomPopoverView.swift */,
+			);
+			path = "Custom views";
+			sourceTree = "<group>";
+		};
+		E5787C0E2ACB5419000EC2F9 /* Transportation */ = {
+			isa = PBXGroup;
+			children = (
+				4E076B242944C914000F7E8F /* Data */,
+				4E1803DE27405CA00096A87C /* CoreData */,
+				4EA3A4682A599FDA002201CD /* Builder.swift */,
+			);
+			path = Transportation;
 			sourceTree = "<group>";
 		};
 		E5A30C962AAE4689004BA5EE /* Agenda */ = {
@@ -1177,7 +1209,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.5.1;
+				MARKETING_VERSION = 2.6.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1209,7 +1241,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.5.1;
+				MARKETING_VERSION = 2.6.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

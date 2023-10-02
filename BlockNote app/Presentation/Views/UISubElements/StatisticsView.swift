@@ -13,24 +13,17 @@ struct StatisticsView: View {
     
     var body: some View {
         
-//        VStack {
-            ScrollView {
-                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                    RoundedContent()
-                    RoundedContent()
-                    RoundedContent()
-                    RoundedContent()
-                }
+        ScrollView {
+            LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
+                RoundedContent()
+                RoundedContent()
+                RoundedContent()
+                RoundedContent()
             }
-            .padding(10)
-            .animation(.interactiveSpring(duration: 0.4, extraBounce: 0.1), value: gridLayout.count)
-//            
-//            Button(action: {
-//                gridLayout = Array(repeating: .init(.flexible()), count: self.gridLayout.count % 4 + 1)
-//            }, label: {
-//                Text("Change layout")
-//            })
-//        }
+        }
+        .padding(10)
+        .animation(.interactiveSpring(duration: 0.4, extraBounce: 0.1), value: gridLayout.count)
+
     }
     
     @ViewBuilder func RoundedContent() -> some View {
