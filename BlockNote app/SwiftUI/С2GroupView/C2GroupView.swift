@@ -11,6 +11,10 @@ struct C2GroupView: View {
 
     @StateObject var c2groupViewModel: C2GroupViewModel
     var viewBuilder = C2GroupViewBuilder()
+    
+    let colorColumns = [
+        GridItem(.adaptive(minimum: 44))
+    ]
 
     var body: some View {
         Form {
@@ -40,11 +44,17 @@ struct C2GroupView: View {
                         Text(c2groupViewModel.groupEmoji)
                     }
                 }
+                
+                LazyVGrid(columns: colorColumns, content: {
+                    ForEach(GroupColor.allCases, id: \.self) { color in
+                        colorButton(for: color.rawValue)
+                    }
+                })
+//                ColorPicker("Custom color..", selection: $c2groupViewModel.groupColor)
 
             }
 
             Button {
-                // save changes
                 c2groupViewModel.reduce(intent: .saveChanges)
             } label: {
                 Text("Save changes")
@@ -59,6 +69,22 @@ struct C2GroupView: View {
                 c2groupViewModel.reduce(intent: .updateEmoji(emoji: emoji))
             })
                 .presentationDetents([.height(250)])
+        }
+    }
+    
+    func colorButton(for item: String) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 6)
+                .fill(Color(item))
+                .aspectRatio(1, contentMode: .fit)
+            if item == c2groupViewModel.groupColor {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+        }
+        .onTapGesture {
+            c2groupViewModel.groupColor = item
         }
     }
 

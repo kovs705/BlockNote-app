@@ -81,22 +81,33 @@ enum Keys {
 }
 
 enum GreetingPhrases {
-    static let night = "Have a good night ✨"
-    static let morning = "Good morning!☀️"
-    static let day = "Have a great day! ⛅️"
-    static let evening = "Good evening 🌇"
+    static let night    = "Have a good night ✨"
+    static let morning  = "Good morning!☀️"
+    static let day      = "Have a great day! ⛅️"
+    static let evening  = "Good evening 🌇"
 }
 
-enum AssetsColor: String {
-    case blueBerry
-    case brownSugar
-    case darkBackground
-    case greenAvocado
-    case greyCloud
-    case lightPart
-    case purpleBlackBerry
-    case redStrawBerry
-    case rosePink
-    case textForegroundColor
-    case yellowLemon
+enum AssetsColor: String, CaseIterable {
+    case blueBerry      = "blueBerry"
+    case brownSugar     = "brownSugar"
+    case darkBackground = "darkBackground"
+    case greenAvocado   = "greenAvocado"
+    case greyCloud      = "greyCloud"
+    case lightPart      = "lightPart"
+    case purpleBlackBerry = "purpleBlackBerry"
+    case redStrawBerry  = "redStrawBerry"
+    case rosePink       = "rosePink"
+    case textForegroundColor = "textForegroundColor"
+    case yellowLemon    = "yellowLemon"
+}
+
+enum GroupColor: String, CaseIterable {
+    case blueBerry      = "blueBerry"
+    case brownSugar     = "brownSugar"
+    case greenAvocado   = "greenAvocado"
+    case greyCloud      = "greyCloud"
+    case purpleBlackberry = "purpleBlackBerry"
+    case redStrawBerry  = "redStrawBerry"
+    case rosePink       = "rosePink"
+    case yellowLemon    = "yellowLemon"
 }
