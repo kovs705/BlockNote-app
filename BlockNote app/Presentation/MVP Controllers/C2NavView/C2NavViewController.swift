@@ -24,6 +24,8 @@ class C2NavViewControllerVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var snowBackgroundScene: SKView!
     
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var listOfGroups: UIStackView!
     var emptyTitle = UILabel()
     var back       = UIView()

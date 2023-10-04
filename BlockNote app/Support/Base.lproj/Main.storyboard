@@ -650,6 +650,9 @@
                                                 </textView>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmH-jj-69n">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="122"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="dS4-hp-wzd"/>
+                                                    </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -667,6 +670,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentView" destination="YFl-HJ-BFa" id="9vd-3F-dp0"/>
+                                            <outlet property="focusLineHeightConstraint" destination="dS4-hp-wzd" id="lEm-an-TOG"/>
                                             <outlet property="label" destination="XmH-jj-69n" id="W7h-U4-Yur"/>
                                             <outlet property="textView" destination="MkO-tY-6AV" id="7Ac-WQ-7qR"/>
                                         </connections>

@@ -63,3 +63,12 @@ struct CustomPopoverView<Content: View>: View {
         .ignoresSafeArea()
     }
 }
+
+struct CustomPopoverView_Preview: PreviewProvider {
+    @State static var state: Bool = true
+    static var previews: some View {
+        CustomPopoverView(isPresented: $state, maxHeight: 100) {
+            Text("Hi")
+        }
+    }
+}

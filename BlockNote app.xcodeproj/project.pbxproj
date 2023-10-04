@@ -78,7 +78,6 @@
 		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
-		E52DC01D2ABF2B0200C344F1 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = E52DC01C2ABF2B0200C344F1 /* Markdown */; };
 		E52DC0212ABF327200C344F1 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DC0202ABF327200C344F1 /* StatisticsView.swift */; };
 		E5352BFC2AB65EC9000C9474 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */; };
 		E553D6C42AB0E13300937685 /* AgendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C32AB0E13300937685 /* AgendaVC.swift */; };
@@ -198,7 +197,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52DC01D2ABF2B0200C344F1 /* Markdown in Frameworks */,
 				4E44C7AB278CD52C0054E5E2 /* CodeEditor in Frameworks */,
 				6579EBDF275421AF7431A790 /* Pods_BlockNote_app.framework in Frameworks */,
 			);
@@ -261,7 +259,7 @@
 				E5787C0B2ACB525C000EC2F9 /* Presentation */,
 				4E8F7EDD298A54080085027A /* Utilites */,
 				4E8F7EE2298A76B60085027A /* Extensions */,
-				4E1803B8274058F00096A87C /* Info.plist */,
+				E5787C102ACB5706000EC2F9 /* plist */,
 				E5787C0E2ACB5419000EC2F9 /* Transportation */,
 				4E8F7EDC298A53B50085027A /* Support */,
 			);
@@ -674,6 +672,14 @@
 			path = Transportation;
 			sourceTree = "<group>";
 		};
+		E5787C102ACB5706000EC2F9 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				4E1803B8274058F00096A87C /* Info.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
 		E5A30C962AAE4689004BA5EE /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,7 +710,6 @@
 			name = "BlockNote app";
 			packageProductDependencies = (
 				4E44C7AA278CD52C0054E5E2 /* CodeEditor */,
-				E52DC01C2ABF2B0200C344F1 /* Markdown */,
 			);
 			productName = "BlockNote app";
 			productReference = 4E1803A4274058EA0096A87C /* BlockNote app.app */;
@@ -783,7 +788,6 @@
 			mainGroup = 4E18039B274058EA0096A87C;
 			packageReferences = (
 				4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */,
-				E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 			);
 			productRefGroup = 4E1803A5274058EA0096A87C /* Products */;
 			projectDirPath = "";
@@ -1209,7 +1213,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.6;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1241,7 +1245,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.6;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1402,14 +1406,6 @@
 				kind = branch;
 			};
 		};
-		E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-markdown.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1417,11 +1413,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E44C7A9278CD52C0054E5E2 /* XCRemoteSwiftPackageReference "CodeEditor" */;
 			productName = CodeEditor;
-		};
-		E52DC01C2ABF2B0200C344F1 /* Markdown */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E52DC01B2ABF2B0200C344F1 /* XCRemoteSwiftPackageReference "swift-markdown" */;
-			productName = Markdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 

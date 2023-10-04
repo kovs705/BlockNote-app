@@ -420,20 +420,25 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             }
 
             cell.loadText(for: noteItem) { [weak tableView] string in
-                tableView?.performBatchUpdates({
-                    cell.textView.text = string
-                    cell.label.text = string
-                })
+                UIView.performWithoutAnimation {
+                    tableView?.performBatchUpdates({
+                        cell.textView.text = string
+                        cell.label.text = string
+                    })
+                }
             }
 
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
                 self.indexOfBlock = indexPath.row
-                tableView?.performBatchUpdates({
-                    cell.label.text = newText
-                    self.presenter.getText(text: newText, noteListTB: self.noteListTB)
-                })
+                
+                UIView.performWithoutAnimation {
+                    tableView?.performBatchUpdates({
+                        cell.label.text = newText
+                        self.presenter.getText(text: newText, noteListTB: self.noteListTB)
+                    })
+                }
                 // self.noteListTB.isScrollEnabled = false
                 // cell.scrollToLine(cell.textView)
                 // self.noteListTB.isScrollEnabled = true
