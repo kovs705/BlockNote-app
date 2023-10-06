@@ -15,7 +15,11 @@ class DataController: ObservableObject {
         container = NSPersistentCloudKitContainer(name: "BlockNote_app")
 
         if inMemory {
-            container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
+            if #available(iOS 16.0, *) {
+                container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
+            } else {
+                container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+            }
         }
 
         container.loadPersistentStores { _, error in

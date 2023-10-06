@@ -65,10 +65,16 @@ struct C2GroupView: View {
         .navigationTitle("Edit")
         .blurredSheet(.init(.regularMaterial), show: $c2groupViewModel.presentSheet) {
         } content: {
-            EmojiPicker(action: { emoji in
-                c2groupViewModel.reduce(intent: .updateEmoji(emoji: emoji))
-            })
-                .presentationDetents([.height(250)])
+            if #available(iOS 16.0, *) {
+                EmojiPicker(action: { emoji in
+                    c2groupViewModel.reduce(intent: .updateEmoji(emoji: emoji))
+                })
+                    .presentationDetents([.height(250)])
+            } else {
+                EmojiPicker(action: { emoji in
+                    c2groupViewModel.reduce(intent: .updateEmoji(emoji: emoji))
+                })
+            }
         }
     }
     
