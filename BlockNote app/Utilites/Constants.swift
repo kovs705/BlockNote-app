@@ -101,7 +101,7 @@ enum AssetsColor: String, CaseIterable {
     case purpleBlackBerry = "purpleBlackBerry"
     case redStrawBerry  = "redStrawBerry"
     case rosePink       = "rosePink"
-    case textForegroundColor = "textForegroundColor"
+    case textForegroundColor = "TextForegroundColor"
     case yellowLemon    = "yellowLemon"
 }
 
