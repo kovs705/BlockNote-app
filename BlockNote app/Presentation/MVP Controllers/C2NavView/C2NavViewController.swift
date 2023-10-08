@@ -61,7 +61,7 @@ class C2NavViewControllerVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
-        presenter.fetchData(using: SortOrder.optimized)
+        presenter.fetchData(using: SortOrder.lastChangedGroup)
         thinStatusBar.alpha = 0.0
         
         checkOnNotes()
@@ -87,7 +87,7 @@ class C2NavViewControllerVC: UIViewController {
                 return
             }
 
-            self.presenter.save(groupName: groupToSave, groupColor: AssetsColor.allCases.randomElement()?.rawValue ?? "GreenAvocado")
+            self.presenter.save(groupName: groupToSave, groupColor: GroupColor.allCases.randomElement()?.rawValue ?? "GreenAvocado")
             
         }
         // cancel action button
@@ -117,12 +117,18 @@ class C2NavViewControllerVC: UIViewController {
             guard let self = self else { return }
             self.presenter.fetchData(using: SortOrder.lastChangedGroup)
         }
+        
+        let lastOpened = UIAlertAction(title: "Last opened", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.presenter.fetchData(using: SortOrder.lastOpened)
+        }
 
         let cancelButton = UIAlertAction(title: "cancel", style: .cancel)
 
         alertSheet.addAction(title)
         alertSheet.addAction(optimized)
         alertSheet.addAction(lastChangedGroup)
+        alertSheet.addAction(lastOpened)
 
         alertSheet.addAction(cancelButton)
 
@@ -288,6 +294,10 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
                 UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] _ in
                     guard let self = self else { return }
                     self.presenter.showGroupEdit(group: group as! GroupType)
+                },
+                UIAction(title: "Delete", image: UIImage(systemName: "trash.fill")?.withTintColor(.systemRed).withRenderingMode(.alwaysOriginal)) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.presenter.delete(group: group as! GroupType)
                 }
             ]
 
