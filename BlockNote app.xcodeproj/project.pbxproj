@@ -78,6 +78,9 @@
 		CE76BC152AA84C1800725ED0 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76BC142AA84C1800725ED0 /* CircularView.swift */; };
 		CE79522E2A8369950003EDD8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79522D2A8369950003EDD8 /* UIHelper.swift */; };
 		CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */; };
+		E50767502AD321D400155EB1 /* DictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E507674F2AD321D400155EB1 /* DictView.swift */; };
+		E50767542AD322B400155EB1 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50767532AD322B400155EB1 /* Loader.swift */; };
+		E50767562AD322B900155EB1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50767552AD322B900155EB1 /* Model.swift */; };
 		E52DC0212ABF327200C344F1 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DC0202ABF327200C344F1 /* StatisticsView.swift */; };
 		E5352BFC2AB65EC9000C9474 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */; };
 		E553D6C42AB0E13300937685 /* AgendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C32AB0E13300937685 /* AgendaVC.swift */; };
@@ -183,6 +186,9 @@
 		CE79522D2A8369950003EDD8 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CEFCDE552A72CBCE00F562AF /* TimeAgendaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgendaVM.swift; sourceTree = "<group>"; };
 		D2BC720FA4BCA3CF9991D1A7 /* Pods-BlockNote app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.debug.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.debug.xcconfig"; sourceTree = "<group>"; };
+		E507674F2AD321D400155EB1 /* DictView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictView.swift; sourceTree = "<group>"; };
+		E50767532AD322B400155EB1 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		E50767552AD322B900155EB1 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E52DC0202ABF327200C344F1 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		E5352BFB2AB65EC9000C9474 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E553D6C32AB0E13300937685 /* AgendaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVC.swift; sourceTree = "<group>"; };
@@ -601,6 +607,7 @@
 		CE3ADCF92A73AA6F008F922B /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				E507674E2AD321BA00155EB1 /* JMDict */,
 				E5352BFA2AB65EB8000C9474 /* ViewElements */,
 				4EB3A2B92A87F3AA00B3B743 /* С2GroupView */,
 				4EB3A2BC2A87F44000B3B743 /* TimeAgenda */,
@@ -616,6 +623,31 @@
 				CE76BC142AA84C1800725ED0 /* CircularView.swift */,
 			);
 			path = Progress;
+			sourceTree = "<group>";
+		};
+		E507674E2AD321BA00155EB1 /* JMDict */ = {
+			isa = PBXGroup;
+			children = (
+				E507674F2AD321D400155EB1 /* DictView.swift */,
+			);
+			path = JMDict;
+			sourceTree = "<group>";
+		};
+		E50767512AD3229300155EB1 /* Japanese */ = {
+			isa = PBXGroup;
+			children = (
+				E50767552AD322B900155EB1 /* Model.swift */,
+				E50767532AD322B400155EB1 /* Loader.swift */,
+				E50767522AD3229C00155EB1 /* JSON */,
+			);
+			path = Japanese;
+			sourceTree = "<group>";
+		};
+		E50767522AD3229C00155EB1 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		E52DC01F2ABF326500C344F1 /* UISubElements */ = {
@@ -665,6 +697,7 @@
 		E5787C0E2ACB5419000EC2F9 /* Transportation */ = {
 			isa = PBXGroup;
 			children = (
+				E50767512AD3229300155EB1 /* Japanese */,
 				4E076B242944C914000F7E8F /* Data */,
 				4E1803DE27405CA00096A87C /* CoreData */,
 				4EA3A4682A599FDA002201CD /* Builder.swift */,
@@ -964,6 +997,8 @@
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
 				E52DC0212ABF327200C344F1 /* StatisticsView.swift in Sources */,
+				E50767502AD321D400155EB1 /* DictView.swift in Sources */,
+				E50767542AD322B400155EB1 /* Loader.swift in Sources */,
 				E553D6C62AB0E14300937685 /* AgendaVCPresenter.swift in Sources */,
 				4EAB131229CC91AE00416718 /* Photo+CoreDataClass.swift in Sources */,
 				4E085738299A7CF1006A6ABB /* DynamicHeightForTableView.swift in Sources */,
@@ -1017,6 +1052,7 @@
 				4E1A41A82A59803A007BFC4A /* C2DetailVC.swift in Sources */,
 				4EBAB2552873987600A2AC05 /* TVPhotoBlock.swift in Sources */,
 				4EF4CBC827F1E7520034D66B /* NoteViewCell.swift in Sources */,
+				E50767562AD322B900155EB1 /* Model.swift in Sources */,
 				4E8F7EDF298A54130085027A /* Constants.swift in Sources */,
 				CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */,
 			);
@@ -1213,7 +1249,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8.2;
+				MARKETING_VERSION = 2.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1245,7 +1281,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8.2;
+				MARKETING_VERSION = 2.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -10,8 +10,6 @@ import SwiftUI
 import SpriteKit
 import SnapKit
 
-// commit test
-
 protocol SKSnowScene {
     func initSnowScene(snowBack: SKView)
 }
@@ -63,7 +61,7 @@ class C2NavViewControllerVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
-        presenter.fetchData(using: SortOrder.lastChangedGroup)
+        presenter.fetchData(using: SortOrder.lastOpened)
         thinStatusBar.alpha = 0.0
         
         checkOnNotes()
@@ -336,7 +334,9 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let groupType = presenter.groups[indexPath.row]
-
+        presenter.openGroup(group: groupType as! GroupType)
+        presenter.saveChanges()
+        
         presenter.performTransitionToDetailVC(groupType: groupType as! GroupType)
     }
 }
