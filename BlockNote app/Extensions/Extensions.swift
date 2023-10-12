@@ -178,24 +178,23 @@ struct BluredButtonInTabBar: ButtonStyle {
 }
 // MARK: - Color Extenstion
 extension Color {
-    static let darkBack = Color("darkBackground")
-    static let lightPart = Color("lightPart")
+    static let darkBack = Color("DarkBackground")
+    static let lightPart = Color("LightPart")
     static let frontBack = Color("FrontBack")
-
-    // pastel colors:
-    static let rosePink = Color("rosePink") // rose
-    static let greenAvocado = Color("greenAvocado") // green
-    static let blueBerry = Color("blueBerry") // blue
-    static let yellowLemon = Color("yellowLemon") // yellow
-    static let redStrawBerry = Color("redStrawBerry") // red
-    static let purpleBlackBerry = Color("purpleBlackBerry") // purple
-    static let greyCloud = Color("greyCloud") // grey
-    static let brownSugar = Color("brownSugar") // brown
+    
+    static let rosePink = Color("RosePink") // Rose
+    static let greenAvocado = Color("GreenAvocado") // Green
+    static let blueBerry = Color("BlueBerry") // Blue
+    static let yellowLemon = Color("YellowLemon") // Yellow
+    static let redStrawBerry = Color("RedStrawBerry") // Red
+    static let purpleBlackBerry = Color("PurpleBlackBerry") // Purple
+    static let greyCloud = Color("GreyCloud") // Grey
+    static let brownSugar = Color("BrownSugar") // Brown
 
     static let backWhite = Color("BackWhite")
     static let backBlock = Color("BackBlock")
 
-    static let textForeground = Color("textForegroundColor") // text based on theme (dark and light)
+    static let textForeground = Color("TextForegroundColor") // Text based on theme (dark and light) light)
     static let itemListBackground = Color("ItemListBackground")
 
     public static var darkBlue: Color {

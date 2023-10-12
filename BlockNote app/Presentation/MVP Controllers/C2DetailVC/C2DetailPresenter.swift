@@ -27,7 +27,8 @@ protocol C2DetailPresenterProtocol: AnyObject {
     func addNote()
     func acceptAttention()
     func sortArray()
-    func deleteGroup(groupName: String)
+    func deleteGroup()
+    func ask()
 
     var managedContext: NSManagedObjectContext { get }
     func performTransitionToAgendaVC(groupType: GroupType)
@@ -60,30 +61,36 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
     }
 
     // MARK: - Delete group
-    func deleteGroup(groupName: String) {
-
-        if groupType.wrappedGroupName == groupName {
-
-            if !self.groupType.typesOfNoteArray.isEmpty {
-
-                for note in self.groupType.typesOfNoteArray {
-                    managedContext.delete(note)
-                }
-            } else {
-                print("No notes in array")
+    
+    func ask() {
+        if !groupType.typesOfNoteArray.isEmpty {
+            let alert = UIAlertController(title: "Warning!", message: "You have notes inside, are you sure?", preferredStyle: .alert)
+            
+            let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
+                guard let self = self else { return }
+                self.deleteGroup()
             }
-
-            managedContext.delete(self.groupType)
-
-            do {
-                try managedContext.save()
-                self.view?.popVC()
-                self.view?.delegate?.closeAndDelete()
-            } catch {
-                print("Something went wrong while deleting the group and note!!")
-            }
-        } else {
-            print("Something wrong on checking the name of the group!")
+            let cancelAction = UIAlertAction(title: "No", style: .default)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            
+            self.view?.presentAlert(alert, animated: true)
+        }
+    }
+    
+    func deleteGroup() {
+        for note in self.groupType.typesOfNoteArray {
+            managedContext.delete(note)
+        }
+        
+        managedContext.delete(self.groupType)
+        
+        do {
+            try managedContext.save()
+            self.view?.popVC()
+            self.view?.delegate?.closeAndDelete()
+        } catch {
+            print("Something went wrong while deleting the group and note!!")
         }
     }
 
