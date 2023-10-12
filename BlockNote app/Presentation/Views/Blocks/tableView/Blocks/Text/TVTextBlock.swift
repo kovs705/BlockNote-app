@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import CoreData
 
 class TVTextBlock: UITableViewCell, UITextViewDelegate {
@@ -89,14 +90,16 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     // MARK: focus line view
     func configureFocusLineView(color: UIColor) {
         verticalLineView.backgroundColor = color
-        self.contentView.addSubview(verticalLineView)
+        self.contentView.addSubviews(verticalLineView)
         
-        let newHeight = textView.text.heightWithConstrainedWidth(width: textView.frame.width, font: UIFont.systemFont(ofSize: 17))
-        
-        UIView.performWithoutAnimation {
-            focusLineHeightConstraint.constant = newHeight + 4
-            self.contentView.layoutIfNeeded()
+        verticalLineView.snp.makeConstraints { make in
+            make.height.equalTo(textView.snp.height)
         }
+//        let newHeight = textView.text.heightWithConstrainedWidth(width: textView.frame.width, font: UIFont.systemFont(ofSize: 17))
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.verticalLineView.layoutIfNeeded()
+        })
     }
 
     func scrollToCell(_ textView: UITextView) {

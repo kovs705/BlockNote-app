@@ -414,6 +414,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
         }
 
         switch type {
+            // MARK: - Text
         case Block.textBlock:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as? TVTextBlock else {
                 return UITableViewCell()
@@ -447,6 +448,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             print("DEBUG TEXT \(noteItem.noteItemOrder)")
             return cell
 
+            // MARK: - Title
         case Block.titleBlock:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as? TVTitleBlock else {
                 return UITableViewCell()
@@ -463,6 +465,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
                 self.indexOfBlock = indexPath.row
+                
                 tableView?.performBatchUpdates({
                     cell.label.text = newText
                     self.presenter.getText(text: newText, noteListTB: self.noteListTB)
@@ -472,6 +475,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             print("DEBUG TITLE \(noteItem.noteItemOrder)")
             return cell
 
+            // MARK: - Photo
         case Block.photoBlock:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as? TVPhotoBlock else {
                 return UITableViewCell()
@@ -490,6 +494,7 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             print("DEBUG PHOTO \(noteItem.noteItemOrder)")
             return cell
 
+            // MARK: - Space
         case Block.spaceBlock:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as? TVSpaceBlock else {
                 return UITableViewCell()
