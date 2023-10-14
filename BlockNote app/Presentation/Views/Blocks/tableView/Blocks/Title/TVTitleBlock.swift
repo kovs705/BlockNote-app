@@ -14,6 +14,7 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var label: UILabel!
 
     var textChanged: ((String) -> Void)?
+    var beginEditing: (() -> Void)?
     
     var isDeleting = false
 
@@ -63,6 +64,10 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
         }
         
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        beginEditing?()
+    }
 
     func textChanged(action: @escaping (String) -> Void) {
         self.textChanged = action
@@ -70,19 +75,17 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
-        if !isDeleting {
-            scrollToLine(textView)
-        }
+        
         UIView.performWithoutAnimation {
             textView.invalidateIntrinsicContentSize()
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
-        if !isDeleting {
-            scrollToLine(textView)
-        }
-    }
+//    func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
+//        if !isDeleting {
+//            scrollToLine(textView)
+//        }
+//    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -98,7 +101,6 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
 //        }
         
         if text.isEmpty && range.length == 1 {
-            // Deleting text
             isDeleting = true
         } else {
             isDeleting = false
@@ -110,6 +112,9 @@ class TVTitleBlock: UITableViewCell, UITextViewDelegate {
     override func prepareForReuse() {
         super.prepareForReuse()
         textChanged = nil
+        beginEditing = nil
+        textView.text = nil
+        label.text = nil
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {

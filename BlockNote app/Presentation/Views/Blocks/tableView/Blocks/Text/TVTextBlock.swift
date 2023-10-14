@@ -22,6 +22,8 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     lazy var verticalLineView = UIView(frame: CGRect(x: 10, y: 0, width: 4, height: focusLineHeightConstraint.constant))
 
     var textChanged: ((String) -> Void)?
+    var beginEditing: (() -> Void)?
+    
     var isDeleting = false
 
     let cache = PersistenceController.shared.cacheString
@@ -101,39 +103,15 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
             self.verticalLineView.layoutIfNeeded()
         })
     }
-
-    func scrollToCell(_ textView: UITextView) {
-        if let cell = textView.superview?.superview as? UITableViewCell {
-            if let tableView = cell.superview as? UITableView {
-                if let indexPath = tableView.indexPath(for: cell) {
-                    tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                    print("Scroll to the indexPath: \(indexPath.row) completed")
-                }
-            }
-        }
-    }
-
-    func configureTag(forIndexPath indexPath: IndexPath) {
-        textView.tag = indexPath.row
-    }
     
-    // MARK: Text change
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if let cell = textView.superview?.superview as? UITableViewCell {
-            if let tableView = cell.superview as? UITableView {
-                if let indexPath = tableView.indexPath(for: cell) {
-                    noteDetail.indexOfBlock = indexPath.row
-                    print("IT BECAME \(noteDetail.indexOfBlock)")
-                }
-            }
-        }
-
+        beginEditing?()
     }
 
     func textViewDidEndEditing(_ textView: UITextView, action: @escaping () -> Void) {
-        if !isDeleting {
-            scrollToLine(textView)
-        }
+//        if !isDeleting {
+//            scrollToLine(textView)
+//        }
     }
 
     func textChanged(action: @escaping (String) -> Void) {
@@ -142,9 +120,11 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
-        if !isDeleting {
-            scrollToLine(textView)
-        }
+        
+//        if !isDeleting {
+//            scrollToLine(textView)
+//        }
+        
         UIView.performWithoutAnimation {
             textView.invalidateIntrinsicContentSize()
         }
@@ -177,6 +157,7 @@ class TVTextBlock: UITableViewCell, UITextViewDelegate {
     override func prepareForReuse() {
         super.prepareForReuse()
         textChanged = nil
+        beginEditing = nil
         textView.text = nil
         label.text = nil
     }

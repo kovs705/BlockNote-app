@@ -38,21 +38,25 @@ class PersistenceBlockController {
         delegateSave()
     }
 
-    func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?) {
+    func setValues(for block: NSManagedObject, from type: BlockCases, pickedImage: UIImage?, at index: Int) {
         switch type {
         case .title:
             block.setValue(Block.titleBlock, forKey: Keys.niType)
             block.setValue(Block.titleToSave, forKey: Keys.niText)
         case .text:
             block.setValue(Block.textBlock, forKey: Keys.niType)
-            block.setValue(Block.blockToSave, forKey: Keys.niText)
+            block.setValue(Block.blockToSave + String(index), forKey: Keys.niText)
         case .photo:
             block.setValue(Block.photoBlock, forKey: Keys.niType)
             block.setValue(pickedImage?.toData as NSData?, forKey: Keys.niPhoto)
         case .space:
             block.setValue(Block.spaceBlock, forKey: Keys.niType)
         }
-
+        
+        block.setValue(Date(), forKey: Keys.niLastChanged)
+        block.setValue(Date(), forKey: Keys.niCreationDate)
+        
+        block.setValue(index, forKey: Keys.niOrder)
     }
 
 }
