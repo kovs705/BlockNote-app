@@ -15,8 +15,7 @@ class C3NoteDetailVC: UIViewController {
     var imagePicker: UIImagePickerController!
 
     var textForTextlock: String = ""
-
-    var indexOfBlock = 0
+    
     var keyboardIsOpened = false
 
     var addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
@@ -173,6 +172,17 @@ class C3NoteDetailVC: UIViewController {
         let tapLocation = gRecognizer.location(in: noteListTB)
         if noteListTB.indexPathForRow(at: tapLocation) == nil {
             // TODO: - Outside of the cell
+            if presenter.indexOfBlock != 0 {
+                let index = IndexPath(row: presenter.indexOfBlock - 1, section: 0)
+                guard let textBlockCell = noteListTB.cellForRow(at: index) as? TVTextBlock else {
+                    guard let titleBlockCell = noteListTB.cellForRow(at: index) as? TVTitleBlock else {
+                        return
+                    }
+                    titleBlockCell.textView.resignFirstResponder()
+                    return
+                }
+                textBlockCell.textView.resignFirstResponder()
+            }
         }
     }
 
@@ -206,27 +216,17 @@ class C3NoteDetailVC: UIViewController {
 
     // MARK: - create text block and start typing in the new block
     @objc func createTextBlock() {
-        if indexOfBlock != 0 {
-            indexOfBlock += 1
-        } else {
-            if presenter.noteItemArray_sorted.isEmpty {
-                indexOfBlock = 1
-            } else {
-                if keyboardIsOpened {
-                    indexOfBlock += 1
-                }
-            }
-        }        
+        presenter.createBlock()
         
         noteListTB.performBatchUpdates {
             if presenter.noteItemArray_sorted.isEmpty {
-                presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil, at: indexOfBlock)
+                presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil, at: presenter.indexOfBlock)
             } else {
-                presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil, at: indexOfBlock)
+                presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil, at: presenter.indexOfBlock)
             }
         }
         
-        startTyping(from: indexOfBlock - 1)
+        startTyping(from: presenter.indexOfBlock - 1)
     }
     
     // MARK: - Add block
@@ -461,13 +461,13 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             
             cell.beginEditing = { [weak self] in
                 guard let self = self else { return }
-                indexOfBlock = indexPath.row + 1
+                presenter.indexOfBlock = indexPath.row + 1
             }
 
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
+                presenter.indexOfBlock = indexPath.row
                 
                 UIView.performWithoutAnimation {
                     tableView?.performBatchUpdates({
@@ -495,13 +495,13 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
             
             cell.beginEditing = { [weak self] in
                 guard let self = self else { return }
-                self.indexOfBlock = indexPath.row + 1
+                presenter.indexOfBlock = indexPath.row + 1
             }
 
             cell.textChanged { [weak self, weak tableView] (newText: String) in
                 guard let self = self else { return }
                 noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
+                presenter.indexOfBlock = indexPath.row
                 
                 tableView?.performBatchUpdates({
                     cell.label.text = newText

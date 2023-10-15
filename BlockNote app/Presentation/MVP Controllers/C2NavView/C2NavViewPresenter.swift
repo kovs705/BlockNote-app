@@ -85,6 +85,7 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         
         newGroup.setValue(groups.isEmpty ? 1 : (groups.count) + 1, forKey: Keys.gNumber)
         newGroup.setValue(Date(), forKey: Keys.gCreationDate)
+        newGroup.setValue(Date(), forKey: Keys.glastChangedGroup)
         newGroup.setValue(Date(), forKey: Keys.glastOpened)
 
         newAgenda.setValue("Name", forKey: Keys.aName)

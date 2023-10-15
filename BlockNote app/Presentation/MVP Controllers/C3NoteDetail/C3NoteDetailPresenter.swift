@@ -15,9 +15,6 @@ protocol C3NoteDetailViewProtocol: AnyObject {
 
     var textForTextlock: String { get set }
 
-    /// updates dynamically when user interacts with blocks with text (default should be the last)
-    var indexOfBlock: Int { get set }
-
     // func
     func beginEndUpdates()
     func performBatchUpdates(at insertRow: Int)
@@ -30,6 +27,10 @@ protocol C3NoteDetailViewProtocol: AnyObject {
 protocol C3NoteDetailPresenterProtocol: AnyObject {
 
     var note: Note? { get set }
+    
+    /// updates dynamically when user interacts with blocks with text (default should be the last)
+    var indexOfBlock: Int { get set }
+    
     var deletingBlocksOrder: Int { get set }
 
     var noteItemArray_sorted: [NoteItem] { get set }
@@ -43,6 +44,9 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
 
     /// Sort and update
     func sortAndUpdate()
+    
+    /// Create block with the right index and type
+    func createBlock()
 
     /// Save block
     func save(blockType: String, theCase: BlockCases, pickedImage: UIImage?, at index: Int)
@@ -63,6 +67,9 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
 final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
 
     var note: Note?
+    
+    var indexOfBlock: Int = 0
+    
     var deletingBlocksOrder: Int = 0
 
     var noteItemArray_sorted: [NoteItem] = []
@@ -94,7 +101,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         guard let view = self.view else { return }
 
         self.view?.textForTextlock = text ?? "Nothing in the text, or it's just the bug."
-        persistenceBC?.update(blockText: view.textForTextlock, block: noteItemArray_sorted[view.indexOfBlock], noteListTB: noteListTB)
+        persistenceBC?.update(blockText: view.textForTextlock, block: noteItemArray_sorted[indexOfBlock], noteListTB: noteListTB)
         // print("you changed the block with the index of \(indexOfBlock)")
     }
 
@@ -103,6 +110,25 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         guard let note = note else { return }
         noteItemArray_sorted = note.noteItemArray.sorted {
             $0.noteItemOrder < $1.noteItemOrder
+        }
+    }
+    
+    // MARK: - Create
+    func createBlock() {
+        var numberOfNoteItems = noteItemArray_sorted.count
+         
+        if indexOfBlock != 0 {
+            if indexOfBlock + 1 > numberOfNoteItems + 1 {
+                indexOfBlock = numberOfNoteItems + 1
+            } else {
+                indexOfBlock += 1
+            }
+        } else {
+            if noteItemArray_sorted.isEmpty {
+                indexOfBlock = 1
+            } else {
+                indexOfBlock = numberOfNoteItems + 1
+            }
         }
     }
 
@@ -137,7 +163,7 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
 
             // check for changes in sorted array:
             if note.noteItems?.count == noteItemArray_sorted.count {
-                view.performBatchUpdates(at: noteItemArray_sorted.count - 1)
+                view.performBatchUpdates(at: indexOfBlock != 0 ? indexOfBlock - 1 : noteItemArray_sorted.count - 1)
             } else {
                 sortAndUpdate()
                 view.beginEndUpdates()
