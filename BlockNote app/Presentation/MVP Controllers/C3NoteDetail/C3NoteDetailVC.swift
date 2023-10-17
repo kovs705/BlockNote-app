@@ -183,6 +183,7 @@ class C3NoteDetailVC: UIViewController {
                 }
                 textBlockCell.textView.resignFirstResponder()
             }
+            presenter.indexOfBlock = 0
         }
     }
 
@@ -218,13 +219,15 @@ class C3NoteDetailVC: UIViewController {
     @objc func createTextBlock() {
         presenter.createBlock()
         
-        noteListTB.performBatchUpdates {
+//        noteListTB.performBatchUpdates {
+        noteListTB.beginUpdates()
             if presenter.noteItemArray_sorted.isEmpty {
                 presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil, at: presenter.indexOfBlock)
             } else {
                 presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil, at: presenter.indexOfBlock)
             }
-        }
+//        }
+        noteListTB.endUpdates()
         
         startTyping(from: presenter.indexOfBlock - 1)
     }

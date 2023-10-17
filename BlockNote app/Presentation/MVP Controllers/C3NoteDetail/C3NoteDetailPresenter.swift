@@ -45,7 +45,7 @@ protocol C3NoteDetailPresenterProtocol: AnyObject {
     /// Sort and update
     func sortAndUpdate()
     
-    /// Create block with the right index and type
+    /// Works with index of future block, before its creation
     func createBlock()
 
     /// Save block
@@ -115,10 +115,9 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
     
     // MARK: - Create
     func createBlock() {
-        var numberOfNoteItems = noteItemArray_sorted.count
-         
+        let numberOfNoteItems = noteItemArray_sorted.count
         if indexOfBlock != 0 {
-            if indexOfBlock + 1 > numberOfNoteItems + 1 {
+            if indexOfBlock == numberOfNoteItems {
                 indexOfBlock = numberOfNoteItems + 1
             } else {
                 indexOfBlock += 1
@@ -154,16 +153,20 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
             note.addObject(value: value, forKey: Keys.nItems)
 
             if managedContext.hasChanges {
-                sortAndUpdate()
                 try managedContext.save()
+                sortAndUpdate()
             } else {
                 print("Something wrong on saving block")
                 return
             }
-
+            
             // check for changes in sorted array:
             if note.noteItems?.count == noteItemArray_sorted.count {
-                view.performBatchUpdates(at: indexOfBlock != 0 ? indexOfBlock - 1 : noteItemArray_sorted.count - 1)
+                if indexOfBlock != 0 {
+                    view.performBatchUpdates(at: indexOfBlock - 1)
+                } else {
+                    view.performBatchUpdates(at: noteItemArray_sorted.count - 1)
+                }
             } else {
                 sortAndUpdate()
                 view.beginEndUpdates()
@@ -189,11 +192,16 @@ final class C3NoteDetailPresenter: C3NoteDetailPresenterProtocol {
         }
 
         sortAndUpdate()
-
+        print(indexOfBlock)
+        indexOfBlock = deletingBlocksOrder - 1
+        print(indexOfBlock)
         do {
             if managedContext.hasChanges {
                 try managedContext.save()
                 view.performDeleteUpdates(at: deletingBlocksOrder)
+                
+                sortAndUpdate()
+                view.beginEndUpdates()
             }
         } catch {
             print("Something wrong on deleting the block")
