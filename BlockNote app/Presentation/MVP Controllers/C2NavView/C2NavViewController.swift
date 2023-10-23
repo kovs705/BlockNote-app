@@ -254,16 +254,9 @@ extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
 extension C2NavViewControllerVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y >= 1 {
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let self = self else { return }
-                self.thinStatusBar.alpha = 1.0
-            }
-        } else {
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let self = self else { return }
-                self.thinStatusBar.alpha = 0.0
-            }
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            thinStatusBar.alpha = scrollView.contentOffset.y >= 1 ? 1.0 : 0.0
         }
     }
 }
