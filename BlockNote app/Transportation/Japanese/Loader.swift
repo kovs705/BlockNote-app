@@ -7,7 +7,7 @@
 
 import Foundation
 
-class JMDictCoordinator {
+class JMDictCoordinator: ObservableObject {
     /// file name
     let JMFileName = "jmdict-eng-3.5.0"
     /// number of elements to load per each
@@ -16,63 +16,42 @@ class JMDictCoordinator {
     /// async queue
     let JMDictqueue = DispatchQueue(label: "jmdict-queue", attributes: .concurrent)
     
-    /// calbback to reload cells
-    var reloadCallback: ([JMDictWord]) -> Void
-    var returnElementsIntoSet: ([JMDictWord]) -> Void
+    /// dictionary to store the loaded elements
+    @Published var dictionary: [JMDictWord] = []
     
-    init(reloadCallback: @escaping ([JMDictWord]) -> Void, returnElementsIntoSet: @escaping ([JMDictWord]) -> Void) {
-        self.reloadCallback = reloadCallback
-        self.returnElementsIntoSet = returnElementsIntoSet
-    }
-    
-    /// get the japanese data asyncronously
+    /// get the japanese data asynchronously
     func getTheJapaneseData() {
         JMDictqueue.async { [weak self] in
             guard let self = self else { return }
             
             do {
-                guard let fileURL = Bundle.main.url(forResource: JMFileName, withExtension: "json") else {
+                guard let fileURL = Bundle.main.url(forResource: self.JMFileName, withExtension: "json") else {
                     print("JSON file not found")
                     return
                 }
                 
                 // Reading the JSON file into data
                 let fileContents = try Data(contentsOf: fileURL)
-//                guard let fileContents = FileManager.default.contentsOfDirectory(atPath: path) else {
-//                    print("Failed to read the JSON file")
-//                    return
-//                }
                 
                 // Parsing the JSON data into a Swift object
-                guard let json = try JSONSerialization.jsonObject(with: fileContents, options: []) as? JMDictionary else {
-                    print("Failed to parse the JSON data")
-                    return
-                }
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(JMDictionary.self, from: fileContents)
                 
                 // Iterating through the JSON elements and processing them
                 var currentIndex = 0
                 while currentIndex < json.words.count {
-                    
-                    let endIndex = min(currentIndex + batchSize, json.words.count)
+                    let endIndex = min(currentIndex + self.batchSize, json.words.count)
                     let elements = Array(json.words[currentIndex..<endIndex])
                     
-//                    for element in elements {
-//                        print(element)
-//                    }
-//                    Task {
-//                        await returnElementsIntoSet(elements)
-//                    }
-                     
-                    // Updating the current index for the next iteration
-                    currentIndex = endIndex
-                    
                     DispatchQueue.main.async {
-                        print(elements)
-                        self.reloadCallback(elements)
+                        self.dictionary.append(contentsOf: elements)
                     }
                     
                     // Add a delay between each batch for better UI responsiveness
-                    Thread.sleep(forTimeInterval: 0.1)
+                    Thread.sleep(forTimeInterval: 0.5)
+                    
+                    // Updating the current index for the next iteration
+                    currentIndex = endIndex
                 }
                 
                 print("JSON processing completed")

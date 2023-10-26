@@ -20,8 +20,8 @@
 import Foundation
 
 // MARK: - JMDictionary
-struct JMDictionary: Codable, Identifiable {
-    let id: Int
+struct JMDictionary: Codable {
+//    let id: Int
     let version: String
     let languages: [String]
     let commonOnly: Bool
