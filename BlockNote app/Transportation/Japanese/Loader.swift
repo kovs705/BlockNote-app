@@ -30,34 +30,56 @@ class JMDictCoordinator: ObservableObject {
                     return
                 }
                 
-                // Reading the JSON file into data
-                let fileContents = try Data(contentsOf: fileURL)
-                
-                // Parsing the JSON data into a Swift object
-                let decoder = JSONDecoder()
-                let json = try decoder.decode(JMDictionary.self, from: fileContents)
-                
-                // Iterating through the JSON elements and processing them
-                var currentIndex = 0
-                while currentIndex < json.words.count {
-                    let endIndex = min(currentIndex + self.batchSize, json.words.count)
-                    let elements = Array(json.words[currentIndex..<endIndex])
+                let session = URLSession.shared
+                let task = session.dataTask(with: fileURL) { [weak self] (data, response, error) in
+                    guard let self = self else { return }
                     
-                    DispatchQueue.main.async {
-                        self.dictionary.append(contentsOf: elements)
+                    if let error = error {
+                        print("Error downloading JSON file:", error)
+                        return
                     }
                     
-                    // Add a delay between each batch for better UI responsiveness
-                    Thread.sleep(forTimeInterval: 0.5)
-                    
-                    // Updating the current index for the next iteration
-                    currentIndex = endIndex
+                    if let data = data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let json = try decoder.decode(JMDictionary.self, from: data)
+                            
+                            // Process the JSON data in batches
+                            var currentIndex = 0
+                            while currentIndex < json.words.count {
+                                let endIndex = min(currentIndex + self.batchSize, json.words.count)
+                                let elements = Array(json.words[currentIndex..<endIndex])
+                                
+                                DispatchQueue.main.async {
+                                    if elements.allSatisfy({ word in
+                                        return word.kana?.first?.text.isEmpty == false || word.kanji?.first?.text.isEmpty == false
+                                    }) {
+                                        self.dictionary.append(contentsOf: elements)
+                                    }
+                                }
+                                
+                                // Add a delay between each batch for better UI responsiveness
+                                Thread.sleep(forTimeInterval: 0.5)
+                                
+                                // Updating the current index for the next iteration
+                                currentIndex = endIndex
+                            }
+                            
+                            print("JSON processing completed")
+                        } catch {
+                            print("Error processing JSON file:", error)
+                        }
+                    }
                 }
                 
-                print("JSON processing completed")
+                task.resume()
             } catch {
-                print("Error processing JSON file:", error)
+                print("Error reading JSON file:", error)
             }
         }
+    }
+    
+    func clearData() {
+        dictionary.removeAll()
     }
 }
