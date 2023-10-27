@@ -61,7 +61,7 @@ class C2NavViewControllerVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
-        presenter.fetchData(using: SortOrder.lastChangedGroup)
+        presenter.fetchData(using: SortOrder.lastOpened)
         thinStatusBar.alpha = 0.0
         
         checkOnNotes()
@@ -254,16 +254,9 @@ extension C2NavViewControllerVC: C2NavViewControllerViewProtocol {
 extension C2NavViewControllerVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y >= 1 {
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let self = self else { return }
-                self.thinStatusBar.alpha = 1.0
-            }
-        } else {
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let self = self else { return }
-                self.thinStatusBar.alpha = 0.0
-            }
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            thinStatusBar.alpha = scrollView.contentOffset.y >= 1 ? 1.0 : 0.0
         }
     }
 }
@@ -334,7 +327,9 @@ extension C2NavViewControllerVC: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let groupType = presenter.groups[indexPath.row]
-
+        presenter.openGroup(group: groupType as! GroupType)
+        presenter.saveChanges()
+        
         presenter.performTransitionToDetailVC(groupType: groupType as! GroupType)
     }
 }

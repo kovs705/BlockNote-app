@@ -13,8 +13,12 @@ struct TimeAgendaView: View {
 
     var body: some View {
         List(viewModel.group.itemsOfAgendaArray) { agenda in
-            AgendaView(agenda: agenda, isLast: false)
-                .listRowSeparator(.hidden)
+            NavigationLink {
+                DictView()
+            } label: {
+                AgendaView(agenda: agenda, isLast: false)
+                    .listRowSeparator(.hidden)
+            }
         }
         .listStyle(.plain)
         .navigationTitle("Agenda")

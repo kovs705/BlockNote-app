@@ -29,6 +29,8 @@ protocol C2NavViewControllerPresenterProtocol: AnyObject {
     func fetchData(using sort: String)
     func save(groupName: String, groupColor: String)
     func delete(group: GroupType)
+    func openGroup(group: GroupType)
+    func saveChanges()
 
     func manageGreeting()
 
@@ -83,6 +85,7 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         
         newGroup.setValue(groups.isEmpty ? 1 : (groups.count) + 1, forKey: Keys.gNumber)
         newGroup.setValue(Date(), forKey: Keys.gCreationDate)
+        newGroup.setValue(Date(), forKey: Keys.glastChangedGroup)
         newGroup.setValue(Date(), forKey: Keys.glastOpened)
 
         newAgenda.setValue("Name", forKey: Keys.aName)
@@ -109,6 +112,18 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
         } catch {
             print("Failed deleting")
         }
+    }
+    
+    func saveChanges() {
+        do {
+            try managedContext.save()
+        } catch {
+            print("Failed to save")
+        }
+    }
+    
+    func openGroup(group: GroupType) {
+        group.lastOpened = Date()
     }
 
     func manageGreeting() {

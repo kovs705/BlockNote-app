@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class C3NoteDetailVC: UIViewController {
 
@@ -15,8 +16,8 @@ class C3NoteDetailVC: UIViewController {
     var imagePicker: UIImagePickerController!
 
     var textForTextlock: String = ""
-
-    var indexOfBlock = 0
+    
+    var keyboardIsOpened = false
 
     var addBlockButton = dockButton(fontSize: 20, icon: Icons.addGroup, color: .systemGray4)
     let textDockButton = dockTextButton(frame: .zero)
@@ -93,10 +94,8 @@ class C3NoteDetailVC: UIViewController {
             self.backbutton.layer.opacity = 1
         }
     }
-
-    // MARK: - Other funcs
-
-    // MARK: - UI func
+    
+    // MARK: - UI funcs
     func configureTableView() {
         noteListTB.delegate = self
         noteListTB.dataSource = self
@@ -117,6 +116,11 @@ class C3NoteDetailVC: UIViewController {
             make.width.equalTo(view.snp.width)
             make.top.equalTo(view)
         }
+    }
+    
+    func configureDockButtons() {
+        addBlockButton.addTarget(self, action: #selector(addBlock), for: .touchUpInside)
+        textDockButton.addTarget(self, action: #selector(createTextBlock), for: .touchUpInside)
     }
 
     func configureDock() {
@@ -168,14 +172,28 @@ class C3NoteDetailVC: UIViewController {
     @objc func handleTap(_ gRecognizer: UITapGestureRecognizer) {
         let tapLocation = gRecognizer.location(in: noteListTB)
         if noteListTB.indexPathForRow(at: tapLocation) == nil {
-            print("Outside of the cell")
+            // TODO: - Outside of the cell
+            if presenter.indexOfBlock != 0 {
+                let index = IndexPath(row: presenter.indexOfBlock - 1, section: 0)
+                guard let textBlockCell = noteListTB.cellForRow(at: index) as? TVTextBlock else {
+                    guard let titleBlockCell = noteListTB.cellForRow(at: index) as? TVTitleBlock else {
+                        return
+                    }
+                    titleBlockCell.textView.resignFirstResponder()
+                    return
+                }
+                textBlockCell.textView.resignFirstResponder()
+            }
+            presenter.indexOfBlock = 0
         }
     }
 
+    // MARK: - Keyboard adjuster
     @objc func adjustForKeyboard(notification: Notification) {
 
         if notification.name == UIResponder.keyboardWillHideNotification {
-
+            keyboardIsOpened = false
+            
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.35, delay: 0, animations: { [weak self] in
                     guard let self = self else { return }
@@ -184,12 +202,8 @@ class C3NoteDetailVC: UIViewController {
             }
 
         } else {
-    //            DispatchQueue.main.async {
-    //                UIView.performWithoutAnimation {
-    //                    self.noteListTB.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: notification.keyboardHeight + self.view.safeAreaInsets.bottom, right: 0)
-    //                }
-    //            }
-
+            keyboardIsOpened = true
+            
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.35, delay: 0, animations: { [weak self] in
                     guard let self = self else { return }
@@ -202,35 +216,42 @@ class C3NoteDetailVC: UIViewController {
         noteListTB.scrollIndicatorInsets = noteListTB.contentInset
     }
 
-    func configureDockButtons() {
-        addBlockButton.addTarget(self, action: #selector(addBlock), for: .touchUpInside)
-        textDockButton.addTarget(self, action: #selector(createTextBlock), for: .touchUpInside)
-    }
-
+    // MARK: - create text block and start typing in the new block
     @objc func createTextBlock() {
-        if presenter.noteItemArray_sorted.isEmpty {
-            presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil)
-        } else {
-            presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil)
-        }
+        presenter.createBlock()
+        
+        noteListTB.beginUpdates()
+            if presenter.noteItemArray_sorted.isEmpty {
+                presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil, at: presenter.indexOfBlock)
+            } else {
+                presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil, at: presenter.indexOfBlock)
+            }
+        
+        noteListTB.endUpdates()
+        
+        startTyping(from: presenter.indexOfBlock - 1)
     }
-
+    
+    // MARK: - Add block
     @objc func addBlock() {
         let alert = UIAlertController(title: "New block", message: "Choose your block", preferredStyle: .actionSheet)
-
+        
         let saveTitleBlock = UIAlertAction(title: "Header", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil)
+            presenter.createBlock()
+            self.presenter.save(blockType: Block.titleBlock, theCase: .title, pickedImage: nil, at: presenter.indexOfBlock)
         }
 
         let saveTextBlock = UIAlertAction(title: "Text", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil)
+            presenter.createBlock()
+            self.presenter.save(blockType: Block.textBlock, theCase: .text, pickedImage: nil, at: presenter.indexOfBlock)
         }
 
         let saveSpaceBlock = UIAlertAction(title: "Spacer", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.presenter.save(blockType: Block.spaceBlock, theCase: .space, pickedImage: nil)
+            presenter.createBlock()
+            self.presenter.save(blockType: Block.spaceBlock, theCase: .space, pickedImage: nil, at: presenter.indexOfBlock)
         }
 
         // photoBlock save
@@ -277,7 +298,7 @@ extension C3NoteDetailVC: C3NoteDetailViewProtocol {
 
     func performBatchUpdates(at insertRow: Int) {
         noteListTB.performBatchUpdates({
-            noteListTB.insertRows(at: [IndexPath(row: insertRow - 1, section: 0)], with: .automatic)
+            noteListTB.insertRows(at: [IndexPath(row: insertRow, section: 0)], with: .automatic)
         }, completion: nil)
     }
 
@@ -285,6 +306,12 @@ extension C3NoteDetailVC: C3NoteDetailViewProtocol {
         noteListTB.performBatchUpdates({
             noteListTB.deleteRows(at: [IndexPath(row: deleteRow - 1, section: 0)], with: .automatic)
         }, completion: nil)
+    }
+    
+    func startTyping(from row: Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        let cell = noteListTB.cellForRow(at: indexPath) as? TVTextBlock
+        cell?.textView.becomeFirstResponder()
     }
 
 }
@@ -304,7 +331,8 @@ extension C3NoteDetailVC: UIImagePickerControllerDelegate, UINavigationControlle
             return
         }
 
-        presenter.save(blockType: Block.photoBlock, theCase: .photo, pickedImage: pickedImage)
+        presenter.createBlock()
+        presenter.save(blockType: Block.photoBlock, theCase: .photo, pickedImage: pickedImage, at: presenter.noteItemArray_sorted.count)
 
         picker.dismiss(animated: true)
 
@@ -327,6 +355,18 @@ extension C3NoteDetailVC: UIScrollViewDelegate {
                 guard let self = self else { return }
                 self.backbutton.layer.opacity = 0
 
+            }
+        }
+        
+        if scrollView.contentOffset.y >= 1 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.thinStatusBar.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.thinStatusBar.alpha = 0.0
             }
         }
     }
@@ -372,16 +412,13 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
 
     // MARK: - Move row
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        // update the model:
 
         let mover = presenter.noteItemArray_sorted.remove(at: sourceIndexPath.row)
         presenter.noteItemArray_sorted.insert(mover, at: destinationIndexPath.row)
 
-        print(sourceIndexPath.row)
-        print(destinationIndexPath.row)
-
         for block in self.presenter.noteItemArray_sorted {
             let blockIndex = block.noteItemOrder - 1
+            print(blockIndex)
             // from top to bottom:
             if sourceIndexPath.row > destinationIndexPath.row {
                 if !(blockIndex < destinationIndexPath.row) {
@@ -405,7 +442,6 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
     }
 
     // MARK: - cellForRowAt
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let noteItem = presenter.noteItemArray_sorted[indexPath.row]
 
@@ -415,190 +451,119 @@ extension C3NoteDetailVC: UITableViewDelegate, UITableViewDataSource, UITableVie
 
         switch type {
         case Block.textBlock:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as? TVTextBlock else {
-                return UITableViewCell()
-            }
-
-            cell.loadText(for: noteItem) { [weak tableView] string in
-                UIView.performWithoutAnimation {
-                    tableView?.performBatchUpdates({
-                        cell.textView.text = string
-                        cell.label.text = string
-                    })
-                }
-            }
-
-            cell.textChanged { [weak self, weak tableView] (newText: String) in
-                guard let self = self else { return }
-                noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
-                
-                UIView.performWithoutAnimation {
-                    tableView?.performBatchUpdates({
-                        cell.label.text = newText
-                        self.presenter.getText(text: newText, noteListTB: self.noteListTB)
-                    })
-                }
-                // self.noteListTB.isScrollEnabled = false
-                // cell.scrollToLine(cell.textView)
-                // self.noteListTB.isScrollEnabled = true
-            }
-
-            print("DEBUG TEXT \(noteItem.noteItemOrder)")
-            return cell
-
+            return configureTextBlockCell(for: noteItem, in: tableView, at: indexPath)
         case Block.titleBlock:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as? TVTitleBlock else {
-                return UITableViewCell()
-            }
+            return configureTitleBlockCell(for: noteItem, in: tableView, at: indexPath)
+        case Block.photoBlock:
+            return configurePhotoBlockCell(for: noteItem, in: tableView, at: indexPath)
+        case Block.spaceBlock:
+            return configureSpaceBlockCell(for: noteItem, in: tableView, at: indexPath)
+        default:
+            return defaultCell()
+        }
+    }
+    
+    // MARK: - Default cell
+    func defaultCell() -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    // MARK: - TextBlock
+    func configureTextBlockCell(for noteItem: NoteItem, in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as? TVTextBlock else {
+            return defaultCell()
+        }
 
-            cell.loadText(for: noteItem) { [weak tableView] string in
+        cell.loadText(for: noteItem) { [weak tableView] string in
+            UIView.performWithoutAnimation {
                 tableView?.performBatchUpdates({
                     cell.textView.text = string
                     cell.label.text = string
                 })
             }
+        }
+        
+        cell.beginEditing = { [weak self] in
+            guard let self = self else { return }
+            presenter.indexOfBlock = indexPath.row + 1
+        }
 
-            cell.textChanged { [weak self, weak tableView] (newText: String) in
-                guard let self = self else { return }
-                noteItem.noteItemText = newText
-                self.indexOfBlock = indexPath.row
+        cell.textChanged { [weak self, weak tableView] (newText: String) in
+            guard let self = self else { return }
+            noteItem.noteItemText = newText
+            presenter.indexOfBlock = indexPath.row
+            
+            UIView.performWithoutAnimation {
                 tableView?.performBatchUpdates({
                     cell.label.text = newText
                     self.presenter.getText(text: newText, noteListTB: self.noteListTB)
                 })
             }
-
-            print("DEBUG TITLE \(noteItem.noteItemOrder)")
-            return cell
-
-        case Block.photoBlock:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as? TVPhotoBlock else {
-                return UITableViewCell()
-            }
-
-            cell.downloadImage(for: noteItem) { [weak tableView] image in
-                tableView?.performBatchUpdates({
-                    cell.imageBlock.image = image
-                })
-            }
-
-            // width 330, height 270
-            cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
-            cell.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
-
-            print("DEBUG PHOTO \(noteItem.noteItemOrder)")
-            return cell
-
-        case Block.spaceBlock:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as? TVSpaceBlock else {
-                return UITableViewCell()
-            }
-
-            print("DEBUG LINE \(noteItem.noteItemOrder)")
-            return cell
-        default:
-            return UITableViewCell()
         }
+        
+        return cell
     }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let noteItem = presenter.noteItemArray_sorted[indexPath.row]
-//
-//        // MARK: textBlock
-//        if noteItem.value(forKey: Keys.niType) as! String == Block.textBlock {
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: Block.textBlock, for: indexPath) as! TVTextBlock
-//
-//            cell.loadText(for: noteItem) { [weak tableView] string in
-//                tableView?.performBatchUpdates({
-//                    cell.textView.text = string
-//                    cell.label.text = string
-//                })
-//            }
-//
-//            cell.textChanged { [weak self, weak tableView] (newText: String) in
-//                guard let self = self else { return }
-//                noteItem.noteItemText = newText
-//                self.indexOfBlock = indexPath.row
-//
-//                tableView?.performBatchUpdates({
-//                    cell.label.text = newText
-//                    self.presenter.getText(text: newText, noteListTB: self.noteListTB)
-//                })
-//
-////                self.noteListTB.isScrollEnabled = false
-////                cell.scrollToLine(cell.textView)
-////                self.noteListTB.isScrollEnabled = true
-//
-//            }
-//
-//            print("DEBUG TEXT \(noteItem.noteItemOrder)")
-//
-//            return cell
-//
-//            // MARK: titleBlock
-//        } else if noteItem.value(forKey: Keys.niType) as! String == Block.titleBlock {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as! TVTitleBlock
-//
-//            cell.loadText(for: noteItem) { [weak tableView] string in
-//                tableView?.performBatchUpdates({
-//                    cell.textView.text = string
-//                    cell.label.text = string
-//                })
-//            }
-//
-//            cell.textChanged { [weak self, weak tableView] (newText: String) in
-//                guard let self = self else { return }
-//                noteItem.noteItemText = newText
-//                self.indexOfBlock = indexPath.row
-//
-//                tableView?.performBatchUpdates({
-//                    cell.label.text = newText
-//                    self.presenter.getText(text: newText, noteListTB: self.noteListTB)
-//                })
-//            }
-//
-//            print("DEBUG TITLE \(noteItem.noteItemOrder)")
-//
-//            return cell
-//
-//            // MARK: - photoBlock
-//        } else if noteItem.value(forKey: Keys.niType) as! String == Block.photoBlock {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as! TVPhotoBlock
-//
-//            cell.downloadImage(for: noteItem) { [weak tableView] image in
-//                tableView?.performBatchUpdates({
-//                    cell.imageBlock.image = image
-//                })
-//            }
-//
-//            // width 330, height 270
-//            cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
-//            cell.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
-//
-//            print("DEBUG PHOTO \(noteItem.noteItemOrder)")
-//            return cell
-//
-//            // MARK: - spaceBlock
-//        } else if noteItem.value(forKey: Keys.niType) as! String == Block.spaceBlock {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as! TVSpaceBlock
-//
-//            print("DEBUG LINE \(noteItem.noteItemOrder)")
-//            return cell
-//        }
-//
-//        return UITableViewCell()
-//    }
+    
+    func configureTitleBlockCell(for noteItem: NoteItem, in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.titleBlock, for: indexPath) as? TVTitleBlock else {
+            return defaultCell()
+        }
+
+        cell.loadText(for: noteItem) { [weak tableView] string in
+            tableView?.performBatchUpdates({
+                cell.textView.text = string
+                cell.label.text = string
+            })
+        }
+        
+        cell.beginEditing = { [weak self] in
+            guard let self = self else { return }
+            presenter.indexOfBlock = indexPath.row + 1
+        }
+
+        cell.textChanged { [weak self, weak tableView] (newText: String) in
+            guard let self = self else { return }
+            noteItem.noteItemText = newText
+            presenter.indexOfBlock = indexPath.row
+            
+            tableView?.performBatchUpdates({
+                cell.label.text = newText
+                self.presenter.getText(text: newText, noteListTB: self.noteListTB)
+            })
+        }
+
+        return cell
+    }
+    
+    func configureSpaceBlockCell(for noteItem: NoteItem, in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.spaceBlock, for: indexPath) as? TVSpaceBlock else {
+            return defaultCell()
+        }
+        
+        return cell
+    }
+    
+    func configurePhotoBlockCell(for noteItem: NoteItem, in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Block.photoBlock, for: indexPath) as? TVPhotoBlock else {
+            return defaultCell()
+        }
+
+        cell.downloadImage(for: noteItem) { [weak tableView] image in
+            tableView?.performBatchUpdates({
+                cell.imageBlock.image = image
+            })
+        }
+
+        // width 330, height 270
+        cell.imageBlock.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
+        cell.frame = CGRect(x: 0, y: 0, width: 330, height: 300)
+
+        return cell
+    }
 
     // MARK: - Delete block
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // ---------save the number of deleting block
-        // ---------delete block
-        // compare this number with the blocks that are higher than him
-        // for every block than is higher - make them lower by 1
         if editingStyle == .delete {
-            print("it will delete \(indexPath.row)")
             presenter.deleteblock(noteListTB: noteListTB, at: indexPath)
         }
     }

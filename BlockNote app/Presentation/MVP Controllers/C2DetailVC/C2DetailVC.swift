@@ -63,7 +63,7 @@ class C2DetailVC: UIViewController {
     }
 
     @IBAction func deleteGroup(_ sender: UIButton) {
-        presenter.deleteGroup(groupName: presenter.groupType.wrappedGroupName)
+        presenter.ask()
     }
 
     // MARK: - UI configuration
@@ -88,11 +88,11 @@ class C2DetailVC: UIViewController {
         topBar.shadowOpacity = 0.3
         topBar.layer.shadowPath = CGPath(rect: topBar.bounds, transform: nil)
 
-        topBar.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? "blueBerry")")
+        topBar.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? GroupColor.blueBerry.rawValue)")
 
-        first_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? "blueBerry")")
-        second_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? "blueBerry")")
-        third_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? "blueBerry")")
+        first_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? GroupColor.blueBerry.rawValue)")
+        second_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? GroupColor.blueBerry.rawValue)")
+        third_column.backgroundColor = UIColor(named: "\(presenter.groupType.groupColor ?? GroupColor.blueBerry.rawValue)")
     }
 
 }
