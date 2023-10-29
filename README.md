@@ -30,6 +30,6 @@ blocks that you can reorder, change and make new pages from them. Currently you 
 ## Things to come
 - [in progress] Agenda screen
 - App for iPad and Mac
-- New CollectionView on the main page with notes and groups together
-- Stats (with new attributes for entities to track them): creationDate, summerize the number of creations and so on...
-- [90% done] Edit screen for groups (colors, emojis, names)
+- [in progress] New CollectionView on the main page with notes and groups together
+- [80 % completed] Stats (with new attributes for entities to track them): creationDate, summerize the number of blocks creations and so on... 
+- [done] Edit screen for groups (colors, emojis, names
