@@ -88,6 +88,10 @@
 		E553D6C42AB0E13300937685 /* AgendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C32AB0E13300937685 /* AgendaVC.swift */; };
 		E553D6C62AB0E14300937685 /* AgendaVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */; };
 		E57787F12AD85C2C008F1BA9 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57787F02AD85C2C008F1BA9 /* ToastMessage.swift */; };
+		E59B97A72AEE986E00063A64 /* C2NavView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B97A62AEE986E00063A64 /* C2NavView+Ext.swift */; };
+		E59B97A92AEE992500063A64 /* C2Detail+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B97A82AEE992500063A64 /* C2Detail+Ext.swift */; };
+		E59B97AB2AEE99EE00063A64 /* C3NoteDetailTV+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B97AA2AEE99EE00063A64 /* C3NoteDetailTV+Ext.swift */; };
+		E59B97AD2AEE9A3100063A64 /* C3NoteDetail+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B97AC2AEE9A3100063A64 /* C3NoteDetail+Ext.swift */; };
 		E5A30C952AAE1E5E004BA5EE /* C2GroupViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */; };
 		E5F8A5832AC206D1006D972B /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8A5822AC206D1006D972B /* BlankView.swift */; };
 /* End PBXBuildFile section */
@@ -199,6 +203,10 @@
 		E553D6C32AB0E13300937685 /* AgendaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVC.swift; sourceTree = "<group>"; };
 		E553D6C52AB0E14300937685 /* AgendaVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaVCPresenter.swift; sourceTree = "<group>"; };
 		E57787F02AD85C2C008F1BA9 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		E59B97A62AEE986E00063A64 /* C2NavView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C2NavView+Ext.swift"; sourceTree = "<group>"; };
+		E59B97A82AEE992500063A64 /* C2Detail+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C2Detail+Ext.swift"; sourceTree = "<group>"; };
+		E59B97AA2AEE99EE00063A64 /* C3NoteDetailTV+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C3NoteDetailTV+Ext.swift"; sourceTree = "<group>"; };
+		E59B97AC2AEE9A3100063A64 /* C3NoteDetail+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C3NoteDetail+Ext.swift"; sourceTree = "<group>"; };
 		E5A30C942AAE1E5E004BA5EE /* C2GroupViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C2GroupViewBuilder.swift; sourceTree = "<group>"; };
 		E5F8A5822AC206D1006D972B /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		F5363CA021A08D1DE1D2EE0C /* Pods-BlockNote app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockNote app.release.xcconfig"; path = "Target Support Files/Pods-BlockNote app/Pods-BlockNote app.release.xcconfig"; sourceTree = "<group>"; };
@@ -313,6 +321,7 @@
 			children = (
 				4E1A41A72A59803A007BFC4A /* C2DetailVC.swift */,
 				4E1A41A92A598052007BFC4A /* C2DetailPresenter.swift */,
+				E59B97A82AEE992500063A64 /* C2Detail+Ext.swift */,
 			);
 			path = C2DetailVC;
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 				4E8209A82A4D9466006E8CC1 /* C2NavView */,
 				4E1A41A62A598022007BFC4A /* C2DetailVC */,
 				4E8A43162A62C299004999CF /* C3NoteDetail */,
+				E5A30C962AAE4689004BA5EE /* Agenda */,
 			);
 			path = "MVP Controllers";
 			sourceTree = "<group>";
@@ -388,6 +398,7 @@
 			children = (
 				4E8209A62A4D9436006E8CC1 /* C2NavViewController.swift */,
 				4E8209A92A4D9476006E8CC1 /* C2NavViewPresenter.swift */,
+				E59B97A62AEE986E00063A64 /* C2NavView+Ext.swift */,
 			);
 			path = C2NavView;
 			sourceTree = "<group>";
@@ -397,6 +408,8 @@
 			children = (
 				4E8A43172A62C2BE004999CF /* C3NoteDetailVC.swift */,
 				4E8A43192A62C2CB004999CF /* C3NoteDetailPresenter.swift */,
+				E59B97AC2AEE9A3100063A64 /* C3NoteDetail+Ext.swift */,
+				E59B97AA2AEE99EE00063A64 /* C3NoteDetailTV+Ext.swift */,
 			);
 			path = C3NoteDetail;
 			sourceTree = "<group>";
@@ -689,7 +702,6 @@
 			children = (
 				CE3ADCF92A73AA6F008F922B /* SwiftUI */,
 				4E8209A52A4D941B006E8CC1 /* MVP Controllers */,
-				E5A30C962AAE4689004BA5EE /* Agenda */,
 				4ED53DF0278F1A8E00F79A3F /* Views */,
 			);
 			path = Presentation;
@@ -1006,10 +1018,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59B97AB2AEE99EE00063A64 /* C3NoteDetailTV+Ext.swift in Sources */,
 				4ED982F4283EB9110063C1F1 /* StringHeight.swift in Sources */,
 				4EB9E53729C5FD1800D41AC1 /* GroupUICollectionViewCellAnimated.swift in Sources */,
 				4E1A41AA2A598052007BFC4A /* C2DetailPresenter.swift in Sources */,
 				4EAB12FF29CC372800416718 /* NewPhotoBlock.swift in Sources */,
+				E59B97A92AEE992500063A64 /* C2Detail+Ext.swift in Sources */,
 				4E0FC394281FE38200334783 /* DynamicHeightLayout.swift in Sources */,
 				4E639F4E274C118E000E249A /* GroupType+CoreDataClass.swift in Sources */,
 				4EE639C9282C43AF00CD08B2 /* TVTextBlock.swift in Sources */,
@@ -1023,6 +1037,7 @@
 				4EA3A4692A599FDA002201CD /* Builder.swift in Sources */,
 				4EBAB259287398C500A2AC05 /* TVCodeBlock.swift in Sources */,
 				E5F8A5832AC206D1006D972B /* BlankView.swift in Sources */,
+				E59B97A72AEE986E00063A64 /* C2NavView+Ext.swift in Sources */,
 				4E55323C2766412F0013E097 /* Note+CoreDataClass.swift in Sources */,
 				4ECC8C4729BDC3A400E7F64B /* Agenda+CoreDataClass.swift in Sources */,
 				4E639F4F274C118E000E249A /* GroupType+CoreDataProperties.swift in Sources */,
@@ -1075,6 +1090,7 @@
 				E50767562AD322B900155EB1 /* Model.swift in Sources */,
 				4E8F7EDF298A54130085027A /* Constants.swift in Sources */,
 				CEFCDE562A72CBCE00F562AF /* TimeAgendaVM.swift in Sources */,
+				E59B97AD2AEE9A3100063A64 /* C3NoteDetail+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,7 +1285,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1301,7 +1317,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.BlockNoteapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

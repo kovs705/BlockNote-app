@@ -181,9 +181,6 @@ final class C2DetailPresenter: C2DetailPresenterProtocol {
         } catch let error as NSError {
             print("Could not save and add note. \(error), \(error.userInfo)")
         }
-
-        //        noteName  noteLevel   noteType    noteItems   noteIsMarked
-        //        typeOfNote    wrappedNoteType     wrappedNoteName     noteItemArray
     }
 
     func performTransitionToAgendaVC(groupType: GroupType) {

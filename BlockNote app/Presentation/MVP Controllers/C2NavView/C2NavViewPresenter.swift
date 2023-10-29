@@ -23,6 +23,7 @@ protocol C2NavViewControllerPresenterProtocol: AnyObject {
     var managedContext: NSManagedObjectContext { get }
 
     init(view: C2NavViewControllerViewProtocol)
+//    var items: [CollectionViewItem] { get set }
     var groups: [NSManagedObject] { get set }
     var hour: Int { get set }
 
@@ -38,10 +39,16 @@ protocol C2NavViewControllerPresenterProtocol: AnyObject {
     func showGroupEdit(group: GroupType)
 }
 
+//enum CollectionViewItem {
+//    case group(GroupType)
+//    case note(Note)
+//}
+
 final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
 
     weak var view: C2NavViewControllerViewProtocol?
 
+    var items: [CollectionViewItem] = []
     var groups: [NSManagedObject] = []
     var hour = Calendar.current.component(.hour, from: Date())
 
@@ -56,18 +63,44 @@ final class C2NavViewControllerPresenter: C2NavViewControllerPresenterProtocol {
             self.managedContext = NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
         }
     }
-
+    
     func fetchData(using sort: String) {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
+        // Fetch groups
+            let groupFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+            groupFetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
         
         do {
-            groups = try managedContext.fetch(fetchRequest)
-            self.view?.updateData()
+            let fetchedGroups = try managedContext.fetch(groupFetchRequest)
+            items = fetchedGroups.map { CollectionViewItem.group($0 as! GroupType) }
         } catch let error as NSError {
-            print("Couldn't fetch: \(error), \(error.userInfo)")
+            print("Couldn't fetch groups: \(error), \(error.userInfo)")
         }
+        
+        // Fetch notes
+            let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+            noteFetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
+            
+            do {
+                let fetchedNotes = try managedContext.fetch(noteFetchRequest)
+                items += fetchedNotes.map { CollectionViewItem.note($0 as! Note) }
+            } catch let error as NSError {
+                print("Couldn't fetch notes: \(error), \(error.userInfo)")
+            }
+
+            self.view?.updateData()
     }
+
+//    func fetchData(using sort: String) {
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupType")
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sort, ascending: false)]
+//        
+//        do {
+//            groups = try managedContext.fetch(fetchRequest)
+//            self.view?.updateData()
+//        } catch let error as NSError {
+//            print("Couldn't fetch: \(error), \(error.userInfo)")
+//        }
+//    }
 
     func save(groupName: String, groupColor: String) {
 

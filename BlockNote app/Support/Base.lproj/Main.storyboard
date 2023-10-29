@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJZ-tZ-Bjm">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -794,6 +794,12 @@
     <designables>
         <designable name="MkO-tY-6AV">
             <size key="intrinsicContentSize" width="1901" height="20.333333333333332"/>
+        </designable>
+        <designable name="Tyg-fh-zK1">
+            <size key="intrinsicContentSize" width="310" height="128"/>
+        </designable>
+        <designable name="Uw0-wd-HlC">
+            <size key="intrinsicContentSize" width="360" height="300"/>
         </designable>
         <designable name="vAf-iJ-9FV">
             <size key="intrinsicContentSize" width="45" height="26.333333333333332"/>
