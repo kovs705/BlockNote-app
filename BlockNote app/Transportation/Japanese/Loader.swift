@@ -73,8 +73,6 @@ class JMDictCoordinator: ObservableObject {
                 }
                 
                 task.resume()
-            } catch {
-                print("Error reading JSON file:", error)
             }
         }
     }
