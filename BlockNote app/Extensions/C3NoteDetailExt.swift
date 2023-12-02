@@ -72,7 +72,7 @@ class C3NoteDetailExt: UITableViewController {
                 contentView.heightAnchor.constraint(equalToConstant: 40)
             ])
 
-            addBlockButton.addTarget(self, action: #selector(C3NoteDetailTBC.addBlock), for: .touchUpInside)
+            addBlockButton.addTarget(self, action: #selector(C3NoteDetailVC.addBlock), for: .touchUpInside)
 
             // placing text buttons:
             contentView.addArrangedSubview(addBlockButton)
@@ -93,7 +93,7 @@ class C3NoteDetailExt: UITableViewController {
     }
 
     // MARK: - Save block
-    func save(blockType: String, theCase: BlockCases, noteListTB: UITableView, pickedImage: UIImage?) {
+    func save(blockType: String, theCase: BlockCases, noteListTB: UITableView, pickedImage: UIImage?, at: Int) {
 
         guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -109,9 +109,9 @@ class C3NoteDetailExt: UITableViewController {
         let blockItem = NSManagedObject(entity: entity,
                                     insertInto: managedContext)
         if theCase == .photo {
-            PersistenceBlockController.shared.setValues(for: blockItem, from: theCase, pickedImage: pickedImage)
+            PersistenceBlockController().setValues(for: blockItem, from: theCase, pickedImage: pickedImage, at: at)
         } else {
-            PersistenceBlockController.shared.setValues(for: blockItem, from: theCase, pickedImage: nil)
+            PersistenceBlockController().setValues(for: blockItem, from: theCase, pickedImage: nil, at: at)
         }
 
         blockItem.setValue(Date(), forKey: Keys.niLastChanged)
@@ -178,7 +178,7 @@ class C3NoteDetailExt: UITableViewController {
         note.removeObject(value: noteItemArray_sorted[indexPath.row], forKey: Keys.nItems)
 
         for block in noteItemArray_sorted where block.value(forKey: Keys.niOrder) as! Int >= deletingBlocksOrder {
-            let value = block.value(forKey: Keys.niOrder) - 1
+            let value: Int = block.value(forKey: Keys.niOrder) as! Int - 1
             block.setValue(value, forKey: Keys.niOrder)
         }
 

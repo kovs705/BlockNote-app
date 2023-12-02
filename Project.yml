@@ -1,0 +1,51 @@
+name: BlockNote app
+options:
+    bundleIdPrefix: com.CodingKovs.BlockNoteapp
+    postGenCommand: pod install
+    groupSortPosition: top
+deploymentTarget: '15.0'
+settings:
+    MARKETING_VERSION: 3.0
+packages:
+  CodeEditor:
+    url: https://github.com/ZeeZide/CodeEditor
+    branch: main
+  Highlightr:
+    url: https://github.com/raspu/Highlightr
+    branch: master
+targets:
+  BlockNote app:
+    type: application
+    platform: iOS
+    deploymentTarget: '15.0'
+    sources: [BlockNote app]
+    settings:
+      base:
+        INFOPLIST_FILE: BlockNote app/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.CodingKovs.BlockNoteapp
+        ENABLE_USER_SCRIPT_SANDBOXING: false
+        ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: false
+        MY_SETTING: platform ${platform}
+    dependencies:
+      - package: CodeEditor
+        product: CodeEditor
+      - package: Highlightr
+        product: Highlightr
+        
+  BlockNote appTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [BlockNote appTests]
+    dependencies:
+      - target: BlockNote app
+     
+  BlockNote appUITests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [BlockNote appUITests]
+    dependencies:
+      - target: BlockNote app
+      
+
+
+    
