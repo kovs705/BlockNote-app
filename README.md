@@ -1,15 +1,23 @@
 # BlockNote
 App project for people who make notes, no matter what they do. You make this app your own by using different and customizable
 blocks that you can reorder, change and make new pages from them. Currently you can create the basic group, edit it later, create some notes with the basic blocks:
-(spacer, photo, title and text). I'm working on groups color changer and markdown library to customize notes.
+(spacer, photo, title and text).
+
+## Instalation
+- cd to the root directory of the project
+- type 'xcodegen generate'
+- open newly appeared .xcodeproj file as usual!
 
 ## Stack
 - Swift, SwiftUI (iOS 16)
 - Storyboard, xib/nib, UI Programmatically
-- MVP + Builder (UIkit), MVI (SwiftUI)
+- MVP + Builder (UIkit), MVVM (SwiftUI)
 - CoreData, UserDefaults
-- Apple Swift markdown, CodeEditor, SnapKit, CocoaPods
-- Swiftlint
+- Apple's Swift markdown
+- [CodeEditor](https://github.com/ZeeZide/CodeEditor)
+- [SnapKit](https://github.com/SnapKit/SnapKit)
+- [Swiftlint](https://github.com/realm/SwiftLint)
+- [XCodeGen](https://github.com/yonaskolb/XcodeGen)
 
 ## Screenshots
 ### Main Page VC with CollectionView of groups: (outdated)
