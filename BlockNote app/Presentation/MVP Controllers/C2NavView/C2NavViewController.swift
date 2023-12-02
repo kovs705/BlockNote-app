@@ -169,7 +169,7 @@ class C2NavViewControllerVC: UIViewController {
     // MARK: Empty view config
     func configureEmptyView() {
         page.addSubviews(back)
-        back.backgroundColor = UIColor(resource: .frontBack)
+        back.backgroundColor = UIColor(Color.frontBack)
         back.layer.cornerRadius = 25
         
         back.snp.makeConstraints { make in

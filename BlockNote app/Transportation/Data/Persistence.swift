@@ -32,26 +32,26 @@ class PersistenceController {
     }()
 
 //    func ultimateSave(for entity: String, blockType: BlockCases, in object: NSManagedObject, blockText: String?, usingArray: [NSManagedObject], tableView: UITableView) {
-//        
+//
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        
+//
 //        let managedContext = appDelegate.persistentContainerOffline.viewContext
-//        
+//
 //        guard let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext) else { return }
-//        
+//
 //        switch blockType {
 //           case .title:
 //            C1NoteDetailExt().save(blockType: <#T##String#>, blockText: <#T##String#>, noteListTB: <#T##UITableView#>)
 //            C1NoteDetailExt().sortAndUpdate()
-//            
+//
 //                // case .text:
-//            
+//
 //        case .space:
 //            <#code#>
 //        case .photo:
 //            <#code#>
 //        }
-//        
+//
 //    }
 
 //    let container: NSPersistentCloudKitContainer

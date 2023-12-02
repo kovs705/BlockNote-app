@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/raspu/Highlightr",
       "state" : {
-        "revision" : "93199b9e434f04bda956a613af8f571933f9f037",
-        "version" : "2.1.2"
+        "branch" : "master",
+        "revision" : "628094ff81cdebf31da6bf31be4b4ac758c127a4"
       }
     }
   ],
