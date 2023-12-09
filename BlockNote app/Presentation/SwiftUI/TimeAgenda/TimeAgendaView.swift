@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct TimeAgendaView: View {
-
+    
     @StateObject var viewModel: TimeAgendaViewModel
-
+    
     var body: some View {
-        List(viewModel.group.itemsOfAgendaArray) { agenda in
-            NavigationLink {
-                DictView()
+        ScrollView {
+            Button {
+                viewModel.createAgenda()
             } label: {
-                AgendaView(agenda: agenda, isLast: false)
-                    .listRowSeparator(.hidden)
+                Text("Add new agenda")
+            }
+
+            LazyVStack {
+                ForEach(viewModel.group.itemsOfAgendaArray) { agenda in
+                    AgendaView(agenda: agenda, isLast: false)
+                }
             }
         }
-        .listStyle(.plain)
-        .navigationTitle("Agenda")
     }
 }
 
