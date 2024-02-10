@@ -32,7 +32,7 @@ struct AgendaView: View {
                 }
                 .padding(.horizontal)
 
-                VStack {
+                VStack(alignment: .leading) {
                     Text(agenda.wrappedAgendaName)
                         .font(.title3)
 
@@ -51,7 +51,7 @@ struct AgendaView: View {
     }
 
     func showTime() -> String {
-        formatter1.dateFormat = "DD.mm"
+        formatter1.dateFormat = "d.MM"
         return formatter1.string(from: today)
     }
 }

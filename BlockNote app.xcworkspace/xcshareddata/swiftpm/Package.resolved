@@ -3,7 +3,7 @@
     {
       "identity" : "codeeditor",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ZeeZide/CodeEditor.git",
+      "location" : "https://github.com/ZeeZide/CodeEditor",
       "state" : {
         "branch" : "main",
         "revision" : "60e6ba600745fa2dbf45a1174a55e75627f0e29a"

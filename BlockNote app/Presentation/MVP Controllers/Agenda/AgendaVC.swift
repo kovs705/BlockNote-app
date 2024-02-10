@@ -24,6 +24,8 @@ class AgendaVC: UIViewController {
         hostingController.view.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalTo(view)
         }
+        
+        title = "Agenda"
     }
 
     override func viewWillAppear(_ animated: Bool) {
