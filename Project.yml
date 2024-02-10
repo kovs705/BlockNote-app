@@ -3,7 +3,7 @@ options:
     bundleIdPrefix: com.CodingKovs.BlockNoteapp
     postGenCommand: pod install
     groupSortPosition: top
-deploymentTarget: '15.0'
+deploymentTarget: '17.0'
 settings:
     MARKETING_VERSION: 3.0
 packages:
@@ -17,7 +17,8 @@ targets:
   BlockNote app:
     type: application
     platform: iOS
-    deploymentTarget: '15.0'
+    category: Productivity
+    deploymentTarget: '17.0'
     sources: [BlockNote app]
     settings:
       base:
@@ -32,19 +33,19 @@ targets:
       - package: Highlightr
         product: Highlightr
         
-  BlockNote appTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources: [BlockNote appTests]
-    dependencies:
-      - target: BlockNote app
-     
-  BlockNote appUITests:
-    type: bundle.unit-test
-    platform: iOS
-    sources: [BlockNote appUITests]
-    dependencies:
-      - target: BlockNote app
+#  BlockNote appTests:
+#    type: bundle.unit-test
+#    platform: iOS
+#    sources: [BlockNote appTests]
+#    dependencies:
+#      - target: BlockNote app
+#
+#  BlockNote appUITests:
+#    type: bundle.unit-test
+#    platform: iOS
+#    sources: [BlockNote appUITests]
+#    dependencies:
+#      - target: BlockNote app
       
 
 
